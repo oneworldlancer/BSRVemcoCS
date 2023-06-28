@@ -1,0 +1,640 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+
+}
+
+<style>
+
+    a:link {
+        background-color: white;
+    }
+
+    a:hover {
+        background-color: blue;
+    }
+</style>
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Accountable Person</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Accountable Person</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard">
+
+      @*  <p> Click on button to display popup modal function </p>
+        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#popupModal">
+            Open modal function
+        </button>
+*@
+
+
+        <div class="row">
+
+            <h5>Information Gathering Dashboard</h5>
+
+        </div>
+
+        <div class="row">
+
+
+            <div class="d-flex align-items-start">
+                <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <button class="nav-link active mt-3" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true" style="width:100px;">Page (1)</button>
+                    <button class="nav-link mt-3" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false" style="width:100px;">Page (2)</button>
+                    @*                    <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</button>
+                    <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button>*@
+
+                </div>
+                <div class="tab-content" id="v-pills-tabContent" style="width:100%;">
+
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
+
+                        <div class="row">
+
+                            <span class="fs-6 m-3">Information Gathering Dashboard</span>
+                        </div>
+
+
+
+                        <div class="row">
+
+
+                            <div class="mt-3 ms-3 me-3">
+                                <label for="formGroupExampleInput" class="form-label">Accountable Person (AP):</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" value="Vemco consulting" disabled>
+                            </div>
+
+
+                            <div class="mt-3 ms-3 me-3">
+                                <label for="formGroupExampleInput2" class="form-label">Development name:</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+                            </div>
+
+
+
+                            <div class="mt-3 ms-3 me-3">
+                                <label for="formGroupExampleInput2" class="form-label">Development address:</label>
+                                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
+                            </div>
+
+
+
+                            <div class="mt-3 ms-3 me-3">
+                                <label for="formGroupExampleInput2" class="form-label">Build date:</label>
+                                <input type="date" class="form-control" id="formGroupExampleInput2" placeholder="">
+                            </div>
+                            <span class="text-mute ms-3" style="font-size:small;">(approximate if unknown)</span>
+
+
+
+                            <div class="mt-3 ms-3 me-3">
+                                <label for="formFile" class="form-label">Image:</label>
+                                <input class="form-control" type="file" id="formFile">
+                            </div>
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+
+
+
+                        <div class="row">
+
+                            <span class="fs-6 m-3">Please identify which of the following documents exist</span>
+                        </div>
+
+
+                        <div class="row">
+
+
+
+                            <div class="list-group list-group-flush m-3">
+                                @**@
+                                <a href="#" class="list-group-item list-group-item-action bg-transparent"
+                                   data-bs-toggle="modal" data-bs-target="#popupModal">
+                                    <div class="row">
+
+                                        <div class="col-10">Up-to-date Fire Risk Assessment (FRA)</div>
+
+                                        <div class="col-2 text-end" style="float:right;">
+                                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                                        </div>
+
+
+
+
+                                    </div>
+
+                                </a>
+
+
+                                <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                                    <div class="row">
+
+                                        <div class="col-10">
+                                            Up-to-date floor plans and elevations of the building
+                                        </div>
+
+                                        <div class="col-2 text-end" style="float:right;">
+                                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                                        </div>
+
+
+                                    </div>
+
+                                </a>
+
+
+                                <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                                    <div class="row">
+
+                                        <div class="col-10">
+                                            As-built construction drawings for the building
+                                        </div>
+
+                                        <div class="col-2 text-end" style="float:right;">
+                                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                                        </div>
+
+
+
+                                    </div>
+
+                                </a>
+
+
+                                <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                                    <div class="row">
+
+                                        <div class="col-10">
+                                            O&M Manuals
+                                        </div>
+
+                                        <div class="col-2 text-end" style="float:right;">
+                                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                                        </div>
+
+
+
+                                    </div>
+
+                                </a>
+
+
+                                <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                                    <div class="row">
+
+                                        <div class="col-10">
+                                            Fire Statement
+                                        </div>
+
+                                        <div class="col-2 text-end" style="float:right;">
+                                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                                        </div>
+
+
+
+                                    </div>
+
+                                </a>
+
+
+                                <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                                    <div class="row">
+
+                                        <div class="col-10">
+                                            Testing records for alarm system
+                                        </div>
+
+                                        <div class="col-2 text-end" style="float:right;">
+                                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                                        </div>
+
+
+
+                                    </div>
+
+                                </a>
+
+
+                                <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                                    <div class="row">
+
+                                        <div class="col-10">
+                                            Testing records for smoke ventilation system
+                                        </div>
+
+                                        <div class="col-2 text-end" style="float:right;">
+                                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                                        </div>
+
+
+
+                                    </div>
+
+                                </a>
+
+
+                                <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                                    <div class="row">
+
+                                        <div class="col-10">
+                                            Testing records for other relevant systems
+                                        </div>
+
+                                        <div class="col-2 text-end" style="float:right;">
+                                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                                        </div>
+
+
+
+                                    </div>
+
+                                </a>
+
+
+                                <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                                    <div class="row">
+
+                                        <div class="col-10">
+                                            Structural engineer's report
+                                        </div>
+
+                                        <div class="col-2 text-end" style="float:right;">
+                                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                                        </div>
+
+
+
+                                    </div>
+
+                                </a>
+
+
+                                <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                                    <div class="row">
+
+                                        <div class="col-10">
+                                            Evidence that Health and Safety File/Golden Thread information is continually being updated
+                                        </div>
+
+                                        <div class="col-2 text-end" style="float:right;">
+                                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                                        </div>
+
+
+
+                                    </div>
+
+                                </a>
+
+
+                                <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+
+                                    <div class="row">
+
+                                        <div class="col-10">
+                                            Evidence that Health and Safety file/Golden Thread documentation is being reviewed to inform decisions in relation to any changes to be made 112233
+                                        </div>
+
+                                        <div class="col-2 text-end" style="float:right;">
+                                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                                        </div>
+
+
+                                    </div>
+
+                                </a>
+
+
+                                <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                                    <div class="row">
+
+                                        <div class="col-10">
+                                            Evidence that the AP has a process in place to ensure that decisions are not made without reference to key documents like the fire strategy
+                                        </div>
+
+                                        <div class="col-2 text-end" style="float:right;">
+                                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                                        </div>
+
+
+                                    </div>
+
+                                </a>
+
+
+                                <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                                    <div class="row">
+
+                                        <div class="col-10">
+                                            Formal fire engineer approval that the building design complies with Regualtions
+                                        </div>
+
+                                        <div class="col-2 text-end" style="float:right;">
+                                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                                        </div>
+
+
+
+                                    </div>
+
+                                </a>
+
+
+                                <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                                    <div class="row">
+
+                                        <div class="col-10">
+                                            Contractors' Permit to Work
+                                        </div>
+
+                                        <div class="col-2 text-end" style="float:right;">
+                                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                                        </div>
+
+
+
+                                    </div>
+
+                                </a>
+
+
+                                <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                                    <div class="row">
+
+                                        <div class="col-10">
+                                            Formal structural engineer approval that the design complies with the fire strategy
+                                        </div>
+
+                                        <div class="col-2 text-end" style="float:right;">
+                                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                                        </div>
+
+
+
+                                    </div>
+
+                                </a>
+
+
+                                <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                                    <div class="row">
+
+                                        <div class="col-10">
+                                            Formal M&E subcontractor approval that M&E designs comply with the fire strategy
+                                        </div>
+
+                                        <div class="col-2 text-end" style="float:right;">
+                                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                                        </div>
+
+
+
+                                    </div>
+
+                                </a>
+
+
+                                <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                                    <div class="row">
+
+                                        <div class="col-10">
+                                            Construction Assurance documentation e.g. completion reports, product warranties etc
+                                        </div>
+
+                                        <div class="col-2 text-end" style="float:right;">
+                                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                                        </div>
+
+
+
+                                    </div>
+
+                                </a>
+
+
+                                <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                                    <div class="row">
+
+                                        <div class="col-10">
+                                            Conveyancing Documentation e.g. sale agreements, lease agreements etc
+                                        </div>
+
+                                        <div class="col-2 text-end" style="float:right;">
+
+                                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                                        </div>
+
+
+                                    </div>
+
+                                </a>
+
+
+                                <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                                    <div class="row">
+
+                                        <div class="col-10">
+                                            Formal approvals
+                                        </div>
+
+                                        <div class="col-2 text-end" style="float:right;">
+                                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                                        </div>
+
+
+
+                                    </div>
+
+                                </a>
+
+
+
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    @*      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">This is some placeholder content the Messages tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.</div>
+                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">This is some placeholder content the Messages tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.</div>
+                    *@
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <div class="modal" id="popupModal">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"> Information Gathering Dashboard </h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="row col-12">
+
+                        <div class="col-10">Up-to-date Fire Risk Assessment (FRA)</div>
+
+                        <div class="col-2 float-end" style="float:right;">
+
+                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                        </div>
+
+                    </div>
+
+                    <div class="col-12">
+                        <div class="mt-3">
+                            <label for="formFileMultiple" class="mt-3f orm-label">Upload a file(s)</label>
+                            <input class="form-control" type="file" id="formFileMultiple" multiple>
+                        </div>
+                    </div>
+                    <small class="text-danger">(You must upload a file in order to select YES)</small>
+
+
+
+                    <div class="col-12" style="float:right;">
+
+                        <div class="float-end">
+                            <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off">
+                            <label class="me-3 mt-0 btn btn-outline-success" for="success-outlined" style="width:50px;height:auto;">YES</label>
+                            @*                        checked*@
+                            <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
+                            <label class="me-3 mt-0 btn btn-outline-danger" for="danger-outlined" style="width:50px;height:auto;">NO</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+  <div class="mt-3">
+
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+
+                                <table>
+                                    <tr>
+                                        <td><img src="~/img/img_file_pdf.png" style="width:20px;height:20px;margin:2px;" /></td>
+                                        
+                                        <td style="width:100%;"><span>File_1101.pdf</span></td>
+                                        
+                                        <td><img src="~/img/img_close_x.png" style="width:20px;height:20px;" alt="Delete" title="Delete"/></td></tr>
+                                </table>
+                                 
+                            </li>
+                          <li class="list-group-item">
+
+                                <table>
+                                    <tr>
+                                        <td><img src="~/img/img_file_pdf.png" style="width:20px;height:20px;margin:2px;" /></td>
+                                        
+                                        <td style="width:100%;"><span>File_2202.pdf</span></td>
+                                        
+                                        <td><img src="~/img/img_close_x.png" style="width:20px;height:20px;" alt="Delete" title="Delete"/></td></tr>
+                                </table>
+                                 
+                            </li>
+                            <li class="list-group-item">
+
+                                <table>
+                                    <tr>
+                                        <td><img src="~/img/img_file_pdf.png" style="width:20px;height:20px;margin:2px;" /></td>
+                                        
+                                        <td style="width:100%;"><span>File_3303.pdf</span></td>
+                                        
+                                        <td><img src="~/img/img_close_x.png" style="width:20px;height:20px;" alt="Delete" title="Delete"/></td></tr>
+                                </table>
+                                 
+                            </li>
+                                <li class="list-group-item">
+
+                                    <table>
+                                        <tr>
+                                            <td><img src="~/img/img_file_pdf.png" style="width:20px;height:20px;margin:2px;" /></td>
+
+                                            <td style="width:100%;"><span>File_4404.pdf</span></td>
+
+                                            <td><img src="~/img/img_close_x.png" style="width:20px;height:20px;" alt="Delete" title="Delete" /></td>
+                                        </tr>
+                                    </table>
+
+                                </li>
+
+                            </ul>
+                    </div>  </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+<!-- End #main -->
+@*<div class="row">
+
+    <div class="d-flex align-items-start">
+        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
+            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
+            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</button>
+            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button>
+        </div>
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">This is some placeholder content the Messages tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.</div>
+            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">This is some placeholder content the Messages tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.</div>
+            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">This is some placeholder content the Messages tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.</div>
+            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">This is some placeholder content the Messages tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.</div>
+        </div>
+    </div>
+
+</div>*@

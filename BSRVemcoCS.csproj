@@ -6,4 +6,21 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.14" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\iWebAdmin\Controllers\" />
+    <Folder Include="Areas\iWebAdmin\Data\" />
+    <Folder Include="Areas\iWebAdmin\Models\" />
+    <Folder Include="Areas\iWebAdmin\Views\" />
+    <Folder Include="Areas\iWebMembership\Data\" />
+    <Folder Include="Areas\iWebMembership\Models\" />
+    <Folder Include="Areas\iWebMember\Data\" />
+    <Folder Include="Areas\iWebMember\Models\" />
+    <Folder Include="iApp_Identity\" />
+    <Folder Include="iApp_Globals\" />
+  </ItemGroup>
+
 </Project>

@@ -22,6 +22,32 @@ app.UseRouting ( );
 
 app.UseAuthorization ( );
 
+
+
+#region Areas
+
+
+app.MapAreaControllerRoute (
+      name: "iWebMembership" ,
+      areaName: "iWebMembership" ,
+      pattern: "iWebMembership/{controller=Account}/{action=Index}/{id?}"
+  );
+    
+app.MapAreaControllerRoute (
+      name: "iWebMember" ,
+      areaName: "iWebMember" ,
+      pattern: "iWebMember/{controller=Dashboard}/{action=Index}/{id?}"
+  );
+
+app.MapControllerRoute (
+    name: "areaRoute" ,
+    pattern: "{area:exists}/{controller}/{action}/{id?}"
+);
+
+
+
+#endregion
+
 app.MapControllerRoute (
     name: "default" ,
     pattern: "{controller=Home}/{action=Index}/{id?}" );

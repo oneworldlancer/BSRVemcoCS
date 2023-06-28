@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BSRVemcoCS</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BSRVemcoCS.styles.css" asp-append-version="true" />
+
+ 
+
+</head>
+<body style="background-color:whitesmoke;">
+
+
+    <div class="containercontainer-fluid">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+      
+        <div class="container">
+            <div class="text-center">
+                &copy; Copyright <strong><span>BSR Service Suite</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits text-center">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/groovin-free-bootstrap-theme/ -->
+                Designed by <a href="https://oneworldlancer.com/">OneWorlLancer</a>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+    @*
+    <footer class="border-top footer text-muted">
+    <div class="container">
+    &copy; 2023 - BSRVemcoCS - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+    </footer>
+
+    *@
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+
+
+    <!-- Vendor JS Files -->
+    <script src="iMaster_Member/assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="iMaster_Member/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="iMaster_Member/assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="iMaster_Member/assets/vendor/echarts/echarts.min.js"></script>
+    <script src="iMaster_Member/assets/vendor/quill/quill.min.js"></script>
+    <script src="iMaster_Member/assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="iMaster_Member/assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="iMaster_Member/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="iMaster_Member/assets/js/main.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
