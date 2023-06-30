@@ -1,7 +1,10 @@
-﻿
+﻿@model BSRVemcoCS.iAppViewModel.AppRegisterViewModel;
+
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
 
 <div class="text-center" style="margin-top:100px;">
-
 
 
 <div class="col-md-6 offset-md-3 d-flex align-items-center justify-content-center">
@@ -18,39 +21,71 @@
             </div>
 
 
-            <form class="row g-3 needs-validation" novalidate>
+            <form  method="post"  class="row g-3 needs-validation" novalidate>
 
                 <div class="form-floating col-12">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="Accountable Person (AP)">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="Accountable Person (AP)"
+                        required>
                         <label for="floatingInput">Accountable Person (AP)</label>
-                </div>
+
+                        <div class="valid-feedback text-start">Looks good!</div>
+                        <div class="invalid-feedback text-start">Please fill in this field</div>
+
+                    
+                    </div>
 
               
 
                 <div class="form-floating col-12">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="First name">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="First name"
+                               required>
                     <label for="floatingInput">First name</label>
-                </div>
+             
+                
+                        <div class="valid-feedback text-start">Looks good!</div>
+                        <div class="invalid-feedback text-start">Please fill in this field</div>
+
+                
+                    </div>
 
 
                 <div class="form-floating col-12">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="Last name">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Last name"
+                               required>
                     <label for="floatingInput">Last name</label>
-                </div>
+
+
+                        <div class="valid-feedback text-start">Looks good!</div>
+                        <div class="invalid-feedback text-start">Please fill in this field</div>
+
+                    </div>
 
 
 
                 <div class="form-floating col-12">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="E-mail address">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="E-mail address"
+                               asp-for="Email"
+                               required>
                     <label for="floatingInput">E-mail address</label>
-                </div>
+
+
+                        <div class="valid-feedback text-start">Looks good!</div>
+                        <div class="invalid-feedback text-start">Please fill in this field</div>
+
+                    </div>
 
 
                 <div class="form-floating col-12">
-                    <input type="password" class="form-control" id="floatingInput" placeholder="Password">
+                    <input type="password" class="form-control" id="floatingInput" placeholder="Password"
+                               asp-for="Password"
+                    required>
                     <label for="floatingInput">Password</label>
-                </div>
 
+
+                        <div class="valid-feedback text-start">Looks good!</div>
+                        <div class="invalid-feedback text-start">Please fill in this field</div>
+
+                    </div>
 
 
 
@@ -85,17 +120,19 @@
                 </div>*@
 
                 <div class="col-12">
-                    <div class="form-check">
+                        <div class="form-check  text-start">
                         <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
                         <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
                         <div class="invalid-feedback">You must agree before submitting.</div>
                     </div>
                 </div>
                 <div class="col-12">
-                        @*type="submit"*@   <button class="btn btn-primary w-100" asp-area="iWebMember" asp-controller="Development" asp-action="Edit">Create Account</button>
+                        @*type="submit"*@
+                       @* asp-area="iWebMember" asp-controller="Development" asp-action="Edit"*@  
+                       <button type="submit" class="btn btn-primary w-100">Create Account</button>
                 </div>
                 <div class="col-12">
-                        <p class="small mb-0">Already have an account? <a asp-area="iWebMembership" asp-controller="Account" asp-action="Login">Log in</a></p>
+                        <p class="small mb-0">Already have an account? <a  asp-controller="Account" asp-action="Login">Log in</a></p>
                 </div>
             </form>
 

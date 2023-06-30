@@ -1,7 +1,53 @@
+using BSRVemcoCS.iApp_Identity;
+
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder ( args );
 
 // Add services to the container.
 builder.Services.AddControllersWithViews ( );
+
+
+#region Identity
+
+
+builder.Services.AddIdentity<AppCore_IdentityUser , AppCore_IdentityRole> ( options =>
+{
+    options.User.RequireUniqueEmail = true;
+} ).AddEntityFrameworkStores<AppCore_IdentityDBContext> ( );
+
+
+builder.Services.AddDbContext<AppCore_IdentityDBContext> ( options =>
+{
+    //the change occurs here.
+    //builder.cofiguration and not just configuration
+    options.UseSqlServer ( builder.Configuration.GetConnectionString ( "BSRVEMCODB" ) );
+} );
+
+builder.Services.Configure<IdentityOptions> ( options =>
+{
+
+    options.Password.RequiredLength = 6;
+    options.Password.RequiredUniqueChars = 1;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireDigit = true;
+
+
+} );
+
+
+#endregion
+
+
+
+
+
+
+
+
 
 var app = builder.Build ( );
 
@@ -53,3 +99,14 @@ app.MapControllerRoute (
     pattern: "{controller=Home}/{action=Index}/{id?}" );
 
 app.Run ( );
+
+
+
+public partial class Program
+{
+
+    public static IConfiguration iConfig;
+
+    public static string Test { get; private set; }
+
+}

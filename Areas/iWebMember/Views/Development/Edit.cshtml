@@ -6,20 +6,12 @@
 
 }
 
-<style>
 
-    a:link {
-        background-color: white;
-    }
 
-    a:hover {
-        background-color: blue;
-    }
-</style>
+@*<main id="main" class="main">*@
+<div id="main" class="row" style="margin-top:0px;padding-top:10px;">
 
-<main id="main" class="main">
-
-    <div class="pagetitle">
+    <div class="pagetitle" style="padding-top:0px;">
         <h1>Accountable Person</h1>
         <nav>
             <ol class="breadcrumb">
@@ -27,9 +19,11 @@
                 <li class="breadcrumb-item active">Accountable Person</li>
             </ol>
         </nav>
-    </div><!-- End Page Title -->
+    </div>
+    
+    <!-- End Page Title -->
 
-    <section class="section dashboard">
+    <section class="section dashboard" style="margin-top:0px;padding-top:0px;">
 
       @*  <p> Click on button to display popup modal function </p>
         <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#popupModal">
@@ -76,7 +70,24 @@
                             </div>
 
 
-                            <div class="mt-3 ms-3 me-3">
+
+                            <div class="row col-12">
+
+                                <div class="col-6 mt-3 ms-3 me-3">
+                                    <label for="formFile" class="form-label">Image:</label>
+                                    <input class="form-control" type="file" id="formFile">
+                                </div>
+
+
+                                <div class="col-3 offset-2  mt-3 ms-3 me-3">
+                                    <img class="card"   src="~/img/mypic.jpeg" style="width:100px;height:100px;" />
+                                </div>
+
+
+                            </div>
+                        
+                            
+                            <div class="mt-0 ms-3 me-3">
                                 <label for="formGroupExampleInput2" class="form-label">Development name:</label>
                                 <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="">
                             </div>
@@ -96,12 +107,6 @@
                             </div>
                             <span class="text-mute ms-3" style="font-size:small;">(approximate if unknown)</span>
 
-
-
-                            <div class="mt-3 ms-3 me-3">
-                                <label for="formFile" class="form-label">Image:</label>
-                                <input class="form-control" type="file" id="formFile">
-                            </div>
 
 
 
@@ -618,7 +623,7 @@
         </div>
     </div>
 
-</main>
+</div>
 <!-- End #main -->
 @*<div class="row">
 

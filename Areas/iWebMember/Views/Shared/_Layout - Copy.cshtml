@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>BSR Service Suite</title>
+    <title>Dashboard - NiceAdmin Bootstrap Template</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -49,16 +49,15 @@
         <header id="header" class="header fixed-top d-flex align-items-center" style="background-color:#d9d9d9;border-bottom:3px #152365 solid;">
 
         <div class="d-flex align-items-center justify-content-between align-middle" style="background-color:#d9d9d9;">
-
-            <a asp-area="iWebMember" asp-controller="Dashboard" asp-action="Index" class="logo d-flex align-items-center">
+          
+            <a href="/" class="logo d-flex align-items-center">
                 <div class="col-12 align-middle" style="margin:0px;padding:0px;background-color:#d9d9d9;">
-                    @*  <span class="d-none d-lg-block fs-5"
-                    style="color:black;margin:5px;">BSR Service Suite</span>*@
-
-                    <img src="~/img/vemco_logo.png" alt="" style="height:30px;width:auto;padding:0px;margin:0px;">
+                <span class="d-none d-lg-block fs-5" 
+                style="color:black;margin:5px;">BSR Service Suite</span>
+               
+                <img src="~/img/vemco_logo.png" alt="" style="height:30px;width:auto;padding:0px;margin:0px;">
                 </div>
             </a>
-
             
             
             @*   <a href="/" class="logo d-flex align-items-center">
@@ -69,17 +68,162 @@
         </div>
         <!-- End Logo -->
 
-      @*  <div class="search-bar">
+        <div class="search-bar">
             <form class="search-form d-flex align-items-center" method="POST" action="#">
                 <input type="text" name="query" placeholder="Search" title="Enter search keyword">
                 <button type="submit" title="Search"><i class="bi bi-search"></i></button>
             </form>
-        </div>*@<!-- End Search Bar -->
+        </div><!-- End Search Bar -->
 
-        <nav class="header-nav ms-3">
+        <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
 
-            
+                <li class="nav-item d-block d-lg-none">
+                    <a class="nav-link nav-icon search-bar-toggle " href="#">
+                        <i class="bi bi-search"></i>
+                    </a>
+                </li><!-- End Search Icon-->
+
+                <li class="nav-item dropdown">
+
+                    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-bell"></i>
+                        <span class="badge bg-primary badge-number">4</span>
+                    </a><!-- End Notification Icon -->
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                        <li class="dropdown-header">
+                            You have 4 new notifications
+                            <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="notification-item">
+                            <i class="bi bi-exclamation-circle text-warning"></i>
+                            <div>
+                                <h4>Lorem Ipsum</h4>
+                                <p>Quae dolorem earum veritatis oditseno</p>
+                                <p>30 min. ago</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="notification-item">
+                            <i class="bi bi-x-circle text-danger"></i>
+                            <div>
+                                <h4>Atque rerum nesciunt</h4>
+                                <p>Quae dolorem earum veritatis oditseno</p>
+                                <p>1 hr. ago</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="notification-item">
+                            <i class="bi bi-check-circle text-success"></i>
+                            <div>
+                                <h4>Sit rerum fuga</h4>
+                                <p>Quae dolorem earum veritatis oditseno</p>
+                                <p>2 hrs. ago</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="notification-item">
+                            <i class="bi bi-info-circle text-primary"></i>
+                            <div>
+                                <h4>Dicta reprehenderit</h4>
+                                <p>Quae dolorem earum veritatis oditseno</p>
+                                <p>4 hrs. ago</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li class="dropdown-footer">
+                            <a href="#">Show all notifications</a>
+                        </li>
+
+                    </ul><!-- End Notification Dropdown Items -->
+
+                </li><!-- End Notification Nav -->
+
+                <li class="nav-item dropdown">
+
+                    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-chat-left-text"></i>
+                        <span class="badge bg-success badge-number">3</span>
+                    </a><!-- End Messages Icon -->
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+                        <li class="dropdown-header">
+                            You have 3 new messages
+                            <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="message-item">
+                            <a href="#">
+                                <img src="~/iMaster_Member/assets/img/messages-1.jpg" alt="" class="rounded-circle">
+                                <div>
+                                    <h4>Maria Hudson</h4>
+                                    <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                                    <p>4 hrs. ago</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="message-item">
+                            <a href="#">
+                                <img src="~/iMaster_Member/assets/img/messages-2.jpg" alt="" class="rounded-circle">
+                                <div>
+                                    <h4>Anna Nelson</h4>
+                                    <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                                    <p>6 hrs. ago</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="message-item">
+                            <a href="#">
+                                <img src="~/iMaster_Member/assets/img/messages-3.jpg" alt="" class="rounded-circle">
+                                <div>
+                                    <h4>David Muldon</h4>
+                                    <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                                    <p>8 hrs. ago</p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li class="dropdown-footer">
+                            <a href="#">Show all messages</a>
+                        </li>
+
+                    </ul><!-- End Messages Dropdown Items -->
+
+                </li><!-- End Messages Nav -->
 
                 <li class="nav-item dropdown pe-3">
 
@@ -140,29 +284,6 @@
             </ul>
         </nav><!-- End Icons Navigation -->
 
-        <div class="d-none d-md-block" style="width:100%;float:right;">
-
-            <div class="float-end" style="margin-right:20px;">
-
-                <img src="~/img/img_email.png" style="width:20px;height:20px;margin:3px;" />
-                info@vemcoconsulting.com
-
-                @* <form class="search-form d-flex align-items-center" method="POST" action="#">
-                <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-                </form>*@
-            </div>
-            <div class="float-end" style="margin-left:10px;margin-right:30px;">
-                <img src="~/img/img_phone.png" style="width:15px;height:15px;margin:3px;" />
-                01223655570   @* <form class="search-form d-flex align-items-center" method="POST" action="#">
-                <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-                </form>*@
-            </div><!-- End Search Bar -->
-
-
-        </div>
-
     </header>
   <!-- End Header -->
   
@@ -187,111 +308,11 @@
 
 
             <li class="nav-item">
-                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
-                   asp-action="Edit">
+                <a class="nav-link collapsed" href="users-profile.html">
                     <i class="bi bi-person"></i>
-                    <span>Summary info</span>
+                    <span>Accountable Person</span>
                 </a>
             </li><!-- End Profile Page Nav -->
-
-
-
-
-
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
-                   asp-action="Edit">
-                    <i class="bi bi-person"></i>
-                    <span>Infomation Gathering</span>
-                </a>
-            </li>
-
-
-            
-
-
-            <li class="nav-item">
-                <a class="nav-link collapsed"  >
-                    <i class="bi bi-person"></i>
-                    <span>
-                        Gap Analysis</span>
-                </a>
-            </li>
-
-
-            
-
-
-            <li class="nav-item">
-                <a class="nav-link collapsed"  >
-                    <i class="bi bi-person"></i>
-                    <span>
-                        Risk Assessment
-                   </span>
-                </a>
-            </li>
-
-
-            
-
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" >
-                    <i class="bi bi-person"></i>
-                    <span>
-                        Resident Engagement
-                    </span>
-                </a>
-            </li>
-
-
-            
-
-
-            <li class="nav-item">
-                <a class="nav-link collapsed"  >
-                    <i class="bi bi-person"></i>
-                    <span>Monitoring System</span>
-                </a>
-            </li>
-
-
-
-            <li class="nav-heading">Admin</li>
-
-
-
-
-
-            <li class="nav-item">
-                <a class="nav-link collapsed"  >
-                    <i class="bi bi-person"></i>
-                    <span>Personal Info</span>
-                </a>
-            </li>
-
-
-            
-            <li class="nav-item">
-                <a class="nav-link collapsed"  >
-                    <i class="bi bi-person"></i>
-                    <span>Invite Users</span>
-                </a>
-            </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -599,62 +620,13 @@
 
     </aside>
     <!-- End Sidebar-->
-
-   
-    <div class="main" style="margin-top:55px;padding:0px;margin-left:0px;margin-right:0px;margin-bottom:0px;">
-
-
-        <div id="main" class="row text-center align-middle" style="height:60px;background-color:#5a646c;color:white;padding:0px;">
-
-            <h3 style="margin-top:10px;">BSR Service Suite</h3>
-
-
-
-        </div>
-        @RenderBody()
-    </div>
-    
-    
-    
-    
-    
-    
-    
-@*    <div style="padding:0px;margin-bottom:50px;">
+    <div style="padding:0px;margin-bottom:50px;">
     @RenderBody()
-    </div> *@
-    <!-- End #main -->
+    </div> <!-- End #main -->
    
     
     <!-- ======= Footer ======= -->
-    <footer id="footer" class=" footer text-center" style="height:75px;font-size:small;background-color:#152365;">
-        <div class="copyright">
-            <strong><span style="font-size:large;color:white;">VEMCO</span></strong>
-        </div>
-        <div class="credits">
-            <small style="color:whitesmoke;">Designed by </small>  <a href="https://OneWorldLancer.com/" target="_blank" style="color:whitesmoke;text-decoration:underline;">OneWorldLancer</a>
-        </div>
-    </footer>
-
-
-
-  @*  <footer id="footer" class="footer" style="font-size:small;color:white;background-color:#152365;">
-        <div class="copyright">
-            &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-            Designed by <a href="https://OneWorldLancer.com/">OneWorldLancer</a>
-        </div>
-    </footer>*@
-
-
-
-    <!-- ======= Footer ======= -->
-@*    <footer id="footer" class="footer">
+    <footer id="footer" class="footer">
         <div class="copyright">
             &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
         </div>
@@ -665,10 +637,7 @@
             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
             Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
         </div>
-    </footer>*@
-    
-    
-    <!-- End Footer -->
+    </footer><!-- End Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
