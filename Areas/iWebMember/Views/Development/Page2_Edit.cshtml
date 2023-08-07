@@ -1,0 +1,653 @@
+﻿@model BSRVemcoCS.iAppViewModel.AppDevelomentEdit2ViewModel
+
+@{
+
+
+}
+
+
+
+@* class="row"<main id="main" class="main">*@
+<div id="main" style="margin-top:0px;padding-top:10px;">
+
+    <div class="pagetitle" style="padding-top:0px;">
+        @*<h1>Company Name</h1>*@
+        <nav>
+            <ol class="breadcrumb">
+                @*href="index.html"*@
+                <li class="breadcrumb-item"><a>View Building</a></li>
+                <li class="breadcrumb-item active">Information Gathering</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- End Page Title -->
+    @*class="section dashboard" style="margin-top:0px;padding-top:0px;"*@
+    <section>
+
+        @*  <p> Click on button to display popup modal function </p>
+        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#popupModal">
+        Open modal function
+        </button>
+        *@
+
+
+        <div class="row">
+
+            <span class="fs-5 ms-3">Information Gathering</span>
+
+        </div>
+
+        <form method="post" class="row g-3 needs-validation" novalidate>
+
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+
+            <div class="row">
+
+
+                @*class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"*@
+
+                <div>
+
+
+
+                    <div class="row">
+                        @*fs-6*@
+                        <span class="m-3">Please identify which of the following documents exist</span>
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="list-group list-group-flush m-3">
+                            @**@
+                            @foreach ( var iRow in Model.BuildingInformationList! )
+                            {
+
+                                <a href="#" class="list-group-item list-group-item-action bg-transparent"
+                                   data-bs-toggle="modal" data-bs-target="#popupModal" data-obj="@iRow">
+                                  
+                                   <div class="row">
+
+                                        <div class="col-10">@iRow.InformationText</div>
+
+                                        <div class="col-2 text-end" style="float:right;">
+                                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+
+                                            @if ( iRow.DocumentCount != "0" )
+                                            {
+                                                <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+
+                                            }
+                                            else
+                                            {
+                                                <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;"></small>
+
+                                            }
+
+                                        </div>
+
+
+
+
+                                    </div>
+
+                                </a>
+
+
+
+                            }
+
+
+
+
+
+
+
+
+                            @*
+                            <a href="#" class="list-group-item list-group-item-action bg-transparent"
+                            data-bs-toggle="modal" data-bs-target="#popupModal">
+                            <div class="row">
+
+                            <div class="col-10">Up-to-date Fire Risk Assessment (FRA)</div>
+
+                            <div class="col-2 text-end" style="float:right;">
+                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                            </div>
+
+
+
+
+                            </div>
+
+                            </a>
+
+
+                            <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                            <div class="row">
+
+                            <div class="col-10">
+                            Up-to-date floor plans and elevations of the building
+                            </div>
+
+                            <div class="col-2 text-end" style="float:right;">
+                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                            </div>
+
+
+                            </div>
+
+                            </a>
+
+
+                            <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                            <div class="row">
+
+                            <div class="col-10">
+                            As-built construction drawings for the building
+                            </div>
+
+                            <div class="col-2 text-end" style="float:right;">
+                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                            </div>
+
+
+
+                            </div>
+
+                            </a>
+
+
+                            <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                            <div class="row">
+
+                            <div class="col-10">
+                            O&M Manuals
+                            </div>
+
+                            <div class="col-2 text-end" style="float:right;">
+                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                            </div>
+
+
+
+                            </div>
+
+                            </a>
+
+
+                            <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                            <div class="row">
+
+                            <div class="col-10">
+                            Fire Statement
+                            </div>
+
+                            <div class="col-2 text-end" style="float:right;">
+                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                            </div>
+
+
+
+                            </div>
+
+                            </a>
+
+
+                            <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                            <div class="row">
+
+                            <div class="col-10">
+                            Testing records for alarm system
+                            </div>
+
+                            <div class="col-2 text-end" style="float:right;">
+                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                            </div>
+
+
+
+                            </div>
+
+                            </a>
+
+
+                            <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                            <div class="row">
+
+                            <div class="col-10">
+                            Testing records for smoke ventilation system
+                            </div>
+
+                            <div class="col-2 text-end" style="float:right;">
+                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                            </div>
+
+
+
+                            </div>
+
+                            </a>
+
+
+                            <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                            <div class="row">
+
+                            <div class="col-10">
+                            Testing records for other relevant systems
+                            </div>
+
+                            <div class="col-2 text-end" style="float:right;">
+                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                            </div>
+
+
+
+                            </div>
+
+                            </a>
+
+
+                            <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                            <div class="row">
+
+                            <div class="col-10">
+                            Structural engineer's report
+                            </div>
+
+                            <div class="col-2 text-end" style="float:right;">
+                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                            </div>
+
+
+
+                            </div>
+
+                            </a>
+
+
+                            <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                            <div class="row">
+
+                            <div class="col-10">
+                            Evidence that Health and Safety File/Golden Thread information is continually being updated
+                            </div>
+
+                            <div class="col-2 text-end" style="float:right;">
+                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                            </div>
+
+
+
+                            </div>
+
+                            </a>
+
+
+                            <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+
+                            <div class="row">
+
+                            <div class="col-10">
+                            Evidence that Health and Safety file/Golden Thread documentation is being reviewed to inform decisions in relation to any changes to be made 112233
+                            </div>
+
+                            <div class="col-2 text-end" style="float:right;">
+                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                            </div>
+
+
+                            </div>
+
+                            </a>
+
+
+                            <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                            <div class="row">
+
+                            <div class="col-10">
+                            Evidence that the AP has a process in place to ensure that decisions are not made without reference to key documents like the fire strategy
+                            </div>
+
+                            <div class="col-2 text-end" style="float:right;">
+                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                            </div>
+
+
+                            </div>
+
+                            </a>
+
+
+                            <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                            <div class="row">
+
+                            <div class="col-10">
+                            Formal fire engineer approval that the building design complies with Regualtions
+                            </div>
+
+                            <div class="col-2 text-end" style="float:right;">
+                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                            </div>
+
+
+
+                            </div>
+
+                            </a>
+
+
+                            <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                            <div class="row">
+
+                            <div class="col-10">
+                            Contractors' Permit to Work
+                            </div>
+
+                            <div class="col-2 text-end" style="float:right;">
+                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                            </div>
+
+
+
+                            </div>
+
+                            </a>
+
+
+                            <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                            <div class="row">
+
+                            <div class="col-10">
+                            Formal structural engineer approval that the design complies with the fire strategy
+                            </div>
+
+                            <div class="col-2 text-end" style="float:right;">
+                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                            </div>
+
+
+
+                            </div>
+
+                            </a>
+
+
+                            <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                            <div class="row">
+
+                            <div class="col-10">
+                            Formal M&E subcontractor approval that M&E designs comply with the fire strategy
+                            </div>
+
+                            <div class="col-2 text-end" style="float:right;">
+                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                            </div>
+
+
+
+                            </div>
+
+                            </a>
+
+
+                            <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                            <div class="row">
+
+                            <div class="col-10">
+                            Construction Assurance documentation e.g. completion reports, product warranties etc
+                            </div>
+
+                            <div class="col-2 text-end" style="float:right;">
+                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                            </div>
+
+
+
+                            </div>
+
+                            </a>
+
+
+                            <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                            <div class="row">
+
+                            <div class="col-10">
+                            Conveyancing Documentation e.g. sale agreements, lease agreements etc
+                            </div>
+
+                            <div class="col-2 text-end" style="float:right;">
+
+                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                            </div>
+
+
+                            </div>
+
+                            </a>
+
+
+                            <a href="#" class="list-group-item  list-group-item-action bg-transparent">
+                            <div class="row">
+
+                            <div class="col-10">
+                            Formal approvals
+                            </div>
+
+                            <div class="col-2 text-end" style="float:right;">
+                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                            </div>
+
+
+
+                            </div>
+
+                            </a>
+
+
+                            *@
+
+
+
+
+
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                @* style="background-color:red;"*@
+                <div class="mt-5">
+
+                    @*<a href="@Url.Action("Page1_New", "Development",new {area="iWebMember", id= ViewContext.RouteData.Values["id"], state="edit"})" class="btn btn-secondary float-start">
+                    <span>Clients</span>
+                    </a>*@
+                    @*  <a type="button" class="btn btn-secondary float-start" value="Back" style="width:100px;height:auto;"
+                    href="@Url.Action("Page1_New", "Development",new {area="iWebMember", id= ViewContext.RouteData.Values["id"], state="edit"})" />
+
+                    <a class="btn btn-primary float-end" type="submit"  value="Next" style="width:100px;height:auto;" />
+                    *@
+
+                    <input type="button"
+                           value="Back"
+                           class="btn btn-secondary float-start"
+                           style="width:100px;height:auto;"
+                           onclick='location.href="@Url.Action("Page1_Edit", "Development" ,new {area="iWebMember", bldtknid= Context.Request.Query["bldtknid"], state="edit"})"' />
+
+
+                    @*   onclick='location.href="@Url.Action("Page1_New", "Development" ,new {area="iWebMember", id= ViewContext.RouteData.Values["id"], state="edit"})"'*@
+
+                    <input type="submit"
+                           value="Submit"
+                           class="btn btn-primary float-end"
+                           style="width:100px;height:auto;" />
+                </div>
+
+            </div>
+        </form>
+
+    </section>
+
+
+    <div class="modal" id="popupModal">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Upload Documents</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+               
+                <div class="modal-body">
+
+
+                    <div class="col-12" style="box-shadow:3px 3px 3px whitesmoke;margin:0px;padding:3px;">
+
+                        <ul class="nav nav-pills">
+                            <li class="nav-item">
+                                @* active*@ <a class="nav-link" href="#">Preview</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">View Files</a>
+                            </li>
+                            <li class="nav-item">  <a class="nav-link" href="#">Upload File</a></li>
+
+
+                        </ul>
+
+                    </div>
+
+                 @*   <div>
+                        @await Component.InvokeAsync("Editor")
+                    </div>*@
+
+                    <div class="mt-5 col-12">
+
+                        <div class="col-10">Up-to-date Fire Risk Assessment (FRA)</div>
+
+                        <div class="col-2 float-end" style="float:right;">
+
+                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                        </div>
+
+                    </div>
+
+                    <div class="col-12">
+                        <div class="mt-3">
+                            <label for="formFileMultiple" class="mt-3f orm-label">Upload a file(s)</label>
+                            <input class="form-control" type="file" id="formFileMultiple" multiple>
+                        </div>
+                    </div>
+                 
+                    <small class="text-danger">(You must upload a file in order to select YES)</small>
+
+
+
+                    <div class="col-12" style="float:right;">
+
+                        <div class="float-end">
+                            <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off">
+                            <label class="me-3 mt-0 btn btn-outline-success" for="success-outlined" style="width:50px;height:auto;">YES</label>
+                       
+                            <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
+                            <label class="me-3 mt-0 btn btn-outline-danger" for="danger-outlined" style="width:50px;height:auto;">NO</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="mt-3">
+
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+
+                                    <table>
+                                        <tr>
+                                            <td><img src="~/img/img_file_pdf.png" style="width:20px;height:20px;margin:2px;" /></td>
+
+                                            <td style="width:100%;"><span>File_1101.pdf</span></td>
+
+                                            <td><img src="~/img/img_close_x.png" style="width:20px;height:20px;" alt="Delete" title="Delete" /></td>
+                                        </tr>
+                                    </table>
+
+                                </li>
+                                <li class="list-group-item">
+
+                                    <table>
+                                        <tr>
+                                            <td><img src="~/img/img_file_pdf.png" style="width:20px;height:20px;margin:2px;" /></td>
+
+                                            <td style="width:100%;"><span>File_2202.pdf</span></td>
+
+                                            <td><img src="~/img/img_close_x.png" style="width:20px;height:20px;" alt="Delete" title="Delete" /></td>
+                                        </tr>
+                                    </table>
+
+                                </li>
+                                <li class="list-group-item">
+
+                                    <table>
+                                        <tr>
+                                            <td><img src="~/img/img_file_pdf.png" style="width:20px;height:20px;margin:2px;" /></td>
+
+                                            <td style="width:100%;"><span>File_3303.pdf</span></td>
+
+                                            <td><img src="~/img/img_close_x.png" style="width:20px;height:20px;" alt="Delete" title="Delete" /></td>
+                                        </tr>
+                                    </table>
+
+                                </li>
+                                <li class="list-group-item">
+
+                                    <table>
+                                        <tr>
+                                            <td><img src="~/img/img_file_pdf.png" style="width:20px;height:20px;margin:2px;" /></td>
+
+                                            <td style="width:100%;"><span>File_4404.pdf</span></td>
+
+                                            <td><img src="~/img/img_close_x.png" style="width:20px;height:20px;" alt="Delete" title="Delete" /></td>
+                                        </tr>
+                                    </table>
+
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

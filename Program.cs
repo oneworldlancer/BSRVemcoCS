@@ -1,24 +1,30 @@
+//using BSRVemcoCS.DBContext;
+//using BSRVemcoCS.DBContext;
+using BSRVemcoCS.DBContext;
+using BSRVemcoCS.iApp_Globals;
 using BSRVemcoCS.iApp_Identity;
+using BSRVemcoCS.Models;
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder ( args );
 
-// Add services to the container.
-builder.Services.AddControllersWithViews ( );
-
 
 #region Identity
+
+builder.Services.AddDbContext<BSRDBModelContext> ( options =>
+   options.UseSqlServer ( "BSRVEMCODB" ) );
+
 
 
 builder.Services.AddIdentity<AppCore_IdentityUser , AppCore_IdentityRole> ( options =>
 {
     options.User.RequireUniqueEmail = true;
-} ).AddEntityFrameworkStores<AppCore_IdentityDBContext> ( );
+} ).AddEntityFrameworkStores<BSRDBContext> ( );
 
 
-builder.Services.AddDbContext<AppCore_IdentityDBContext> ( options =>
+builder.Services.AddDbContext<BSRDBContext> ( options =>
 {
     //the change occurs here.
     //builder.cofiguration and not just configuration
@@ -45,11 +51,19 @@ builder.Services.Configure<IdentityOptions> ( options =>
 
 
 
+// Add services to the container.
+builder.Services.AddControllersWithViews ( );
+
+
+
+var services = builder.Services;
+var configuration = builder.Configuration;
 
 
 
 
 var app = builder.Build ( );
+
 
 // Configure the HTTP request pipeline.
 if ( !app.Environment.IsDevelopment ( ) )
@@ -59,15 +73,23 @@ if ( !app.Environment.IsDevelopment ( ) )
     app.UseHsts ( );
 }
 
+
+////
+app.UseAuthentication ( );
+
+
 app.UseHttpsRedirection ( );
 app.UseFileServer ( );      // Shaymaa|| this line of code. 
 app.UseDefaultFiles ( );     // Shaymaa|| this line of code.                                  
 app.UseStaticFiles ( );
 
+
+app.UseHttpLogging ( );
+
 app.UseRouting ( );
 
 app.UseAuthorization ( );
-
+ 
 
 
 #region Areas
@@ -78,7 +100,7 @@ app.MapAreaControllerRoute (
       areaName: "iWebMembership" ,
       pattern: "iWebMembership/{controller=Account}/{action=Index}/{id?}"
   );
-    
+
 app.MapAreaControllerRoute (
       name: "iWebMember" ,
       areaName: "iWebMember" ,
@@ -108,5 +130,7 @@ public partial class Program
     public static IConfiguration iConfig;
 
     public static string Test { get; private set; }
+
+    public static AppUserOwnerModelManager iOwnerModel { get; set; }
 
 }

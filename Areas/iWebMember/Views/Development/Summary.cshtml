@@ -1,0 +1,335 @@
+﻿@model BSRVemcoCS.iAppViewModel.AppDevelomentSummaryViewModel
+@{
+
+
+}
+
+
+
+@* class="row"<main id="main" class="main">*@
+<div id="main" style="margin-top:0px;padding-top:0px;margin-bottom:0px;padding-bottom:0px;">
+
+    <div class="pagetitle" style="margin-top:0px;padding-top:0px;margin-bottom:0px;padding-bottom:0px;">
+        @*<h1>Company Name</h1>*@
+        <nav>
+            <ol class="breadcrumb" style="margin-top:0px;padding-top:0px;margin-bottom:0px;padding-bottom:0px;">
+                @*href="index.html"*@
+                <li class="breadcrumb-item"><a>View Building</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- End Page Title -->
+    @*    class="section dashboard" style="margin-top:0px;padding-top:0px;"*@
+    <section>
+
+
+        <div class="row">
+
+            <span class="fs-5 ms-3">Summary Information </span>
+
+        </div>
+
+
+      @*  <form method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+*@
+
+            @*   <div asp-validation-summary="All" class="text-danger"></div>
+            *@
+
+
+            <div class="row">
+
+
+            <div class="mb-3 float-end">
+
+                <input type="button"
+                       value="Edit"
+                       class="btn btn-secondary float-end"
+                       style="width:100px;height:auto;"
+                       onclick='location.href="@Url.Action("Page1_Edit", "Development" ,new {area="iWebMember", bldtknid= Context.Request.Query["bldtknid"], state="item"})"' />
+
+
+            </div>
+
+
+
+                @*   <div class="mt-3 ms-3 me-3">
+                <label for="formGroupExampleInput" class="form-label">Accountable Person (AP):</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" value="Vemco consulting" disabled>
+                </div>
+                *@
+                @*            col-12*@
+                @*style="width:100%;"*@
+                <div class="form-control">
+                 
+                    <div class="row">
+
+                        @*class="col-5"
+                        *@                @*           offset-2   card   img-fluid   mt-3 ms-3 me-3 style="background-color:red;"*@
+                        @*  class="col-4 mt-3 ms-3 me-3"*@
+
+                        <div class="col-4" style="background-color:transparent;position:relative;">
+                        @*class="card"*@
+                            <div class="m-3">
+                            @*img-fluid *@ <img class="float-start"
+                                     src="~/_iUMedia/_iUBuilding/img_@{
+                                        @Model.BuildingImageTokenID
+}.jpg" style="width:250px;height:250px;" />
+                            </div>
+
+                            <div class="ms-3" style="position:absolute;bottom:80px;">
+                            <div><span style="text-decoration:underline;">Total Quality Score: </span><span style="background-color:#0000007F;border-radius:5px;padding:3px;color:white;text-decoration:none;margin:3px;">@Model.iBuildingStatisticModel.ScoreTotalQuality</span></div>
+                            </div>
+
+                        @*     <table width="200" cellspacing="0" cellpadding="0" class="ms-3" style="font-size:x-small;background-color:transparent;border:1px solid silver;position:absolute;margin:auto;bottom:10px;">
+                            <tr>
+                                <td colspan="2"><strong><u>Legend:</u></strong></td>
+
+                            </tr>
+
+                            <tr>
+                                <td style="width:10px;height:10px;background-color:#009900;">
+                                </td>
+                                <td style="padding-left:5px;"> green text</td>
+                            </tr>
+                            <tr>
+                                <td style="width:10px;height:10px;background-color:#ff9900;"></td>
+                                <td style="padding-left:5px;">orange text</td>
+                            </tr>
+                            <tr>
+                                <td style="width:10px;height:10px;background-color:#ff0000;"></td>
+                                <td style="padding-left:5px;">red text</td>
+                            </tr>
+                        </table>
+                       *@ 
+                     
+                   </div>
+
+
+
+
+
+                        <div class="col-8 float-end" style="position:relative;margin:0px;padding:0px;float:right;text-align:left;vertical-align:top;">
+                            @*    style="width:100%;height:100vh;"*@
+                            @*                        height="550" width="350"*@
+
+
+
+                        <iframe class="float-end" src="/iWebMember/Development/Diagram?bldtknid=@Context.Request.Query["bldtknid"].ToString()&px=@Model.iBuildingStatisticModel.ScoreRiskAverage&py=@Model.iBuildingStatisticModel.Table4ScoreAverage"
+                                    style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;float:left;width:400px;height:380px;margin:0px;padding:0px;"></iframe>    @*  <img class="img-fluid float-end"
+                            src="~/img/building.png" style="width:auto;height:200px;" />*@
+
+     
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+              
+
+                <div class="mt-3 ms-3 me-3">
+                    <label for="formGroupExampleInput2" class="form-label">Building name:</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder=""
+                           asp-for="BuildingName"
+                           disabled>
+                </div>
+
+
+
+                <div class="mt-3 ms-3 me-3">
+                    <label for="formGroupExampleInput2" class="form-label">Building address:</label>
+                    <input type="" class="form-control" id="formGroupExampleInput2" placeholder=""
+                           asp-for="BuildingAddress"
+                           disabled>
+                </div>
+
+
+                @*asp-format="{0:yyyy-MM-dd}*@
+                <div class="mt-3 ms-3 me-3">
+                    <label for="formGroupExampleInput2" class="form-label">Build date:</label>
+                    <input type="number" class="form-control" id="formGroupExampleInput2" placeholder=""
+                           asp-for="BuildingDateYear"
+                           disabled>
+                </div>
+                @* <span class="text-mute ms-3" style="font-size:small;">(approximate if unknown)</span>*@
+
+
+                @*style="background-color:red;"*@
+             @*   <div class="mt-5">
+                    <input class="btn btn-primary float-end" type="submit" value="Edit" style="width:100px;height:auto;">
+                </div>
+*@
+
+            </div>
+            <br />
+            <span style="color:green">@Html.Raw(ViewBag.Message)</span>
+      @*  </form>*@
+
+      @*  <div class="row m-5 float-end">
+          
+            <input type="button"
+                   value="Edit"
+                   class="btn btn-secondary float-end"
+                   style="width:100px;height:auto;"
+                   onclick='location.href="@Url.Action("Page1_Edit", "Development" ,new {area="iWebMember", bldtknid= Context.Request.Query["bldtknid"], state="item"})"' />
+
+
+        </div>
+
+*@
+    </section>
+
+
+
+</div>
+<!-- End #main -->
+@*<div class="row">
+
+    <div class="d-flex align-items-start">
+        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
+            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
+            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</button>
+            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button>
+        </div>
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">This is some placeholder content the Messages tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.</div>
+            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">This is some placeholder content the Messages tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.</div>
+            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">This is some placeholder content the Messages tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.</div>
+            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">This is some placeholder content the Messages tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.</div>
+        </div>
+    </div>
+
+</div>*@
+
+
+
+
+@*@section building_view{*@
+@*<h1>Header Content</h1>*@
+
+
+
+@*    <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+            <i class="bi bi-bar-chart"></i><span>View Building
+
+                @{
+
+                    if ( @Context.Request.Query[ "bldtknidxxx" ] != ( string ) null )
+                    {
+                        @Context.Request.Query[ "bldtknid" ].ToString()
+                    }
+
+
+
+                }
+
+            </span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="charts-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+
+
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
+                   asp-action="Edit">
+                    <i class="bi bi-person"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li><!-- End Profile Page Nav -->
+
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
+                   asp-action="Edit">
+                    <i class="bi bi-person"></i>
+                    <span>Infomation Gathering</span>
+                </a>
+            </li>
+
+
+
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed">
+                    <i class="bi bi-person"></i>
+                    <span>
+                        Gap Analysis
+                    </span>
+                </a>
+            </li>
+
+
+
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
+                   asp-action="Table4_Edit">
+                    <i class="bi bi-person"></i>
+                    <span>
+                        Risk Assessment
+                    </span>
+                </a>
+            </li>
+
+
+
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
+                   asp-action="Table3_Edit">
+                    <i class="bi bi-person"></i>
+                    <span>
+                        Resident Engagement
+                    </span>
+                </a>
+            </li>
+
+
+
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
+                   asp-action="Table1_Edit">
+                    <i class="bi bi-person"></i>
+                    <span>
+                        Safety Management System
+                    </span>
+                </a>
+            </li>
+
+
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
+                   asp-action="Table2_Edit">
+                    <i class="bi bi-person"></i>
+                    <span>
+                        Systems and Facilities
+                    </span>
+                </a>
+            </li>
+
+
+
+
+        </ul>
+    </li>*@
+
+
+
+@*}*@

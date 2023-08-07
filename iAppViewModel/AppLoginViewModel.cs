@@ -24,7 +24,7 @@ namespace BSRVemcoCS.iAppViewModel
 
 
 
-        public string? ReturnUrl { get; set; }
+        public string? ReturnUrl { get; set; }   =null;
 
         public IList<AuthenticationScheme>? ExternalLogins { get; set; }
 

@@ -9,9 +9,10 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
+
     <!-- Favicons -->
-    <link href="~/iMaster_Member/assets/img/favicon.png" rel="icon">
-    <link href="~/iMaster_Member/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="~/img/favicon.png" rel="icon">
+    <link href="~/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -42,24 +43,24 @@
 
 
 </head>
-
-<body class="d-flex flex-column h-100">
+@* h-100"*@
+<body class="d-flex flex-column">
 
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center" style="background-color:#d9d9d9;border-bottom:3px #152365 solid;">
 
         <div class="d-flex align-items-center justify-content-between align-middle" style="background-color:#d9d9d9;">
 
-            <a  asp-controller="Home" asp-action="Index" class="logo d-flex align-items-center">
+            <a asp-controller="Home" asp-action="Index" class="logo d-flex align-items-center">
                 <div class="col-12 align-middle" style="margin:0px;padding:0px;background-color:#d9d9d9;">
-                  @*  <span class="d-none d-lg-block fs-5"
-                          style="color:black;margin:5px;">BSR Service Suite</span>*@
+                    @*  <span class="d-none d-lg-block fs-5"
+                    style="color:black;margin:5px;">BSR Service Suite</span>*@
 
                     <img src="~/img/vemco_logo.png" alt="" style="height:30px;width:auto;padding:0px;margin:0px;">
                 </div>
             </a>
 
- 
+
         </div>
         <!-- End Logo -->
 
@@ -88,51 +89,62 @@
 
     </header>
     <!-- End Header -->
-@*    id="main" class="main"*@
-    <div style="padding:0px;margin-bottom:0px;">
-    
+    @*    id="main" class="main"*@
+    <div style="padding:0px;margin-bottom:100px;">
+
         @RenderBody()
     </div>
     <!-- End #main -->
     <!-- ======= Footer ======= -->
-    <footer class="footer text-center" style="width:100%;height:75px;font-size:small;background-color:#152365;padding: 20px 0;
+    @* fixed-bottom
+    *@
+    @*height:75px;*@
+
+    @* fixed-bottom*@
+    <footer class="footer text-center" style="width:100%;height:120px;font-size:small;background-color:#152365;padding: 20px 0;
 font-size: 14px;
 transition: all 0.3s;
 border-top: 1px solid #cddfff;">
         <div class="copyright">
-            <strong><span style="font-size:large;color:white;">VEMCO</span></strong>
+            <strong><span style="color:white;"><a href="http://vemcoconsulting.com/" target="_blank" style="color:white;text-decoration:underline;">Vemco Consulting Limited</a> is a registered company in England with company no. 08276458.</span></strong>
+        </div>
+        <div class="copyright">
+            <span style="color:white;">Vemco Consulting Limited registered office is: William James House, Cowley Road, Cambridge CB4 0WX, United Kingdom.</span>
+        </div>
+        <div class="copyright">
+            <span style="color:white;">For further information please click here to visit our website including our privacy statement.</span>
         </div>
         <div class="credits" style="padding-top: 5px;
 text-align: center;
 font-size: 13px;
 color: #012970;">
-            <small style="color:whitesmoke;">Designed by </small>  <a href="https://OneWorldLancer.com/" target="_blank" style="color:whitesmoke;text-decoration:underline;">OneWorldLancer</a>
+            <small style="color:whitesmoke;">Designed by </small>  <a href="mailto:oneworldlancer@gmail.com" style="color:whitesmoke;text-decoration:underline;font-weight:bold;">OneWorldLancer</a>
         </div>
     </footer>
-@*        id="footer" footer 
-*@
+    @*        id="footer" footer
+    *@
 
 
-        <!-- ======= Footer ======= -->
-@*    <footer class="text-center" style="font-size:small;color:white;background-color:#152365;">
-        <div class="copyright">
-          <strong><span style="font-size:medium;">VEMCO</span></strong>
-        </div>
-        <div class="credits">
-            Designed by <a href="https://OneWorldLancer.com/" target="_blank" style="color:whitesmoke;">OneWorldLancer</a>
-        </div>
+    <!-- ======= Footer ======= -->
+    @*    <footer class="text-center" style="font-size:small;color:white;background-color:#152365;">
+    <div class="copyright">
+    <strong><span style="font-size:medium;">VEMCO</span></strong>
+    </div>
+    <div class="credits">
+    Designed by <a href="https://OneWorldLancer.com/" target="_blank" style="color:whitesmoke;">OneWorldLancer</a>
+    </div>
     </footer>*@
-    
-   @*    <footer class="text-center" style="font-size:small;color:white;background-color:#152365;">
-        <div class="copyright">
-            &copy; Copyright <strong><span style="font-size:medium;">VEMCO</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-            Designed by <a href="https://OneWorldLancer.com/" style="color:black;">OneWorldLancer</a>
-        </div>
+
+    @*    <footer class="text-center" style="font-size:small;color:white;background-color:#152365;">
+    <div class="copyright">
+    &copy; Copyright <strong><span style="font-size:medium;">VEMCO</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+    Designed by <a href="https://OneWorldLancer.com/" style="color:black;">OneWorldLancer</a>
+    </div>
     </footer>
-    
-   *@ 
+
+    *@
     <!-- End Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -152,6 +164,9 @@ color: #012970;">
 
     <!-- Template Main JS File -->
     <script src="~/iMaster_Member/assets/js/main.js"></script>
+
+
+
 
 </body>
 

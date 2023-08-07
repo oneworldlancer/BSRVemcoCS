@@ -14,7 +14,9 @@
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+ /* font-family: "Open Sans", sans-serif;*/
+  
+  font-family: Arial, sans-serif;
   background: #f6f9ff;
   color: #444444;
 }
@@ -42,14 +44,23 @@ h6 {
 # Main
 --------------------------------------------------------------*/
 #main {
+/*
   margin-top: 60px;
   padding: 20px 30px;
+  transition: all 0.3s;*/
+
+
+  margin-top: 50px;
+  padding: 10px 20px;
   transition: all 0.3s;
 }
 
 @media (max-width: 1199px) {
   #main {
-    padding: 20px;
+
+/*    padding: 20px;*/
+    
+    padding: 5px;
   }
 }
 
@@ -57,11 +68,16 @@ h6 {
 # Page Title
 --------------------------------------------------------------*/
 .pagetitle {
-  margin-bottom: 10px;
+/*  margin-bottom: 10px;*/
+  
+  margin-bottom: 0px;
 }
 
 .pagetitle h1 {
-  font-size: 24px;
+  
+   /* font-size: 24px;*/
+  
+  font-size: 20px;
   margin-bottom: 0;
   font-weight: 600;
   color: #012970;

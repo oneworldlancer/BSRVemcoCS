@@ -8,9 +8,24 @@ namespace BSRVemcoCS.iAppViewModel
     {
 
         [Required]
+        [DisplayName ( "First Name" )]
+        public string  FirstName{ get; set; }
+
+   
+        [Required]
+        [DisplayName ( "Last Name" )]
+        public string LastName { get; set; }
+
+     
+        [Required]
+        [DisplayName ( "Accountable Person" )]
+        public string CompanyName { get; set; }
+
+
+        [Required]
         [DisplayName ( "Email Address" )]
         [EmailAddress]
-        [Remote ( action: "IsEmailInUse" , controller: "Account" )]
+        //[Remote ( action: "IsEmailInUse" , controller: "Account" )]
         public string Email { get; set; }
 
 

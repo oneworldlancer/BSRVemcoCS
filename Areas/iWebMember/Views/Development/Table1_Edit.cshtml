@@ -1,0 +1,481 @@
+﻿@model BSRVemcoCS.iAppViewModel.AppDevelomentTable1EditViewModel
+
+@{
+
+
+}
+
+
+
+@* class="row"<main id="main" class="main">*@
+<div id="main" style="margin-top:0px;padding-top:10px;">
+
+    <div class="pagetitle" style="padding-top:0px;">
+        @*<h1>Company Name</h1>*@
+        <nav>
+            <ol class="breadcrumb">
+                @*href="index.html"*@
+                <li class="breadcrumb-item"><a>Developments</a></li>
+                <li class="breadcrumb-item active">New</li>
+            </ol>
+        </nav>
+    </div>
+
+    <section>
+
+        <button type="button" class="btn btn-primary"
+                onclick="readValue()">
+            readValue
+        </button>
+
+        <div class="row">
+
+            <span class="fs-5 ms-3">Safety Management System</span>
+
+        </div>
+
+        @*<div style="overflow-x:auto;">*@
+
+        <table class="table table-hover table-bordered m-3" style="width:100%;padding:3px;table-layout:fixed;">
+            <thead>
+                <tr>
+                    <th>@Model.ColumnDescription</th>
+                    <th>@Model.ColumnCommentary</th>
+                    <th style="width:150px;">@Model.ColumnCriterion</th>
+                    <th class="fw-bold" style="width:50px;">@Model.ColumnScoreManaged</th>
+                    <th>@Model.ColumnRiskControlMeasure</th>
+                    <th class="fw-bold" style="width:110px;">@Model.ColumnScoreAdjused </th>
+                    @*<th class="fw-bold" style="width:50px;">Total</th>*@
+
+                </tr>
+            </thead>
+            <tbody>
+                @*@for (var i = 0; i < Model.PrescriptionList.Count; i++)*@
+                @*@for ( var i = 0 ; i < Model.RowContentList.Count! ; i++ )*@
+                @foreach ( var iRow in Model.RowContentList! )
+                {
+                    @*data-bs-target="#popupModalEditor"*@          @*onclick="Popup_LoadForm('@iRow.BuildingTokenID','@iRow.InformationTokenID');"*@
+                    @*data-bs-toggle="modal" data-bs-target="#popupModal"*@
+                    @*<tr onclick="clickRow(@iRow._id);" data-obj="@iRow">*@
+                    <tr data-bs-toggle="modal" data-obj="@iRow" onclick="Popup_LoadForm('@iRow.BuildingTokenID','@iRow.InformationTokenID');">
+                        <td>@iRow.ColumnDescription</td>
+                        <td>
+                            @if ( iRow.ColumnCommentary != "0" )
+                            {
+                                @iRow.ColumnCommentary
+                            }
+                        </td>
+                        <td>
+                            <table>
+                                @*@for ( int ii = 0 ; ii < 4 ; ii++ )*@
+                                @if ( iRow.ColumnCriterionList.Count > 0 )
+                                {
+
+                                    @foreach ( var iRowNested in iRow.ColumnCriterionList! )
+                                    {
+
+                                        <tr>
+
+
+                                            @if ( iRowNested == iRow.ColumnCriterionList.Last ( ) )
+                                            {
+
+                                                <td class="text-center" style="padding-top:3px;padding-bottom:3px;border-bottom: 1px transparent solid;width:150px;">
+                                                    <small>@iRowNested.CriterionText</small>
+                                                </td>
+
+                                            }
+                                            else
+                                            {
+                                                <td class="text-center" style="padding-top:3px;padding-bottom:3px;border-bottom: 1px silver solid;width:150px;">
+                                                    <small>@iRowNested.CriterionText</small>
+                                                </td>
+                                            }
+
+
+                                        </tr>
+                                    }
+
+                                }
+
+                            </table>
+                        </td>
+                        <td class="fw-bold text-center" style="width:50px;">@iRow.ColumnScoreManaged</td>
+                        <td>
+                            @if ( iRow.ColumnRiskControlMeasure != "0" )
+                            {
+                                @iRow.ColumnRiskControlMeasure
+                            }
+                        </td>
+                        <td class="fw-bold text-center" style="width:110px;">@iRow.ColumnScoreAdjused</td>
+                        @*<td class="fw-bold text-center" style="width:50px;">@iRow.ColumnTotal</td>*@
+
+                        @* <td>@Html.DropDownListFor(m => Model.PrescriptionList[i].MedicineId, new SelectList(ViewBag.MedicineId, "Id", "Name"))</td>
+                    <td>@Html.DropDownListFor(m => Model.PrescriptionList[i].PrescriptionDurationId, new SelectList(ViewBag.PrescriptionFrequencyId, "Id", "Name"))</td>
+                    *@
+
+                    </tr>
+                }
+
+
+                <tr>
+                    <td class="fw-bold" colspan="5">Total score:</td>
+                    <td class="fw-bold text-center">@Model.ColumnScoreTotal</td>
+                </tr>
+            </tbody>
+        </table>
+        @*</div>*@
+        <div class="modal" id="popupModalEditor">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Safety Management System</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+
+
+
+                        <div id="popup_FormContent">
+                            @* @await Component.InvokeAsync("Editor")*@
+
+                            <input class="form-control"
+                                   type="number" id="iScoreAdjusted" name="iScoreAdjusted" min="1" max="5">
+                            <br><br>
+                            @*@Model.PageHTMLContent*@
+
+                            <textarea id="txt_HTMLContent" name="txt_HTMLContent">
+                                        default
+                                    </textarea>
+
+                            @* <div id="txt_HTMLContent" style="height:200px;"></div>*@
+
+
+                        </div>
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        @*data-bs-dismiss="modal"*@   <button type="button" class="btn btn-primary"
+                                                              onclick="readValue()">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    @*Popup-Modal*@
+
+</div>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
+
+
+<script>
+  
+    let editor;
+    
+    ClassicEditor
+        .create(document.querySelector('#txt_HTMLContent'))
+        .then(newEditor => {
+            editor = newEditor;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+
+
+<script>
+    function clickRow (obj) {
+
+        try {
+
+            //alert(' am clicked == ' + $('#popupModalEditor'));
+
+            //jQuery.noConflict();
+            $('#popupModalEditor').modal('show');
+
+        }
+
+        catch (ex) {
+            alert(ex);
+
+        }
+    }
+
+
+
+    function readValue (obj) {
+
+        try {
+
+            // var divTestMe = document.getElementById('divTestMe');
+           // var divTestMe = document.getElementById('txt_HTMLContent');
+            // var divTestMe = document.getElementById('iScoreAdjusted');
+
+            //   alert(divTestMe.innerHTML);
+            //alert(divTestMe.textContent);
+            //   alert(divTestMe.innerHTML);
+
+            //   alert($("#txt_HTMLContent").val());
+
+          //  alert( ClassicEditor.instances[ 'txt_HTMLContent' ].getData());
+         
+          alert(editor.getData());
+
+            //jQuery.noConflict();
+            //$('#popupModalEditor').modal('show');
+
+        }
+
+        catch (ex) {
+            alert(ex);
+
+        }
+    }
+
+
+
+
+
+
+    function Popup_PostForm () {
+
+        try {
+
+
+
+            //////$.ajax({
+            //////    url: "/iWebMember/Development/GetImage",
+            //////    type: 'POST',
+            //////    //dataType: 'json',
+            //////    data: { divhtml: $("#div_diagram").html() },
+            //////    success: function (data) { }
+            //////});
+
+
+
+
+
+
+
+
+
+
+            //////   // var divTestMe = document.getElementById('divTestMe');
+            //////var divTestMe = document.getElementById('txt_HTMLContent');
+
+            ////// //   alert(divTestMe.innerHTML);
+            //////    alert(divTestMe.textContent);
+
+            //////    //jQuery.noConflict();
+            //////    //$('#popupModalEditor').modal('show');
+
+        }
+
+        catch (ex) {
+            alert(ex);
+
+        }
+    }
+
+
+
+    function Popup_LoadForm (bldtknid, inftknid) {
+
+        try {
+
+
+            //////alert('popup form here' + bldtknid + " , " + inftknid);
+
+            //var divTestMe = document.getElementById('txt_HTMLContent');
+            var iScoreAdjusted = document.getElementById('iScoreAdjusted');
+
+            iScoreAdjusted.value = '3';
+
+            //var txt_HTMLContent = document.getElementById('txt_HTMLContent');
+            // txt_HTMLContent.value = 'txt_HTMLContent 333';
+
+            //alert(divTestMe.innerHTML);
+            //  alert(divTestMe.textContent);
+            // alert('updatd popup value == ' + bldtknid);
+  
+          //  var editorData =  ClassicEditor.instances[ 'txt_HTMLContent' ];
+
+          //  CKEDITOR.ClassicEditor.instances[ 'txt_HTMLContent' ].setData('txt_HTMLContent 333');
+
+
+
+          //  alert(editorData);
+
+        
+
+            $('#popupModalEditor').modal('show');
+
+           
+            
+            
+            // var txt_HTMLContent = document.getElementById('txt_HTMLContent');
+            //  txt_HTMLContent.innerHTML = 'txt_HTMLContent 333';
+
+
+            //  $('#txt_HTMLContent').val('some_value');
+            //   $("#main").val(text);
+
+            // alert(divTestMe.textContent);
+        
+
+            editor.setData('<p>Some text 123.</p>');
+
+
+
+
+
+
+
+
+
+
+
+            //////$.ajax({
+            //////    type: "GET",
+
+            //////    //url: @Url.Action("Popup_GetEditor","BSRVemcoPopup",new { Area = "iWebMember" }),
+            //////    url: '/iWebMember/BSRVemcoPopup/Popup_GetEditor',
+
+            //////    data: {
+            //////        bldtknid: bldtknid,
+            //////        inftknid: inftknid
+            //////    },
+            //////    success: function (result) {
+            //////        //alert('Successfully received Data ');
+            //////        //console.log(result);
+            //////        document.getElementById("popup_FormContent").innerHTML = result;
+            //////        $('#popupModalEditor').modal('show');
+            //////    },
+            //////    error: function () {
+            //////        alert('Failed to receive the Data');
+            //////        console.log('Failed ');
+            //////    }
+            //////});
+
+
+
+
+
+
+            //    $.ajax({
+
+            //        type: 'get',
+
+            //        url: @Url.Action("Popup_GetEditor","BSRVemcoPopup",new { Area = "iWebMember" }),//'/Controller/Method',
+            //        data: {
+            //             bldtknid: bldtknid,
+            //            inftknid: inftknid
+            //        },
+            //        success: function (result) {
+
+            //            alert("result == " + result);
+
+            //            //  document.getElementById("popup_FormContent").innerHTML= result;
+
+
+            //        }
+
+            //    });
+            //});
+
+            // $('#popupModalEditor').modal('show');
+
+
+
+            //////    //////$.ajax({
+            //////    //////    type: 'GET',
+            //////    //////    url: '/Controller/Method',
+            //////    //////    data: { ParamName: document.getElementById("DivId").innerHTML },
+            //////    //////    success: function (result) {
+
+            //////    //////    }
+            //////    //////});
+            //////});
+
+
+
+
+
+
+
+
+            //////   // var divTestMe = document.getElementById('divTestMe');
+            //////var divTestMe = document.getElementById('txt_HTMLContent');
+
+            ////// //   alert(divTestMe.innerHTML);
+            //////    alert(divTestMe.textContent);
+
+            //////    //jQuery.noConflict();
+            //////    //$('#popupModalEditor').modal('show');
+
+        }
+
+        catch (ex) {
+            //  alert(ex);
+            console.log(ex);
+        }
+    }
+
+
+
+
+
+
+    $(document).ready(function () {
+
+
+
+
+
+
+    });
+
+
+
+
+
+</script>
+
+@*<script src="https://cdn.tiny.cloud/1/ijhe5oqbrnz2y8emfxulfmdz478mpq5qfgwd038tw5ws5mw1/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>*@
+
+<script>
+
+    // Remove existing instances of tinyMCE.
+    //tinyMCE.remove();
+
+    //tinymce.init({
+    //    selector: 'textarea',
+    //    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+    //    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+
+
+        // Prevent Bootstrap dialog from blocking focusin
+        //document.addEventListener('focusin', (e) => {
+        //    if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
+        //        e.stopImmediatePropagation();
+        //    }
+        //});
+
+</script>

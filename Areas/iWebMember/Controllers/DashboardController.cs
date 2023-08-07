@@ -12,10 +12,10 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
         }
 
 
-          public IActionResult Dashboard ( )
-        {
-            return View ( );
-        }
+        //  public IActionResult Dashboard ( )
+        //{
+        //    return View ( );
+        //}
 
     }
 }

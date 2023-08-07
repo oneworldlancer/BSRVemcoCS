@@ -20,16 +20,19 @@
                     <p class="text-center small">Enter your E-mail & password to login</p>
                 </div>
 
-                <form class="row g-3 needs-validation" novalidate>
+                <form method="post" class="row g-3 needs-validation" novalidate>
+
+
+                    <div asp-validation-summary="All" class="text-danger"></div>
 
 
                     <div class="form-floating col-12">
                         <input type="email" class="form-control" id="floatingInput" placeholder="E-mail address"
-                        asp-for="Email"
-                        required>
+                               asp-for="Email"
+                               required>
                         <label for="floatingInput">E-mail address</label>
 
-                        <div class="valid-feedback text-start">Looks good!</div>
+                        @*<div class="valid-feedback text-start">Looks good!</div>*@
                         <div class="invalid-feedback text-start">Please fill in this field</div>
 
                     </div>
@@ -41,7 +44,7 @@
                                required>
                         <label for="floatingInput">Password</label>
 
-                        <div class="valid-feedback text-start">Looks good!</div>
+                        @*<div class="valid-feedback text-start">Looks good!</div>*@
                         <div class="invalid-feedback text-start">Please fill in this field</div>
 
                     </div>
@@ -54,11 +57,11 @@
                         </div>
                     </div>
                     <div class="col-12">
-                   @*     asp-area="iWebMember" asp-controller="Development" asp-action="Edit"*@ 
-                   <button class="btn btn-primary w-100" type="submit">Login</button>
+                        @*     asp-area="iWebMember" asp-controller="Development" asp-action="Edit"*@
+                        <button class="btn btn-primary w-100" type="submit">Login</button>
                     </div>
                     <div class="col-12">
-                        <p class="small mb-0">Don't have account? <a  asp-controller="Account" asp-action="Register">Create an account</a></p>
+                        <p class="small mb-0">Don't have account? <a asp-controller="Account" asp-action="Register">Create an account</a></p>
                     </div>
                 </form>
 
@@ -68,5 +71,5 @@
 
 
 
-    </div> 
-    </div> 
+    </div>
+</div> 

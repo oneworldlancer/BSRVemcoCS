@@ -1,0 +1,264 @@
+﻿@model BSRVemcoCS.iAppViewModel.AppDevelomentTable1EditViewModel
+
+@{
+
+
+}
+
+
+
+@* class="row"<main id="main" class="main">*@
+<div id="main" style="margin-top:0px;padding-top:10px;">
+
+    <div class="pagetitle" style="padding-top:0px;">
+        @*<h1>Company Name</h1>*@
+        <nav>
+            <ol class="breadcrumb">
+                @*href="index.html"*@
+                <li class="breadcrumb-item"><a>Developments</a></li>
+                <li class="breadcrumb-item active">New</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- End Page Title -->
+    @*class="section dashboard" style="margin-top:0px;padding-top:0px;"*@
+    <section>
+
+        @*  <p> Click on button to display popup modal function </p>
+        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#popupModal">
+        Open modal function
+        </button>
+        *@
+
+
+        <div class="row">
+
+            <span class="fs-5 ms-3">Systems and Facilities testing</span>
+
+        </div>
+
+        @*<div style="overflow-x:auto;">*@
+
+        <table class="table table-hover table-bordered m-3" style="width:100%;padding:3px;table-layout:fixed;">
+            <thead>
+                <tr>
+                    <th>@Model.ColumnDescription</th>
+                    <th>@Model.ColumnCommentary</th>
+                    <th style="width:150px;">@Model.ColumnCriterion</th>
+                    <th class="fw-bold" style="width:50px;">@Model.ColumnScoreManaged</th>
+                    <th>@Model.ColumnRiskControlMeasure</th>
+                    <th class="fw-bold" style="width:110px;">@Model.ColumnScoreAdjused </th>
+                   @* <th class="fw-bold" style="width:50px;">Total</th>*@
+
+                </tr>
+            </thead>
+            <tbody>
+                @*@for (var i = 0; i < Model.PrescriptionList.Count; i++)*@
+                @*@for ( var i = 0 ; i < Model.RowContentList.Count! ; i++ )*@
+                @foreach ( var iRow in Model.RowContentList! )
+                {
+
+                    <tr>
+                        <td>@iRow.ColumnDescription</td>
+                        <td>
+                            @if ( iRow.ColumnCommentary != "0" )
+                            {
+                                @iRow.ColumnCommentary
+                            }
+                        </td>
+                        <td>
+                            <table>
+                                @*@for ( int ii = 0 ; ii < 4 ; ii++ )*@
+                                @if ( iRow.ColumnCriterionList.Count > 0  )
+                                {
+
+                                    @foreach ( var iRowNested in iRow.ColumnCriterionList! )
+                                    {
+
+                                        <tr>
+
+
+                                            @if ( iRowNested == iRow.ColumnCriterionList.Last ( ) )
+                                            {
+
+                                                <td class="text-center" style="padding-top:3px;padding-bottom:3px;border-bottom: 1px transparent solid;width:150px;">
+                                                    <small>@iRowNested.CriterionText</small>
+                                                </td>
+
+                                            }
+                                            else
+                                            {
+                                                <td class="text-center" style="padding-top:3px;padding-bottom:3px;border-bottom: 1px silver solid;width:150px;">
+                                                    <small>@iRowNested.CriterionText</small>
+                                                </td>
+                                            }
+
+
+                                        </tr>
+                                    }
+
+                                }
+
+                            </table>
+                        </td>
+                        <td class="fw-bold text-center" style="width:50px;">@iRow.ColumnScoreManaged</td>
+                        <td>
+                            @if ( iRow.ColumnRiskControlMeasure != "0" )
+                            {
+                                @iRow.ColumnRiskControlMeasure
+                            }
+                        </td>
+                        <td class="fw-bold text-center" style="width:110px;">@iRow.ColumnScoreAdjused</td>
+                        @*<td class="fw-bold text-center" style="width:50px;">@iRow.ColumnTotal</td>*@
+
+                        @* <td>@Html.DropDownListFor(m => Model.PrescriptionList[i].MedicineId, new SelectList(ViewBag.MedicineId, "Id", "Name"))</td>
+                    <td>@Html.DropDownListFor(m => Model.PrescriptionList[i].PrescriptionDurationId, new SelectList(ViewBag.PrescriptionFrequencyId, "Id", "Name"))</td>
+                    *@
+
+                    </tr>
+                }
+
+                <tr>
+                    <td class="fw-bold" colspan="5">Total score:</td>
+                    <td class="fw-bold text-center">@Model.ColumnScoreTotal</td>
+                </tr>
+            </tbody>
+        </table>
+        @*</div>*@
+
+    </section>
+
+
+    <div class="modal" id="popupModal">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"> Information Gathering Dashboard </h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="row col-12">
+
+                        <div class="col-10">Up-to-date Fire Risk Assessment (FRA)</div>
+
+                        <div class="col-2 float-end" style="float:right;">
+
+                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+                        </div>
+
+                    </div>
+
+                    <div class="col-12">
+                        <div class="mt-3">
+                            <label for="formFileMultiple" class="mt-3f orm-label">Upload a file(s)</label>
+                            <input class="form-control" type="file" id="formFileMultiple" multiple>
+                        </div>
+                    </div>
+                    <small class="text-danger">(You must upload a file in order to select YES)</small>
+
+
+
+                    <div class="col-12" style="float:right;">
+
+                        <div class="float-end">
+                            <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off">
+                            <label class="me-3 mt-0 btn btn-outline-success" for="success-outlined" style="width:50px;height:auto;">YES</label>
+                            @*                        checked*@
+                            <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
+                            <label class="me-3 mt-0 btn btn-outline-danger" for="danger-outlined" style="width:50px;height:auto;">NO</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="mt-3">
+
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+
+                                    <table>
+                                        <tr>
+                                            <td><img src="~/img/img_file_pdf.png" style="width:20px;height:20px;margin:2px;" /></td>
+
+                                            <td style="width:100%;"><span>File_1101.pdf</span></td>
+
+                                            <td><img src="~/img/img_close_x.png" style="width:20px;height:20px;" alt="Delete" title="Delete" /></td>
+                                        </tr>
+                                    </table>
+
+                                </li>
+                                <li class="list-group-item">
+
+                                    <table>
+                                        <tr>
+                                            <td><img src="~/img/img_file_pdf.png" style="width:20px;height:20px;margin:2px;" /></td>
+
+                                            <td style="width:100%;"><span>File_2202.pdf</span></td>
+
+                                            <td><img src="~/img/img_close_x.png" style="width:20px;height:20px;" alt="Delete" title="Delete" /></td>
+                                        </tr>
+                                    </table>
+
+                                </li>
+                                <li class="list-group-item">
+
+                                    <table>
+                                        <tr>
+                                            <td><img src="~/img/img_file_pdf.png" style="width:20px;height:20px;margin:2px;" /></td>
+
+                                            <td style="width:100%;"><span>File_3303.pdf</span></td>
+
+                                            <td><img src="~/img/img_close_x.png" style="width:20px;height:20px;" alt="Delete" title="Delete" /></td>
+                                        </tr>
+                                    </table>
+
+                                </li>
+                                <li class="list-group-item">
+
+                                    <table>
+                                        <tr>
+                                            <td><img src="~/img/img_file_pdf.png" style="width:20px;height:20px;margin:2px;" /></td>
+
+                                            <td style="width:100%;"><span>File_4404.pdf</span></td>
+
+                                            <td><img src="~/img/img_close_x.png" style="width:20px;height:20px;" alt="Delete" title="Delete" /></td>
+                                        </tr>
+                                    </table>
+
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- End #main -->
+@*<div class="row">
+
+    <div class="d-flex align-items-start">
+        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
+            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
+            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</button>
+            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button>
+        </div>
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">This is some placeholder content the Messages tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.</div>
+            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">This is some placeholder content the Messages tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.</div>
+            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">This is some placeholder content the Messages tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.</div>
+            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">This is some placeholder content the Messages tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.</div>
+        </div>
+    </div>
+
+</div>*@

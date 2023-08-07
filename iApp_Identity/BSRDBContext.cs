@@ -5,10 +5,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace BSRVemcoCS.iApp_Identity
     {
-    public class AppCore_IdentityDBContext : IdentityDbContext<AppCore_IdentityUser , AppCore_IdentityRole , string>
+
+    public partial class BSRDBContext : IdentityDbContext<AppCore_IdentityUser , AppCore_IdentityRole , string>
     {
 
-        public AppCore_IdentityDBContext ( DbContextOptions<AppCore_IdentityDBContext> options ) : base ( options )
+        public BSRDBContext ( DbContextOptions<BSRDBContext> options ) : base ( options )
         {
 
         }

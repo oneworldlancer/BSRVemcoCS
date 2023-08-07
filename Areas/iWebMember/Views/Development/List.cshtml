@@ -1,0 +1,73 @@
+﻿@*@model BSRVemcoCS.iAppViewModel.AppDevelomentNew1ViewModel*@
+@model List<AppUserBuildingModelManager>
+
+@{
+
+
+}
+
+
+
+@* class="row"<main id="main" class="main">*@
+<div id="main" style="margin-top:0px;padding-top:10px;">
+
+    <div class="pagetitle" style="padding-top:0px;">
+        @*<h1>Company Name</h1>*@
+        <nav>
+            <ol class="breadcrumb">
+                @*href="index.html"*@
+                <li class="breadcrumb-item"><a >Buildings</a></li>
+                <li class="breadcrumb-item active">List</li>
+            </ol>
+        </nav>
+    </div>
+    
+    <!-- End Page Title -->
+
+    <section>
+
+
+        <div class="row">
+
+            <span class="fs-5 ms-3">Title here ...</span>
+
+        </div>
+
+        @*<div style="overflow-x:auto;">*@
+
+        <table class="table table-hover table-bordered m-3" style="width:100%;padding:3px;table-layout:fixed;">
+            <thead>
+                <tr>
+                    @*<th>@Model.ColumnDescription</th>*@
+                    <th>Building Name</th>
+@*                    <th>@Model.ColumnCommentary</th>
+                    <th style="width:150px;">@Model.ColumnCriterion</th>
+                    <th class="fw-bold" style="width:50px;">@Model.ColumnScoreManaged</th>
+                    <th>@Model.ColumnRiskControlMeasure</th>
+                    <th class="fw-bold" style="width:110px;">@Model.ColumnScoreAdjused </th>*@
+                    @*<th class="fw-bold" style="width:50px;">Total</th>*@
+
+                </tr>
+            </thead>
+            <tbody>
+                @*@for (var i = 0; i < Model.PrescriptionList.Count; i++)*@
+                @*@for ( var i = 0 ; i < Model.RowContentList.Count! ; i++ )*@
+                @foreach ( var iRow in ( List<AppUserBuildingModelManager> ) Model! )
+                {
+
+                    <tr>
+                        <td> <a asp-area="iWebMember" asp-controller="Development" asp-action="Summary" asp-route-bldtknid="@iRow.BuildingTokenID" asp-route-state="item" asp-route-mnu="view_building" asp-route-section="view_building" asp-route-page="dashboard"><img src="~/img/img_project_black.png" width="10" height="10" style="margin:5px;" />@iRow.BuildingName</a></td>
+                     
+                    </tr>
+                }
+
+                
+              
+            </tbody>
+        </table>
+       
+
+    </section>
+
+
+</div>

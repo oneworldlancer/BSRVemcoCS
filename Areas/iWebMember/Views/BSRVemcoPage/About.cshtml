@@ -1,0 +1,31 @@
+﻿@{
+}
+
+@**@
+<div id="main" style="margin-top:0px;padding-top:0px;">
+
+    <div class="pagetitle" style="padding-top:0px;margin-bottom: 5px;">
+      
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">About BSR Business Suite</li>
+            </ol>
+        </nav>
+    </div>
+   
+<section class="section" style="margin-top:0px;padding-top:0px;">
+
+        <div class="row">
+
+          <div class="p-3">
+
+               
+             @await Component.InvokeAsync("CMS_PageViewHTMLContent","about")  
+
+            </div>
+         
+        </div>
+    </section>
+
+</div>

@@ -23,12 +23,18 @@
 
             <form  method="post"  class="row g-3 needs-validation" novalidate>
 
-                <div class="form-floating col-12">
+             
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+
+
+   <div class="form-floating col-12">
                         <input type="text" class="form-control" id="floatingInput" placeholder="Accountable Person (AP)"
-                        required>
+                               asp-for="CompanyName"
+                               required>
                         <label for="floatingInput">Accountable Person (AP)</label>
 
-                        <div class="valid-feedback text-start">Looks good!</div>
+                        @*<div class="valid-feedback text-start">Looks good!</div>*@
                         <div class="invalid-feedback text-start">Please fill in this field</div>
 
                     
@@ -38,11 +44,12 @@
 
                 <div class="form-floating col-12">
                     <input type="text" class="form-control" id="floatingInput" placeholder="First name"
+                               asp-for="FirstName"
                                required>
                     <label for="floatingInput">First name</label>
              
                 
-                        <div class="valid-feedback text-start">Looks good!</div>
+                        @*<div class="valid-feedback text-start">Looks good!</div>*@
                         <div class="invalid-feedback text-start">Please fill in this field</div>
 
                 
@@ -51,7 +58,7 @@
 
                 <div class="form-floating col-12">
                     <input type="text" class="form-control" id="floatingInput" placeholder="Last name"
-                               required>
+                               asp-for="LastName" required>
                     <label for="floatingInput">Last name</label>
 
 
@@ -69,7 +76,7 @@
                     <label for="floatingInput">E-mail address</label>
 
 
-                        <div class="valid-feedback text-start">Looks good!</div>
+                        @*<div class="valid-feedback text-start">Looks good!</div>*@
                         <div class="invalid-feedback text-start">Please fill in this field</div>
 
                     </div>
@@ -82,7 +89,7 @@
                     <label for="floatingInput">Password</label>
 
 
-                        <div class="valid-feedback text-start">Looks good!</div>
+                        @*<div class="valid-feedback text-start">Looks good!</div>*@
                         <div class="invalid-feedback text-start">Please fill in this field</div>
 
                     </div>

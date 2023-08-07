@@ -1,3 +1,17 @@
 ﻿@using BSRVemcoCS
 @using BSRVemcoCS.Models
+@using BSRVemcoCS.iApp_Globals
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@using BSRVemcoCS.iAppViewModel
+@using Microsoft.AspNetCore.Identity
+
+@*
+@using BSRVemcoCS.Helpers*@
+
+
+@inject UserManager<BSRVemcoCS.iApp_Identity.AppCore_IdentityUser> iUserManager
+@inject SignInManager<BSRVemcoCS.iApp_Identity.AppCore_IdentityUser> iSignInManager
+
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor iHttpContextAccessor
+@*@inject Microsoft.AspNetCore.Http.HttpRequest iRequest*@

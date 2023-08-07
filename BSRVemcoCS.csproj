@@ -16,7 +16,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.14" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.15" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,10 +24,17 @@
     <Folder Include="Areas\iWebAdmin\Data\" />
     <Folder Include="Areas\iWebAdmin\Models\" />
     <Folder Include="Areas\iWebAdmin\Views\" />
+    <Folder Include="Areas\iWebMaster\Controllers\" />
+    <Folder Include="Areas\iWebMaster\Data\" />
+    <Folder Include="Areas\iWebMaster\Models\" />
+    <Folder Include="Areas\iWebMaster\Views\" />
     <Folder Include="Areas\iWebMembership\Data\" />
     <Folder Include="Areas\iWebMembership\Models\" />
     <Folder Include="Areas\iWebMember\Data\" />
     <Folder Include="Areas\iWebMember\Models\" />
+    <Folder Include="Views\Shared\Components\" />
+    <Folder Include="wwwroot\_iUMedia\_iUBuilding\" />
+    <Folder Include="wwwroot\_iUMedia\_iUDocument\" />
   </ItemGroup>
 
 </Project>
