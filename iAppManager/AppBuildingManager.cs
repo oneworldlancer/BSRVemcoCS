@@ -209,11 +209,11 @@ namespace BSRVemcoCS.iAppManager
 
   var _iBuildingInfomationModel = _dbContext.BsrvemcoUserBuildingInformationLists
                       .Where ( u =>
-                      u.AppinformationTokenId == iBuildingTokenID &&
+                      u.BuildingTokenId == iBuildingTokenID &&
                       u.InformationTokenId == iInformationTokenID )
                       //.Select (u  )
                       .FirstOrDefault ( ); // This is what actually executes the request and return a response
-                                            // .ToList ( ); // This is what actually executes the request and return a response
+                                           // .ToList ( ); // This is what actually executes the request and return a response
 
 
 

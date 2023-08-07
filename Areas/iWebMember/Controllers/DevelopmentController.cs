@@ -351,9 +351,9 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
                 };
 
 
-              _dbContext.BsrvemcoUserBuildingLists.Update ( iBuildingModel );
+                _dbContext.BsrvemcoUserBuildingLists.Update ( iBuildingModel );
 
-               await _dbContext.SaveChangesAsync ( );
+                await _dbContext.SaveChangesAsync ( );
 
                 return RedirectToAction (
                     "Page2_Edit" ,
@@ -425,9 +425,9 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult>  Summary ()
+        public async Task<IActionResult> Summary ( )
         {
-               //string bldtknid , string state 
+            //string bldtknid , string state 
             try
             {
                 //   string id = HttpContext.Request.RouteValues[ "bldtknid" ].ToString ( );
@@ -440,7 +440,7 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
                         .FirstOrDefault ( ); // This is what actually executes the request and return a response
 
                 AppUserBuildingStatisticModelManager _iBuildingStatisticModel = new AppUserBuildingStatisticModelManager ( );
-                _iBuildingStatisticModel= await AppBuildingManager.Building_Get_BuildingStatisticModel_ByBuildingTokenID (
+                _iBuildingStatisticModel = await AppBuildingManager.Building_Get_BuildingStatisticModel_ByBuildingTokenID (
                     _dbContext ,
                 id );
 
@@ -451,7 +451,7 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
                     BuildingName = _iUserBuildignModel.BuildingName ,
                     BuildingAddress = _iUserBuildignModel.BuildingAddress ,
                     BuildingDateYear = _iUserBuildignModel.BuildingYear ,
-                    BuildingImageTokenID = _iUserBuildignModel.ImageTokenId    ,
+                    BuildingImageTokenID = _iUserBuildignModel.ImageTokenId ,
                     iBuildingStatisticModel = _iBuildingStatisticModel
                 };
 
@@ -479,7 +479,7 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
         }
 
 
-    
+
 
         [HttpGet]
         public IActionResult Summary_X1 ( string bldtknid , string state )
@@ -1135,12 +1135,12 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
                 return View ( _iDevelomentTable1EditModel );
             }
-            catch ( Exception ex)
+            catch ( Exception ex )
             {
 
                 iAppUtility.AppUtility_DebugManager.Debug_Get_MessageText ( ex.Message );
 
-                return View();
+                return View ( );
                 //    throw;
             }
 
@@ -1966,9 +1966,9 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
             try
             {
                 string id = Request.Query[ "bldtknid" ].ToString ( );
-             
+
                 string PointXText = Request.Query[ "px" ].ToString ( );
-               
+
                 string PointYText = Request.Query[ "py" ].ToString ( );
 
                 AppPointModelManager _iPointModel = new AppPointModelManager ( );
@@ -2055,9 +2055,9 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
             //return View ( );
         }
 
-      
-        
-      
+
+
+
 
         [HttpGet]
         public async Task<IActionResult> Diagram_X1 ( )
@@ -2308,18 +2308,18 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
             //return View ( );
         }
 
-      
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
+
+
         [HttpPost]
         // [Microsoft.AspNetCore.Mvc.va.ValidateInput ( false )]
         public IActionResult GetImage ( string divhtml )
@@ -2428,6 +2428,131 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
 
 
+
+
+
+        #region Update-Score
+
+
+        //[HttpGet ( "{id}" )]
+        [HttpPost]
+        public async Task<JsonResult> Update_Score_ByInformationTokenID (
+            string iAppTableTokenID ,
+            string iTableTokenID ,
+             string iBuildingTokenID ,
+            string iInformationTokenID ,
+            string iScoreAdjusted = "0" ,
+            string iRiskControlMeasure = "0" )
+        {
+
+            string _strResult = "0";
+
+            _ = await AppBuildingManager.Building_Update_BuildingInformationScore_ByInformationTokenID (
+                           _dbContext ,
+                             iBuildingTokenID ,
+                  iInformationTokenID ,
+                  iScoreAdjusted ,
+                  iRiskControlMeasure );
+
+
+            //Table1ScoreTotal
+            if ( iAppTableTokenID == "1689022008239" )
+            {
+
+                var Table1ScoreTotal = _dbContext.BsrvemcoUserBuildingInformationLists
+                              .Where (
+                                  c =>
+                                  c.ApptableTokenId == "1689022008239" &&
+                                  c.BuildingTokenId == iBuildingTokenID )
+                              .Sum ( clmn => Convert.ToDecimal ( clmn.ScoreAdjusted! ) ).ToString ( "0.0" );//"60"; //3 * 20 ;
+
+                _strResult = Table1ScoreTotal;
+
+            }
+
+            //Table2ScoreTotal
+            else if ( iAppTableTokenID == "1689162197100" )
+            {
+
+                var Table2ScoreTotal = _dbContext.BsrvemcoUserBuildingInformationLists
+                          .Where (
+                              c =>
+                              c.ApptableTokenId == "1689162197100" &&
+                              c.BuildingTokenId == iBuildingTokenID )
+                          .Sum ( clmn => Convert.ToDecimal ( clmn.ScoreAdjusted! ) ).ToString ( "0.0" );//"27"; // 3 * 9 ;
+
+
+                _strResult = Table2ScoreTotal;
+
+
+
+            }
+
+            //Table3ScoreTotal
+            else if ( iAppTableTokenID == "1689162201957" )
+            {
+
+                var Table3ScoreTotal = _dbContext.BsrvemcoUserBuildingInformationLists
+                               .Where (
+                                   c =>
+                                   c.ApptableTokenId == "1689162201957" &&
+                                   c.BuildingTokenId == iBuildingTokenID )
+                               .Sum ( clmn => Convert.ToDecimal ( clmn.ScoreAdjusted! ) ).ToString ( "0.0" );// "12"; //  4 * 3 ;
+
+
+                _strResult = Table3ScoreTotal;
+
+
+            }
+
+            //Table4ScoreAverage
+            else if ( iAppTableTokenID == "1689162207917" )
+            {
+
+
+                var Table4ScoreAverage = _dbContext.BsrvemcoUserBuildingInformationLists
+                        .Where (
+                            c =>
+                            c.ApptableTokenId == "1689162207917" &&
+                            c.BuildingTokenId == iBuildingTokenID )
+                        .Average ( clmn => Convert.ToDouble ( clmn.ScoreAdjusted! ) ).ToString ( "0.0" );// "3.5"; // (3 * 11) / 11  iBuildingTokenID;
+
+
+                _strResult = Table4ScoreAverage;
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //  return Json ( new { result = true }, JsonRequestBehavior.AllowGet );
+            // return Json ( new { total = _strResult } , new Newtonsoft.Json.JsonSerializerSettings ( ) );
+            return Json ( new { total = _strResult } );
+        }
+
+
+
+
+        #endregion
 
 
 
