@@ -8,11 +8,14 @@ namespace BSRVemcoCS.Models
     {
 
 
+        public string AppTableTokenID { get; set; } = "0";
+        public string TableTokenID { get; set; } = "0";
         public string BuildingTokenID { get; set; } = "0";
         public string APPInformationTokenID { get; set; } = "0";
         public string InformationTokenID { get; set; } = "0";
         public string InformationText { get; set; } = "0";
         public string DocumentCount { get; set; } = "0";
+        public string TimeFrame { get; set; } = "0";
         public string InformationScore { get; set; } = "5";
         public string InformationScoreAdjusted { get; set; } = "5";
         public string InformationRiskControlMeasure { get; set; } = "0";

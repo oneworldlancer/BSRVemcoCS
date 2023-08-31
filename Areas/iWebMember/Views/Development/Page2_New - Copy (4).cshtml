@@ -68,11 +68,11 @@
 
                         <div class="list-group list-group-flush m-3">
                             @**@
-                            @foreach (var iRow in Model.BuildingInformationList!)
+                            @foreach ( var iRow in Model.BuildingInformationList! )
                             {
                                 @*data-bs-target="#popupModal"*@
                                 <a href="#" class="list-group-item list-group-item-action bg-transparent"
-                                   data-bs-toggle="modal" onclick="Popup_LoadForm('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.APPInformationTokenID','@iRow.InformationTokenID','@iRow.DocumentCount','@iRow.TimeFrame','clminfotxt_@iRow.InformationTokenID','clmdoccount_@iRow.InformationTokenID');">
+                                   data-bs-toggle="modal" onclick="Popup_LoadForm('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.APPInformationTokenID','@iRow.InformationTokenID','clminfotxt_@iRow.InformationTokenID','clmdoc_@iRow.InformationTokenID');">
 
                                     <div class="row">
 
@@ -81,14 +81,14 @@
                                         <div class="col-2 text-end" style="float:right;">
                                             <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
 
-                                            @if (iRow.DocumentCount != "0")
+                                            @if ( iRow.DocumentCount != "0" )
                                             {
-                                                <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;" data-clmdoccount="clmdoccount_@iRow.InformationTokenID">@iRow.DocumentCount</small>
+                                                <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;" data-clmdoc="clmdoc_@iRow.InformationTokenID">10</small>
 
                                             }
                                             else
                                             {
-                                                <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;" data-clmdoccount="clmdoccount_@iRow.InformationTokenID"></small>
+                                                <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;" data-clmdoc="clmdoc_@iRow.InformationTokenID"></small>
 
                                             }
 
@@ -543,10 +543,7 @@
                             <button class="nav-link" id="btn_Upload" data-bs-toggle="tab" data-bs-target="#content_Upload" type="button" role="tab" aria-controls="messages" aria-selected="false" data-tabcontent="upload">Upload Files</button>
                         </li>
                         <li id='tab_Edit' class="nav-item" role="presentation">
-                            <button class="nav-link" id="btn_Edit" data-bs-toggle="tab" data-bs-target="#content_Edit" type="button" role="tab" aria-controls="settings" aria-selected="false" data-tabcontent="edit">Edit</button>
-                        </li>
-                        <li id='tab_Progress' class="nav-item" role="presentation">
-                            <button class="nav-link" id="btn_Progress" data-bs-toggle="tab" data-bs-target="#content_Progress" type="button" role="tab" aria-controls="settings" aria-selected="false" data-tabcontent="progress">Progress</button>
+                            <button class="nav-link" id="btn_Edit" data-bs-toggle="tab" data-bs-target="#content_Edit" type="button" role="tab" aria-controls="settings" aria-selected="false" data-tabcontent="edit">EDIT</button>
                         </li>
                     </ul>
 
@@ -624,18 +621,58 @@
 
                         <div class="tab-pane" id="content_View" role="tabpanel" aria-labelledby="profile-tab">
 
-                            <div id="div_DocumentList" class="row
-mb-3"></div>
+                            <div id="div_DocumentList" class="row mt-3 mb-3">
+
+                                @* @await Component.InvokeAsync("Events", new { showPrevious = Model.ShowPrevious, showUpcoming = Model.ShowUpcoming })
+                                *@
+
+                                @*@await Component.InvokeAsync("DocumentList")*@
+
+                                @*
+                                <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+
+                                <table>
+                                <tr>
+                                <td style="text-align:left;vertical-align:text-top;padding:2px;"><img src="~/img/img_file_pdf.png" style="width:20px;height:20px;margin:2px;" /></td>
+
+                                <td style="width:100%;text-align:left;vertical-align:text-top;padding:2px;">
+
+                                <div class="p-1" style="display:flex;flex-direction:column;">
+                                <a href=# target="_blank" style="text-decoration:underline;">File_1101.pdf (151.2KB)</a>
+
+                                <div class="mt-1" style="display:flex;flex-direction:row;">
+                                <strong>Document publication date:</strong>
+                                <span>6 February, 2022</span>
+
+                                </div>
+
+                                <strong class="mt-1">Document description:</strong>
+                                <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
+                                </div>
+                                </td>
+
+                                <td class="m-3" style="text-align:left;vertical-align:text-top;"><img src="~/img/img_download.png" style="width:20px;height:20px;" alt="Download" title="Download" /></td>
+                                <td class="m-3" style="text-align:left;vertical-align:text-top;" onclick="openEdit();"><img src="~/img/img_edit.png" style="width:20px;height:20px;" alt="Edit" title="Edit" /></td>
+                                <td class="m-3" style="text-align:left;vertical-align:text-top;"><img src="~/img/img_delete.png" style="width:20px;height:20px;" alt="Delete" title="Delete" /></td>
+                                </tr>
+                                </table>
+
+                                </li>
+
+                                </ul>*@
+
+                            </div>
 
                         </div>
 
                         <div class="tab-pane" id="content_Upload" role="tabpanel" aria-labelledby="messages-tab">
 
                             @*class="row m-3"*@
-                            <div class="row m-3" id="dropzone">
-                                @* autocomplete="off" asp-area="iWebMember" asp-controller="Development"  asp-action="UploadFiles"*@
-                                <form action="/iWebMember/Development/UploadFiles" asp-antiforgery="true" class="dropzone"
-                                      id="demo-upload" name="filedata" enctype="multipart/form-data" method="post" data-parsley-validate>
+                            <div class="row mt-3 mb-3" id="dropzone">
+
+                                <form asp-area="iWebMember" asp-controller="Development" autocomplete="off" asp-antiforgery="true" class="dropzone"
+                                      id="demo-upload" enctype="multipart/form-data" asp-action="UploadFiles" method="post">
                                     <div class="text-danger" asp-validation-summary="ModelOnly"></div>
                                     <div class="form-row">
                                     </div>
@@ -643,9 +680,6 @@ mb-3"></div>
                                     <input id="iAppinformationTokenID" name="iAppinformationTokenID" type="hidden" value="0" />
                                     <input id="iInformationTokenID" name="iInformationTokenID" type="hidden" value="0" />
                                     <input id="iBuildingTokenID" name="iBuildingTokenID" type="hidden" value="0" />
-                                    <input id="iDocumentTokenID" name="iDocumentTokenID" type="hidden" value="0" />
-                                    <input id="iTimeFrame" name="iTimeFrame" type="hidden" value="0" />
-                                    <input id="iDocumentCount" name="iDocumentCount" type="hidden" value="0" />
                                 </form>
                             </div>
 
@@ -663,12 +697,12 @@ mb-3"></div>
 
 
 
-                            <div class="mt-3 mb-3" id="popup_FormContent">
+                            <div class="row mt-3 mb-3" id="popup_FormContent">
                                 @* @await Component.InvokeAsync("Editor")*@
 
                                 @*class="ms-3 me-3 mb-3"*@
 
-                                <table class="ms-1">
+                                <table>
 
 
 
@@ -678,10 +712,10 @@ mb-3"></div>
                                             <img src="~/img/img_file_pdf.png" style="width:20px;height:20px;margin:0px;" />
                                         </td>
 
-                                        <td style="width:100%;text-align:left;vertical-align:text-top;padding:0px;">
+                                        <td style="width:100%;text-align:left;vertical-align:text-top;padding:2px;">
 
                                             <div class="p-1" style="display:flex;flex-direction:column;">
-                                                <a id="iDocumentName" name="iDocumentName" target="_blank" style="text-decoration:underline;">File_1101.pdf (151.2KB)</a>
+                                                <a href=# target="_blank" style="text-decoration:underline;">File_1101.pdf (151.2KB)</a>
 
                                             </div>
                                         </td>
@@ -693,17 +727,13 @@ mb-3"></div>
 
 
 
-                                @*                                placeholder="dd-mm-yyyy" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"*@
+
 
                                 <div class="mt-3">
                                     <label class="form-label">Document publication date:</label>
                                     <input class="form-control"
-                                           type="text" id="iDocumentDateStart" name="iDocumentDateStart"
-                                           style="text-transform:uppercase;" required>
-                                    @*  <input class="form-control"
-                                    type="date" id="iScoreAdjusted" name="iScoreAdjusted"
-                                    format="dd-mm-yyyy" required>
-                                    *@
+                                           type="date" id="iScoreAdjusted" name="iScoreAdjusted">
+
                                 </div>
                                 @*                                    me-3 mb-3*@
                                 <div class="mt-3">
@@ -720,13 +750,7 @@ mb-3"></div>
                         </div>
 
 
-                        <div class="tab-pane" id="content_Progress" role="tabpanel" aria-labelledby="settings-tab">
-                            <div class="text-center">
-                                <img src="~/img/loading.gif" width="auto" height="auto" style="margin:auto;" />
-                            </div>
-                        </div>
-
-                        @*   <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                        @* <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
                         settings
                         </div>*@
                     </div>
@@ -759,7 +783,7 @@ mb-3"></div>
 
                             <div id="div_CommandUpload" class="flex-start">
                                 <button type="button" id="btnupload" class="btn btn-primary">Upload</button>
-                                @* <input type="button" style="width: 100%;" value="Uploadxxx" class="fill-width" onclick="upload()">*@
+
                                 @*<a class="btn btn-danger" onclick="load_TabViewDocumentList();">Clear</a>*@
                             </div>
 
@@ -783,40 +807,16 @@ mb-3"></div>
         </div>
     </div>
 
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="confirmPopup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmPopupLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="height:auto;">
-                <div class="modal-header" style="background-color:whitesmoke;">
-                    <h5 class="modal-title" id="confirmPopupLabel">Confirm</h5>
-                    @* <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> *@
-                </div>
-                <div class="modal-body">
-                    Are you sure want to DELTE! ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    @* <button type="button" class="btn btn-primary" onclick="Building_Set_DELETE()">Delete</button> *@
-                    <button type="button" class="btn btn-danger" onclick="Document_Set_DELETE()">Delete</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
 </div>
 
 
 
 @section iScript{
 
-        <link href="~/dropzone/dropzone.min.css" rel="stylesheet" />
+    <link href="~/dropzone/dropzone.min.css" rel="stylesheet" />
     <script src="~/dropzone/dropzone.min.js"></script>
 
-@*     <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" /> *@
+
 
 
     <script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
@@ -849,30 +849,11 @@ mb-3"></div>
         window.bldtknid;
         window.appinftknid;
         window.inftknid;
-        window.doccount;
         window.clminfotxt;
-        window.clmdoccount;
-
-        // doctknid, doctcod, docname, docsize, docdesc
-
-        window.doctknid;
-        window.doctyp;
-        window.docname;
-        window.docsize;
-        window.docdesc;
+        window.clmdoc;
 
 
-        //   datday,datmonth,datyear,dattxt,yearcnt
-
-        window.datday;
-        window.datmonth;
-        window.datyear;
-        window.dattxt;
-        window.timeframe;
-
-
-
-        function Popup_PostForm() {
+        function Popup_PostForm () {
 
             try {
 
@@ -944,7 +925,7 @@ mb-3"></div>
 
 
 
-        function Popup_LoadForm(apptbltknid, tbltknid, bldtknid, appinftknid, inftknid, doccount, timeframe, clminfotxt, clmdoccount) {
+        function Popup_LoadForm (apptbltknid, tbltknid, bldtknid, appinftknid, inftknid, clminfotxt, clmdoc) {
 
             try {
 
@@ -954,15 +935,13 @@ mb-3"></div>
                 window.bldtknid = bldtknid;
                 window.appinftknid = appinftknid;
                 window.inftknid = inftknid;
-                window.doccount = doccount;
                 window.clminfotxt = clminfotxt;
-                window.clmdoccount = clmdoccount;
-                window.timeframe = timeframe;
+                window.clmdoc = clmdoc;
 
                 // alert('popup form here' + bldtknid + " , " + inftknid + " , " + clminfotxt + " , " + clmdoc);
 
                 var clmn_InfoText = $("[data-clminfotxt='clminfotxt_" + inftknid + "']");
-                // var clmn_DocumentCount = $("[data-clmdoccount='clmdoccount_" + inftknid + "']");
+                var clmn_DocumentCount = $("[data-clmdoc='clmdoc_" + inftknid + "']");
 
                 var txt_RiskControlMeasure = '0';
 
@@ -984,58 +963,27 @@ mb-3"></div>
                 //  iInformationText.value = '3';
 
                 iInformationText.innerHTML = clmn_InfoText.html();
-
-
-                if (doccount != "0") {
-                    iDocumentCount.innerHTML = doccount;
-                }
-                else {
-                    iDocumentCount.innerHTML = '';
-                }
+                iDocumentCount.innerHTML = clmn_DocumentCount.html();
 
                 //////  editor.setData(clmn_DocumentCount.html());
 
 
+                $('#tab_Edit').hide();
+
+                $('#div_CommandUpload').hide();
+                $('#div_CommandEdit').hide();
 
 
                 $("#iAppinformationTokenID").val(appinftknid);
                 $("#iInformationTokenID").val(inftknid);
                 $("#iBuildingTokenID").val(bldtknid);
-                $("#iTimeFrame").val(timeframe);
                 //$("#hdn_InformationTokenID").val(inftknid);
-
-
-
-
-                $('#tab_Edit').hide();
-                $('#tab_Progress').hide();
-
-                $('#div_CommandUpload').hide();
-                $('#div_CommandEdit').hide();
-
-                // $('#myTab button[bs-target="#edit"]').tab('show'); // Select tab by name`
-
-                $("#btn_View").removeClass("active");
-                $("#btn_Progress").removeClass("active");
-                $("#btn_Edit").removeClass("active");
-                $("#btn_Upload").removeClass("active");
-
-                $("#content_View").removeClass("active");
-                $("#content_Progress").removeClass("active");
-                $("#content_Edit").removeClass("active");
-                $("#content_Upload").removeClass("active");
-
-                $("#btn_Preview").addClass("active");
-                $("#content_Preview").addClass("active");
-
-
 
 
 
 
                 $('#popupModalEditor').modal('show');
 
-                load_TabViewDocumentList(false);
 
             }
 
@@ -1049,127 +997,25 @@ mb-3"></div>
 
 
 
-        function open_TabEditDocument(apptbltknid, tbltknid, bldtknid, appinftknid, inftknid, doctknid,
-            doctyp, docname, docsize, docdesc,
-            datday, datmonth, datyear, dattxt, yearcnt,
-            clmdocname, clmdocdate, clmdocdesc) {
+        function openEdit () {
 
             try {
 
-                // alert('open_TabEditDocument == ' + datday + " , " + datmonth + " , " + datyear);
-
-                // doctknid, doctcod, docname, docsize, docdesc
-
-
-                window.doctknid = doctknid;
-                window.doctyp = doctyp;
-                window.docname = docname;
-                window.docsize = docsize;
-                window.docdesc = docdesc;
-
-                window.datday = datday;
-                window.datmonth = datmonth;
-                window.datyear = datyear;
-                window.dattxt = dattxt;
-                window.timeframe = yearcnt;
-
-
-
-                var iDocumentName = document.getElementById('iDocumentName');
-                var iDocumentDateStart = document.getElementById('iDocumentDateStart');
-
-                iDocumentName.innerHTML = docname + " (" + docsize + ")";
-                // iDocumentName.href = '/_iUMedia/_iUDocument/doc_' + doctknid + '.' + doctyp;
-                $("#iDocumentName").attr("href", '/_iUMedia/_iUDocument/doc_' + doctknid + '.' + doctyp);
-                //  var iDocumentCount = document.getElementById('iDocumentCount');
-
-                //  iInformationText.value = '3';
-
-                //   iInformationText.innerHTML = clmn_InfoText.html();
-                //   iDocumentCount.innerHTML = clmn_DocumentCount.html();
-
-
-                //  var clmn_Score = $("[data-clmscore='clmscore_" + inftknid + "']");
-                //  var clmn_RiskMeasure = $("[data-clmrisk='clmrisk_" + inftknid + "']");
-
-
-                ////////////////////////////////
-
-
-                //$("#iDocumentDateStart").datepicker("setDate", new Date());
-                //iDocumentDateStart
-
-                ////////////$("#datepicker").datepicker({ dateFormat: "DD, d MM, yy" });
-                ////////////$("#datepicker").datepicker("setDate", $.datepicker.parseDate("yy-mm-dd", "2017-11-16"));
-
-                //var strDate = "6-2-1979";//'"' + datday + '-' + datmonth + '-' + datyear + '"';
-
-
-                //$("#iDocumentDateStart").datepicker("setDate", new Date());
-
-                var strDate;
-                //&& datmonth == "0" && datyear == "0"
-
-                if (datday == "0") {
-
-                    $("#iDocumentDateStart").datepicker(
-                        "setDate", $.datepicker.parseDate("dd-mm-yy", new Date()));
-
-                    // $("#iDocumentDateStart").datepicker("setDate", new Date());
-                    //alert("strDate = 0");
-                }
-                else {
-
-                    strDate = datday + '-' + datmonth + '-' + datyear;
-                    // alert("strDate = " + strDate);
-
-                    // alert(strDate);
-
-                    // $("#iDocumentDateStart").datepicker(
-                    //     "setDate", $.datepicker.parseDate("dM, yy", strDate));
-
-
-                    $("#iDocumentDateStart").datepicker(
-                        "setDate", $.datepicker.parseDate("dd-mm-yy", strDate));
-
-
-                }
-
-                if (docdesc !== '0') {
-
-                    editor.setData(docdesc);
-                } else {
-                    editor.setData('');
-                }
-
-
-
-
                 $('#tab_Edit').hide();
-                $('#tab_Progress').hide();
                 // $('#myTab button[bs-target="#edit"]').tab('show'); // Select tab by name`
 
                 $("#btn_Preview").removeClass("active");
-                $("#btn_Progress").removeClass("active");
                 $("#btn_View").removeClass("active");
                 $("#btn_Upload").removeClass("active");
 
                 $("#content_Preview").removeClass("active");
-                $("#content_Progress").removeClass("active");
                 $("#content_View").removeClass("active");
                 $("#content_Upload").removeClass("active");
 
                 $("#btn_Edit").addClass("active");
                 $("#content_Edit").addClass("active");
-
-                $('#div_CommandUpload').hide();
-                $('#div_CommandEdit').show();
-
-
             }
             catch (err) {
-
-                alert(err);
             }
 
         }
@@ -1177,29 +1023,21 @@ mb-3"></div>
 
 
 
-        function open_TabViewDocuments(blnIsNewRefresh) {
+        function open_TabViewDocuments () {
 
             try {
 
-
-                if (blnIsNewRefresh) {
-                    load_TabViewDocumentList(true);
-                }
-
                 $('#tab_Edit').hide();
-                $('#tab_Progress').hide();
                 $('#div_CommandUpload').hide();
                 $('#div_CommandEdit').hide();
 
                 // $('#myTab button[bs-target="#edit"]').tab('show'); // Select tab by name`
 
                 $("#btn_Preview").removeClass("active");
-                $("#btn_Progress").removeClass("active");
                 $("#btn_Edit").removeClass("active");
                 $("#btn_Upload").removeClass("active");
 
                 $("#content_Preview").removeClass("active");
-                $("#content_Progress").removeClass("active");
                 $("#content_Edit").removeClass("active");
                 $("#content_Upload").removeClass("active");
 
@@ -1207,44 +1045,6 @@ mb-3"></div>
                 $("#content_View").addClass("active");
             }
             catch (err) {
-                console.error(err);
-                return;
-            }
-
-        }
-
-
-
-
-        function open_TabViewProgress() {
-
-            try {
-
-
-
-                $('#tab_Edit').hide();
-                $('#tab_Progress').hide();
-                $('#div_CommandUpload').hide();
-                $('#div_CommandEdit').hide();
-
-                // $('#myTab button[bs-target="#edit"]').tab('show'); // Select tab by name`
-
-                $("#btn_Preview").removeClass("active");
-                $("#btn_View").removeClass("active");
-                $("#btn_Edit").removeClass("active");
-                $("#btn_Upload").removeClass("active");
-
-                $("#content_Preview").removeClass("active");
-                $("#content_View").removeClass("active");
-                $("#content_Edit").removeClass("active");
-                $("#content_Upload").removeClass("active");
-
-                $("#btn_Progress").addClass("active");
-                $("#content_Progress").addClass("active");
-            }
-            catch (err) {
-                console.error(err);
-                return;
             }
 
         }
@@ -1255,7 +1055,7 @@ mb-3"></div>
 
 
 
-        function clearFiles() {
+        function clearFiles () {
             try {
 
                 ////$("#hdn_InformationTokenID").val("comment");
@@ -1274,7 +1074,7 @@ mb-3"></div>
 
 
 
-        function load_TabViewDocumentList(blnIsNewRefresh) {
+        function load_TabViewDocumentList () {
 
 
             try {
@@ -1286,66 +1086,20 @@ mb-3"></div>
 
                 $.ajax({
                     //url: '@Url.Action("ReloadEvents", "Home")',
-                    url: '/iWebMember/Development/ReloadDocumentList',
+                    url: '/iWebMember/Development/load_TabViewDocumentList',
                     data: {
                         bldtknid: $("#iBuildingTokenID").val(),//document.getElementById("cbShowPrevious").checked,
                         inftknid: $("#iInformationTokenID").val() //document.getElementById("cbShowUpcoming").checked
                     },
                     success: function (data) {
-
                         $("#div_DocumentList").html(data);
 
-                        $('#div_CommandEdit').hide();
+                        $('#div_CommandUpload').hide();
                         $('#div_CommandUpload').hide();
 
                         // alert('load_TabViewDocumentList DONE !!!');
                     }
                 });
-
-
-                if (blnIsNewRefresh) {
-
-                    $.ajax({
-                        //url: '@Url.Action("ReloadEvents", "Home")',
-                        url: '/iWebMember/Development/GetCountDocumentList',
-                        data: {
-                            bldtknid: $("#iBuildingTokenID").val(),
-                            inftknid: $("#iInformationTokenID").val()
-                        },
-                        success: function (data) {
-
-                            //alert('load_TabViewDocumentList DONE !!!  ' + data.count);
-
-                            var clmn_DocumentCount = $("[data-clmdoccount='clmdoccount_" + window.inftknid + "']");
-
-                            var iDocumentCount = document.getElementById('iDocumentCount');
-
-
-
-
-                            if (data.count != "0") {
-                                clmn_DocumentCount.html(data.count);
-                                iDocumentCount.innerHTML = data.count;
-
-                            }
-                            else {
-                                clmn_DocumentCount.html('');
-                                iDocumentCount.innerHTML = '';
-
-                            }
-
-
-                            // alert('load_TabViewDocumentList DONE !!!');
-                        }
-                    });
-
-
-
-                }
-
-
-
-
             }
             catch (err) {
                 console.error(err);
@@ -1353,30 +1107,38 @@ mb-3"></div>
 
             }
 
+
+
+
+
+
+
+
+
         }
 
 
 
-        function cancel_TabEditDocument() {
+
+
+
+
+        function cancel_TabEditDocument () {
 
             try {
 
-
                 $('#tab_Edit').hide();
-                $('#tab_Progress').hide();
                 // $('#myTab button[bs-target="#edit"]').tab('show'); // Select tab by name`
 
                 $("#btn_Preview").removeClass("active");
-                $("#btn_Progress").removeClass("active");
                 $("#btn_Edit").removeClass("active");
                 $("#btn_Upload").removeClass("active");
 
                 $("#content_Preview").removeClass("active");
-                $("#content_Progress").removeClass("active");
                 $("#content_Edit").removeClass("active");
                 $("#content_Upload").removeClass("active");
 
-                $('#div_CommandEdit').hide();
+                $('#div_CommandUpload').hide();
                 $('#div_CommandUpload').hide();
 
                 $("#btn_View").addClass("active");
@@ -1404,155 +1166,12 @@ mb-3"></div>
             //})
         }
 
-        var weekday = new Array(7);
-        weekday[0] = "Sunday";
-        weekday[1] = "Monday";
-        weekday[2] = "Tuesday";
-        weekday[3] = "Wednesday";
-        weekday[4] = "Thursday";
-        weekday[5] = "Friday";
-        weekday[6] = "Saturday";
 
-        function submit_TabEditDocument() {
+
+        function submit_TabEditDocument () {
 
             try {
-
-
-
-
-                var iDocumentName = document.getElementById('iDocumentName');
-                var iDocumentDateStart = document.getElementById('iDocumentDateStart');
-
-                // iDocumentName.innerHTML = docname + " (" + docsize + ")";
-                // // iDocumentName.href = '/_iUMedia/_iUDocument/doc_' + doctknid + '.' + doctyp;
-                // $("#iDocumentName").attr("href", '/_iUMedia/_iUDocument/doc_' + doctknid + '.' + doctyp);
-                //  var iDocumentCount = document.getElementById('iDocumentCount');
-
-                //  iInformationText.value = '3';
-
-                //   iInformationText.innerHTML = clmn_InfoText.html();
-                //   iDocumentCount.innerHTML = clmn_DocumentCount.html();
-
-
-                //  var clmn_Score = $("[data-clmscore='clmscore_" + inftknid + "']");
-                //  var clmn_RiskMeasure = $("[data-clmrisk='clmrisk_" + inftknid + "']");
-
-
-                ////////////////////////////////
-
-
-                //$("#iDocumentDateStart").datepicker("setDate", new Date());
-                //iDocumentDateStart
-
-                ////////////$("#datepicker").datepicker({ dateFormat: "DD, d MM, yy" });
-                ////////////$("#datepicker").datepicker("setDate", $.datepicker.parseDate("yy-mm-dd", "2017-11-16"));
-
-                //var strDate = "6-2-1979";//'"' + datday + '-' + datmonth + '-' + datyear + '"';
-                var datday, datmonth, datyear;
-
-                // var strDate = datday + '-' + datmonth + '-' + datyear;
-
-                // alert(strDate);
-
-                // // // $("#iDocumentDateStart").datepicker(
-                // // //     "setDate", $.datepicker.parseDate("dd-mm-yy", strDate));
-
-                var date = $("#iDocumentDateStart").datepicker('getDate');
-                // // // // // // // alert(date.getDate());         // Day of the month
-                // // // // // // // alert(date.getMonth() + 1);        // Month with a zero index
-                // // // // // // // //alert(date.getDay());          // Day of the week
-                // // // // // // // alert(date.getFullYear());     // The "full" year, e.g. 2011
-
-                // // // // // // // alert(weekday[date.getUTCDay() + 1]);     // The "full" year, e.g. 2011
-
-                // // // // // // // alert($("#iDocumentDateStart").val());     // The "full" year, e.g. 2011
-                //////alert(window.timeframe);     // The "full" year, e.g. 2011
-
-
-                // // // // if (docdesc !== '0') {
-
-                // // // //     editor.setData(docdesc);
-                // // // // } else {
-                // // // //     editor.setData('');
-                // // // // }
-
-
-                // txt_DocumentDescription
-                var txt_DocumentDescription = "0", visible_RiskControlMeasure = "0";
-
-                if (editor.getData() == '') {
-                    txt_DocumentDescription = "0";
-                    visible_RiskControlMeasure = "FILL IN DESCRIPTION";
-                }
-                else {
-                    txt_DocumentDescription = editor.getData();
-                    visible_RiskControlMeasure = editor.getData();
-
-                }
-
-
-
-                var clmn_DocumentDate = $("[data-clmdocdate='clmdocdate_" + window.doctknid + "']");
-                var clmn_DocumentDescription = $("[data-clmdocdesc='clmdocdesc_" + window.doctknid + "']");
-
-
-
-                $.ajax({
-                    //url: '@Url.Action("ReloadEvents", "Home")',
-                    url: '/iWebMember/Development/Document_Update_ByDocumentTokenID',
-                    data: {
-                        doctknid: window.doctknid,
-                        iday: date.getDate(),
-                        // idayname: $("#iBuildingTokenID").val(),
-                        imonth: date.getMonth() + 1,
-                        iyear: date.getFullYear(),
-                        iDateText: $("#iDocumentDateStart").val(),
-                        idesc: txt_DocumentDescription,
-                        timeframe: window.timeframe
-                    },
-                    success: function (data) {
-
-
-                        clmn_DocumentDate.css('color', 'black');
-
-
-                        if (txt_DocumentDescription == "0") {
-                            clmn_DocumentDescription.css('color', 'red');
-                        }
-
-                        else {
-                            clmn_DocumentDescription.css('color', 'black');
-                        }
-
-
-                        clmn_DocumentDate.html($("#iDocumentDateStart").val());
-                        clmn_DocumentDescription.html(visible_RiskControlMeasure);
-
-
-                        cancel_TabEditDocument();
-
-                        //alert('load_TabViewDocumentList DONE !!!  ' + data.count);
-
-                        // // // // // // // // // // // var clmn_DocumentCount = $("[data-clmdoccount='clmdoccount_" + window.inftknid + "']");
-
-
-                        // // // // // // // // // // // if (data.count != "0") {
-                        // // // // // // // // // // //     clmn_DocumentCount.html(data.count);
-                        // // // // // // // // // // //     //  clmn_DocumentCount.html('AAA');
-
-                        // // // // // // // // // // // }
-                        // // // // // // // // // // // else {
-                        // // // // // // // // // // //     clmn_DocumentCount.html('');
-
-                        // // // // // // // // // // // }
-
-
-                        // alert('load_TabViewDocumentList DONE !!!');
-                    }
-                });
-
-
-                //////alert('submit_TabEditDocument');
+                alert('submit_TabEditDocument');
             }
             catch (err) {
                 console.error(err);
@@ -1573,244 +1192,7 @@ mb-3"></div>
         }
 
 
-
-
-
-
-        function GetCountDocumentList() {
-
-            try {
-
-                var iDocumentCount = document.getElementById('iDocumentCount');
-
-
-                $.ajax({
-                    //url: '@Url.Action("ReloadEvents", "Home")',
-                    url: '/iWebMember/Development/GetCountDocumentList',
-                    data: {
-                        bldtknid: $("#iBuildingTokenID").val(),
-                        inftknid: $("#iInformationTokenID").val()
-                    },
-                    success: function (data) {
-
-                        //alert('load_TabViewDocumentList DONE !!!  ' + data.count);
-
-                        var clmn_DocumentCount = $("[data-clmdoccount='clmdoccount_" + window.inftknid + "']");
-
-
-                        if (data.count != "0") {
-                            clmn_DocumentCount.html(data.count);
-                            iDocumentCount.innerHTML = data.count;
-                            //  clmn_DocumentCount.html('AAA');
-
-                        }
-                        else {
-                            clmn_DocumentCount.html('');
-
-                            iDocumentCount.innerHTML = '';
-                        }
-
-
-                        // alert('load_TabViewDocumentList DONE !!!');
-                    }
-                });
-
-
-
-                // alert('GetCountDocumentList');
-
-                //$.ajax({
-                //    //url: '@Url.Action("ReloadEvents", "Home")',
-                //    url: '/iWebMember/Development/load_TabViewDocumentList',
-                //    data: {
-                //        bldtknid: $("#iBuildingTokenID").val(),//document.getElementById("cbShowPrevious").checked,
-                //        inftknid: $("#iInformationTokenID").val() //document.getElementById("cbShowUpcoming").checked
-                //    },
-                //    success: function (data) {
-                //        $("#div_DocumentList").html(data);
-                //        // alert('load_TabViewDocumentList DONE !!!');
-                //    }
-                //})
-
-
-
-            }
-            catch (err) {
-                console.error(err);
-                return;
-            }
-
-        }
-
-
-
-
-
-        function Document_Confirm_DELETE(doctknid) {
-
-            try {
-
-                window.doctknid = doctknid;
-                $("#iDocumentTokenID").val(doctknid);
-                // alert(bldtknid);
-
-                // var clmn_DocumentCount = $("[data-clmdbldname='clmdbldname_" + bldtknid + "']");
-
-                // $("[data-clmdbldname='clmdbldname_" + bldtknid + "']").hide();
-
-
-
-
-                $('#confirmPopup').modal('show');
-
-
-            }
-            catch (err) {
-                alert(err);
-            }
-        }
-
-
-
-
-
-
-        function Document_Set_DELETE() {
-
-            try {
-
-
-                $.ajax({
-                    //url: '@Url.Action("ReloadEvents", "Home")',
-                    url: '/iWebMember/Development/Document_Delete_ByDocumentTokenID',
-                    data: {
-                        doctknid: $("#iDocumentTokenID").val()//,
-                        //inftknid: $("#iInformationTokenID").val()
-                    },
-                    success: function (data) {
-
-                        //alert('load_TabViewDocumentList DONE !!!  ' + data.count);
-
-                        // var clmn_DocumentCount = $("[data-clmdoccount='clmdoccount_" + window.inftknid + "']");
-
-
-                        // if (data.count != "0") {
-                        //     clmn_DocumentCount.html(data.count);
-
-                        // }
-                        // else {
-                        //     clmn_DocumentCount.html('');
-
-                        // }
-
-
-
-                        $('#confirmPopup').modal('hide');
-
-
-                        $("[data-clmddocname='clmddocname_" + window.doctknid + "']").hide();
-                        // alert('Building_Delete_ByBuildingTokenID DONE !!!');
-
-
-
-                        GetCountDocumentList();
-
-
-
-
-                    }
-                });
-
-
-
-            }
-            catch (err) {
-                alert(err);
-            }
-        }
-
-
-
-
-
-        function Document_Set_UPDATE() {
-
-            try {
-
-                // apptbltknid, tbltknid, bldtknid, appinftknid, inftknid, doctknid,
-                //     doctyp, docname, docsize, docdesc,
-                //     datday, datmonth, datyear, dattxt, yearcnt,
-                //     clmdocname, clmdocdate, clmdocdesc
-
-                /////////////////////////
-
-
-                // // // // string doctknid,
-                // // // // string iday,
-                // // // // string idayname,
-                // // // // string imonth,
-                // // // // string imonthname,
-                // // // // string iyear,
-                // // // // string iDateText,
-                // // // // string idesc,
-                // // // // string timeframe = "1"
-
-
-                $.ajax({
-                    //url: '@Url.Action("ReloadEvents", "Home")',
-                    url: '/iWebMember/Development/Document_Update_ByDocumentTokenID',
-                    data: {
-                        doctknid: $("#iDocumentTokenID").val()//,
-                        //inftknid: $("#iInformationTokenID").val()
-                    },
-                    success: function (data) {
-
-                        //alert('load_TabViewDocumentList DONE !!!  ' + data.count);
-
-                        // var clmn_DocumentCount = $("[data-clmdoccount='clmdoccount_" + window.inftknid + "']");
-
-
-                        // if (data.count != "0") {
-                        //     clmn_DocumentCount.html(data.count);
-
-                        // }
-                        // else {
-                        //     clmn_DocumentCount.html('');
-
-                        // }
-
-
-
-                        // // // // // // $('#confirmPopup').modal('hide');
-
-
-                        // // // // // // $("[data-clmddocname='clmddocname_" + window.doctknid + "']").hide();
-                        // // // // // // // alert('Building_Delete_ByBuildingTokenID DONE !!!');
-
-
-
-                        // // // // // // GetCountDocumentList();
-
-
-
-
-                    }
-                });
-
-
-
-            }
-            catch (err) {
-                alert(err);
-            }
-        }
-
-
-
-
-
-
-        function isEmpty(el) {
+        function isEmpty (el) {
             return !$.trim(el.html())
         }
         if (isEmpty($('#element'))) {
@@ -1828,40 +1210,31 @@ mb-3"></div>
     <script>
 
 
-        function myFileParam() {
-            //return "Files";
-            return "filedata";
-        }
         var clearDropzone;
 
-        var dz = null;
 
         Dropzone.autoDiscover = false;
-
         $(function () {
-
+            var dz = null;
             $("#demo-upload").dropzone({
-                autoDiscover: false,
                 autoProcessQueue: false,
-                paramName: myFileParam,//"filedata",
-                parallelUploads: 1,
+                paramName: "File Upload",
                 maxFilesize: 5, //mb
-                maxThumbnailFilesize: 5, //mb
+                maxThumbnailFilesize: 1, //mb
                 maxFiles: 10,
-                acceptedFiles: ".jpeg,.png,.jpg,.pdf,.docx,.doc,.xls,.xlsx,.txt",
+                parallelUploads: 10,
+                acceptedFiles: ".jpeg,.png,.jpg,.pdf,.docx,.doc,.xls,.xlsx",
                 uploadMultiple: true,
                 addRemoveLinks: true,
                 //disablePreviews: true,
 
                 init: function () {
                     dz = this;
-                    // // // // // $("#btnupload").click(function (e) {
-                    // // // // //     e.preventDefault();
-                    // // // // //     dz.processQueue();
-                    // // // // //     // $(this).attr("disabled", "disabled");
-                    // // // // //     //$(this).removeAttr('disabled'));
-                    // // // // //     open_TabViewProgress();
-                    // // // // // });
+                    $("#btnupload").click(function () {
+                        dz.processQueue();
+                        // $(this).attr("disabled", "disabled");
+                        //$(this).removeAttr('disabled'));
+                    });
 
                     //clearDropzone = function () {
                     //    dz.removeAllFiles(true);
@@ -1872,56 +1245,21 @@ mb-3"></div>
                     //var preview = $(file.previewElement);
                     //preview.addClass("dz-success text-success");
                     setTimeout(function () {
-                        this.removeFile(file);
+                        dz.removeFile(file);
 
                     }, 2000);
-                    //open_TabViewProgress();
 
                 },
-
-
-                processing: function () {
-
-                    this.options.autoProcessQueue = true;
-                },
-
                 queuecomplete: function () {
                     //alert('Files Uploaded Successfully!');
-                    this.options.autoProcessQueue = false;
-                    this.removeAllFiles(true);
-
-                    setTimeout(function () {
-
-                        open_TabViewDocuments(true);
-
-                    }, 2000);
+                    dz.removeAllFiles(true);
+                    open_TabViewDocuments();
                 },
                 dictDefaultMessage: "<div style='display:flex;flex-direction:column;'><div><b>Drag and drop your files here to upload.</b></div><div><img src='https://bsr.vemcoconsulting.com/img/img_upload.png' style='width:50px;height:50px;'/></div><div><span class='m-3' >- or -</span></div><div class='m-3'><span style='width:auto;height:40px;border:1px solid silver;border-radius:2px;padding:5px;color:black;background-color:white;'>Select from device</span></div></div>",
                 dictRemoveFile: "Remove"
             });
 
-
-
-            // // // // CALLBACK ON COMPLETE UPLOADING EACH FILE
-            // // // dz.on("complete", function (file) {
-            // // //     // IF THERE ARE NO MORE FILES TO UPLOAD AND THE QUEUE IS EMPTY DO SOMETHING, ELSE GO ON WITH QUEUE PROCESS
-            // // //     if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
-            // // //         console.log("END ", this.getQueuedFiles().length);
-            // // //     }
-            // // //     else {
-            // // //         // START QUEUE PROCESSING AGAIN
-            // // //         Dropzone.forElement("#demo-upload").processQueue();
-            // // //     }
-            // // // });
-
-
-
-
-
-
-
         });
-
 
     </script>
 
@@ -1936,71 +1274,6 @@ mb-3"></div>
         $(document).ready(function () {
 
             try {
-
-
-                //  // // // // XXX  $("#btnupload").click(function (e) {
-                // // // // //     e.preventDefault();
-                // // // // //     dz.processQueue();
-                // // // // //     // $(this).attr("disabled", "disabled");
-                // // // // //     //$(this).removeAttr('disabled'));
-                // // // // //     open_TabViewProgress();
-                // // // // // });
-
-                $('#btnupload').on('click', function (e) {
-
-                    try {
-
-                        // alert('btnupload');
-                        // alert(dz);
-
-
-                        // // // // // // // // // // // // e.preventDefault();
-
-                        // // // // // // // // // // // // function tryQueue() {
-                        // // // // // // // // // // // //     var numQueued = dz.getQueuedFiles().length;
-                        // // // // // // // // // // // //     var numFiles = numQueued + dz.getUploadingFiles().length;
-                        // // // // // // // // // // // //     if (numQueued > 0) {
-                        // // // // // // // // // // // //         dz.processQueue();
-                        // // // // // // // // // // // //     }
-                        // // // // // // // // // // // //     if (numFiles > 0) {
-                        // // // // // // // // // // // //         setTimeout(tryQueue, 1000);
-                        // // // // // // // // // // // //     }
-                        // // // // // // // // // // // //     //else window.location = '/'; //redirect when finished
-                        // // // // // // // // // // // //     else alert('GOD HELP'); //redirect when finished
-                        // // // // // // // // // // // // }
-
-                        // // // // // // // // // // // // tryQueue();
-
-
-
-
-
-                        ////////////////////////////////////////////////////////////////
-
-                        e.preventDefault();
-                        dz.options.autoProcessQueue = true;
-                        dz.processQueue();
-
-                        open_TabViewProgress();
-
-                    }
-
-                    catch (err) {
-                        alert(err);
-                    }
-
-
-                });
-
-
-
-
-                ///////////////////////////////////////////////
-
-
-
-
-
 
 
                 $(".nav-tabs li button").click(function () {
@@ -2027,61 +1300,24 @@ mb-3"></div>
                     else if (x === 'view') {
 
                         // alert($("#div_DocumentList").is(':empty'));
-                        // alert($("#div_DocumentList").length);
+                       // alert($("#div_DocumentList").length);
+                        alert($.trim($("#div_DocumentList").html()).length);
 
-                        //alert($.trim($("#div_DocumentList").html()).length);
-
-                        //if ($.trim($("#div_DocumentList").html()).length === 0) {
-                        //    //alert('load_TabViewDocumentList');
+                        //if ($("#div_DocumentList").html() === '') {
                         //    load_TabViewDocumentList();
                         //}
 
-                        $('#div_CommandEdit').hide();
+                        $('#div_CommandUpload').hide();
                         $('#div_CommandUpload').hide();
 
                     }
                     else {
-                        $('#div_CommandEdit').hide();
+                        $('#div_CommandUpload').hide();
                         $('#div_CommandUpload').hide();
                     }
 
-
-                    //  $('#div_CommandUpload').show();
-
+                    //$('#div_CommandUpload').show();
                 });
-
-                $("#iDocumentDateStart")
-                    .datepicker({
-                        //dateFormat: 'dd-mm-yy, DD',
-                        dateFormat: 'dM, yy',
-                        //defaultDate: "24-09-2019"
-
-                        orientation: "bottom",
-                        // add this for placemenet
-                    });
-                // .click(function (e) {
-                //         $('.ui-datepicker').css('bottom left', e.pageY);
-                //     });
-
-                //$datepicker.datepicker('setDate', new Date());
-                $("#iDocumentDateStart").datepicker("setDate", new Date());
-                //iDocumentDateStart
-
-                ////////////$("#datepicker").datepicker({ dateFormat: "DD, d MM, yy" });
-                ////////////$("#datepicker").datepicker("setDate", $.datepicker.parseDate("yy-mm-dd", "2017-11-16"));
-
-
-                //$("#datepicker").datepicker();
-                //$("#datepicker").datepicker("setDate", "06/01/21");
-
-                // https://stackoverflow.com/questions/35013820/how-to-pass-date-value-created-by-datepicker-to-a-mvc-5-controller-with-ajax
-
-
-
-                $(function () {
-
-                });
-
 
             }
             catch (err) {

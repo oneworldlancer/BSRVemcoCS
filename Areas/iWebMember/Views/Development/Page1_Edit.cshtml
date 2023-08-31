@@ -52,17 +52,16 @@
                                 <div class="col-6 mt-3 ms-3 me-3">
                                     <label for="formFile" class="form-label">Image:</label>
 
-                        <input class="form-control" asp-for="FUploadBuildingImage" />
+                        <input id="uploadFile" name="uploadFile" class="form-control" asp-for="FUploadBuildingImage"
+                               accept="image/*" onchange="PreviewImage()" />
 
                       @*  <input class="form-control" type="file" id="formFile" asp-for="FUploadBuildingImage">*@
                                 </div>
 
 @*           offset-2   card   img-fluid   mt-3 ms-3 me-3 style="background-color:red;"*@
                 <div class="col-5">
-                        <img class="img-fluid float-end"
-                             src="~/_iUMedia/_iUBuilding/img_@{
-                            @Model.BuildingImageTokenID
-}.jpg" style="width:auto;height:200px;" />
+                        <img id="img_Preview" name="img_Preview" class="img-fluid float-end"
+                             src="~/_iUMedia/_iUBuilding/img_@{@Model.BuildingImageTokenID}.jpg" style="width:auto;height:200px;" />
                                 </div>
 
                             </div>
@@ -111,6 +110,74 @@
 
 
 </div>
+
+
+<script>
+
+
+    function PreviewImage () {
+
+        try {
+
+            //alert('PreviewImage'); // Where you will display your image
+            //var preview = document.querySelector('img');
+            var preview = document.getElementById("img_Preview");
+            // The button where the user chooses the local image to display
+            //var file = document.querySelector('input[type=file]').files[0];
+            var file = document.getElementById("uploadFile").files[ 0 ];
+            // FileReader instance
+            var reader = new FileReader();
+
+            // When the image is loaded we will set it as source of
+            // our img tag
+            reader.onloadend = function () {
+                preview.src = reader.result;
+            }
+
+
+            if (file) {
+                // Load image as a base64 encoded URI
+                reader.readAsDataURL(file);
+            }
+            else {
+                preview.src = "";
+            }
+
+        }
+        catch (err) {
+            console.error(err);
+            return;
+        }
+
+
+    }
+
+
+
+
+    function ShowPreview (input) {
+
+        //alert(input);
+
+        const file = input.files[ 0 ];
+
+        if (file) {
+
+            var img_Preview = document.getElementyId("img_Preview");
+            img_Preview.src = URL.createObjectURL(file);
+        }
+    }
+
+
+</script>
+
+@section iScript{
+
+
+
+        }
+
+
 <!-- End #main -->
 @*<div class="row">
 

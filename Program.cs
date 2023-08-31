@@ -14,7 +14,8 @@ var builder = WebApplication.CreateBuilder ( args );
 #region Identity
 
 builder.Services.AddDbContext<BSRDBModelContext> ( options =>
-   options.UseSqlServer ( "BSRVEMCODB" ) );
+   options.UseSqlServer ( "BSRVEMCODB" ) , 
+         ServiceLifetime.Scoped, ServiceLifetime.Scoped);
 
 
 
@@ -44,10 +45,22 @@ builder.Services.Configure<IdentityOptions> ( options =>
 
 } );
 
-
 #endregion
 
 
+#region Login-Cookies
+
+
+
+builder.Services.ConfigureApplicationCookie ( options =>
+{
+    options.ExpireTimeSpan = TimeSpan.FromMinutes ( 600 );
+    options.SlidingExpiration = true;
+} );
+
+
+
+#endregion
 
 
 
@@ -89,7 +102,7 @@ app.UseHttpLogging ( );
 app.UseRouting ( );
 
 app.UseAuthorization ( );
- 
+
 
 
 #region Areas

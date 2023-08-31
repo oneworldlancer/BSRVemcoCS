@@ -1,0 +1,147 @@
+﻿@model AppDevelomentDocumentListViewModel
+
+<ul class="list-group list-group-flush">
+    <li class="list-group-item">
+
+        @foreach (var iRow in Model.BuildingInformationDocumentList!)
+        {
+            <div style="display:flex;flex-direction:column;">
+                <table>
+
+
+
+                    <tr style="border-bottom: 1px dashed silver;" data-clmddocname="clmddocname_@iRow.DocumentTokenID">
+                        <td style="width:20px;text-align:left;vertical-align:text-top;padding:0px;">
+                            <img src="~/img/img_file_pdf.png" style="width:20px;height:20px;margin:0px;" />
+                        </td>
+
+                        <td style="width:100%;text-align:left;vertical-align:text-top;padding:0px;">
+
+                            <div class="p-1" style="display:flex;flex-direction:column;">
+
+                                <a href='/_iUMedia/_iUDocument/doc_@iRow.DocumentTokenID.@iRow.DocumentCode' target="_blank" style="text-decoration:underline;" data-clmdocname="clmdocname_@iRow.DocumentTokenID">@iRow.DocumentName (@iRow.DocumentSize)</a>
+
+                                <div class="mt-1" style="display:flex;flex-direction:row;" onclick="open_TabEditDocument('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.APPInformationTokenID','@iRow.InformationTokenID','@iRow.DocumentTokenID','@iRow.DocumentType','@iRow.DocumentName','@iRow.DocumentSize','@iRow.DocumentDescription','@iRow.TimeoutUserUploadStartDay','@iRow.TimeoutUserUploadStartMonth','@iRow.TimeoutUserUploadStartYear','@iRow.TimeoutUserUploadStartText','@iRow.TimeoutYearCount','clmdocname_@iRow.DocumentTokenID','clmdocdate_@iRow.DocumentTokenID','clmdocdesc_@iRow.DocumentTokenID');">
+                                    <strong>Document publication date:</strong>
+                                    @*6 February, 2022*@
+
+
+                                    @if (iRow.TimeoutUserUploadStartText != "0")
+                                    {
+
+                                        <span class="ms-1" style="text-transform:uppercase;border:1px solid silver;border-radius:2px;padding-left:3px;padding-right:3px;" data-clmdocdate="clmdocdate_@iRow.DocumentTokenID">
+
+
+                                            @iRow.TimeoutUserUploadStartText.ToString()
+
+
+                                        </span>
+                                    }
+                                    else
+                                    {
+
+                                        <span class="ms-1" style="text-transform:uppercase;border:1px solid silver;border-radius:2px;padding-left:3px;padding-right:3px;color:red;" data-clmdocdate="clmdocdate_@iRow.DocumentTokenID">
+
+
+                                            PICK A DATE
+
+                                        </span>
+                                    }
+
+
+
+
+
+
+                                </div>
+
+                                <strong class="mt-1">Document description:</strong>
+                                @*  <span style="padding-bottom:5px;" data-clmdocdesc="clmdocdesc_@iRow.DocumentTokenID">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
+
+                            *@
+
+                                @if (iRow.DocumentDescription != "0")
+                                {
+
+                                    <span style="padding-bottom:5px;" data-clmdocdesc="clmdocdesc_@iRow.DocumentTokenID" onclick="open_TabEditDocument('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.APPInformationTokenID','@iRow.InformationTokenID','@iRow.DocumentTokenID','@iRow.DocumentType','@iRow.DocumentName','@iRow.DocumentSize','@iRow.DocumentDescription','@iRow.TimeoutUserUploadStartDay','@iRow.TimeoutUserUploadStartMonth','@iRow.TimeoutUserUploadStartYear','@iRow.TimeoutUserUploadStartText','@iRow.TimeoutYearCount','clmdocname_@iRow.DocumentTokenID','clmdocdate_@iRow.DocumentTokenID','clmdocdesc_@iRow.DocumentTokenID');">
+
+
+                                        @Html.Raw(   @iRow.DocumentDescription.ToString())
+
+
+                                    </span>
+                                }
+                                else
+                                {
+
+                                    <span style="padding-bottom:5px;color:red;" data-clmdocdesc="clmdocdesc_@iRow.DocumentTokenID" onclick="open_TabEditDocument('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.APPInformationTokenID','@iRow.InformationTokenID','@iRow.DocumentTokenID','@iRow.DocumentType','@iRow.DocumentName','@iRow.DocumentSize','@iRow.DocumentDescription','@iRow.TimeoutUserUploadStartDay','@iRow.TimeoutUserUploadStartMonth','@iRow.TimeoutUserUploadStartYear','@iRow.TimeoutUserUploadStartText','@iRow.TimeoutYearCount','clmdocname_@iRow.DocumentTokenID','clmdocdate_@iRow.DocumentTokenID','clmdocdesc_@iRow.DocumentTokenID');">
+
+
+                                        FILL IN DESCRIPTION
+
+                                    </span>
+                                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </div>
+                        </td>
+
+
+
+                        @*     <td class="m-3" style="text-align:left;vertical-align:text-top;"><img src="~/img/img_download.png" style="width:20px;height:20px;" alt="Download" title="Download" /></td>
+                    <td class="m-3" style="text-align:left;vertical-align:text-top;" onclick="open_TabEditDocument('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.APPInformationTokenID','@iRow.InformationTokenID','@iRow.DocumentTokenID','@iRow.DocumentType','@iRow.DocumentName','@iRow.DocumentSize','@iRow.DocumentDescription','@iRow.TimeoutUserUploadStartDay','@iRow.TimeoutUserUploadStartMonth','@iRow.TimeoutUserUploadStartYear','@iRow.TimeoutUserUploadStartText','@iRow.TimeoutYearCount','clmdocname_@iRow.DocumentTokenID','clmdocdate_@iRow.DocumentTokenID','clmdocdesc_@iRow.DocumentTokenID');"><img src="~/img/img_edit.png" style="width:20px;height:20px;" alt="Edit" title="Edit" /></td>
+                    <td class="m-3" style="text-align:left;vertical-align:text-top;"><img src="~/img/img_delete.png" style="width:20px;height:20px;" alt="Delete" title="Delete" /></td>
+                    *@
+                        <td class="m-3" style="text-align:center;vertical-align:text-top;">
+                            <div style="width:150px;display:flex;flex-direction:row;">
+
+                                <a href='/_iUMedia/_iUDocument/doc_@iRow.DocumentTokenID.@iRow.DocumentCode' download="@iRow.DocumentName">
+                                    <div class="text-center" style="width:50px;">
+                                        <img src="~/img/img_download.png" style="width:20px;height:20px;" alt="Download" title="Download" />
+                                    </div>
+                                </a>
+                                <span>|</span>
+                                <div class="text-center" style="width:50px;" onclick="open_TabEditDocument('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.APPInformationTokenID','@iRow.InformationTokenID','@iRow.DocumentTokenID','@iRow.DocumentType','@iRow.DocumentName','@iRow.DocumentSize','@iRow.DocumentDescription','@iRow.TimeoutUserUploadStartDay','@iRow.TimeoutUserUploadStartMonth','@iRow.TimeoutUserUploadStartYear','@iRow.TimeoutUserUploadStartText','@iRow.TimeoutYearCount','clmdocname_@iRow.DocumentTokenID','clmdocdate_@iRow.DocumentTokenID','clmdocdesc_@iRow.DocumentTokenID');">
+                                    <img src="~/img/img_edit.png" style="width:20px;height:20px;" alt="Edit" title="Edit" />
+                                </div>
+                                <span>|</span>
+                                <div class="text-center" style="width:50px;" onclick="Document_Confirm_DELETE('@iRow.DocumentTokenID');">
+                                    <img src="~/img/img_delete.png" style="width:20px;height:20px;" alt="Delete" title="Delete" />
+                                </div>
+
+
+
+                            </div>
+
+                        </td>
+
+
+                    </tr>
+
+
+
+                </table>
+
+                <div style="height:10px;"> </div>
+            </div>
+        }
+
+
+
+
+    </li>
+
+
+</ul>

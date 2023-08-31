@@ -53,6 +53,10 @@ public partial class BsrvemcoAppBuildingInformationList
 
     public string? TimeoutSystemNotification { get; set; }
 
+    public string? ScoreMinValue { get; set; }
+
+    public string? ScoreMaxValue { get; set; }
+
     public bool? IsVisible { get; set; }
 
     public string? ActiveStatus { get; set; }

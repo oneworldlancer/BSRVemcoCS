@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Properties\launchSettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_WebToolingArtifacts Remove="Properties\launchSettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.Identity.EntityFramework" Version="2.2.3" />
     <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.9" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
@@ -36,6 +44,12 @@
     <Folder Include="Views\Shared\Components\" />
     <Folder Include="wwwroot\_iUMedia\_iUBuilding\" />
     <Folder Include="wwwroot\_iUMedia\_iUDocument\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Properties\launchSettings.json" />
+    <None Include="wwwroot\Scripts\filedrop.js" />
+    <None Include="wwwroot\Uploads\1.pdf" />
   </ItemGroup>
 
 </Project>

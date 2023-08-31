@@ -19,117 +19,164 @@
             </ol>
         </nav>
     </div>
-    
+
     <!-- End Page Title -->
-@*    class="section dashboard" style="margin-top:0px;padding-top:0px;"*@
+    @*    class="section dashboard" style="margin-top:0px;padding-top:0px;"*@
     <section>
 
 
-  <div class="row">
+        <div class="row">
 
-                            <span class="fs-5 ms-3">Summary Information</span>
-                        </div>
+            <span class="fs-5 ms-3">Summary Information</span>
+        </div>
 
-        <form method="post" enctype="multipart/form-data"  class="row g-3 needs-validation" novalidate>
-
-             
-                    <div asp-validation-summary="All" class="text-danger"></div>
+        <form method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
 
 
+            <div asp-validation-summary="All" class="text-danger"></div>
 
-                        <div class="row">
 
 
-                         @*   <div class="mt-3 ms-3 me-3">
-                                <label for="formGroupExampleInput" class="form-label">Accountable Person (AP):</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" value="Vemco consulting" disabled>
-                            </div>
-*@
-@*            col-12*@
+            <div class="row">
 
-                            <div class="row">
 
-                                <div class="col-6 mt-3 ms-3 me-3">
-                                    <label for="formFile" class="form-label">Image:</label>
+                @*   <div class="mt-3 ms-3 me-3">
+                <label for="formGroupExampleInput" class="form-label">Accountable Person (AP):</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" value="Vemco consulting" disabled>
+                </div>
+                *@
+                @*            col-12*@
 
-                        <input class="form-control" asp-for="FUploadBuildingImage" />
+                <div class="row">
 
-                      @*  <input class="form-control" type="file" id="formFile" asp-for="FUploadBuildingImage">*@
-                                </div>
+                    <div class="col-6 mt-3 ms-3 me-3">
+                        <label for="formFile" class="form-label">Image:</label>
+                        @*onchange="ShowPreview(this);"*@
+                        <input id="uploadFile" name="uploadFile" class="form-control" asp-for="FUploadBuildingImage"
+                               accept="image/*" onchange="PreviewImage()" />
 
-@*           offset-2   card   img-fluid   mt-3 ms-3 me-3 style="background-color:red;"*@
-                <div class="col-5">
-                    <img class="img-fluid float-end"
-                         src="~/img/nopreview.png" style="width:auto;height:200px;" />
-                                </div>
+                        @*  <input class="form-control" type="file" id="formFile" asp-for="FUploadBuildingImage">*@
+                    </div>
 
-                            </div>
-                        
-                            
-                            <div class="mt-0 ms-3 me-3">
-                                <label for="formGroupExampleInput2" class="form-label">Development name:</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder=""
+                    @*           offset-2   card   img-fluid   mt-3 ms-3 me-3 style="background-color:red;"*@
+                    <div class="col-5">
+                        <img id="img_Preview" name="img_Preview" class="img-fluid float-end"
+                             src="~/img/nopreview.png" style="width:auto;height:200px;" />
+                    </div>
+
+                </div>
+
+
+                <div class="mt-0 ms-3 me-3">
+                    <label for="formGroupExampleInput2" class="form-label">Development name:</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder=""
                            asp-for="BuildingName"
-                           required/>
-                            </div>
+                           required />
+                </div>
 
 
 
-                            <div class="mt-3 ms-3 me-3">
-                                <label for="formGroupExampleInput2" class="form-label">Development address:</label>
-                                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder=""
+                <div class="mt-3 ms-3 me-3">
+                    <label for="formGroupExampleInput2" class="form-label">Development address:</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder=""
                            asp-for="BuildingAddress"
-                           required/>
-                            </div>
+                           required />
+                </div>
 
 
-@*                asp-format="{0:yyyy-MM-dd}"*@
-                            <div class="mt-3 ms-3 me-3">
-                                <label for="formGroupExampleInput2" class="form-label">Build date:</label>
+                @*                asp-format="{0:yyyy-MM-dd}"*@
+                <div class="mt-3 ms-3 me-3">
+                    <label for="formGroupExampleInput2" class="form-label">Build date:</label>
                     <input type="number" min="1900" max="2100" step="1" value="@DateTime.Now.Year" class="form-control" id="formGroupExampleInput2" placeholder=""
                            asp-for="BuildingDateYear"
-                           required/>
-                           
-                           @*<input type="year" class="form-control" id="formGroupExampleInput2" placeholder=""
-                           asp-for="BuildingDate"
-                           required/>*@
+                           required />
 
-                            </div>
-                            <span class="text-mute ms-3" style="font-size:small;">(approximate if unknown)</span>
+                    @*<input type="year" class="form-control" id="formGroupExampleInput2" placeholder=""
+                    asp-for="BuildingDate"
+                    required/>*@
+
+                </div>
+                <span class="text-mute ms-3" style="font-size:small;">(approximate if unknown)</span>
 
 
                 @*style="background-color:red;"*@
-            <div class="mt-5" >
-                <input class="btn btn-primary float-end" type="submit" value="Next" style="width:100px;height:auto;">
+                <div class="mt-5">
+                    <input class="btn btn-primary float-end" type="submit" value="Next" style="width:100px;height:auto;">
+                </div>
+
+
             </div>
-                      
-        
-        </div>
             <br />
             <span style="color:green">@Html.Raw(ViewBag.Message)</span>
         </form>
-        
+
     </section>
 
 
 
 </div>
-<!-- End #main -->
-@*<div class="row">
 
-    <div class="d-flex align-items-start">
-        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
-            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
-            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</button>
-            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button>
-        </div>
-        <div class="tab-content" id="v-pills-tabContent">
-            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">This is some placeholder content the Messages tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.</div>
-            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">This is some placeholder content the Messages tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.</div>
-            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">This is some placeholder content the Messages tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.</div>
-            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">This is some placeholder content the Messages tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.</div>
-        </div>
-    </div>
+<script>
 
-</div>*@
+
+    function PreviewImage () {
+
+        try {
+
+            //alert('PreviewImage'); // Where you will display your image
+            //var preview = document.querySelector('img');
+            var preview = document.getElementById("img_Preview");
+            // The button where the user chooses the local image to display
+            //var file = document.querySelector('input[type=file]').files[0];
+            var file = document.getElementById("uploadFile").files[ 0 ];
+            // FileReader instance
+            var reader = new FileReader();
+
+            // When the image is loaded we will set it as source of
+            // our img tag
+            reader.onloadend = function () {
+                preview.src = reader.result;
+            }
+
+
+            if (file) {
+                // Load image as a base64 encoded URI
+                reader.readAsDataURL(file);
+            }
+            else {
+                preview.src = "";
+            }
+
+        }
+        catch (err) {
+            console.error(err);
+            return;
+        }
+
+
+    }
+
+
+
+
+    function ShowPreview (input) {
+
+        //alert(input);
+
+        const file = input.files[ 0 ];
+
+        if (file) {
+
+            var img_Preview = document.getElementyId("img_Preview");
+            img_Preview.src = URL.createObjectURL(file);
+        }
+    }
+
+
+</script>
+
+@section iScript{
+
+
+
+        }

@@ -75,6 +75,10 @@ public partial class BsrvemcoUserBuildingInformationList
 
     public bool? IsVisible { get; set; }
 
+    public string? ScoreMinValue { get; set; }
+
+    public string? ScoreMaxValue { get; set; }
+
     public string? ActiveStatus { get; set; }
 
     public bool? IsActive { get; set; }

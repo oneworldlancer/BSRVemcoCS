@@ -1151,6 +1151,8 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.Score).HasDefaultValueSql("((0))");
             entity.Property(e => e.ScoreAdjusted).HasDefaultValueSql("((0))");
             entity.Property(e => e.ScoreManaged).HasDefaultValueSql("((0))");
+            entity.Property(e => e.ScoreMaxValue).HasMaxLength(50);
+            entity.Property(e => e.ScoreMinValue).HasMaxLength(50);
             entity.Property(e => e.ScoreOriginal).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutAppNotification).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutSystemNotification).HasDefaultValueSql("((0))");
@@ -2016,6 +2018,12 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.AppinformationTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("APPInformationTokenID");
+            entity.Property(e => e.ApptableCode)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("APPTableCode");
+            entity.Property(e => e.ApptableTokenId)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("APPTableTokenID");
             entity.Property(e => e.BuildingTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("BuildingTokenID");
@@ -2049,12 +2057,26 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.RowViewTokenId)
                 .HasDefaultValueSql("(newid())")
                 .HasColumnName("RowViewTokenID");
+            entity.Property(e => e.ScoreMaxValue).HasMaxLength(50);
+            entity.Property(e => e.ScoreMinValue).HasMaxLength(50);
             entity.Property(e => e.TimeoutAppNotification).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutSystemNotification).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutUserNotification).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutUserUpload).HasDefaultValueSql("((0))");
-            entity.Property(e => e.TimeoutUserUploadEnd).HasColumnType("smalldatetime");
-            entity.Property(e => e.TimeoutUserUploadStart).HasColumnType("smalldatetime");
+            entity.Property(e => e.TimeoutUserUploadEnd)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("smalldatetime");
+            entity.Property(e => e.TimeoutUserUploadEndDay).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeoutUserUploadEndMonth).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeoutUserUploadEndText).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeoutUserUploadEndYear).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeoutUserUploadStart)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("smalldatetime");
+            entity.Property(e => e.TimeoutUserUploadStartDay).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeoutUserUploadStartMonth).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeoutUserUploadStartText).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeoutUserUploadStartYear).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutYearCount).HasDefaultValueSql("((0))");
             entity.Property(e => e.UploadDate)
                 .HasDefaultValueSql("(getdate())")
@@ -2077,6 +2099,12 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.AppinformationTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("APPInformationTokenID");
+            entity.Property(e => e.ApptableCode)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("APPTableCode");
+            entity.Property(e => e.ApptableTokenId)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("APPTableTokenID");
             entity.Property(e => e.BuildingTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("BuildingTokenID");
@@ -2110,12 +2138,26 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.RowViewTokenId)
                 .HasDefaultValueSql("(newid())")
                 .HasColumnName("RowViewTokenID");
+            entity.Property(e => e.ScoreMaxValue).HasMaxLength(50);
+            entity.Property(e => e.ScoreMinValue).HasMaxLength(50);
             entity.Property(e => e.TimeoutAppNotification).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutSystemNotification).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutUserNotification).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutUserUpload).HasDefaultValueSql("((0))");
-            entity.Property(e => e.TimeoutUserUploadEnd).HasColumnType("smalldatetime");
-            entity.Property(e => e.TimeoutUserUploadStart).HasColumnType("smalldatetime");
+            entity.Property(e => e.TimeoutUserUploadEnd)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("smalldatetime");
+            entity.Property(e => e.TimeoutUserUploadEndDay).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeoutUserUploadEndMonth).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeoutUserUploadEndText).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeoutUserUploadEndYear).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeoutUserUploadStart)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("smalldatetime");
+            entity.Property(e => e.TimeoutUserUploadStartDay).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeoutUserUploadStartMonth).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeoutUserUploadStartText).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeoutUserUploadStartYear).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutYearCount).HasDefaultValueSql("((0))");
             entity.Property(e => e.UploadDate)
                 .HasDefaultValueSql("(getdate())")
@@ -2185,13 +2227,19 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.Score).HasDefaultValueSql("((0))");
             entity.Property(e => e.ScoreAdjusted).HasDefaultValueSql("((0))");
             entity.Property(e => e.ScoreManaged).HasDefaultValueSql("((0))");
+            entity.Property(e => e.ScoreMaxValue).HasMaxLength(50);
+            entity.Property(e => e.ScoreMinValue).HasMaxLength(50);
             entity.Property(e => e.ScoreOriginal).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutAppNotification).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutSystemNotification).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutUserNotification).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutUserUpload).HasDefaultValueSql("((0))");
-            entity.Property(e => e.TimeoutUserUploadEnd).HasColumnType("smalldatetime");
-            entity.Property(e => e.TimeoutUserUploadStart).HasColumnType("smalldatetime");
+            entity.Property(e => e.TimeoutUserUploadEnd)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("smalldatetime");
+            entity.Property(e => e.TimeoutUserUploadStart)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("smalldatetime");
             entity.Property(e => e.TimeoutYearCount).HasDefaultValueSql("((0))");
             entity.Property(e => e.UploadDate)
                 .HasDefaultValueSql("(getdate())")

@@ -21,6 +21,10 @@ public partial class BsrvemcoUserBuildingDocumentHistoryList
 
     public string? BuildingTokenId { get; set; }
 
+    public string? ApptableTokenId { get; set; }
+
+    public string? ApptableCode { get; set; }
+
     public string? DocumentTokenId { get; set; }
 
     public string? AppinformationTokenId { get; set; }
@@ -49,11 +53,31 @@ public partial class BsrvemcoUserBuildingDocumentHistoryList
 
     public DateTime? TimeoutUserUploadStart { get; set; }
 
+    public string? TimeoutUserUploadStartDay { get; set; }
+
+    public string? TimeoutUserUploadStartMonth { get; set; }
+
+    public string? TimeoutUserUploadStartYear { get; set; }
+
+    public string? TimeoutUserUploadStartText { get; set; }
+
     public DateTime? TimeoutUserUploadEnd { get; set; }
+
+    public string? TimeoutUserUploadEndDay { get; set; }
+
+    public string? TimeoutUserUploadEndMonth { get; set; }
+
+    public string? TimeoutUserUploadEndYear { get; set; }
+
+    public string? TimeoutUserUploadEndText { get; set; }
 
     public string? TimeoutUserNotification { get; set; }
 
     public string? TimeoutSystemNotification { get; set; }
+
+    public string? ScoreMinValue { get; set; }
+
+    public string? ScoreMaxValue { get; set; }
 
     public bool? IsVisible { get; set; }
 

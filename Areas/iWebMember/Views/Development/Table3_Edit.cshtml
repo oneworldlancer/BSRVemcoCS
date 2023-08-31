@@ -48,7 +48,7 @@
                     <th>@Model.ColumnDescription</th>
                     <th>@Model.ColumnCommentary</th>
                     <th style="width:150px;">@Model.ColumnCriterion</th>
-                    <th class="fw-bold" style="width:50px;">@Model.ColumnScoreManaged</th>
+                    <th class="fw-bold" style="width:50px;">@Model.ColumnScore</th>
                     <th>@Model.ColumnRiskControlMeasure</th>
                     <th class="fw-bold" style="width:110px;">@Model.ColumnScoreAdjused </th>
                     @*<th class="fw-bold" style="width:50px;">Total</th>*@
@@ -104,7 +104,7 @@
 
                             </table>
                         </td>
-                        <td class="fw-bold text-center" style="width:50px;">@iRow.ColumnScoreManaged</td>
+                        <td class="fw-bold text-center" style="width:50px;">@iRow.ColumnScoreOriginal</td>
                         @*class="d-inline-block text-truncate" style="max-width: 150px;"*@
 
                         <td class="text-break" style="max-width: 150px;" data-clmrisk="clmrisk_@iRow.InformationTokenID">
