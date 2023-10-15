@@ -15,8 +15,8 @@
         <nav>
             <ol class="breadcrumb">
                 @*href="index.html"*@
-                <li class="breadcrumb-item"><a>Developments</a></li>
-                <li class="breadcrumb-item active">New</li>
+                <li class="breadcrumb-item"><a>View Building</a></li>
+                <li class="breadcrumb-item active">Occurrence Reporting and Resident Engagement</li>
             </ol>
         </nav>
     </div>
@@ -32,13 +32,13 @@
         *@
 
 
-        <div class="row">
+       @*  <div class="row">
 
             <span class="fs-5 ms-3">
                 Resident Engagement
             </span>
 
-        </div>
+        </div> *@
 
         @*<div style="overflow-x:auto;">*@
 
@@ -324,6 +324,11 @@
                     clmn_Score.html(iScoreAdjusted.value);
                     clmn_RiskMeasure.html(visible_RiskControlMeasure);
                     clmn_Total.html(result.total);
+
+
+                    BSR_ShowToastMessage('update');
+
+
 
                 },
                 error: function () {

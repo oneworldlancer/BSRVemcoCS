@@ -5,7 +5,7 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 {
 
     [Area ( "iWebMember" )]
-    [Authorize]
+    //[Authorize]
     public class BSRVemcoPageController : Controller
     {
         public IActionResult Index ( )
@@ -36,6 +36,11 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
 
         public IActionResult ContactUs ( )
+        {
+            return View ( );
+        }
+        
+        public IActionResult SaltWater ( )
         {
             return View ( );
         }

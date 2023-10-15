@@ -1,0 +1,62 @@
+﻿@model AppDevelomentQueryDocumentListViewModel
+
+<ul class="list-group list-group-flush">
+    <li class="list-group-item">
+
+        @foreach (var iRow in Model.BuildingQueryDocumentList!)
+        {
+            <div style="display:flex;flex-direction:column;">
+                <table>
+
+
+
+                    <tr style="border-bottom: 1px dashed silver;" data-clmddocname="clmddocname_@iRow.DocumentTokenID">
+                        <td style="width:20px;text-align:left;vertical-align:text-top;padding:0px;">
+                            <img src="~/img/img_file_pdf.png" style="width:20px;height:20px;margin:0px;" />
+                        </td>
+
+                        <td style="width:100%;text-align:left;vertical-align:text-top;padding:0px;">
+
+                            <div class="p-1" style="display:flex;flex-direction:column;">
+
+                                <a href='@iRow.DocumentWebUrl' target="_blank" style="text-decoration:underline;" data-clmdocname="clmdocname_@iRow.DocumentTokenID">@iRow.DocumentWebUrl</a>
+
+
+
+                            </div>
+                        </td>
+
+
+
+                        <td class="m-3" style="text-align:center;vertical-align:text-top;">
+                            <div style="width:50px;display:flex;flex-direction:row;">
+
+
+                                <div class="text-center" style="width:50px;" onclick="Document_Confirm_DELETE('@iRow.DocumentTokenID');">
+                                    <img src="~/img/img_delete.png" style="width:20px;height:20px;" alt="Delete" title="Delete" />
+                                </div>
+
+
+
+                            </div>
+
+                        </td>
+
+
+                    </tr>
+
+
+
+                </table>
+
+                <div style="height:10px;"> </div>
+            </div>
+        }
+
+
+
+
+    </li>
+
+
+</ul>

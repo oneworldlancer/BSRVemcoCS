@@ -10,7 +10,7 @@ namespace BSRVemcoCS.iAppManager
 
 
 
-   public static async Task  <List<AppUserBuildingTableCriterionModelManager>>   getCriterionList ( BSRDBModelContext _dbContext , string AppInformationTokenID )
+   public static async Task  <List<AppUserBuildingTableCriterionModelManager>>   getCriterionList (BSRDBModelContext _dbContext , string AppInformationTokenID )
         {
 
 

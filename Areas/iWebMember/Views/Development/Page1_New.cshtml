@@ -51,9 +51,9 @@
 
                     <div class="col-6 mt-3 ms-3 me-3">
                         <label for="formFile" class="form-label">Image:</label>
-                        @*onchange="ShowPreview(this);"*@
-                        <input id="uploadFile" name="uploadFile" class="form-control" asp-for="FUploadBuildingImage"
-                               accept="image/*" onchange="PreviewImage()" />
+                        @* asp-for="FUploadBuildingImage" *@    @*onchange="ShowPreview(this);"*@
+                        <input id="uploadFile" name="uploadFile" class="form-control" 
+                               accept="image/*" onchange="PreviewImage()"  type="file" required />
 
                         @*  <input class="form-control" type="file" id="formFile" asp-for="FUploadBuildingImage">*@
                     </div>

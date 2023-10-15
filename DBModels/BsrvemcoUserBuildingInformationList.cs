@@ -31,6 +31,20 @@ public partial class BsrvemcoUserBuildingInformationList
 
     public string? InformationTokenId { get; set; }
 
+    public string? AppqueryTableTokenId { get; set; }
+
+    public string? AppqueryTableCode { get; set; }
+
+    public string? QueryTableTokenId { get; set; }
+
+    public string? QueryTableName { get; set; }
+
+    public string? QueryTableTitle { get; set; }
+
+    public string? QueryTableText { get; set; }
+
+    public string? QueryTableDescription { get; set; }
+
     public string? InformationName { get; set; }
 
     public string? InformationTitle { get; set; }
@@ -57,6 +71,24 @@ public partial class BsrvemcoUserBuildingInformationList
 
     public string? InformationScore { get; set; }
 
+    public string? QuestionCode { get; set; }
+
+    public string? QuestionType { get; set; }
+
+    public string? QuestionText { get; set; }
+
+    public string? QuestionDescription { get; set; }
+
+    public bool? IsAnswered { get; set; }
+
+    public string? AnswerCode { get; set; }
+
+    public string? AnswerType { get; set; }
+
+    public string? AnswerText { get; set; }
+
+    public string? AnswerDescription { get; set; }
+
     public string? TimeoutYearCount { get; set; }
 
     public string? TimeoutAppNotification { get; set; }
@@ -72,6 +104,20 @@ public partial class BsrvemcoUserBuildingInformationList
     public string? TimeoutSystemNotification { get; set; }
 
     public string? ImageTokenId { get; set; }
+
+    public bool? IsPaging { get; set; }
+
+    public string? PageSize { get; set; }
+
+    public string? PageCount { get; set; }
+
+    public string? PageNumber { get; set; }
+
+    public bool? IsVisited { get; set; }
+
+    public bool? IsViewed { get; set; }
+
+    public bool? IsOpened { get; set; }
 
     public bool? IsVisible { get; set; }
 

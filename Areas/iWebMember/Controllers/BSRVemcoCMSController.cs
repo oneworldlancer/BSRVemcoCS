@@ -10,7 +10,7 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 {
 
     [Area ( "iWebMember" )]
-    [Authorize]
+    //[Authorize]
     public class BSRVemcoCMSController : Controller
     {
 
@@ -151,6 +151,71 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
         [HttpPost]
         public async Task<IActionResult> CMS_PageTerms ( AppCMSPageViewModel iCMSPageModel )
+        {
+            try
+            {
+
+                var x = false;
+
+                x = await AppCMSPageManager.CMSPage_Update_HTMLContent_ByPageTokenID (
+                              _dbContext ,
+               iCMSPageModel.PageTokenID ,
+              iCMSPageModel.PageCode ,
+               iCMSPageModel.PageHTMLContent );
+
+
+
+
+
+                return View ( );
+            }
+            catch ( Exception ex )
+            {
+                AppUtility_DebugManager.Debug_Get_MessageText ( ex.Message.ToString ( ) );
+                return View ( );
+            }
+        }
+
+
+        
+        [HttpGet]
+        public IActionResult CMS_SaltWater( )
+        {
+            try
+            {
+
+
+                var _iCMSPageModel = _dbContext.BsrvemcoAppCmsPageLists
+                                    .Where ( u =>
+                                    u.PageCode == "saltwater")
+                                    //.Select (u  )
+                                    .SingleOrDefault ( );
+
+
+                AppCMSPageViewModel _iCMSPageViewModel = new AppCMSPageViewModel ( );
+
+                _iCMSPageViewModel.PageCode = "saltwater";
+                _iCMSPageViewModel.PageHTMLContent = _iCMSPageModel.PageHtmlcontent;
+
+
+
+
+
+
+                return View ( _iCMSPageViewModel );
+            }
+            catch ( Exception ex )
+            {
+                AppUtility_DebugManager.Debug_Get_MessageText ( ex.Message.ToString ( ) );
+                return View ( );
+            }
+        }
+
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> CMS_SaltWater( AppCMSPageViewModel iCMSPageModel )
         {
             try
             {

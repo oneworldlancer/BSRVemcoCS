@@ -1,0 +1,61 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+  Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.tiny.cloud/1/ijhe5oqbrnz2y8emfxulfmdz478mpq5qfgwd038tw5ws5mw1/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+</head>
+<body>
+
+    <form action="/action_page.php">
+
+        <label for="datemax">
+            https://localhost:7179/Debug/Index
+            Enter a date before 1980-01-01:</label>
+        <input type="date" id="datemax" name="datemax" max="1979-12-31"><br><br>
+
+        <label for="datemin">Enter a date after 2000-01-01:</label>
+        <input type="date" id="datemin" name="datemin" min="2000-01-02"><br><br>
+
+        <label for="quantity">Quantity (between 1 and 5):</label>
+        <input type="number" id="quantity" name="quantity" min="1" max="5"><br><br>
+
+        <textarea>
+    Welcome to TinyMCE!
+  </textarea>
+        <input type="submit">
+
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+
+        // Remove existing instances of tinyMCE.
+        tinyMCE.remove();
+
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+    </script>
+</body>
+</html>

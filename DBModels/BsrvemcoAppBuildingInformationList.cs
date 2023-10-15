@@ -21,6 +21,28 @@ public partial class BsrvemcoAppBuildingInformationList
 
     public string? AppinformationCode { get; set; }
 
+    public string? AppqueryTableTokenId { get; set; }
+
+    public string? AppqueryTableCode { get; set; }
+
+    public string? QueryTableTokenId { get; set; }
+
+    public string? QueryTableName { get; set; }
+
+    public string? QueryTableTitle { get; set; }
+
+    public string? QueryTableText { get; set; }
+
+    public string? QueryTableDescription { get; set; }
+
+    public bool? IsPaging { get; set; }
+
+    public string? PageSize { get; set; }
+
+    public string? PageCount { get; set; }
+
+    public string? PageNumber { get; set; }
+
     public string? OwnerUserTokenId { get; set; }
 
     public string? OwnerMobileNumberTokenId { get; set; }
@@ -46,6 +68,24 @@ public partial class BsrvemcoAppBuildingInformationList
     public string? ScoreAdjusted { get; set; }
 
     public string? RiskControlMeasure { get; set; }
+
+    public string? QuestionCode { get; set; }
+
+    public string? QuestionType { get; set; }
+
+    public string? QuestionText { get; set; }
+
+    public string? QuestionDescription { get; set; }
+
+    public bool? IsAnswered { get; set; }
+
+    public string? AnswerCode { get; set; }
+
+    public string? AnswerType { get; set; }
+
+    public string? AnswerText { get; set; }
+
+    public string? AnswerDescription { get; set; }
 
     public string? TimeoutYearCount { get; set; }
 

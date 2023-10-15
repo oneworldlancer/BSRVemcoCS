@@ -1,0 +1,11 @@
+﻿@model AppDevelomentQueryDocumentListViewModel
+
+
+@foreach (var iRow in Model.BuildingQueryDocumentList!)
+{
+    <a href="@iRow.DocumentWebUrl" target="_blank"
+       class="d-inline-block text-truncate"
+       style="width: 100%;color:blue;font-size:small;padding:5px;">@iRow.DocumentWebUrl</a>
+    <div style="width: 100%;height:1px;border-bottom: 1px silver solid;margin:1px;"></div>
+
+}

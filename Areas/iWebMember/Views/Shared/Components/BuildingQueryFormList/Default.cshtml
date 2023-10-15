@@ -1,0 +1,250 @@
+﻿@model AppDevelomentQueryTableViewModel
+
+<div class="accordion-body" style="margin:0px;padding:0px;">
+
+
+
+    <table class="table table-hover table-bordered m-0" style="width:100%;padding:3px;table-layout:fixed;">
+        <thead>
+            <tr>
+                @* @Model.ColumnDescription
+                *@
+                <th>ACTIIVITY</th>
+                @* <th style="width:200px;">Y/N - If No, Describe Your Activities Here</th> *@
+                @* class="text-center"
+                *@
+                <th class="text-center" style="width:200px;">The text on the left accurately describes what we do?</th>
+                @* <th style="width:150px;">@Model.ColumnCriterion</th> *@
+                @* class="fw-bold"
+                *@
+                <th style="width:200px;">Examples of Evidence</th>
+                <th style="width:200px;">Links to Evidence</th>
+                @*<th class="fw-bold" style="width:110px;">@Model.ColumnScoreAdjused </th>
+                <th class="fw-bold" style="width:50px;">Total</th>*@
+
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var iRow in Model.RowContentList!)
+            {
+                @* onclick="Popup_LoadForm('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.InformationTokenID','clmscore_@iRow.InformationTokenID','clmrisk_@iRow.InformationTokenID');" *@
+
+
+                <tr data-bs-toggle="modal">
+                    <td data-clmactivity="clmactivity_@iRow.QueryInformationTokenID">
+                        @Html.Raw(@iRow.InformationTitle)@Html.Raw(@iRow.InformationDescriptionUser)
+
+                        @*       <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong>Internal Communication:&nbsp;</strong>The organisation ensures that all relevant personnel, including employees, contractors, and building management teams, are made aware of the mandatory occurrence reporting system. This information is communicated through comprehensive training sessions, written guidelines, and awareness campaigns.</span></span></p>
+                    *@
+                    </td>
+                    @* data-clmrisk="clmrisk_@iRow.InformationTokenID" *@
+                    <td class="text-center align-middle" style="width:200px;background-color:whitesmoke;">
+
+                        @*  YES/NO *@
+
+                        @*   <div class="d-flex align-items-end flex-column" style="height: 100%;background-color:red;">
+
+                    <div class="p-2">Flex item-a</div>
+                    <div class="p-2">Flex item-b</div>
+                    <div class="mt-auto p-2">Flex item-c</div>
+
+                    </div> *@
+
+                        @*    <strong style="margin:10px;">You will not able to generate a &quot;Gap Analysis&quot; report untill you've responded.</strong>
+                    *@
+
+                        <div class="text-center align-middle" style="width:160px;border-radius:5px;padding:3px;margin-left:20px;margin-top:10px;">
+
+
+
+                            @* checked *@
+
+                            <div class="d-flex flex-row text-center" style="vertical-align:top;text-align:left;margin:5px;">
+                                <a href="#" type="button" class="btn @iRow.AnswerYESButtonCSS btn-sm" style="width:120px;font-size:small;"
+                                   data-bs-toggle="modal"
+                                   data-btnyes="btnyes_@iRow.QueryInformationTokenID"
+                                   onclick="Popup_LoadQueryForm('@iRow.AppQueryTableTokenID', '@iRow.QueryTableTokenID', '@iRow.BuildingTokenID', '@iRow.AppQueryInformationTokenID','@iRow.QueryInformationTokenID', 'clmactivity_@iRow.QueryInformationTokenID', 'clmlinklist_@iRow.QueryInformationTokenID','@iRow.InformationTitle','@iRow.InformationDescriptionUser','yes');">
+                                    YES
+                                </a>
+                                <img src="~/img/img_question.png"
+                                     style="width:15px;height:15px;margin:3px;"
+                                     data-toggle="tooltip" data-placement="bottom" title="Press this button if text on the left accurately describes what you do in this area." />
+                            </div>
+
+
+
+                            <div class="d-flex flex-row text-center" style="vertical-align:top;text-align:left;margin:5px;">
+                                <a href="#" type="button" class="btn @iRow.AnswerNOButtonCSS btn-sm" style="width:120px;font-size:small;"
+                                   data-bs-toggle="modal"
+                                   data-btnno="btnno_@iRow.QueryInformationTokenID"
+                                   onclick="Popup_LoadQueryForm('@iRow.AppQueryTableTokenID', '@iRow.QueryTableTokenID', '@iRow.BuildingTokenID', '@iRow.AppQueryInformationTokenID','@iRow.QueryInformationTokenID', 'clmactivity_@iRow.QueryInformationTokenID', 'clmlinklist_@iRow.QueryInformationTokenID','@iRow.InformationTitle','@iRow.InformationDescriptionUser','no');">
+                                    NO
+                                </a>
+                                <img src="~/img/img_question.png"
+                                     style="width:15px;height:15px;margin:3px;"
+                                     data-toggle="tooltip" data-placement="bottom" title="Press this button if text on the left does NOT describe what you do, and type your own descrpition in the dialog box that appears." />
+                            </div>
+
+
+
+                            <div class="d-flex flex-row text-center" style="vertical-align:top;text-align:left;margin:5px;">
+                                <a href="#" type="button" class="btn @iRow.AnswerNULLButtonCSS btn-sm" style="width:120px;font-size:small;"
+                                   data-bs-toggle="modal"
+                                   data-btnnull="btnnull_@iRow.QueryInformationTokenID"
+                                   onclick="Popup_LoadQueryForm('@iRow.AppQueryTableTokenID', '@iRow.QueryTableTokenID', '@iRow.BuildingTokenID', '@iRow.AppQueryInformationTokenID','@iRow.QueryInformationTokenID', 'clmactivity_@iRow.QueryInformationTokenID', 'clmlinklist_@iRow.QueryInformationTokenID','@iRow.InformationTitle','This area is under development.','null');">
+                                    NIL RETURN
+                                </a>
+                                <img src="~/img/img_question.png"
+                                     style="width:15px;height:15px;margin:3px;"
+                                     data-toggle="tooltip" data-placement="bottom" title="Press this button if you carry up NO activity in this area." />
+                            </div>
+
+
+
+
+                            @* Press this button if text on the left accurately describes what you do in this area *@
+                            @*   <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off"
+                        style="width:60px;">
+                        <label class="btn btn-outline-success" for="success-outlined">YES</label>
+
+                        *@
+                            @* Press this button if text on the left does NOT describe what you do, and type your own descrpitoin in the dialog box that appears.*@
+                            @* <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off"
+                        style="width:60px;margin-left:20px;">
+                        <label class="btn btn-outline-danger" for="danger-outlined">NO</label> *@
+
+
+                            @* Press this button if you carry up NO activity in this area. *@
+                            @*  <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off"
+                        style="width:60px;margin-left:20px;">
+                        <label class="btn btn-outline-danger" for="danger-outlined">NIL RETURN</label> *@
+                            @* NO LINKS HERE *@
+                            @*  Text on the report REPLACED WITH >>> "Work is currently being developed for this area'"
+                        *@
+
+                        </div>
+
+
+
+
+                        @*   @if (iRow.ColumnRiskControlMeasure != "0")
+                    {
+                    @Html.Raw(@iRow.ColumnRiskControlMeasure)
+                    } *@
+                    </td>
+
+                    <td class="text-center">
+                        @*  list of evidence *@
+
+
+                        <table class="text-center" style="width:100%">
+
+
+                            @if (iRow.ColumnEvidenceList.Count > 0)
+                            {
+
+                                @foreach (var iRowNested in iRow.ColumnEvidenceList!)
+                                {
+
+                                    <tr>
+
+
+                                        @if (iRowNested == iRow.ColumnEvidenceList.Last())
+                                        {
+
+                                            <td class="text-center" style="padding-top:3px;padding-bottom:3px;border-bottom: 1px transparent solid;width:150px;">
+                                                <small>@iRowNested.EvidenceText</small>
+                                            </td>
+
+                                        }
+                                        else
+                                        {
+                                            <td class="text-center" style="padding-top:3px;padding-bottom:3px;border-bottom: 1px silver solid;width:150px;">
+                                                <small>@iRowNested.EvidenceText</small>
+                                            </td>
+                                        }
+
+
+                                    </tr>
+                                }
+
+                            }
+
+                        </table>
+
+
+
+
+
+
+
+                        @*    Copy of the documented system and guidelines. Dates of training sessions (dates and topics covered). Examples of campaigns
+                    *@
+                        @*  @if (iRow.ColumnCommentary != "0")
+                    {
+                    @iRow.ColumnCommentary
+                    } *@
+                    </td>
+
+                    <td style="width:200px;" data-clmlinklist="clmlinklist_@iRow.QueryInformationTokenID">
+
+
+                        @if (iRow.ColumnQueryDocumentList.Count() > 0)
+                        {
+                            @*  <ul> *@
+
+                            @foreach (var iRowNested in iRow.ColumnQueryDocumentList!)
+                            {
+                                @* <li class="align-top"> *@
+                                <a href="@iRowNested.DocumentWebUrl" target="_blank"
+                                   class="d-inline-block text-truncate"
+                                   style="width: 100%;color:blue;font-size:small;padding:5px;">@iRowNested.DocumentWebUrl</a>
+                                <div style="width: 100%;height:1px;border-bottom: 1px silver solid;margin:1px;"></div>
+
+                                @* </li> *@
+                            }
+                            @* </ul> *@
+
+                        }
+                        else
+                        {
+
+                            @if (iRow.AnswerCode == "null")
+                            {
+                                <span>N/A</span>
+
+                            }
+                            else
+
+                            {
+                                <span>Provide hyperlinks to evidence here.</span>
+                            }
+
+
+
+                        }
+
+
+                    </td>
+
+
+                </tr>
+
+
+
+
+
+
+
+            }
+
+
+        </tbody>
+    </table>
+
+
+
+
+</div>

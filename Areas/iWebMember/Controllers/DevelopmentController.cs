@@ -18,6 +18,7 @@ using System.Diagnostics;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.CodeAnalysis.Operations;
 using System.Globalization;
+using Microsoft.EntityFrameworkCore;
 
 namespace BSRVemcoCS.Areas.iWebMember.Controllers
 {
@@ -102,21 +103,48 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
                 List<string> uploadedFiles = new List<string>();
                 //foreach ( IFormFile postedFile in postedFiles )
                 //{
-                string fileName = Path.GetFileName(iDevelomentNew1ViewModel.FUploadBuildingImage.FileName);
+                //string fileName = Path.GetFileName(iDevelomentNew1ViewModel.FUploadBuildingImage.FileName);
                 string _iFileName = "img_" + _arrTokenList[1] + ".jpg";
+
+                //////////////////////////////////////////
+
+
+                var files = HttpContext.Request.Form.Files;
+
+                // if ( iDevelomentEdit1ViewModel.FUploadBuildingImage != null )
+                foreach (var file in files)
+                {
+
+                    using (FileStream stream = new FileStream(Path.Combine(path, _iFileName), FileMode.Create))
+                    {
+                        files[0].CopyTo(stream);
+                        uploadedFiles.Add(files[0].FileName);
+
+                        //ViewBag.Message += string.Format("<b>{0}</b> uploaded.<br />", files[0].FileName);
+
+
+                    }
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 //   using ( FileStream stream = new FileStream ( Path.Combine ( path , fileName ) , FileMode.Create ) )
 
 
-                using (FileStream stream = new FileStream(Path.Combine(path, _iFileName), FileMode.Create))
-                {
-                    iDevelomentNew1ViewModel.FUploadBuildingImage.CopyTo(stream);
-                    uploadedFiles.Add(fileName);
-                    ViewBag.Message += string.Format("<b>{0}</b> uploaded.<br />", fileName);
 
-
-                }
                 //}
 
 
@@ -566,178 +594,260 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
         [HttpGet]
         public async Task<IActionResult> Page2_New()
         {
-            string id = Request.Query["bldtknid"].ToString();
 
-
-
-
-
-
-            // string id = HttpContext.Request.RouteValues[ "bldtknid" ].ToString ( );
-
-
-            List<BsrvemcoUserBuildingInformationList>? _arrCheckCountUserBuildingInfomationList = _dbContext.BsrvemcoUserBuildingInformationLists
-            .Where(u =>
-            u.BuildingTokenId == id
-            && u.ApptableTokenId == "1689022008239")
-             //.Select (u  )
-             //.FirstOrDefault ( ); // This is what actually executes the request and return a response
-             .ToList(); // This is what actually executes the request and return a response
-
-
-
-            if (_arrCheckCountUserBuildingInfomationList.Count == 0)
+            try
             {
 
-                List<BsrvemcoAppBuildingInformationList>? _arrAppDevelomentInfomationList = _dbContext.BsrvemcoAppBuildingInformationLists
-                     //.Where ( u => u.BuildingTokenId == id )
-                     //.Select (u  )
-                     //.FirstOrDefault ( ); // This is what actually executes the request and return a response
-                     .ToList(); // This is what actually executes the request and return a response
 
+                string id = Request.Query["bldtknid"].ToString();
 
-                ArrayList _arrTokenList = new ArrayList();
-                _arrTokenList = AppUtility_ListTokenIDManager.ListTokenID_Generate_NewList(_arrAppDevelomentInfomationList.Count.ToString());
 
 
+                // string id = HttpContext.Request.RouteValues[ "bldtknid" ].ToString ( );
 
-                ////////////////////////////////////////
 
-                BsrvemcoUserBuildingInformationList iBuildingModel;
-
-                for (int i = 0; i < _arrAppDevelomentInfomationList.Count; i++)
-                {
-
-
-                    iBuildingModel = new BsrvemcoUserBuildingInformationList()
-                    {
-
-                        RowViewTokenId = new Guid(),
-
-
-
-                        OwnerUserTokenId = Program.iOwnerModel.OwnerUserTokenID,
-                        CompanyTokenId = Program.iOwnerModel.CompanyTokenID,
-                        BuildingTokenId = id,
-
-                        ApptableTokenId = _arrAppDevelomentInfomationList[i].ApptableTokenId.ToString(),
-                        AppinformationTokenId = _arrAppDevelomentInfomationList[i].AppinformationTokenId.ToString(),
-                        InformationTokenId = _arrTokenList[i].ToString(),
-                        InformationText = _arrAppDevelomentInfomationList[i].InformationText.ToString(),
-
-                        TimeoutYearCount=  _arrAppDevelomentInfomationList[i].TimeoutYearCount.ToString(),
-
-                        InformationScore = "5",
-                        Score = "5",
-                        ScoreManaged = "5",
-                        ScoreAdjusted = "5",
-                        ScoreOriginal = "5",
-
-
-                        UploadDateTimeMilliSec = AppUtility_TimeManager.Time_GetCurrentTimeInMilliSecond(),
-                        IsVisible = true,
-                        IsActive = true,
-
-                    };
-
-
-                    await _dbContext.BsrvemcoUserBuildingInformationLists.AddAsync(iBuildingModel);
-
-
-                    await _dbContext.SaveChangesAsync();
-
-
-                }
-
-
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            List<BsrvemcoUserBuildingInformationList>? _arrUserBuildingInfomationList = _dbContext.BsrvemcoUserBuildingInformationLists
+                List<BsrvemcoUserBuildingInformationList>? _arrCheckCountUserBuildingInfomationList = _dbContext.BsrvemcoUserBuildingInformationLists
                 .Where(u =>
-                u.BuildingTokenId == id
-                && u.ApptableTokenId == "1689022008239" &&
-                u.IsVisible== true)
+                u.BuildingTokenId == id &&
+                u.ApptableTokenId == "1689022008239" &&
+                u.IsVisible == true)
                  //.Select (u  )
                  //.FirstOrDefault ( ); // This is what actually executes the request and return a response
                  .ToList(); // This is what actually executes the request and return a response
 
 
 
-
-
-
-
-            AppDevelomentNew2ViewModel iDevelomentNew2ViewModel = new AppDevelomentNew2ViewModel();
-            List<AppUserBuildingInformationModelManager> _arrBuildingInformationModelList = new List<AppUserBuildingInformationModelManager>();
-
-
-            AppUserBuildingInformationModelManager _iUserBuildingInformationModel;
-            for (int i = 0; i < _arrUserBuildingInfomationList.Count; i++)
-            {
-                _iUserBuildingInformationModel = new AppUserBuildingInformationModelManager()
+                if (_arrCheckCountUserBuildingInfomationList.Count == 0)
                 {
-                    AppTableTokenID = _arrUserBuildingInfomationList[i].ApptableTokenId.ToString(),
-                    TableTokenID = _arrUserBuildingInfomationList[i].ApptableTokenId.ToString(),
-                    APPInformationTokenID = _arrUserBuildingInfomationList[i].AppinformationTokenId.ToString(),
-                    BuildingTokenID = id.ToString(),
-                    InformationText = _arrUserBuildingInfomationList[i].InformationText.ToString(),
-                    InformationTokenID = _arrUserBuildingInfomationList[i].InformationTokenId.ToString(),
-                    InformationScore = _arrUserBuildingInfomationList[i].Score,
-                    InformationScoreAdjusted = _arrUserBuildingInfomationList[i].ScoreAdjusted,
-                    DocumentCount = _arrUserBuildingInfomationList[i].DocumentCount,
-                    TimeFrame = _arrUserBuildingInfomationList[i].TimeoutYearCount
-                };
 
-                _arrBuildingInformationModelList.Add(_iUserBuildingInformationModel);
+                    List<BsrvemcoAppBuildingInformationList>? _arrAppDevelomentInfomationList = _dbContext.BsrvemcoAppBuildingInformationLists
+                         //.Where ( u => u.BuildingTokenId == id )
+                         //.Select (u  )
+                         //.FirstOrDefault ( ); // This is what actually executes the request and return a response
+                         .ToList(); // This is what actually executes the request and return a response
+
+
+                    ArrayList _arrTokenList = new ArrayList();
+                    _arrTokenList = AppUtility_ListTokenIDManager.ListTokenID_Generate_NewList(_arrAppDevelomentInfomationList.Count.ToString());
+
+
+
+                    ////////////////////////////////////////
+
+                    BsrvemcoUserBuildingInformationList iBuildingModel;
+
+                    for (int i = 0; i < _arrAppDevelomentInfomationList.Count; i++)
+                    {
+
+
+                        iBuildingModel = new BsrvemcoUserBuildingInformationList()
+                        {
+
+                            RowViewTokenId = new Guid(),
+
+
+
+                            OwnerUserTokenId = Program.iOwnerModel.OwnerUserTokenID,
+                            CompanyTokenId = Program.iOwnerModel.CompanyTokenID,
+                            BuildingTokenId = id,
+
+                            ApptableTokenId = _arrAppDevelomentInfomationList[i].ApptableTokenId.ToString(),
+                            AppinformationTokenId = _arrAppDevelomentInfomationList[i].AppinformationTokenId.ToString(),
+                            InformationTokenId = _arrTokenList[i].ToString(),
+                            InformationText = _arrAppDevelomentInfomationList[i].InformationText.ToString(),
+
+                            Commentary = _arrAppDevelomentInfomationList[i].Commentary.ToString(),
+
+
+                            TimeoutYearCount=  _arrAppDevelomentInfomationList[i].TimeoutYearCount.ToString(),
+
+                            InformationScore = "5",
+                            Score = "5",
+                            ScoreManaged = "5",
+                            ScoreAdjusted = "5",
+                            ScoreOriginal = "5",
+
+
+                            IsAnswered = false,
+                            AnswerCode="evidence_default",
+                            AnswerText="Awaiting Evidence",
+                            AnswerDescription="You will NOT able to generate a \"Gap Analysis Report\" untill you have responded.",
+
+                            UploadDateTimeMilliSec = AppUtility_TimeManager.Time_GetCurrentTimeInMilliSecond(),
+                            IsVisible = true,
+                            IsActive = true,
+
+                        };
+
+
+                        await _dbContext.BsrvemcoUserBuildingInformationLists.AddAsync(iBuildingModel);
+
+
+                        await _dbContext.SaveChangesAsync();
+
+
+                    }
+
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                // Golden-Thread-Documents
+                List<BsrvemcoUserBuildingInformationList>? _arrUserBuildingInfomationList = _dbContext.BsrvemcoUserBuildingInformationLists
+                    .Where(u =>
+                    u.BuildingTokenId == id
+                    && u.ApptableTokenId == "1689022008239" &&
+                    u.IsVisible== true)
+                     //.Select (u  )
+                     //.FirstOrDefault ( ); // This is what actually executes the request and return a response
+                     .ToList(); // This is what actually executes the request and return a response
+
+
+
+
+
+
+
+                AppDevelomentNew2ViewModel iDevelomentNew2ViewModel = new AppDevelomentNew2ViewModel();
+                List<AppUserBuildingInformationModelManager> _arrBuildingInformationModelList = new List<AppUserBuildingInformationModelManager>();
+
+
+                AppUserBuildingInformationModelManager _iUserBuildingInformationModel;
+                for (int i = 0; i < _arrUserBuildingInfomationList.Count; i++)
+                {
+                    _iUserBuildingInformationModel = new AppUserBuildingInformationModelManager()
+                    {
+                        AppTableTokenID = _arrUserBuildingInfomationList[i].ApptableTokenId.ToString(),
+                        TableTokenID = _arrUserBuildingInfomationList[i].ApptableTokenId.ToString(),
+                        APPInformationTokenID = _arrUserBuildingInfomationList[i].AppinformationTokenId.ToString(),
+                        BuildingTokenID = id.ToString(),
+                        InformationText = _arrUserBuildingInfomationList[i].InformationText.ToString(),
+                        InformationTokenID = _arrUserBuildingInfomationList[i].InformationTokenId.ToString(),
+                        InformationScore = _arrUserBuildingInfomationList[i].Score,
+                        InformationScoreAdjusted = _arrUserBuildingInfomationList[i].ScoreAdjusted,
+                        DocumentCount = _arrUserBuildingInfomationList[i].DocumentCount,
+                        TimeFrame = _arrUserBuildingInfomationList[i].TimeoutYearCount
+                    };
+
+
+
+                    if (_arrUserBuildingInfomationList[i].AnswerCode == "evidence_null")
+                    {
+                        _iUserBuildingInformationModel.AnswerNULLButtonCSS="btn-secondary";
+                    }
+                    else
+                    {
+                        _iUserBuildingInformationModel.AnswerNULLButtonCSS="btn-outline-secondary";
+                    }
+
+
+                    _arrBuildingInformationModelList.Add(_iUserBuildingInformationModel);
+                }
+
+
+
+
+
+
+
+
+                /////////////////////////////////////////
+                // Table-2
+
+                List<BsrvemcoUserBuildingInformationList>? _arrUserBuildingTable2_InfomationList = _dbContext.BsrvemcoUserBuildingInformationLists
+                     .Where(u =>
+                     u.ApptableTokenId == "1689162197100" &&
+                     u.BuildingTokenId == id &&
+                     u.IsVisible == true)
+                     //.Select (u  )
+                     //.FirstOrDefault ( ); // This is what actually executes the request and return a response
+                     .ToList(); // This is what actually executes the request and return a response
+
+
+
+
+                for (int i = 0; i < _arrUserBuildingTable2_InfomationList.Count; i++)
+                {
+                    _iUserBuildingInformationModel = new AppUserBuildingInformationModelManager()
+                    {
+                        AppTableTokenID = _arrUserBuildingTable2_InfomationList[i].ApptableTokenId.ToString(),
+                        TableTokenID = _arrUserBuildingTable2_InfomationList[i].ApptableTokenId.ToString(),
+                        APPInformationTokenID = _arrUserBuildingTable2_InfomationList[i].AppinformationTokenId.ToString(),
+                        BuildingTokenID = id.ToString(),
+                        InformationText = _arrUserBuildingTable2_InfomationList[i].InformationText.ToString(),
+                        InformationTokenID = _arrUserBuildingTable2_InfomationList[i].InformationTokenId.ToString(),
+                        InformationScore = _arrUserBuildingTable2_InfomationList[i].Score,
+                        InformationScoreAdjusted = _arrUserBuildingTable2_InfomationList[i].ScoreAdjusted,
+                        DocumentCount = _arrUserBuildingTable2_InfomationList[i].DocumentCount,
+                        TimeFrame = _arrUserBuildingTable2_InfomationList[i].TimeoutYearCount
+                    };
+
+
+                    if (_arrUserBuildingTable2_InfomationList[i].AnswerCode == "evidence_null")
+                    {
+                        _iUserBuildingInformationModel.AnswerNULLButtonCSS="btn-secondary";
+                    }
+                    else
+                    {
+                        _iUserBuildingInformationModel.AnswerNULLButtonCSS="btn-outline-secondary";
+                    }
+
+                    _arrBuildingInformationModelList.Add(_iUserBuildingInformationModel);
+                }
+
+
+
+
+
+
+                iDevelomentNew2ViewModel.BuildingInformationList = _arrBuildingInformationModelList;
+
+
+
+                return View(iDevelomentNew2ViewModel);
+
+            }
+            catch (Exception ex)
+            {
+                AppUtility_DebugManager.Debug_Get_MessageText(ex.Message.ToString());
+                return null;
             }
 
-
-
-
-
-
-            iDevelomentNew2ViewModel.BuildingInformationList = _arrBuildingInformationModelList;
-
-
-
-            return View(iDevelomentNew2ViewModel);
         }
 
 
@@ -974,7 +1084,8 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
                 List<BsrvemcoUserBuildingInformationList>? _arrUserBuildingInfomationList = _dbContext.BsrvemcoUserBuildingInformationLists
                      .Where(u =>
                      u.ApptableTokenId == "1689022008239" &&
-                     u.BuildingTokenId == id)
+                     u.BuildingTokenId == id &&
+                     u.IsVisible == true)
                      //.Select (u  )
                      //.FirstOrDefault ( ); // This is what actually executes the request and return a response
                      .ToList(); // This is what actually executes the request and return a response
@@ -1041,66 +1152,6 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
 
 
-                //////_iRowContentList
-                //////    .Add ( new AppUserBuildingTable1RowModelManager ( )
-                //////    {
-                //////        AppTableTokenID = "X1AppTableTokenID" ,
-                //////        TableTokenID = "X1TableTokenID" ,
-
-                //////        AppInformationTokenID = "X1AppInformationTokenID" ,
-                //////        InformationTokenID = "X1InformationTokenID" ,
-
-                //////        CompanyTokenID = "X1CompanyTokenID" ,
-                //////        BuildingTokenID = "X1BuildingTokenID" ,
-
-                //////        ColumnDescription = "Fire Strategy" ,
-                //////        ColumnCommentary = "X1ColumnCommentary" ,
-                //////        ColumnCriterion = "X1ColumnCriterion" ,
-
-                //////        ColumnScore = "5" ,
-                //////        ColumnScoreOriginal = "5" ,
-                //////        ColumnScoreManaged = "5" ,
-                //////        ColumnScoreAdjused = "5" ,
-                //////        ColumnRiskControlMeasure = "X1ColumnRiskControlMeasure" ,
-                //////        ColumnTotal = "5" ,
-
-                //////        ColumnCriterionList = getCriterionList ( )
-
-                //////    } );
-
-
-                //////_iRowContentList
-                //////    .Add ( new AppUserBuildingTable1RowModelManager ( )
-                //////    {
-                //////        AppTableTokenID = "X2AppTableTokenID" ,
-                //////        TableTokenID = "X2TableTokenID" ,
-
-                //////        AppInformationTokenID = "X2AppInformationTokenID" ,
-                //////        InformationTokenID = "X2InformationTokenID" ,
-
-                //////        CompanyTokenID = "X2CompanyTokenID" ,
-                //////        BuildingTokenID = "X2BuildingTokenID" ,
-
-                //////        ColumnDescription = "Up-to-date Fire risk Assessment (FRA)" ,
-                //////        ColumnCommentary = "X2ColumnCommentary" ,
-                //////        ColumnCriterion = "X2ColumnCriterion" ,
-
-                //////        ColumnScore = "3" ,
-                //////        ColumnScoreOriginal = "3" ,
-                //////        ColumnScoreManaged = "3" ,
-                //////        ColumnScoreAdjused = "3" ,
-                //////        ColumnRiskControlMeasure = "X2ColumnRiskControlMeasure" ,
-                //////        ColumnTotal = "3" ,
-
-                //////        ColumnCriterionList = getCriterionList2 ( )
-
-                //////    } );
-
-
-
-
-
-
 
 
 
@@ -1130,18 +1181,9 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
                 };
 
 
-
-
-
-                //////BuildingName = _iUserBuildignModel.BuildingName ,
-                //////BuildingAddress = _iUserBuildignModel.BuildingAddress ,
-                //////BuildingDate = DateTime.Parse ( _iUserBuildignModel.BuildingDate ) ,
-                //////BuildingImageTokenID = _iUserBuildignModel.ImageTokenId
-
-
-
-
                 return View(_iDevelomentTable1EditModel);
+
+
             }
             catch (Exception ex)
             {
@@ -1209,19 +1251,11 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
                 List<BsrvemcoUserBuildingInformationList>? _arrUserBuildingInfomationList = _dbContext.BsrvemcoUserBuildingInformationLists
                      .Where(u =>
                      u.ApptableTokenId == "1689162197100" &&
-                     u.BuildingTokenId == id)
+                     u.BuildingTokenId == id &&
+                     u.IsVisible == true)
                      //.Select (u  )
                      //.FirstOrDefault ( ); // This is what actually executes the request and return a response
                      .ToList(); // This is what actually executes the request and return a response
-
-
-                //////List<BsrvemcoAppBuildingInformationList>? _arrBuildingInfomationList = _dbContext.BsrvemcoAppBuildingInformationLists
-                //////     .Where ( u => u.ApptableTokenId == "1689162197100" )
-                //////     //.Select (u  )
-                //////     //.FirstOrDefault ( ); // This is what actually executes the request and return a response
-                //////     .ToList ( ); // This is what actually executes the request and return a response
-
-
 
 
 
@@ -1309,69 +1343,6 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
                   });
                 }
-
-
-
-
-                //////_iRowContentList
-                //////    .Add ( new AppUserBuildingTable1RowModelManager ( )
-                //////    {
-                //////        AppTableTokenID = "X1AppTableTokenID" ,
-                //////        TableTokenID = "X1TableTokenID" ,
-
-                //////        AppInformationTokenID = "X1AppInformationTokenID" ,
-                //////        InformationTokenID = "X1InformationTokenID" ,
-
-                //////        CompanyTokenID = "X1CompanyTokenID" ,
-                //////        BuildingTokenID = "X1BuildingTokenID" ,
-
-                //////        ColumnDescription = "Fire Strategy" ,
-                //////        ColumnCommentary = "X1ColumnCommentary" ,
-                //////        ColumnCriterion = "X1ColumnCriterion" ,
-
-                //////        ColumnScore = "5" ,
-                //////        ColumnScoreOriginal = "5" ,
-                //////        ColumnScoreManaged = "5" ,
-                //////        ColumnScoreAdjused = "5" ,
-                //////        ColumnRiskControlMeasure = "X1ColumnRiskControlMeasure" ,
-                //////        ColumnTotal = "5" ,
-
-                //////        ColumnCriterionList = getCriterionList ( )
-
-                //////    } );
-
-
-                //////_iRowContentList
-                //////    .Add ( new AppUserBuildingTable1RowModelManager ( )
-                //////    {
-                //////        AppTableTokenID = "X2AppTableTokenID" ,
-                //////        TableTokenID = "X2TableTokenID" ,
-
-                //////        AppInformationTokenID = "X2AppInformationTokenID" ,
-                //////        InformationTokenID = "X2InformationTokenID" ,
-
-                //////        CompanyTokenID = "X2CompanyTokenID" ,
-                //////        BuildingTokenID = "X2BuildingTokenID" ,
-
-                //////        ColumnDescription = "Up-to-date Fire risk Assessment (FRA)" ,
-                //////        ColumnCommentary = "X2ColumnCommentary" ,
-                //////        ColumnCriterion = "X2ColumnCriterion" ,
-
-                //////        ColumnScore = "3" ,
-                //////        ColumnScoreOriginal = "3" ,
-                //////        ColumnScoreManaged = "3" ,
-                //////        ColumnScoreAdjused = "3" ,
-                //////        ColumnRiskControlMeasure = "X2ColumnRiskControlMeasure" ,
-                //////        ColumnTotal = "3" ,
-
-                //////        ColumnCriterionList = getCriterionList2 ( )
-
-                //////    } );
-
-
-
-
-
 
 
 
@@ -1481,7 +1452,8 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
                 List<BsrvemcoUserBuildingInformationList>? _arrUserBuildingInfomationList = _dbContext.BsrvemcoUserBuildingInformationLists
                      .Where(u =>
                      u.ApptableTokenId == "1689162201957" &&
-                     u.BuildingTokenId == id)
+                     u.BuildingTokenId == id &&
+                     u.IsVisible == true)
                      //.Select (u  )
                      //.FirstOrDefault ( ); // This is what actually executes the request and return a response
                      .ToList(); // This is what actually executes the request and return a response
@@ -1739,7 +1711,8 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
                 List<BsrvemcoUserBuildingInformationList>? _arrUserBuildingInfomationList = _dbContext.BsrvemcoUserBuildingInformationLists
                      .Where(u =>
                      u.ApptableTokenId == "1689162207917" &&
-                     u.BuildingTokenId == id)
+                     u.BuildingTokenId == id &&
+                     u.IsVisible == true)
                      //.Select (u  )
                      //.FirstOrDefault ( ); // This is what actually executes the request and return a response
                      .ToList(); // This is what actually executes the request and return a response
@@ -2348,6 +2321,7 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
             return View();
         }
 
+
         public IActionResult Privacy()
         {
             return View();
@@ -2714,6 +2688,194 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
 
 
+        //[HttpPost]
+        //[RequestFormLimits(MultipartBodyLengthLimit = 104857600)]
+        public async Task<IActionResult> QueryForm_Upload_FileLinks(
+            string iAppQueryTableTokenID,
+            string iAppQueryInformationTokenID,
+            string iQueryTableTokenID,
+            string iQueryInformationTokenID,
+            string iBuildingTokenID,
+            string iFileLinkList,
+            string iAnswerCode)
+        {
+
+            /* , IFormFile filedata*/
+
+
+            try
+            {
+
+                //string phrase = "The quick brown fox jumps over the lazy dog.";
+                //string[ ] words = phrase.Split(' ');
+
+                //string phrase = "The quick brown fox jumps over the lazy dog.";
+                string[ ] words = iFileLinkList.Split(',');
+
+                List<string> uploadedFilesName = new List<string>();
+                //List<string> uploadedFilesTokenID = new List<string> ( );
+                //List<string> uploadedFileExtension = new List<string>();
+                //List<string> uploadedFileSize = new List<string>();
+                ArrayList _arrTokenList = new ArrayList();
+
+                _arrTokenList = AppUtility_ListTokenIDManager.ListTokenID_Generate_NewList(words.Length.ToString());
+
+
+
+                foreach (var word in words)
+                {
+
+                    uploadedFilesName.Add(word);
+                    //uploadedFilesTokenID.Add ( _xFileName );
+                    //uploadedFileExtension.Add(_iFileExtension);
+                    //uploadedFileSize.Add(_iFileSize);
+
+                    //System.Console.WriteLine($"<{word}>");
+                }
+
+                // Save-Database
+
+                try
+                {
+
+
+                    BsrvemcoUserBuildingQueryDocumentList iQueryDocumentModel;
+                    for (int i = 0; i < uploadedFilesName.Count; i++)
+                    {
+                        iQueryDocumentModel = new BsrvemcoUserBuildingQueryDocumentList()
+                        {
+
+                            RowViewTokenId = new Guid(),
+
+
+                            OwnerUserTokenId = Program.iOwnerModel.OwnerUserTokenID,
+                            CompanyTokenId = Program.iOwnerModel.CompanyTokenID,
+
+                            AppqueryTableTokenId = iAppQueryTableTokenID,
+                            QueryTableTokenId = iQueryTableTokenID,
+                            BuildingTokenId = iBuildingTokenID,
+                            AppqueryInformationTokenId = iAppQueryInformationTokenID,
+                            QueryInformationTokenId = iQueryInformationTokenID,
+                            DocumentTokenId = _arrTokenList[i].ToString(),
+                            DocumentWebUrl = uploadedFilesName[i].ToString(),
+
+                            //iDevelomentNew1ViewModel.BuildingDate.Day.ToString ( ) ,
+                            //DocumentTitle = uploadedFilesName[i].ToString(),// iDevelomentNew1ViewModel.BuildingDate.Month.ToString ( ) ,
+                            //DocumentExtension = uploadedFileExtension[i].ToString(),
+                            //DocumentCode = uploadedFileExtension[i].ToString(),
+                            //DocumentType = uploadedFileExtension[i].ToString(),
+                            //DocumentSize = uploadedFileSize[i].ToString(),//iDevelomentNew1ViewModel.BuildingDate.ToString ( ) ,
+
+
+
+                            TimeoutUserUploadStartDay =DateTime.Now.Day.ToString(),
+                            TimeoutUserUploadStartMonth =DateTime.Now.Month.ToString(),
+                            TimeoutUserUploadStartYear =DateTime.Now.Year.ToString(),
+                            TimeoutUserUploadStartText = "0",
+
+
+
+
+
+                            //TimeoutYearCount = iTimeFrame,
+                            UploadDateTimeMilliSec = AppUtility_TimeManager.Time_GetCurrentTimeInMilliSecond(),
+                            IsVisible = true,
+                            IsActive = true,
+
+                        };
+
+
+                        await _dbContext.BsrvemcoUserBuildingQueryDocumentLists.AddAsync(iQueryDocumentModel);
+
+                        await _dbContext.SaveChangesAsync();
+
+
+                    }
+
+
+
+                    // Update-Scores
+
+
+                    if (iAnswerCode== "yes")
+                    {
+
+                        await QueryForm_Answer_YES_NO(
+            iAppQueryTableTokenID,
+            iAppQueryInformationTokenID,
+            iQueryTableTokenID,
+           iQueryInformationTokenID,
+            iBuildingTokenID,
+            iAnswerCode,
+         "0");
+                    }
+
+                    //         string _iDocumentCount = _dbContext.BsrvemcoUserBuildingDocumentLists
+                    //.Where(
+                    //    c =>
+                    //    c.BuildingTokenId == iBuildingTokenID &&
+                    //    c.InformationTokenId == iInformationTokenID &&
+                    //    c.IsVisible == true)
+                    //.Count().ToString();
+
+
+                    //         var _iUserBuildignInfoModel = _dbContext.BsrvemcoUserBuildingInformationLists
+                    //                 .Where(u =>
+                    //                 u.BuildingTokenId == iBuildingTokenID &&
+                    //                 u.InformationTokenId == iInformationTokenID)
+                    //                 //.Select (u  )
+                    //                 .FirstOrDefault(); // This is what actually executes the request and return a response
+
+                    //         _iUserBuildignInfoModel.Score = "3";
+                    //         _iUserBuildignInfoModel.ScoreOriginal = "3";
+                    //         _iUserBuildignInfoModel.ScoreAdjusted = "3";
+                    //         _iUserBuildignInfoModel.ScoreManaged = "3";
+                    //         _iUserBuildignInfoModel.DocumentCount = _iDocumentCount;
+
+
+
+                    //         _iUserBuildignInfoModel.IsAnswered = true;
+                    //         _iUserBuildignInfoModel.AnswerCode="evidence_upload";
+                    //         _iUserBuildignInfoModel.AnswerText="Evidence has been uploaded and is awaiting verification";
+                    //         _iUserBuildignInfoModel.AnswerDescription="0";
+
+
+                    //         _dbContext.BsrvemcoUserBuildingInformationLists.Update(_iUserBuildignInfoModel);
+
+                    //         await _dbContext.SaveChangesAsync();
+
+
+
+                }
+                catch (Exception ex)
+                {
+                    AppUtility_DebugManager.Debug_Get_MessageText(ex.Message.ToString());
+
+                }
+
+
+
+
+
+                return Json(new { status = true, Message = "Files Uploaded Successfully!" });
+
+
+                //return View();
+
+
+
+            }
+            catch (Exception ex)
+            {
+                AppUtility_DebugManager.Debug_Get_MessageText(ex.Message.ToString());
+                return View();
+            }
+
+        }
+
+
+
+
 
 
         [HttpPost]
@@ -2837,16 +2999,16 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
 
 
-                            TimeoutUserUploadStartDay =DateTime. Now.Day.ToString(),
-                           TimeoutUserUploadStartMonth =DateTime.Now.Month.ToString(),
-                           TimeoutUserUploadStartYear =DateTime.Now.Year.ToString(),
-                           TimeoutUserUploadStartText = "0",
+                                TimeoutUserUploadStartDay =DateTime.Now.Day.ToString(),
+                                TimeoutUserUploadStartMonth =DateTime.Now.Month.ToString(),
+                                TimeoutUserUploadStartYear =DateTime.Now.Year.ToString(),
+                                TimeoutUserUploadStartText = "0",
 
 
 
 
 
-                            TimeoutYearCount = iTimeFrame,
+                                TimeoutYearCount = iTimeFrame,
                                 UploadDateTimeMilliSec = AppUtility_TimeManager.Time_GetCurrentTimeInMilliSecond(),
                                 IsVisible = true,
                                 IsActive = true,
@@ -2883,7 +3045,16 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
                         _iUserBuildignInfoModel.Score = "3";
                         _iUserBuildignInfoModel.ScoreOriginal = "3";
+                        _iUserBuildignInfoModel.ScoreAdjusted = "3";
+                        _iUserBuildignInfoModel.ScoreManaged = "3";
                         _iUserBuildignInfoModel.DocumentCount = _iDocumentCount;
+
+
+
+                        _iUserBuildignInfoModel.IsAnswered = true;
+                        _iUserBuildignInfoModel.AnswerCode="evidence_upload";
+                        _iUserBuildignInfoModel.AnswerText="Evidence has been uploaded and is awaiting verification";
+                        _iUserBuildignInfoModel.AnswerDescription="0";
 
 
                         _dbContext.BsrvemcoUserBuildingInformationLists.Update(_iUserBuildignInfoModel);
@@ -3154,7 +3325,136 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
 
 
-        public async Task saveDatabase(string iAppinformationTokenID, string iInformationTokenID, string iBuildingTokenID, string iTimeFrame,
+
+
+        public async Task<IActionResult> UploadFiles_NOT_AVAILABLE(
+                   string iInformationTokenID,
+                   string iBuildingTokenID)
+        {
+
+            /* , IFormFile filedata*/
+
+
+            // Save-Database
+
+            try
+            {
+
+                var _arrInfomationDocumentList = _dbContext.BsrvemcoUserBuildingDocumentLists
+                                  .Where(u =>
+                                  u.BuildingTokenId == iBuildingTokenID &&
+                                  u.InformationTokenId == iInformationTokenID &&
+                   u.IsVisible ==true)
+                                  //.Select (u  )
+                                  //.FirstOrDefault ( ); // This is what actually executes the request and return a response
+                                  .ToList(); // This is what actually executes the request and return a response
+
+                if (_arrInfomationDocumentList != null)
+                {
+                    for (int i = 0; i < _arrInfomationDocumentList.Count; i++)
+                    {
+                        _arrInfomationDocumentList[i].IsVisited= false;
+                    }
+
+
+                    _dbContext.BsrvemcoUserBuildingDocumentLists.UpdateRange(_arrInfomationDocumentList);
+
+                    await _dbContext.SaveChangesAsync();
+
+
+                }
+
+
+
+
+
+                // Update-Scores
+
+                //         string _iDocumentCount = _dbContext.BsrvemcoUserBuildingDocumentLists
+                //.Where(
+                //    c =>
+                //    c.BuildingTokenId == iBuildingTokenID &&
+                //    c.InformationTokenId == iInformationTokenID &&
+                //    c.IsVisible == true)
+                //.Count().ToString();
+
+
+                var _iUserBuildignInfoModel = _dbContext.BsrvemcoUserBuildingInformationLists
+                                .Where(u =>
+                                u.BuildingTokenId == iBuildingTokenID &&
+                                u.InformationTokenId == iInformationTokenID)
+                                //.Select (u  )
+                                .FirstOrDefault(); // This is what actually executes the request and return a response
+
+                _iUserBuildignInfoModel.Score = "5";
+                _iUserBuildignInfoModel.ScoreOriginal = "5";
+                _iUserBuildignInfoModel.ScoreAdjusted = "5";
+                _iUserBuildignInfoModel.ScoreManaged = "5";
+                _iUserBuildignInfoModel.DocumentCount = "0";
+
+
+
+                _iUserBuildignInfoModel.IsAnswered = true;
+                _iUserBuildignInfoModel.AnswerCode="evidence_null";
+                _iUserBuildignInfoModel.AnswerText="Nil return";
+                _iUserBuildignInfoModel.AnswerDescription="0";
+
+
+
+                _dbContext.BsrvemcoUserBuildingInformationLists.Update(_iUserBuildignInfoModel);
+
+                await _dbContext.SaveChangesAsync();
+
+                return Json(new { status = true, Message = "Files Uploaded Successfully!" });
+
+
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        AppUtility_DebugManager.Debug_Get_MessageText(ex.Message.ToString());
+
+                //    }
+
+
+
+
+
+
+
+                //return View();
+
+
+
+            }
+            catch (Exception ex)
+            {
+                AppUtility_DebugManager.Debug_Get_MessageText(ex.Message.ToString());
+                return View();
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public async Task saveDatabase_X1(string iAppinformationTokenID, string iInformationTokenID, string iBuildingTokenID, string iTimeFrame,
                List<string> uploadedFilesName,
         List<string> uploadedFileExtension,
         List<string> uploadedFileSize,
@@ -3258,6 +3558,8 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
         }
 
+
+
         static String BytesToString(long byteCount)
         {
             string[ ] suf = { "B", "KB", "MB", "GB", "TB", "PB", "EB" }; //Longs run out around EB
@@ -3271,20 +3573,6 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
 
 
-        public IActionResult ReloadDocumentList(string bldtknid, string inftknid)
-        {                                    /* bool showPrevious , bool showUpcoming */
-            return ViewComponent("DocumentList",
-                new
-                {
-                    bldtknid = bldtknid,
-                    inftknid = inftknid
-                });
-
-            //return ViewComponent ( "DocumentList" ,
-            //    new { showPrevious = showPrevious , showUpcoming = showUpcoming } );
-
-
-        }
 
 
 
@@ -3319,14 +3607,53 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
                         //.Select (u  )
                         .FirstOrDefault(); // This is what actually executes the request and return a response
 
-                _iUserBuildignInfoModel.Score = "3";
-                _iUserBuildignInfoModel.ScoreOriginal = "3";
-                _iUserBuildignInfoModel.DocumentCount = _iDocumentCount;
+
+
+                if (_iDocumentCount == "0")
+                {
+
+                    _iUserBuildignInfoModel.Score = "5";
+                    _iUserBuildignInfoModel.ScoreOriginal = "5";
+                    _iUserBuildignInfoModel.ScoreAdjusted = "5";
+                    _iUserBuildignInfoModel.ScoreManaged = "5";
+                    _iUserBuildignInfoModel.DocumentCount = "0";
+
+
+
+                    _iUserBuildignInfoModel.IsAnswered = false;
+                    _iUserBuildignInfoModel.AnswerCode="evidence_default";
+                    _iUserBuildignInfoModel.AnswerText="Awaiting Evidence";
+                    _iUserBuildignInfoModel.AnswerDescription="You will NOT able to generate a \"Gap Analysis Report\" untill you have responded.";
+
+                }
+                else
+                {
+
+                    _iUserBuildignInfoModel.Score = "3";
+                    _iUserBuildignInfoModel.ScoreOriginal = "3";
+                    _iUserBuildignInfoModel.DocumentCount = _iDocumentCount;
+
+
+                    _iUserBuildignInfoModel.IsAnswered = true;
+                    _iUserBuildignInfoModel.AnswerCode="evidence_upload";
+                    _iUserBuildignInfoModel.AnswerText="Evidence has been uploaded and is awaiting verification";
+                    _iUserBuildignInfoModel.AnswerDescription="0";
+
+
+
+                }
+
 
 
                 _dbContext.BsrvemcoUserBuildingInformationLists.Update(_iUserBuildignInfoModel);
 
                 await _dbContext.SaveChangesAsync();
+
+
+
+
+
+
 
 
                 return Json(new { count = _iDocumentCount });
@@ -3648,8 +3975,118 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
 
 
-            //return ViewComponent ( "DocumentList" ,
-            //    new { showPrevious = showPrevious , showUpcoming = showUpcoming } );
+        }
+
+
+
+        #endregion
+
+
+        #region Report
+
+
+
+        public IActionResult Report()
+        {
+
+            try
+            {
+
+
+                //AppDevelomentInformationReportViewModel 
+
+
+
+
+                string id = Request.Query["bldtknid"].ToString();
+
+
+
+                List<BsrvemcoUserBuildingInformationList>? _arrUserBuildingInfomationList = _dbContext.BsrvemcoUserBuildingInformationLists
+                    .Where(u =>
+                    u.BuildingTokenId == id &&
+                    u.ApptableTokenId == "1689022008239" &&
+                    //u.DocumentCount
+                    u.IsVisible== true)
+                     //.Select (u  )
+                     //.FirstOrDefault ( ); // This is what actually executes the request and return a response
+                     .ToList(); // This is what actually executes the request and return a response
+
+
+
+
+
+
+
+                AppDevelomentInformationReportViewModel iDevelomentInformationReportViewModel = new AppDevelomentInformationReportViewModel();
+                List<AppUserBuildingInformationModelManager> _arrBuildingInformationModelList = new List<AppUserBuildingInformationModelManager>();
+
+
+                AppUserBuildingInformationModelManager _iUserBuildingInformationModel;
+                for (int i = 0; i < _arrUserBuildingInfomationList.Count; i++)
+                {
+                    _iUserBuildingInformationModel = new AppUserBuildingInformationModelManager()
+                    {
+                        AppTableTokenID = _arrUserBuildingInfomationList[i].ApptableTokenId.ToString(),
+                        TableTokenID = _arrUserBuildingInfomationList[i].ApptableTokenId.ToString(),
+                        APPInformationTokenID = _arrUserBuildingInfomationList[i].AppinformationTokenId.ToString(),
+                        BuildingTokenID = id.ToString(),
+                        InformationText = _arrUserBuildingInfomationList[i].InformationText.ToString(),
+                        IsAnswered = (bool)_arrUserBuildingInfomationList[i].IsAnswered,
+                        AnswerCode = _arrUserBuildingInfomationList[i].AnswerCode.ToString(),
+                        AnswerText = _arrUserBuildingInfomationList[i].AnswerText.ToString(),
+                        AnswerDescription = _arrUserBuildingInfomationList[i].AnswerDescription.ToString(),
+                        //InformationTokenID = _arrUserBuildingInfomationList[i].InformationTokenId.ToString(),
+                        //InformationScore = _arrUserBuildingInfomationList[i].Score,
+                        //InformationScoreAdjusted = _arrUserBuildingInfomationList[i].ScoreAdjusted,
+                        DocumentCount = _arrUserBuildingInfomationList[i].DocumentCount,
+                        //TimeFrame = _arrUserBuildingInfomationList[i].TimeoutYearCount
+                    };
+
+                    if (_iUserBuildingInformationModel.AnswerCode== "evidence_default")
+                    {
+                        _iUserBuildingInformationModel.TitleColor="black";
+                        _iUserBuildingInformationModel.TextColor="gray";
+                        _iUserBuildingInformationModel.TextDescriptionColor="black";
+
+                        _iUserBuildingInformationModel.RowBackgroundColor="white";
+                        _iUserBuildingInformationModel.IsViewTooltip=true;
+                    }
+                    else
+                    {
+
+                        _iUserBuildingInformationModel.TitleColor="white";
+                        _iUserBuildingInformationModel.TextColor="whitesmoke";
+                        _iUserBuildingInformationModel.TextDescriptionColor="whitesmoke";
+
+
+                        _iUserBuildingInformationModel.RowBackgroundColor="green";
+                    }
+
+                    _arrBuildingInformationModelList.Add(_iUserBuildingInformationModel);
+                }
+
+
+
+
+
+
+                iDevelomentInformationReportViewModel.BuildingInformationList = _arrBuildingInformationModelList;
+
+
+
+                return View(iDevelomentInformationReportViewModel);
+
+
+
+            }
+            catch (Exception ex)
+            {
+                AppUtility_DebugManager.Debug_Get_MessageText(ex.Message.ToString());
+                return null;
+            }
+
+
 
 
         }
@@ -3660,11 +4097,561 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
 
 
+        #region Query
+
+
+        public async Task<IActionResult> Query()
+        {
+
+
+
+            try
+            {
+
+                string id = Request.Query["bldtknid"].ToString();
+
+
+                List<BsrvemcoUserBuildingQueryInformationTableList>? _arrCheckCountUserBuildingQueryInfomationTableList = _dbContext.BsrvemcoUserBuildingQueryInformationTableLists
+                .Where(u =>
+                u.BuildingTokenId == id &&
+                u.IsVisible == true)
+                 //.Select (u  )
+                 //.FirstOrDefault ( ); // This is what actually executes the request and return a response
+                 .ToList(); // This is what actually executes the request and return a response
+
+
+
+                if (_arrCheckCountUserBuildingQueryInfomationTableList.Count == 0)
+                {
+
+                    List<BsrvemcoAppBuildingQueryTableList>? _arrAppDevelomentQueryTableList = _dbContext.BsrvemcoAppBuildingQueryTableLists
+                         .Where(u => u.AppqueryTableCode == "item")
+                         //.Select (u  )
+                         //.FirstOrDefault ( ); // This is what actually executes the request and return a response
+                         .ToList(); // This is what actually executes the request and return a response
+
+
+                    ArrayList _arrTokenList = new ArrayList();
+                    _arrTokenList = AppUtility_ListTokenIDManager.ListTokenID_Generate_NewList(_arrAppDevelomentQueryTableList.Count.ToString());
+
+
+
+                    ////////////////////////////////////////
+
+                    BsrvemcoUserBuildingQueryInformationTableList iBuildingQueryTableModel;
+
+                    for (int i = 0; i < _arrAppDevelomentQueryTableList.Count; i++)
+                    {
+
+
+                        iBuildingQueryTableModel = new BsrvemcoUserBuildingQueryInformationTableList()
+                        {
+
+                            RowViewTokenId = new Guid(),
+
+
+                            OwnerUserTokenId = Program.iOwnerModel.OwnerUserTokenID,
+                            CompanyTokenId = Program.iOwnerModel.CompanyTokenID,
+                            BuildingTokenId = id,
+
+                            AppqueryTableTokenId = _arrAppDevelomentQueryTableList[i].AppqueryTableTokenId.ToString(),
+                            AppqueryTableCode = "item",
+
+                            QueryTableTokenId = _arrTokenList[i].ToString(),
+
+                            QueryTableName = _arrAppDevelomentQueryTableList[i].QueryTableName.ToString(),
+
+                            IsPaging = (bool)_arrAppDevelomentQueryTableList[i].IsPaging,
+
+                            PageSize = _arrAppDevelomentQueryTableList[i].PageSize,
+                            PageCount = _arrAppDevelomentQueryTableList[i].PageCount,
+                            PageNumber = _arrAppDevelomentQueryTableList[i].PageNumber,
+
+
+                            IsViewed=false,
+                            IsAnswered=false,
+
+                            //TimeoutYearCount=  _arrAppDevelomentQueryTableList[i].TimeoutYearCount.ToString(),
+
+                            //InformationScore = "5",
+                            //Score = "5",
+                            //ScoreManaged = "5",
+                            //ScoreAdjusted = "5",
+                            //ScoreOriginal = "5",
+
+
+                            UploadDateTimeMilliSec = AppUtility_TimeManager.Time_GetCurrentTimeInMilliSecond(),
+                            IsVisible = true,
+                            IsActive = true,
+
+                        };
+
+
+                        await _dbContext.BsrvemcoUserBuildingQueryInformationTableLists.AddAsync(iBuildingQueryTableModel);
+
+
+                        await _dbContext.SaveChangesAsync();
+
+
+                    }
+
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                List<BsrvemcoUserBuildingQueryInformationTableList>? _arrUserBuildingInfomationList = _dbContext.BsrvemcoUserBuildingQueryInformationTableLists
+                    .Where(u =>
+                    u.BuildingTokenId == id &&
+                    //u.ApptableTokenId == "1689022008239" &&
+                    u.IsVisible == true)
+                     //.Select (u  )
+                     //.FirstOrDefault ( ); // This is what actually executes the request and return a response
+                     .ToList(); // This is what actually executes the request and return a response
+
+
+
+
+
+
+
+                AppDevelomentInformationQueryViewModel iDevelomentNew2ViewModel = new AppDevelomentInformationQueryViewModel();
+                List<AppUserBuildingQueryInformationTableModelManager> _arrBuildingInformationModelList = new List<AppUserBuildingQueryInformationTableModelManager>();
+
+
+                AppUserBuildingQueryInformationTableModelManager _iUserBuildingInformationModel;
+                for (int i = 0; i < _arrUserBuildingInfomationList.Count; i++)
+                {
+                    _iUserBuildingInformationModel = new AppUserBuildingQueryInformationTableModelManager()
+                    {
+                        AppQueryTableTokenID = _arrUserBuildingInfomationList[i].AppqueryTableTokenId.ToString(),
+                        QueryTableTokenID = _arrUserBuildingInfomationList[i].QueryTableTokenId.ToString(),
+                        QueryTableName = _arrUserBuildingInfomationList[i].QueryTableName.ToString(),
+                        BuildingTokenID = id.ToString(),
+
+                        IsPaging = (bool)_arrUserBuildingInfomationList[i].IsPaging,
+
+                        PageSize = _arrUserBuildingInfomationList[i].PageSize,
+                        PageCount = _arrUserBuildingInfomationList[i].PageCount,
+                        PageNumber = _arrUserBuildingInfomationList[i].PageNumber,
+
+                        IsViewed = (bool)_arrUserBuildingInfomationList[i].IsViewed,
+                        IsAnswered = (bool)_arrUserBuildingInfomationList[i].IsAnswered,
+
+                        // InformationScoreAdjusted = _arrUserBuildingInfomationList[i].ScoreAdjusted,
+                        //DocumentCount = _arrUserBuildingInfomationList[i].DocumentCount,
+                        //TimeFrame = _arrUserBuildingInfomationList[i].TimeoutYearCount
+                    };
+
+                    if (!_iUserBuildingInformationModel.IsViewed)
+                    {
+                        _iUserBuildingInformationModel.ImageURL="img_circle_black.png";
+                        _iUserBuildingInformationModel.FontStyle="bold";
+                    }
+                    else
+                    {
+                        _iUserBuildingInformationModel.FontStyle="normal";
+
+                        //_iUserBuildingInformationModel. ImageURL="img_circle_black.png";
+
+                        if (!_iUserBuildingInformationModel.IsAnswered)
+                        {
+                            _iUserBuildingInformationModel.ImageURL="img_question_circle_black.png";
+                        }
+                        else
+                        {
+                            _iUserBuildingInformationModel.ImageURL="img_check_circle_black.png";
+                        }
+
+                    }
+
+                    _arrBuildingInformationModelList.Add(_iUserBuildingInformationModel);
+                }
+
+
+
+                iDevelomentNew2ViewModel.BuildingInformationQueryTableList = _arrBuildingInformationModelList;
+
+
+                return View(iDevelomentNew2ViewModel);
+
+            }
+            catch (Exception ex)
+            {
+                AppUtility_DebugManager.Debug_Get_MessageText(ex.Message.ToString());
+                return null;
+            }
+
+
+
+
+            //try
+            //{
+
+
+
+            //    return View();
+
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    AppUtility_DebugManager.Debug_Get_MessageText(ex.Message.ToString());
+            //    return null;
+            //}
+
+
+
+        }
+
+        #endregion
+
 
         //public IActionResult View ( )
         //{
         //    return View ( );
         //}
+
+
+
+
+
+
+
+        #region ViewComponents
+
+
+
+
+        public IActionResult ReloadDocumentList(string bldtknid, string inftknid)
+        {                                    /* bool showPrevious , bool showUpcoming */
+
+            return ViewComponent("DocumentList",
+                new
+                {
+                    bldtknid = bldtknid,
+                    inftknid = inftknid
+                });
+
+
+
+        }
+
+
+
+
+
+        public IActionResult ReloadQueryDocumentList(string bldtknid, string iqueryinftknid)
+        {                                    /* bool showPrevious , bool showUpcoming */
+
+            return ViewComponent("QueryDocumentList",
+                new
+                {
+                    bldtknid = bldtknid,
+                    iqueryinftknid = iqueryinftknid
+                });
+
+            //return ViewComponent ( "DocumentList" ,
+            //    new { showPrevious = showPrevious , showUpcoming = showUpcoming } );
+
+
+        }
+
+
+
+
+        public IActionResult ReloadQueryFormTableDocumentList(string bldtknid, string iqueryinftknid)
+        {                                    /* bool showPrevious , bool showUpcoming */
+
+            return ViewComponent("QueryFormTableDocumentList",
+                new
+                {
+                    bldtknid = bldtknid,
+                    iqueryinftknid = iqueryinftknid
+                });
+
+            //return ViewComponent ( "DocumentList" ,
+            //    new { showPrevious = showPrevious , showUpcoming = showUpcoming } );
+
+
+        }
+
+
+
+        public IActionResult ReloadQueryFormList(string bldtknid, string querytbltknid, string iPageNumber, string blnIsPaging)
+        {                                    /* bool showPrevious , bool showUpcoming */
+
+            return ViewComponent("BuildingQueryFormList",
+                new
+                {
+                    bldtknid = bldtknid,
+                    querytbltknid = querytbltknid,
+                    iPageNumber = iPageNumber,
+                    blnIsPaging = Boolean.Parse(blnIsPaging)
+                });
+
+            //return ViewComponent ( "DocumentList" ,
+            //    new { showPrevious = showPrevious , showUpcoming = showUpcoming } );
+
+
+        }
+        #endregion
+
+
+
+        #region QueryForm-Answers
+
+
+        public async Task<IActionResult> QueryForm_Answer_NULL(
+     string iAppQueryTableTokenID,
+     string iAppQueryInformationTokenID,
+     string iQueryTableTokenID,
+     string iQueryInformationTokenID,
+     string iBuildingTokenID,
+     string iAnswerCode,
+     string iAnswerText)
+        {
+
+            /* , IFormFile filedata*/
+
+
+            try
+            {
+
+
+                // Update-Scores
+
+                //         string _iDocumentCount = _dbContext.BsrvemcoUserBuildingDocumentLists
+                //.Where(
+                //    c =>
+                //    c.BuildingTokenId == iBuildingTokenID &&
+                //    c.InformationTokenId == iInformationTokenID &&
+                //    c.IsVisible == true)
+                //.Count().ToString();
+
+
+                var _iUserBuildignQueryInfoModel = _dbContext.BsrvemcoUserBuildingQueryInformationLists
+                        .Where(u =>
+                        u.BuildingTokenId == iBuildingTokenID &&
+                        u.QueryInformationTokenId == iQueryInformationTokenID)
+                        //.Select (u  )
+                        .FirstOrDefault(); // This is what actually executes the request and return a response
+
+                _iUserBuildignQueryInfoModel.AnswerCode = "null";
+                _iUserBuildignQueryInfoModel.AnswerText = iAnswerText;
+                _iUserBuildignQueryInfoModel.InformationDescriptionUser = iAnswerText;
+
+
+
+                _iUserBuildignQueryInfoModel.IsViewed = true;
+                _iUserBuildignQueryInfoModel.IsVisited = true;
+                _iUserBuildignQueryInfoModel.IsOpened = true;
+                _iUserBuildignQueryInfoModel.IsAnswered = true;
+
+                //_iUserBuildignQueryInfoModel.ScoreAdjusted = "3";
+                //_iUserBuildignQueryInfoModel.ScoreManaged = "3";
+                //_iUserBuildignQueryInfoModel.DocumentCount = _iDocumentCount;
+
+
+
+                //_iUserBuildignQueryInfoModel.IsAnswered = true;
+                //_iUserBuildignQueryInfoModel.AnswerCode="evidence_upload";
+                //_iUserBuildignQueryInfoModel.AnswerText="Evidence has been uploaded and is awaiting verification";
+                //_iUserBuildignQueryInfoModel.AnswerDescription="0";
+
+
+                _dbContext.BsrvemcoUserBuildingQueryInformationLists.Update(_iUserBuildignQueryInfoModel);
+
+                await _dbContext.SaveChangesAsync();
+
+                // DELETE ALL LINKS
+
+                var _arrBuildignQueryDocumentList = _dbContext.BsrvemcoUserBuildingQueryDocumentLists
+                         .Where(u =>
+                                    u.BuildingTokenId == iBuildingTokenID &&
+                                    u.QueryInformationTokenId == iQueryInformationTokenID &&
+                                    u.IsVisible ==true)
+                                    //.Select (u  )
+                                    //.FirstOrDefault ( ); // This is what actually executes the request and return a response
+                                    .ToList(); // This is what actually executes the request and return a response
+
+
+                for (int i = 0; i < _arrBuildignQueryDocumentList.Count(); i++)
+                {
+                    _arrBuildignQueryDocumentList[i].IsVisible = false;
+                }
+
+                //_iUserBuildignQueryInfoModel.AnswerCode = "null";
+                //_iUserBuildignQueryInfoModel.AnswerText = iAnswerText;
+                //_iUserBuildignQueryInfoModel.InformationDescriptionUser = iAnswerText;
+
+                //_iUserBuildignQueryInfoModel.ScoreAdjusted = "3";
+                //_iUserBuildignQueryInfoModel.ScoreManaged = "3";
+                //_iUserBuildignQueryInfoModel.DocumentCount = _iDocumentCount;
+
+
+
+                //_iUserBuildignQueryInfoModel.IsAnswered = true;
+                //_iUserBuildignQueryInfoModel.AnswerCode="evidence_upload";
+                //_iUserBuildignQueryInfoModel.AnswerText="Evidence has been uploaded and is awaiting verification";
+                //_iUserBuildignQueryInfoModel.AnswerDescription="0";
+
+
+                _dbContext.BsrvemcoUserBuildingQueryDocumentLists.UpdateRange(_arrBuildignQueryDocumentList);
+
+                await _dbContext.SaveChangesAsync();
+
+
+
+                return Json(new { status = true, Message = "Files Uploaded Successfully!" });
+
+
+                //return View();
+
+
+
+            }
+            catch (Exception ex)
+            {
+                AppUtility_DebugManager.Debug_Get_MessageText(ex.Message.ToString());
+                return View();
+            }
+
+        }
+
+
+
+
+
+        public async Task<IActionResult> QueryForm_Answer_YES_NO(
+     string iAppQueryTableTokenID,
+     string iAppQueryInformationTokenID,
+     string iQueryTableTokenID,
+     string iQueryInformationTokenID,
+     string iBuildingTokenID,
+     string iAnswerCode,
+     string iAnswerText)
+        {
+
+            /* , IFormFile filedata*/
+
+
+            try
+            {
+
+
+                // Update-Scores
+
+                //         string _iDocumentCount = _dbContext.BsrvemcoUserBuildingDocumentLists
+                //.Where(
+                //    c =>
+                //    c.BuildingTokenId == iBuildingTokenID &&
+                //    c.InformationTokenId == iInformationTokenID &&
+                //    c.IsVisible == true)
+                //.Count().ToString();
+
+
+                var _iUserBuildignQueryInfoModel = _dbContext.BsrvemcoUserBuildingQueryInformationLists
+                        .Where(u =>
+                        u.BuildingTokenId == iBuildingTokenID &&
+                        u.QueryInformationTokenId == iQueryInformationTokenID)
+                        //.Select (u  )
+                        .FirstOrDefault(); // This is what actually executes the request and return a response
+
+                _iUserBuildignQueryInfoModel.AnswerCode = iAnswerCode;
+
+
+                if (iAnswerText!= "0")
+                {
+
+                    _iUserBuildignQueryInfoModel.AnswerText = iAnswerText;
+                    _iUserBuildignQueryInfoModel.InformationDescriptionUser = iAnswerText;
+
+                }
+
+                _iUserBuildignQueryInfoModel.IsViewed = true;
+                _iUserBuildignQueryInfoModel.IsVisited = true;
+                _iUserBuildignQueryInfoModel.IsOpened = true;
+                _iUserBuildignQueryInfoModel.IsAnswered = true;
+
+
+
+                //_iUserBuildignQueryInfoModel.ScoreAdjusted = "3";
+                //_iUserBuildignQueryInfoModel.ScoreManaged = "3";
+                //_iUserBuildignQueryInfoModel.DocumentCount = _iDocumentCount;
+
+
+
+                //_iUserBuildignQueryInfoModel.IsAnswered = true;
+                //_iUserBuildignQueryInfoModel.AnswerCode="evidence_upload";
+                //_iUserBuildignQueryInfoModel.AnswerText="Evidence has been uploaded and is awaiting verification";
+                //_iUserBuildignQueryInfoModel.AnswerDescription="0";
+
+
+                _dbContext.BsrvemcoUserBuildingQueryInformationLists.Update(_iUserBuildignQueryInfoModel);
+
+                await _dbContext.SaveChangesAsync();
+
+
+
+                return Json(new { status = true, Message = "Files Uploaded Successfully!" });
+
+
+                //return View();
+
+
+
+            }
+            catch (Exception ex)
+            {
+                AppUtility_DebugManager.Debug_Get_MessageText(ex.Message.ToString());
+                return View();
+            }
+
+        }
+
+
+
+
+        #endregion
+
+
+
     }
 
 

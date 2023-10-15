@@ -45,6 +45,28 @@ public partial class BsrvemcoUserBuildingDocumentHistoryList
 
     public string? DocumentSize { get; set; }
 
+    public string? DocumentWebUrl { get; set; }
+
+    public string? DocumentLocalPathUrl { get; set; }
+
+    public string? QuestionCode { get; set; }
+
+    public string? QuestionType { get; set; }
+
+    public string? QuestionText { get; set; }
+
+    public string? QuestionDescription { get; set; }
+
+    public bool? IsAnswered { get; set; }
+
+    public string? AnswerCode { get; set; }
+
+    public string? AnswerType { get; set; }
+
+    public string? AnswerText { get; set; }
+
+    public string? AnswerDescription { get; set; }
+
     public string? TimeoutYearCount { get; set; }
 
     public string? TimeoutAppNotification { get; set; }
@@ -78,6 +100,12 @@ public partial class BsrvemcoUserBuildingDocumentHistoryList
     public string? ScoreMinValue { get; set; }
 
     public string? ScoreMaxValue { get; set; }
+
+    public bool? IsVisited { get; set; }
+
+    public bool? IsViewed { get; set; }
+
+    public bool? IsOpened { get; set; }
 
     public bool? IsVisible { get; set; }
 

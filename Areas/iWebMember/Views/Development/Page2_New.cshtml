@@ -18,7 +18,7 @@
             <ol class="breadcrumb">
                 @*href="index.html"*@
                 <li class="breadcrumb-item"><a>View Building</a></li>
-                <li class="breadcrumb-item active">Information Gathering</li>
+                <li class="breadcrumb-item active">Golden Thread Documents</li>
             </ol>
         </nav>
     </div>
@@ -35,11 +35,10 @@
 
         @*   <img src='~/img/img_upload.png' style='width:50px;height:50px;' />
         *@
-        <div class="row">
+        @*  <div class="row">
 
-            <span class="fs-5 ms-3">Information Gathering</span>
-            @*   BuildingInformationList.Count ==      @Model.BuildingInformationList.Count*@
-        </div>
+        <span class="fs-5 ms-3">Information Gathering</span>
+        </div> *@
 
         <form method="post" class="row g-3 needs-validation" novalidate>
 
@@ -58,6 +57,12 @@
 
                     <div class="row">
                         @*fs-6*@
+                        <span class="m-3">You will not able to generate a "Gap Analysis" report untill you've responded to all items.</span>
+                    </div>
+
+
+                    <div class="row">
+                        @*fs-6*@
                         <span class="m-3">Please identify which of the following documents exist</span>
                     </div>
 
@@ -68,27 +73,74 @@
 
                         <div class="list-group list-group-flush m-3">
                             @**@
+
                             @foreach (var iRow in Model.BuildingInformationList!)
                             {
-                                @*data-bs-target="#popupModal"*@
-                                <a href="#" class="list-group-item list-group-item-action bg-transparent"
-                                   data-bs-toggle="modal" onclick="Popup_LoadForm('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.APPInformationTokenID','@iRow.InformationTokenID','@iRow.DocumentCount','@iRow.TimeFrame','clminfotxt_@iRow.InformationTokenID','clmdoccount_@iRow.InformationTokenID');">
+                                @* a href="#" *@   @*data-bs-target="#popupModal"*@
+                                <div class="list-group-item list-group-item-action bg-transparent">
 
                                     <div class="row">
 
-                                        <div class="col-10" data-clminfotxt="clminfotxt_@iRow.InformationTokenID">@iRow.InformationText</div>
+                                        <div class="col-9" data-clminfotxt="clminfotxt_@iRow.InformationTokenID"
+                                             data-bs-toggle="modal" 
+                                             style="cursor:pointer;"
+                                             onclick="Popup_LoadForm('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.APPInformationTokenID','@iRow.InformationTokenID','@iRow.DocumentCount','@iRow.TimeFrame','clminfotxt_@iRow.InformationTokenID','clmdoccount_@iRow.InformationTokenID');">
+                                            @iRow.InformationText
+                                        </div>
 
-                                        <div class="col-2 text-end" style="float:right;">
+                                        <div class="col-3 text-end" style="float:right;">
                                             <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
 
                                             @if (iRow.DocumentCount != "0")
                                             {
-                                                <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;" data-clmdoccount="clmdoccount_@iRow.InformationTokenID">@iRow.DocumentCount</small>
+
+                                                <div class="float-end" style="display:flex;flex-direction:row;">
+
+
+                                                    <small class="m-1 badge bg-primary rounded-pill text-end" style="float:right;" data-clmdoccount="clmdoccount_@iRow.InformationTokenID">@iRow.DocumentCount</small>
+
+                                                    <div class="d-flex flex-row" style="vertical-align:top;text-align:left;margin:0px;float:right;">
+
+
+                                                        <button type="button" class="btn btn-outline-secondary btn-sm" disabled
+                                                                data-btnnullfalse="btnnullfalse_@iRow.InformationTokenID"
+                                                                onclick="submit_DocumentNotAvailable('@iRow.BuildingTokenID','@iRow.InformationTokenID');">
+                                                            Nil return
+                                                        </button>
+                                                        <img src="~/img/img_question.png"
+                                                             style="width:15px;height:15px;margin:3px;"
+                                                             data-toggle="tooltip" data-placement="bottom"
+                                                             title="Click this button if you do NOT have documents to upload." />
+
+                                                    </div>
+
+
+ </div>
+
 
                                             }
                                             else
                                             {
-                                                <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;" data-clmdoccount="clmdoccount_@iRow.InformationTokenID"></small>
+                                              
+                                                <small class="m-1 badge bg-primary rounded-pill text-end" style="float:right;" data-clmdoccount="clmdoccount_@iRow.InformationTokenID"></small>
+
+
+                                                <div class="d-flex flex-row" style="vertical-align:top;text-align:left;margin:0px;float:right;">
+
+
+                                                    <button type="button" class="btn @iRow.AnswerNULLButtonCSS btn-sm"
+                                                            data-btnnulltrue="btnnulltrue_@iRow.InformationTokenID"
+                                                            onclick="submit_DocumentNotAvailable('@iRow.BuildingTokenID','@iRow.InformationTokenID');">
+                                                        Nil return
+                                                    </button>
+                                                  
+                                                    <img src="~/img/img_question.png"
+                                                         style="width:15px;height:15px;margin:3px;"
+                                                         data-toggle="tooltip" data-placement="bottom"
+                                                         title="Click this button if you do NOT have documents to upload." />
+
+                                                </div>
+
 
                                             }
 
@@ -99,7 +151,7 @@
 
                                     </div>
 
-                                </a>
+                                </div>
 
 
 
@@ -590,35 +642,8 @@
 
                             </div>
 
-                            @*  </a>
 
-
-
-                            </div>
-                            </div>*@
-
-
-
-
-                            @*xx*@
-
-
-
-
-
-
-                            @*  <div class="row col-12">
-
-                            <div  class="col-10">Up-to-date Fire Risk Assessment (FRA)</div>
-
-                            <div class="col-2 float-end" style="float:right;">
-
-                            <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
-                            </div>
-
-                            </div>*@
-
-
+                            @* background-color:orange; *@
 
                         </div>
 
@@ -753,7 +778,7 @@ mb-3"></div>
 
                 </div>
                 <div class="modal-footer">
-                    <div style="width:100%;display:flex;flex-direction:row;justify-content: space-between;">
+                    <div style="width:100%;display:flex;flex-direction:row;justify-content:space-between;">
 
                         <div class="flex-start">
 
@@ -769,7 +794,11 @@ mb-3"></div>
                                 <a class="btn btn-danger" onclick="cancel_TabEditDocument();">Cancel</a>
                             </div>
 
+                            <div id="div_CommandPreview" class="flex-start">
 
+                                <span style="color:red;">Click here if you NOT have this document. </span><button type="button" class="btn btn-outline-danger" style="width:90px;font-size:medium;margin:5px;">Submit</button>
+
+                            </div>
 
                         </div>
 
@@ -812,10 +841,10 @@ mb-3"></div>
 
 @section iScript{
 
-        <link href="~/dropzone/dropzone.min.css" rel="stylesheet" />
+    <link href="~/dropzone/dropzone.min.css" rel="stylesheet" />
     <script src="~/dropzone/dropzone.min.js"></script>
 
-@*     <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    @*     <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" /> *@
 
 
@@ -920,6 +949,10 @@ mb-3"></div>
                         clmn_DocumentCount.html(visible_RiskControlMeasure);
                         clmn_Total.html(result.total);
 
+
+                        BSR_ShowToastMessage('update');
+
+
                     },
                     error: function () {
                         alert('Failed to receive the Data');
@@ -937,8 +970,77 @@ mb-3"></div>
             }
 
             catch (ex) {
-                alert(ex);
+                //  alert(ex);
+                return;
+            }
+        }
 
+
+
+        function submit_DocumentNotAvailable(bldtknid,inftknid) {
+
+            try {
+
+                //alert('inftknid == ' + window.inftknid);
+
+                // var clmn_InfoText = $("[data-clminfotxt='clminfotxt_" + inftknid + "']");
+                // var clmn_DocumentCount = $("[data-clmdoc='clmdoc_" + inftknid + "']");
+                // var clmn_Total = $("[data-clmtotal='clmtotal']");
+
+                // var txt_RiskControlMeasure = '0';
+                // var visible_RiskControlMeasure = '0';
+
+                // if (editor.getData() == '') {
+                //     txt_RiskControlMeasure = "0";
+                //     visible_RiskControlMeasure = "";
+                // }
+                // else {
+                //     txt_RiskControlMeasure = editor.getData();
+                //     visible_RiskControlMeasure = editor.getData();
+
+                // }
+
+                // var iInformationText = document.getElementById('iInformationText');
+
+
+
+                $.ajax({
+                    type: "POST",
+
+
+                    url: '/iWebMember/Development/UploadFiles_NOT_AVAILABLE',
+
+                    data: {
+                        //iAppTableTokenID: apptbltknid,
+                        //iTableTokenID: tbltknid,
+                        iBuildingTokenID: bldtknid,
+                        iInformationTokenID: inftknid
+                       // iInformationText: iInformationText.value,
+                        //iRiskControlMeasure: txt_RiskControlMeasure
+                    },
+                    success: function (result) {
+
+
+                        // clmn_InfoText.html(iInformationText.value);
+                        // clmn_DocumentCount.html(visible_RiskControlMeasure);
+                        // clmn_Total.html(result.total);
+
+
+                        BSR_ShowToastMessage('update');
+
+
+                    },
+                    error: function () {
+                       // alert('Failed to receive the Data');
+                        console.log('Failed ');
+                    }
+                });
+
+            }
+
+            catch (ex) {
+                //  alert(ex);
+                return;
             }
         }
 
@@ -1028,12 +1130,17 @@ mb-3"></div>
                 $("#btn_Preview").addClass("active");
                 $("#content_Preview").addClass("active");
 
+                // TODO ////////////////////////////////////////////
 
+                // $('#div_CommandPreview').show();
 
 
 
 
                 $('#popupModalEditor').modal('show');
+
+                // $('#div_CommandPreview').show();
+
 
                 load_TabViewDocumentList(false);
 
@@ -1042,6 +1149,7 @@ mb-3"></div>
             catch (ex) {
                 //  alert(ex);
                 console.log(ex);
+                return;
             }
         }
 
@@ -1163,13 +1271,14 @@ mb-3"></div>
                 $("#content_Edit").addClass("active");
 
                 $('#div_CommandUpload').hide();
+                $('#div_CommandPreview').hide();
                 $('#div_CommandEdit').show();
 
 
             }
             catch (err) {
-
-                alert(err);
+                return;
+                //alert(err);
             }
 
         }
@@ -1190,6 +1299,7 @@ mb-3"></div>
                 $('#tab_Progress').hide();
                 $('#div_CommandUpload').hide();
                 $('#div_CommandEdit').hide();
+                $('#div_CommandPreview').hide();
 
                 // $('#myTab button[bs-target="#edit"]').tab('show'); // Select tab by name`
 
@@ -1226,6 +1336,7 @@ mb-3"></div>
                 $('#tab_Progress').hide();
                 $('#div_CommandUpload').hide();
                 $('#div_CommandEdit').hide();
+                $('#div_CommandPreview').hide();
 
                 // $('#myTab button[bs-target="#edit"]').tab('show'); // Select tab by name`
 
@@ -1248,6 +1359,7 @@ mb-3"></div>
             }
 
         }
+
 
 
 
@@ -1296,6 +1408,7 @@ mb-3"></div>
                         $("#div_DocumentList").html(data);
 
                         $('#div_CommandEdit').hide();
+                        $('#div_CommandPreview').hide();
                         $('#div_CommandUpload').hide();
 
                         // alert('load_TabViewDocumentList DONE !!!');
@@ -1377,6 +1490,7 @@ mb-3"></div>
                 $("#content_Upload").removeClass("active");
 
                 $('#div_CommandEdit').hide();
+                $('#div_CommandPreview').hide();
                 $('#div_CommandUpload').hide();
 
                 $("#btn_View").addClass("active");
@@ -1530,6 +1644,10 @@ mb-3"></div>
 
 
                         cancel_TabEditDocument();
+
+
+                        BSR_ShowToastMessage('update');
+
 
                         //alert('load_TabViewDocumentList DONE !!!  ' + data.count);
 
@@ -1716,7 +1834,7 @@ mb-3"></div>
                         GetCountDocumentList();
 
 
-
+                        BSR_ShowToastMessage('delete');
 
                     }
                 });
@@ -1895,6 +2013,10 @@ mb-3"></div>
                         open_TabViewDocuments(true);
 
                     }, 2000);
+
+
+                    BSR_ShowToastMessage('upload');
+
                 },
                 dictDefaultMessage: "<div style='display:flex;flex-direction:column;'><div><b>Drag and drop your files here to upload.</b></div><div><img src='https://bsr.vemcoconsulting.com/img/img_upload.png' style='width:50px;height:50px;'/></div><div><span class='m-3' >- or -</span></div><div class='m-3'><span style='width:auto;height:40px;border:1px solid silver;border-radius:2px;padding:5px;color:black;background-color:white;'>Select from device</span></div></div>",
                 dictRemoveFile: "Remove"
@@ -2018,12 +2140,23 @@ mb-3"></div>
 
                     if (x === 'upload') {
                         $('#div_CommandEdit').hide();
+                        $('#div_CommandPreview').hide();
                         $('#div_CommandUpload').show();
                     }
                     else if (x === 'edit') {
                         $('#div_CommandEdit').show();
+                        $('#div_CommandPreview').show();
                         $('#div_CommandUpload').hide();
                     }
+                    else if (x === 'preview') {
+
+
+                        $('#div_CommandEdit').hide();
+                        $('#div_CommandUpload').hide();
+                        $('#div_CommandPreview').show();
+
+                    }
+
                     else if (x === 'view') {
 
                         // alert($("#div_DocumentList").is(':empty'));
@@ -2037,12 +2170,14 @@ mb-3"></div>
                         //}
 
                         $('#div_CommandEdit').hide();
+                        $('#div_CommandPreview').hide();
                         $('#div_CommandUpload').hide();
 
                     }
                     else {
                         $('#div_CommandEdit').hide();
                         $('#div_CommandUpload').hide();
+                        $('#div_CommandPreview').hide();
                     }
 
 

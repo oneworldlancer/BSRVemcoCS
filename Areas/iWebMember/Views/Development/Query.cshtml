@@ -1,0 +1,1889 @@
+﻿@* @using BSRVemcoCS.DBModels; *@
+@model BSRVemcoCS.iAppViewModel.AppDevelomentInformationQueryViewModel
+
+
+@{
+}
+
+@**@
+<div id="main" style="margin-top:0px;padding-top:0px;">
+
+    <div class="pagetitle" style="padding-top:0px;margin-bottom: 5px;">
+
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">View Building</a></li>
+                <li class="breadcrumb-item active">Resident Engagement</li>
+            </ol>
+        </nav>
+    </div>
+
+    <section class="section" style="margin-top:0px;padding-top:0px;">
+
+        <div class="row">
+
+            <div class="p-3">
+                @*
+                <div>
+                </div>
+                *@
+                <div class="accordion" id="accordionExample">
+
+                    <div class="accordion-item" data-paneid="pane-0-0-false">
+                        <h2 class="accordion-header" id="heading0" style="background-color:whitesmoke;padding:3px;border-radius:3px;">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse0" aria-expanded="true" aria-controls="collapse0">
+
+                                @* src="~/img/img_circle_black.png" *@
+                                <div style="padding:0px;margin:0px;">
+                                    <img src="~/img/img_circle_black.png"
+                                         style="width:20px;height:20px;margin:0px;padding:0px;" />
+                                    <span style="margin-left:5px;">Instructions</span>
+
+                                </div>
+
+                            </button>
+                        </h2>
+                        <div id="collapse0" class="accordion-collapse collapse show" aria-labelledby="heading0" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+
+                                <p><span style="font-size:19px"><span style="font-weight:700"><span style="color:black"><span style="font-style:normal"><span style="text-decoration:none"><span style="font-family:Calibri,sans-serif">YOUR RESIDENT ENGAGEMENT STRATEGY</span></span></span></span></span></span></p>
+
+                                <p>
+                                    <span style="font-size:16px">
+                                        <span style="color:black">
+                                            <span style="font-weight:400">
+                                                <span style="font-style:normal">
+                                                    <span style="text-decoration:none">
+                                                        <span style="font-family:Calibri,sans-serif">
+                                                            The Resident Engagement Strategy should aim to create an inclusive and collaborative<br />
+                                                            approach to building safety, fostering a strong partnership between residents and the<br />
+                                                            Building Management Team. By tailoring communication methods and engaging<br />
+                                                            residents through various channels, the goal is to empower occupants to take an<br />
+                                                            active role in their safety and well-being within the building.
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </p>
+
+                                <p><span style="font-size:16px"><span style="color:black"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none"><span style="font-family:Calibri,sans-serif">Within this document, you will find 6 separate tabs requiring your completion. Within each tab, you will need to complete columns B and D only.</span></span></span></span></span></span></p>
+
+                                <p><span style="font-size:16px"><span style="color:black"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none"><span style="font-family:Calibri,sans-serif"><font><span style="font-size:12pt"><span style="color:black"><span style="font-weight:700"><span style="font-style:normal"><span style="text-decoration:none"><span style="font-family:Calibri,sans-serif">Column A</span></span></span></span><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none"><span style="font-family:Calibri,sans-serif"> - outlines the type of activity that would be deemed acceptable by the Building Safety Regularor.&nbsp;</span></span></span></span></span></span></font></span></span></span></span></span></span></p>
+
+                                <p><span style="font-size:16px"><span style="color:black"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none"><span style="font-family:Calibri,sans-serif"><font><span style="font-size:12pt"><span style="color:black"><span style="font-weight:700"><span style="font-style:normal"><span style="text-decoration:none"><span style="font-family:Calibri,sans-serif">Column B</span></span></span></span><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none"><span style="font-family:Calibri,sans-serif">&nbsp;- this is for your completion. If you undertake all the activities listed under Column A, you can simply respond Y to this question. However, if you do not undertake all the activities described in Column A or undertake other activities, please explain here.</span></span></span></span></span></span></font></span></span></span></span></span></span></p>
+
+                                <p><span style="font-size:16px"><span style="color:black"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none"><span style="font-family:Calibri,sans-serif"><font><span style="font-size:12pt"><span style="color:black"><span style="font-weight:700"><span style="font-style:normal"><span style="text-decoration:none"><span style="font-family:Calibri,sans-serif">Column C</span></span></span></span></span></span></font><font><span style="font-size:12pt"><span style="color:black"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none"><span style="font-family:Calibri,sans-serif"> - this Column provides ideas of the type of documents that can be provided to evidence your undertakings listed in Column A or B.</span></span></span></span></span></span></font></span></span></span></span></span></span></p>
+
+                                <p><span style="font-size:16px"><span style="color:black"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none"><span style="font-family:Calibri,sans-serif"><font><span style="font-size:12pt"><span style="color:black"><span style="font-weight:700"><span style="font-style:normal"><span style="text-decoration:none"><span style="font-family:Calibri,sans-serif">Column D</span></span></span></span></span></span></font><font><span style="font-size:12pt"><span style="color:black"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none"><span style="font-family:Calibri,sans-serif"> - this is for your completion. Please insert hyperlinks to the relevant evidence listed in Column C.</span></span></span></span></span></span></font></span></span></span></span></span></span></p>
+
+                                <p><span style="font-size:16px"><span style="color:black"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none"><span style="font-family:Calibri,sans-serif">Please complete the table below providing as much information as possible. This will ensure the compilation of a comprehensive report that fully explains all that you do to give your residents a voice and ensure that they are informed about the safety of the building they occupy.</span></span></span></span></span></span></p>
+
+                                <p><span style="font-size:16px"><span style="color:black"><span style="font-weight:400"><span style="font-style:normal"><span style="text-decoration:none"><span style="font-family:Calibri,sans-serif">If you have any queries regarding completing this table, please contact: info@vemcoconsulting.com</span></span></span></span></span></span></p>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @*LOOP HERE*@
+
+
+
+                    @foreach (var iRow in Model.BuildingInformationQueryTableList!)
+                    {
+
+
+                        <div class="accordion-item" data-paneid="pane-@iRow.BuildingTokenID-@iRow.QueryTableTokenID-@iRow.IsPaging.ToString()">
+
+                            <h2 class="accordion-header" id="heading1" style="background-color:whitesmoke;padding:3px;border-radius:3px;">
+
+                                @*                                 onclick="load_TabViewQueryList('@iRow.BuildingTokenID','@iRow.QueryTableTokenID',true)" *@
+
+                                <button class="accordion-button collapsed" style="font-weight:@iRow.FontStyle;" type="button" data-bs-toggle="collapse"
+                                        data-bs-target='#collapse@{
+                                    @iRow.QueryTableTokenID.ToString()
+                                }'
+                                        aria-expanded="false" aria-controls="collapse1">
+
+                                    <div style="padding:0px;margin:0px;">
+                                        <img src="~/img/@iRow.ImageURL"
+                                             style="width:20px;height:20px;margin:0px;padding:0px;" />
+                                        <span style="margin-left:5px;">@iRow.QueryTableName</span>
+
+                                    </div>
+
+                                </button>
+
+                            </h2>
+
+                            <div id='collapse@{
+                                                                                                                                                                                                                                                                                                                                                    @iRow.QueryTableTokenID.ToString()
+}'
+                                 class="accordion-collapse collapse" aria-labelledby="heading1"
+                                 data-bs-parent="#accordionExample">
+
+
+                                @* class="accordion-body" *@
+                                <div id='div_@{
+                                                                                                                                                                                                                                                                                                                                                        @iRow.QueryTableTokenID.ToString()
+}'></div>
+
+                                <div id="div_Paging_@{
+                                                                                                                                                                                                                                                                                                                                                            @iRow.QueryTableTokenID.ToString()
+}" style="display:none;margin:10px;">
+                                    <nav>
+                                        <ul class="pagination">
+
+                                            <li class="page-item">
+                                                <a href='#collapse@{
+                                                                                                                                                                                                                                                                                                                                                        @iRow.QueryTableTokenID.ToString()
+}' id="pager1_@{
+                                                                                                                                                                                                                                                                                                                                                                    @iRow.QueryTableTokenID.ToString()
+}" class="page-link active"
+                                                   onclick="load_TabViewQueryList('@iRow.BuildingTokenID', '@iRow.QueryTableTokenID', 'true','1', true)">1</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='#collapse@{
+                                                                                                                                                                                                                                                                                                                                                            @iRow.QueryTableTokenID.ToString()
+}' id="pager2_@{
+                                                                                                                                                                                                                                                                                                                                                                        @iRow.QueryTableTokenID.ToString()
+}" class="page-link"
+                                                   onclick="load_TabViewQueryList('@iRow.BuildingTokenID', '@iRow.QueryTableTokenID', 'true','2', true)">2</a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a href='#collapse@{
+                                                                                                                                                                                                                                                                                                                                                                @iRow.QueryTableTokenID.ToString()
+}' id="pager3_@{
+                                                                                                                                                                                                                                                                                                                                                                        @iRow.QueryTableTokenID.ToString()
+}" class="page-link"
+                                                   onclick="load_TabViewQueryList('@iRow.BuildingTokenID', '@iRow.QueryTableTokenID', 'true','3', true)">3</a>
+                                            </li>
+
+                                        </ul>
+                                    </nav>
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+
+
+
+                    }
+
+
+
+                </div>
+
+
+                @*    @await Component.InvokeAsync("CMS_PageViewHTMLContent","terms")
+                *@
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+    @*POPUP-popupModalEditor*@
+    <div class="modal" id="popupModalEditor">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:whitesmoke;">
+                    <h4 class="modal-title">Upload Documents</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <input id="hdn_InformationTokenID" name="hdn_InformationTokenID" type="hidden" value="0" />
+                    <input id="iAppQueryInformationTokenID" name="iAppQueryInformationTokenID" type="hidden" value="0" />
+                    <input id="iAppQueryTableTokenID" name="iAppQueryTableTokenID" type="hidden" value="0" />
+                    <input id="iQueryTableTokenID" name="iQueryTableTokenID" type="hidden" value="0" />
+                    <input id="iQueryInformationTokenID" name="iQueryInformationTokenID" type="hidden" value="0" />
+                    <input id="iInformationTokenID" name="iInformationTokenID" type="hidden" value="0" />
+                    <input id="iBuildingTokenID" name="iBuildingTokenID" type="hidden" value="0" />
+                    <input id="iDocumentTokenID" name="iDocumentTokenID" type="hidden" value="0" />
+                    <input id="iTimeFrame" name="iTimeFrame" type="hidden" value="0" />
+                    <input id="iDocumentCount" name="iDocumentCount" type="hidden" value="0" />
+
+                    @*  <button onclick="openEdit();" value="tab" />*@
+
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li id='tab_Preview' class="nav-item" role="presentation">
+                            <button class="nav-link active" id="btn_Preview" data-bs-toggle="tab" data-bs-target="#content_Preview" type="button" role="tab" aria-controls="home" aria-selected="true" data-tabcontent="preview">Activity</button>
+                        </li>
+                        <li id='tab_View' class="nav-item" role="presentation">
+                            <button class="nav-link" id="btn_View" data-bs-toggle="tab" data-bs-target="#content_View" type="button" role="tab" aria-controls="profile" aria-selected="false" data-tabcontent="view">View Hyperlinks</button>
+                        </li>
+                        <li id='tab_Upload' class="nav-item" role="presentation">
+                            <button class="nav-link" id="btn_Upload" data-bs-toggle="tab" data-bs-target="#content_Upload" type="button" role="tab" aria-controls="messages" aria-selected="false" data-tabcontent="upload">Upload Hyperlinks</button>
+                        </li>
+                        <li id='tab_Edit' class="nav-item" role="presentation">
+                            <button class="nav-link" id="btn_Edit" data-bs-toggle="tab" data-bs-target="#content_Edit" type="button" role="tab" aria-controls="settings" aria-selected="false" data-tabcontent="edit">Edit</button>
+                        </li>
+                        <li id='tab_Progress' class="nav-item" role="presentation">
+                            <button class="nav-link" id="btn_Progress" data-bs-toggle="tab" data-bs-target="#content_Progress" type="button" role="tab" aria-controls="settings" aria-selected="false" data-tabcontent="progress">Progress</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+
+                        <div class="tab-pane active" id="content_Preview" role="tabpanel" aria-labelledby="home-tab">
+
+
+                            @* <div class="row">
+
+
+
+                            <div class="list-group list-group-flush m-3">
+
+
+                            <a href="#" class="list-group-item list-group-item-action bg-transparent"   >*@
+
+                            <div class="mt-3 mb-3">
+
+                                <label class="form-label">Description:</label>
+                                <textarea id="txt_HTMLContent_Activity" name="txt_HTMLContent_Activity" style="width:100%;height:auto;" rows="20" class="form-control">
+                                        default
+                                    </textarea>
+
+
+                            </div>
+
+
+                            @* background-color:orange; *@
+
+                        </div>
+
+                        <div class="tab-pane" id="content_View" role="tabpanel" aria-labelledby="profile-tab">
+
+                            <div id="div_DocumentList" class="row
+mb-3"></div>
+
+                        </div>
+
+                        <div class="tab-pane" id="content_Upload" role="tabpanel" aria-labelledby="messages-tab">
+
+                            @*class="row m-3"*@
+
+                            <div id="div_DocumentUpload" class="mt-3 me-3" style="width:100%;display:flex;flex-direction:column;">
+
+                                <div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
+
+                                    <div class="col-11">
+                                        <input type="url" pattern="https?://.+" class="form-control" id="input_fileURL1" name="input_fileURL1" placeholder="Insert your hyperlink here ..."
+                                               style="color:blue;" data-inputfor="fupload" required />
+                                    </div>
+
+                                    @* onclick="Building_Confirm_DELETE('@iRow.BuildingTokenID');" *@
+                                    <div class="col-1 text-center" style="width:50px;">
+                                        <img id="img_NewURL1" name="img_NewURL1" src="~/img/img_new.png" style="width:20px;height:20px;" alt="Delete" title="New" />
+                                    </div>
+
+
+
+                                </div>
+
+
+                                @*File 2*@
+                                @*                                 <div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
+
+                                <div class="col-11" >
+                                <input type="text" class="form-control" id="input_fileURL2" name="input_fileURL2" placeholder="Insert your hyperlink here ..."
+                                required />
+                                </div>
+
+                                <div class="col-1 text-center" style="width:50px;">
+                                <img  id="img_delURL2"  name="img_delURL2"  src="~/img/img_delete.png" style="width:20px;height:20px;" alt="Delete" title="Delete" />
+                                </div>
+                                </div> *@
+
+
+
+                            </div>
+
+                            <div class="mt-3" style="width:89%;display:flex;flex-direction:row;justify-content:space-between;">
+                                @*   <span class="text-muted">
+                                You may use Google drive or other similar platforms to produce a hyperlink to your document. Please provide the hyperlink to your file in the box above.
+                                </span> *@
+
+                                <span class="text-muted flex-start" style="width:90%;font-size:small;padding:5px;">
+                                    (You may use Google drive or other similar platforms to produce a hyperlink to your document. Please provide the hyperlink to your file in the box above.)
+                                </span>
+
+                                @* width:200px; *@
+                                <button id="btn_NewFileHyperlink" href="#" type="button" class="btn btn-outline-secondary btn-sm flex-end" style="font-size:small;float:right;width:150px;height:30px;">Add new hyperlink</button>
+
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="tab-pane" id="content_Edit" role="tabpanel" aria-labelledby="messages-tab">
+
+
+
+                            <div class="mt-3 mb-3" id="popup_FormContent">
+                                @* @await Component.InvokeAsync("Editor")*@
+
+                                @*class="ms-3 me-3 mb-3"*@
+
+                                <table class="ms-1">
+
+
+
+
+                                    <tr>
+                                        <td style="text-align:left;vertical-align:text-top;padding:0px;">
+                                            <img src="~/img/img_file_pdf.png" style="width:20px;height:20px;margin:0px;" />
+                                        </td>
+
+                                        <td style="width:100%;text-align:left;vertical-align:text-top;padding:0px;">
+
+                                            <div class="p-1" style="display:flex;flex-direction:column;">
+                                                <a id="iDocumentName" name="iDocumentName" target="_blank" style="text-decoration:underline;">File_1101.pdf (151.2KB)</a>
+
+                                            </div>
+                                        </td>
+
+                                    </tr>
+
+                                </table>
+
+
+
+
+                                @*                                placeholder="dd-mm-yyyy" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"*@
+
+                                <div class="mt-3">
+                                    <label class="form-label">Document publication date:</label>
+                                    <input class="form-control"
+                                           type="text" id="iDocumentDateStart" name="iDocumentDateStart"
+                                           style="text-transform:uppercase;" required>
+
+                                </div>
+
+                                <div class="mt-3">
+                                    <label class="form-label">Document description:</label>
+                                    <textarea id="txt_HTMLContent" name="txt_HTMLContent" style="width:100%;height:auto;" rows="20" class="form-control">
+                                        default
+                                    </textarea>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="tab-pane" id="content_Progress" role="tabpanel" aria-labelledby="settings-tab">
+                            <div class="text-center">
+                                <img src="~/img/loading.gif" width="auto" height="auto" style="margin:auto;" />
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <div style="width:100%;display:flex;flex-direction:row;justify-content:space-between;">
+
+                        <div class="flex-start">
+
+                            <div id="div_CommandUpload" class="flex-start">
+                                <button type="button" id="btnuploadX" class="btn btn-primary"
+                                        onclick="upload_DocumentLinkList();">
+                                    Upload
+                                </button>
+                                <span style="margin-left:10px;">Max files to upload (10s)</span>
+                            </div>
+                            @*                             onclick="upload_DocumentLinkList();" *@
+                            <div id="div_CommandActivity" class="flex-start">
+                                <button type="button" id="btnuploadActivity" class="btn btn-primary"
+                                        onclick="submit_ActivityDescription();">
+                                    Submit
+                                </button>
+                            </div>
+
+                            <div id="div_CommandEdit" class="flex-start">
+                                <button type="button" id="btnSubmitUpdate" onclick="submit_TabEditDocument();" class="btn btn-primary">Submit</button>
+
+                                <a class="btn btn-danger" onclick="cancel_TabEditDocument();">Cancel</a>
+                            </div>
+
+                            @*  <div id="div_CommandPreview" class="flex-start">
+                            <span style="color:red;">Click here if you NOT have this document. </span><button type="button" class="btn btn-outline-danger" style="width:90px;font-size:medium;margin:5px;">Submit</button>
+                            </div> *@
+
+                        </div>
+
+                        <div class="flex-end">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
+
+
+<script>
+
+    let editor;
+
+    ClassicEditor
+        .create(document.querySelector('#txt_HTMLContent'))
+        .then(newEditor => {
+            editor = newEditor;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+
+    let editorActivity;
+
+    ClassicEditor
+        .create(document.querySelector('#txt_HTMLContent_Activity'))
+        .then(newEditorActivity => {
+            editorActivity = newEditorActivity;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+
+
+</script>
+
+
+<script>
+
+    function clickRow(obj) {
+
+        try {
+
+            //alert(' am clicked == ' + $('#popupModalEditor'));
+
+            //jQuery.noConflict();
+            $('#popupModalEditor').modal('show');
+
+        }
+
+        catch (ex) {
+            alert(ex);
+
+        }
+    }
+
+
+
+    function readValue(obj) {
+
+        try {
+
+            // var divTestMe = document.getElementById('divTestMe');
+            // var divTestMe = document.getElementById('txt_HTMLContent');
+            // var divTestMe = document.getElementById('iScoreAdjusted');
+
+            //   alert(divTestMe.innerHTML);
+            //alert(divTestMe.textContent);
+            //   alert(divTestMe.innerHTML);
+
+            //   alert($("#txt_HTMLContent").val());
+
+            //  alert( ClassicEditor.instances[ 'txt_HTMLContent' ].getData());
+
+            alert(editor.getData());
+
+            //jQuery.noConflict();
+            //$('#popupModalEditor').modal('show');
+
+        }
+
+        catch (ex) {
+            alert(ex);
+
+        }
+    }
+
+
+
+
+
+    window.apptbltknid;
+    window.querytbltknid;
+    window.tbltknid;
+    window.bldtknid;
+    window.appinftknid;
+    window.inftknid;
+    window.doccount;
+    window.clminfotxt;
+    window.clmdoccount;
+
+    // doctknid, doctcod, docname, docsize, docdesc
+
+    window.doctknid;
+    window.doctyp;
+    window.docname;
+    window.docsize;
+    window.docdesc;
+
+
+    //   datday,datmonth,datyear,dattxt,yearcnt
+
+    window.datday;
+    window.datmonth;
+    window.datyear;
+    window.dattxt;
+    window.timeframe;
+
+    window.clmactivity;
+    window.clmlinklist;
+    window.answercode;
+    window.answertext;
+    window.systemtitle;
+    window.systemdescription;
+
+
+
+    function Popup_PostForm() {
+
+        try {
+
+            //alert('inftknid == ' + window.inftknid);
+
+            var clmn_Score = $("[data-clmactivity='clmactivity_" + inftknid + "']");
+            var clmn_RiskMeasure = $("[data-clmlinklist='clmlinklist_" + inftknid + "']");
+            var clmn_Total = $("[data-clmtotal='clmtotal']");
+
+            var txt_RiskControlMeasure = '0';
+            var visible_RiskControlMeasure = '0';
+
+            if (editor.getData() == '') {
+                txt_RiskControlMeasure = "0";
+                visible_RiskControlMeasure = "";
+            }
+            else {
+                txt_RiskControlMeasure = editor.getData();
+                visible_RiskControlMeasure = editor.getData();
+
+            }
+
+            var iScoreAdjusted = document.getElementById('iScoreAdjusted');
+
+
+
+            $.ajax({
+                type: "POST",
+
+                //url: @Url.Action("Update_Score_ByInformationTokenID","Development",new { Area = "iWebMember" }),
+                url: '/iWebMember/Development/Update_Score_ByInformationTokenID',
+
+                data: {
+                    iAppTableTokenID: apptbltknid,
+                    iTableTokenID: tbltknid,
+                    iBuildingTokenID: bldtknid,
+                    iInformationTokenID: inftknid,
+                    iScoreAdjusted: iScoreAdjusted.value,
+                    iRiskControlMeasure: txt_RiskControlMeasure
+                },
+                success: function (result) {
+
+
+                    clmn_Score.html(iScoreAdjusted.value);
+                    clmn_RiskMeasure.html(visible_RiskControlMeasure);
+                    clmn_Total.html(result.total);
+
+
+                    BSR_ShowToastMessage('update');
+
+
+                },
+                error: function () {
+                    alert('Failed to receive the Data');
+                    console.log('Failed ');
+                }
+            });
+
+
+
+
+            $('#popupModalEditor').modal('hide');
+
+
+
+
+
+
+
+            //////$.ajax({
+            //////    url: "/iWebMember/Development/GetImage",
+            //////    type: 'POST',
+            //////    //dataType: 'json',
+            //////    data: { divhtml: $("#div_diagram").html() },
+            //////    success: function (data) { }
+            //////});
+
+
+
+
+
+
+
+
+
+
+            //////   // var divTestMe = document.getElementById('divTestMe');
+            //////var divTestMe = document.getElementById('txt_HTMLContent');
+
+            ////// //   alert(divTestMe.innerHTML);
+            //////    alert(divTestMe.textContent);
+
+            //////    //jQuery.noConflict();
+            //////    //$('#popupModalEditor').modal('show');
+
+        }
+
+        catch (ex) {
+            alert(ex);
+
+        }
+    }
+
+
+
+
+    function submit_ActivityDescription() {
+
+        try {
+
+            //alert('inftknid == ' + window.inftknid);
+
+
+
+            var clmn_ActivityText = $("[data-clmactivity='clmactivity_" + window.inftknid + "']");
+            //var clmn_LinkListText = $("[data-clmlinklist='clmlinklist_" + inftknid + "']");
+
+
+
+
+            var clmn_Score = $("[data-clmactivity='clmactivity_" + inftknid + "']");
+            var clmn_RiskMeasure = $("[data-clmlinklist='clmlinklist_" + inftknid + "']");
+            var clmn_Total = $("[data-clmtotal='clmtotal']");
+
+            var txt_ActivityDescription = '0';
+            var visible_ActivityDescription = '0';
+
+            if (editorActivity.getData() == '') {
+
+                txt_ActivityDescription = "0";
+                visible_ActivityDescription = "";
+            }
+            else {
+
+                txt_ActivityDescription = editorActivity.getData();
+                visible_ActivityDescription = editorActivity.getData();
+
+                clmn_ActivityText.html(
+                    systemtitle +
+                    visible_ActivityDescription);
+
+
+            }
+
+            // var iScoreAdjusted = document.getElementById('iScoreAdjusted');
+
+
+            $.ajax({
+
+                url: '/iWebMember/Development/QueryForm_Answer_YES_NO',
+                data: {
+                    iAppQueryTableTokenID: $("#iAppQueryTableTokenID").val(),
+                    iAppQueryInformationTokenID: $("#iAppQueryInformationTokenID").val(),
+                    iQueryTableTokenID: $("#iQueryTableTokenID").val(),
+                    iQueryInformationTokenID: $("#iQueryInformationTokenID").val(),
+                    iBuildingTokenID: $("#iBuildingTokenID").val(),
+                    //iFileLinkList: _urlLinkList,
+                    iAnswerCode: 'no',
+                    iAnswerText: txt_ActivityDescription
+
+                },
+                success: function (data) {
+
+
+
+                }
+            });
+
+            // $.ajax({
+            //     type: "POST",
+
+            //       url: '/iWebMember/Development/Update_Score_ByInformationTokenID',
+
+            //     data: {
+            //         iAppTableTokenID: apptbltknid,
+            //         iTableTokenID: tbltknid,
+            //         iBuildingTokenID: bldtknid,
+            //         iInformationTokenID: inftknid,
+            //         iScoreAdjusted: iScoreAdjusted.value,
+            //         iRiskControlMeasure: txt_RiskControlMeasure
+            //     },
+            //     success: function (result) {
+
+
+            //         clmn_Score.html(iScoreAdjusted.value);
+            //         clmn_RiskMeasure.html(visible_RiskControlMeasure);
+            //         clmn_Total.html(result.total);
+
+
+            //         BSR_ShowToastMessage('update');
+
+
+            //     },
+            //     error: function () {
+            //         alert('Failed to receive the Data');
+            //         console.log('Failed ');
+            //     }
+            // });
+
+
+
+
+            $('#popupModalEditor').modal('hide');
+
+
+
+
+
+        }
+
+        catch (ex) {
+            //alert(ex);
+            return;
+        }
+    }
+
+
+
+    function Popup_LoadQueryForm(apptbltknid, tbltknid, bldtknid, appinftknid, inftknid, clmactivity, clmlinklist, systemtitle, systemdescription, answercode) {
+
+        try {
+
+
+            // alert(apptbltknid + ', ' + tbltknid + ', ' + bldtknid + ', ' + appinftknid + ', ' + inftknid + ', ' + clmactivity + ', ' + clmlinklist);
+
+
+
+            window.apptbltknid = apptbltknid;
+            window.tbltknid = tbltknid;
+            window.bldtknid = bldtknid;
+            window.appinftknid = appinftknid;
+            window.inftknid = inftknid;
+            window.clmactivity = clmactivity;
+            window.clmlinklist = clmlinklist;
+
+            window.answercode = answercode;
+            window.systemtitle = systemtitle;
+            window.systemdescription = systemdescription;
+
+
+
+
+
+
+            $("#iBuildingTokenID").val(bldtknid);
+
+            $("#iAppQueryTableTokenID").val(apptbltknid);
+            $("#iAppQueryInformationTokenID").val(appinftknid);
+
+            $("#iQueryTableTokenID").val(tbltknid);
+            $("#iQueryInformationTokenID").val(inftknid);
+
+
+
+            var clmn_ActivityText = $("[data-clmactivity='clmactivity_" + inftknid + "']");
+            var clmn_LinkListText = $("[data-clmlinklist='clmlinklist_" + inftknid + "']");
+
+            var btn_YES = $("[data-btnyes='btnyes_" + inftknid + "']");
+            var btn_NO = $("[data-btnno='btnno_" + inftknid + "']");
+            var btn_NULL = $("[data-btnnull='btnnull_" + inftknid + "']");
+
+
+            //$("#iAppQueryInformationTokenID").val();
+
+            //alert('popup form here' + bldtknid + " , " + inftknid + " , " + clmactivity + " , " + clmlinklist);
+
+            // // // // // // var clmn_Score = $("[data-clmactivity='clmactivity_" + inftknid + "']");
+            // // // // // // var clmn_RiskMeasure = $("[data-clmlinklist='clmlinklist_" + inftknid + "']");
+
+            // // // // // // var txt_RiskControlMeasure = '0';
+
+            // // // // // // if (editor.getData() == '') {
+            // // // // // //     txt_RiskControlMeasure = "0";
+            // // // // // // }
+            // // // // // // else {
+            // // // // // //     txt_RiskControlMeasure = editor.getData();
+
+            // // // // // // }
+
+
+
+            // // // // // // //var divTestMe = document.getElementById('txt_HTMLContent');
+            // // // // // // var iScoreAdjusted = document.getElementById('iScoreAdjusted');
+
+            // // // // // // //  iScoreAdjusted.value = '3';
+            // // // // // // iScoreAdjusted.value = clmn_Score.html();
+
+            // // // // // // editor.setData(clmn_RiskMeasure.html());
+
+            if (answercode == "null") {
+
+                // RETURN-NULL
+
+                clmn_ActivityText.html(
+                    systemtitle +
+                    '</br>This area is under development.');
+
+                clmn_LinkListText.html('N/A');
+
+                //alert(btn_NULL);
+
+
+                $(btn_YES).removeClass("btn-outline-secondary");
+                $(btn_NO).removeClass("btn-outline-secondary");
+                $(btn_NULL).removeClass("btn-outline-secondary");
+
+
+                $(btn_YES).removeClass("btn-secondary");
+                $(btn_NO).removeClass("btn-secondary");
+                $(btn_NULL).removeClass("btn-secondary");
+
+                $(btn_NULL).addClass("btn-secondary");
+
+
+
+                $.ajax({
+
+                    url: '/iWebMember/Development/QueryForm_Answer_NULL',
+                    data: {
+                        iAppQueryTableTokenID: $("#iAppQueryTableTokenID").val(),
+                        iAppQueryInformationTokenID: $("#iAppQueryInformationTokenID").val(),
+                        iQueryTableTokenID: $("#iQueryTableTokenID").val(),
+                        iQueryInformationTokenID: $("#iQueryInformationTokenID").val(),
+                        iBuildingTokenID: $("#iBuildingTokenID").val(),
+                        //iFileLinkList: _urlLinkList,
+                        iAnswerCode: window.answercode,
+                        iAnswerText: '<br/>This area is under development.'
+
+                    },
+                    success: function (data) {
+
+
+                    }
+                });
+
+            }
+
+            else if (answercode == "yes") {
+
+                // Text-NO
+                // Links-YES
+                $('#tab_Preview').hide();
+                $('#tab_Edit').hide();
+                $('#tab_Progress').hide();
+
+                $("#btn_View").removeClass("active");
+                $("#btn_Progress").removeClass("active");
+                $("#btn_Edit").removeClass("active");
+
+                $("#btn_Preview").removeClass("active");
+                $("#content_Preview").removeClass("active");
+
+                $("#content_View").removeClass("active");
+                $("#content_Progress").removeClass("active");
+                $("#content_Edit").removeClass("active");
+                $("#content_Upload").removeClass("active");
+
+
+                $("#btn_Upload").addClass("active");
+                $("#content_Upload").addClass("active");
+
+                $('#popupModalEditor').modal('show');
+
+
+                $('#div_CommandEdit').hide();
+                $('#div_CommandActivity').hide();
+
+                $('#div_CommandUpload').show();
+
+                load_TabViewQueryDocumentList(false, true, false);
+
+
+                $(btn_YES).removeClass("btn-outline-secondary");
+                $(btn_NO).removeClass("btn-outline-secondary");
+                $(btn_NULL).removeClass("btn-outline-secondary");
+
+
+                $(btn_YES).removeClass("btn-secondary");
+                $(btn_NO).removeClass("btn-secondary");
+                $(btn_NULL).removeClass("btn-secondary");
+
+
+                $(btn_YES).addClass("btn-secondary");
+
+
+
+            }
+
+            else if (answercode == "no") {
+
+                // Text-YES
+                // Links-YES
+                $('#tab_Preview').show();
+                $('#tab_Edit').hide();
+                $('#tab_Progress').hide();
+
+                $('#div_CommandUpload').hide();
+                $('#div_CommandEdit').hide();
+                $('#div_CommandActivity').show();
+
+
+                $("#btn_View").removeClass("active");
+                $("#btn_Progress").removeClass("active");
+                $("#btn_Edit").removeClass("active");
+                $("#btn_Upload").removeClass("active");
+
+                $("#content_View").removeClass("active");
+                $("#content_Progress").removeClass("active");
+                $("#content_Edit").removeClass("active");
+                $("#content_Upload").removeClass("active");
+
+                $("#btn_Preview").addClass("active");
+                $("#content_Preview").addClass("active");
+
+                editorActivity.setData('');
+
+                $('#popupModalEditor').modal('show');
+
+                load_TabViewQueryDocumentList(false, false, true);
+
+                $(btn_YES).removeClass("btn-outline-secondary");
+                $(btn_NO).removeClass("btn-outline-secondary");
+                $(btn_NULL).removeClass("btn-outline-secondary");
+
+
+
+                $(btn_YES).removeClass("btn-secondary");
+                $(btn_NO).removeClass("btn-secondary");
+                $(btn_NULL).removeClass("btn-secondary");
+
+
+                $(btn_NO).addClass("btn-secondary");
+
+
+
+            }
+
+
+        }
+
+        catch (ex) {
+            //  alert(ex);
+            console.log(ex);
+        }
+    }
+
+
+
+
+    function open_TabViewProgressQuery() {
+
+        try {
+
+
+
+            $('#tab_Edit').hide();
+            $('#tab_Progress').hide();
+            $('#div_CommandUpload').hide();
+            $('#div_CommandEdit').hide();
+            $('#div_CommandActivity').hide();
+            ////$('#div_CommandPreview').hide();
+
+            // $('#myTab button[bs-target="#edit"]').tab('show'); // Select tab by name`
+
+            $("#btn_Preview").removeClass("active");
+            $("#btn_View").removeClass("active");
+            $("#btn_Edit").removeClass("active");
+            $("#btn_Upload").removeClass("active");
+
+            $("#content_Preview").removeClass("active");
+            $("#content_View").removeClass("active");
+            $("#content_Edit").removeClass("active");
+            $("#content_Upload").removeClass("active");
+
+            $("#btn_Progress").addClass("active");
+            $("#content_Progress").addClass("active");
+        }
+        catch (err) {
+            console.error(err);
+            return;
+        }
+
+    }
+
+
+
+
+
+
+    function load_TabViewQueryList(iBuildingTokenID, iQueryTableTokenID, blnIsPaging, iPageNumber, blnIsNewRefresh) {
+
+
+        try {
+
+            // alert('load_TabViewQueryList XXX');
+
+
+            BSR_ShowToastMessage('load');
+
+            window.bldtknid = iBuildingTokenID;
+            window.querytbltknid = iQueryTableTokenID;
+
+
+            $("#iQueryTableTokenID").val(iQueryTableTokenID);
+            $("#iBuildingTokenID").val(iBuildingTokenID);
+
+            $.ajax({
+
+                url: '/iWebMember/Development/ReloadQueryFormList',
+                data: {
+                    bldtknid: $("#iBuildingTokenID").val(),//document.getElementById("cbShowPrevious").checked,
+                    querytbltknid: $("#iQueryTableTokenID").val(), //document.getElementById("cbShowUpcoming").checked
+                    iPageNumber: iPageNumber, //document.getElementById("cbShowUpcoming").checked
+                    blnIsPaging: blnIsPaging //document.getElementById("cbShowUpcoming").checked
+                },
+                success: function (data) {
+
+                    $("#div_" + iQueryTableTokenID).html(data);
+
+                    let _blnIsPagingList = blnIsPaging.toLowerCase();
+
+                    //alert('_blnIsPagingList == ' + _blnIsPagingList);
+
+
+                    // var companyElements = $("ul:data(group) li:data(company)");
+                    //  var companyElements = $("ul:data(group) li:data(company)");
+
+                    if (_blnIsPagingList == "true") {
+
+
+                        $("#pager1_" + iQueryTableTokenID).removeClass("active");
+                        $("#pager2_" + iQueryTableTokenID).removeClass("active");
+                        $("#pager3_" + iQueryTableTokenID).removeClass("active");
+
+
+                        if (iPageNumber == "0") {
+                            $("#pager1_" + iQueryTableTokenID).addClass("active");
+
+                        }
+
+                        else if (iPageNumber == "1") {
+                            $("#pager1_" + iQueryTableTokenID).addClass("active");
+
+                        }
+                        else if (iPageNumber == "2") {
+                            $("#pager2_" + iQueryTableTokenID).addClass("active");
+
+                        }
+
+                        else if (iPageNumber == "3") {
+                            $("#pager3_" + iQueryTableTokenID).addClass("active");
+
+                        }
+
+                        $("#div_Paging_" + iQueryTableTokenID).show();
+
+                    } else {
+                        $("#div_Paging_" + iQueryTableTokenID).hide();
+
+                    }
+
+
+
+                    // $('#div_CommandEdit').hide();
+                    // ////////$('#div_CommandPreview').hide();
+                    // $('#div_CommandUpload').hide();
+
+                    //alert('load_TabViewQueryList DONE !!!');
+                }
+            });
+
+
+            if (blnIsNewRefresh) {
+
+                // // // // // // $.ajax({
+                // // // // // //     //url: '@Url.Action("ReloadEvents", "Home")',
+                // // // // // //     url: '/iWebMember/Development/GetCountDocumentList',
+                // // // // // //     data: {
+                // // // // // //         bldtknid: $("#iBuildingTokenID").val(),
+                // // // // // //         inftknid: $("#iInformationTokenID").val()
+                // // // // // //     },
+                // // // // // //     success: function (data) {
+
+                // // // // // //         //alert('load_TabViewQueryDocumentList DONE !!!  ' + data.count);
+
+                // // // // // //         var clmn_DocumentCount = $("[data-clmdoccount='clmdoccount_" + window.inftknid + "']");
+
+                // // // // // //         var iDocumentCount = document.getElementById('iDocumentCount');
+
+
+
+
+                // // // // // //         if (data.count != "0") {
+                // // // // // //             clmn_DocumentCount.html(data.count);
+                // // // // // //             iDocumentCount.innerHTML = data.count;
+
+                // // // // // //         }
+                // // // // // //         else {
+                // // // // // //             clmn_DocumentCount.html('');
+                // // // // // //             iDocumentCount.innerHTML = '';
+
+                // // // // // //         }
+
+
+                // // // // // //         // alert('load_TabViewQueryDocumentList DONE !!!');
+                // // // // // //     }
+                // // // // // // });
+
+
+
+            }
+
+
+
+
+        }
+        catch (err) {
+            //alert(err);
+            console.error(err);
+            return;
+
+        }
+
+    }
+
+
+
+
+
+
+    function upload_DocumentLinkList() {
+
+        try {
+
+
+            //alert('upload_DocumentLinkList');
+            var _urlLinkList = "";
+
+            var inputs = $('[data-inputfor="fupload"]');
+
+            //alert(inputs.length);
+
+
+            for (var i = 0; i < inputs.length; i++) {
+
+                // alert($(inputs[i]).val());
+                // alert(isValidUrl($(inputs[i]).val()));
+
+                if ($(inputs[i]).val().length != 0) {
+
+
+                    if (isValidUrl($(inputs[i]).val())) {
+
+                        if (_urlLinkList == "") {
+                            _urlLinkList = $(inputs[i]).val();
+                        }
+
+                        else {
+                            _urlLinkList += ',' + $(inputs[i]).val();
+                        }
+
+                    }
+                }
+
+                // else {
+                //     alert('empty');
+
+                // }
+
+
+            }
+
+            // alert('_urlLinkList == ' + _urlLinkList);
+
+
+            // // // // // alert($("#iAppQueryTableTokenID").val());
+            // // // // // alert($("#iAppQueryInformationTokenID").val());
+            // // // // // alert($("#iQueryTableTokenID").val());
+            // // // // // alert($("#iQueryInformationTokenID").val());
+            // // // // // alert($("#iBuildingTokenID").val());
+            // // // // // alert(_urlLinkList);
+
+
+
+            // var clmn_DocumentDate = $("[data-clmdocdate='clmdocdate_" + window.doctknid + "']");
+            // var clmn_DocumentDescription = $("[data-clmdocdesc='clmdocdesc_" + window.doctknid + "']");
+
+            if (_urlLinkList != "") {
+
+                // alert('_urlLinkList != ""');
+
+
+                BSR_ShowToastMessage('process');
+
+                open_TabViewProgressQuery();
+
+
+
+
+
+                $.ajax({
+
+                    url: '/iWebMember/Development/QueryForm_Upload_FileLinks',
+                    data: {
+                        iAppQueryTableTokenID: $("#iAppQueryTableTokenID").val(),
+                        iAppQueryInformationTokenID: $("#iAppQueryInformationTokenID").val(),
+                        iQueryTableTokenID: $("#iQueryTableTokenID").val(),
+                        iQueryInformationTokenID: $("#iQueryInformationTokenID").val(),
+                        iBuildingTokenID: $("#iBuildingTokenID").val(),
+                        iFileLinkList: _urlLinkList,
+                        iAnswerCode: window.answercode
+
+
+
+                        // // // // // doctknid: window.doctknid,
+                        // // // // // iday: date.getDate(),
+                        // // // // // // idayname: $("#iBuildingTokenID").val(),
+                        // // // // // imonth: date.getMonth() + 1,
+                        // // // // // iyear: date.getFullYear(),
+                        // // // // // iDateText: $("#iDocumentDateStart").val(),
+                        // // // // // idesc: txt_DocumentDescription,
+                        // // // // // timeframe: window.timeframe
+                    },
+                    success: function (data) {
+
+
+                        refresh_TabViewQueryDocumentList(true);
+
+
+
+                        for (var i = 0; i < inputs.length; i++) {
+
+
+                            $(inputs[i]).val('');
+
+                        }
+
+
+                        // // // // clmn_DocumentDate.css('color', 'black');
+
+
+                        // // // // if (txt_DocumentDescription == "0") {
+                        // // // //     clmn_DocumentDescription.css('color', 'red');
+                        // // // // }
+
+                        // // // // else {
+                        // // // //     clmn_DocumentDescription.css('color', 'black');
+                        // // // // }
+
+
+                        // // // // clmn_DocumentDate.html($("#iDocumentDateStart").val());
+                        // // // // clmn_DocumentDescription.html(visible_RiskControlMeasure);
+
+
+                        // // // // cancel_TabEditDocument();
+
+                    }
+                });
+
+
+
+            }
+
+            // else {
+
+            //     alert('_urlLinkList ==== ""');
+
+            // }
+
+
+
+
+            // // // // // $('#tab_Edit').hide();
+            // // // // // $('#tab_Progress').hide();
+            // // // // // $('#div_CommandUpload').hide();
+            // // // // // $('#div_CommandEdit').hide();
+            // // // // // ////$('#div_CommandPreview').hide();
+
+            // // // // // // $('#myTab button[bs-target="#edit"]').tab('show'); // Select tab by name`
+
+            // // // // // $("#btn_Preview").removeClass("active");
+            // // // // // $("#btn_View").removeClass("active");
+            // // // // // $("#btn_Edit").removeClass("active");
+            // // // // // $("#btn_Upload").removeClass("active");
+
+            // // // // // $("#content_Preview").removeClass("active");
+            // // // // // $("#content_View").removeClass("active");
+            // // // // // $("#content_Edit").removeClass("active");
+            // // // // // $("#content_Upload").removeClass("active");
+
+            // // // // // $("#btn_Progress").addClass("active");
+            // // // // // $("#content_Progress").addClass("active");
+        }
+
+
+        catch (err) {
+            alert(err);
+            console.error(err);
+            return;
+        }
+
+    }
+
+
+    const isValidUrl = urlString => {
+        var urlPattern = new RegExp('^(https?:\\/\\/)?' + // validate protocol
+            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // validate domain name
+            '((\\d{1,3}\\.){3}\\d{1,3}))' + // validate OR ip (v4) address
+            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // validate port and path
+            '(\\?[;&a-z\\d%_.~+=-]*)?' + // validate query string
+            '(\\#[-a-z\\d_]*)?$', 'i'); // validate fragment locator
+        return !!urlPattern.test(urlString);
+    }
+
+
+    function load_TabViewQueryDocumentList(blnIsNewRefresh, blnIsUploadActive, blnIsActivityActive) {
+
+
+        try {
+
+            var clmn_LinkListText = $("[data-clmlinklist='clmlinklist_" + window.inftknid + "']");
+
+
+
+            //  $("#iInformationTokenID").val(inftknid);
+            //  $("#iBuildingTokenID").val(bldtknid);
+
+            $.ajax({
+
+                url: '/iWebMember/Development/ReloadQueryDocumentList',
+                data: {
+                    bldtknid: $("#iBuildingTokenID").val(),//document.getElementById("cbShowPrevious").checked,
+                    iqueryinftknid: $("#iQueryInformationTokenID").val() //document.getElementById("cbShowUpcoming").checked
+                },
+                success: function (data) {
+
+                    $("#div_DocumentList").html(data);
+
+                    $('#div_CommandEdit').hide();
+                    // ////$('#div_CommandPreview').hide();
+
+                    if (blnIsUploadActive) {
+
+                        $('#div_CommandUpload').show();
+
+                    } else {
+
+                        $('#div_CommandUpload').hide();
+
+                    }
+
+                    if (blnIsActivityActive) {
+
+                        $('#div_CommandActivity').show();
+
+                    } else {
+
+                        $('#div_CommandActivity').hide();
+
+                    }
+
+
+
+                    // alert('load_TabViewQueryDocumentList DONE !!!');
+                }
+            });
+
+
+            if (blnIsNewRefresh) {
+
+
+                $.ajax({
+
+                    url: '/iWebMember/Development/ReloadQueryFormTableDocumentList',
+                    data: {
+                        bldtknid: $("#iBuildingTokenID").val(),//document.getElementById("cbShowPrevious").checked,
+                        iqueryinftknid: $("#iQueryInformationTokenID").val() //document.getElementById("cbShowUpcoming").checked
+                    },
+                    success: function (data) {
+
+
+                        clmn_LinkListText.html(data);
+
+
+                        // $("#div_DocumentList").html(data);
+
+                        // $('#div_CommandEdit').hide();
+                        // // ////$('#div_CommandPreview').hide();
+                        // $('#div_CommandUpload').hide();
+
+
+                        // alert('load_TabViewQueryDocumentList DONE !!!');
+                    }
+                });
+
+
+            }
+
+
+
+
+        }
+        catch (err) {
+            console.error(err);
+            return;
+
+        }
+
+    }
+
+
+
+    function refresh_TabViewQueryDocumentList(blnIsNewRefresh) {
+
+
+        try {
+
+
+            var clmn_LinkListText = $("[data-clmlinklist='clmlinklist_" + window.inftknid + "']");
+
+
+
+            //  $("#iInformationTokenID").val(inftknid);
+            //  $("#iBuildingTokenID").val(bldtknid);
+
+            $.ajax({
+
+                url: '/iWebMember/Development/ReloadQueryDocumentList',
+                data: {
+                    bldtknid: $("#iBuildingTokenID").val(),//document.getElementById("cbShowPrevious").checked,
+                    iqueryinftknid: $("#iQueryInformationTokenID").val() //document.getElementById("cbShowUpcoming").checked
+                },
+                success: function (data) {
+
+                    $("#div_DocumentList").html(data);
+
+                    $('#div_CommandEdit').hide();
+                    // ////$('#div_CommandPreview').hide();
+                    $('#div_CommandUpload').hide();
+                    $('#div_CommandActivity').hide();
+
+                    setTimeout(function () {
+
+
+                        BSR_ShowToastMessage('upload');
+
+                        open_TabViewDocumentsQuery(false);
+
+                    }, 2000);
+                    // alert('load_TabViewQueryDocumentList DONE !!!');
+                }
+            });
+
+
+            if (blnIsNewRefresh) {
+
+
+                $.ajax({
+
+                    url: '/iWebMember/Development/ReloadQueryFormTableDocumentList',
+                    data: {
+                        bldtknid: $("#iBuildingTokenID").val(),
+                        iqueryinftknid: $("#iQueryInformationTokenID").val()
+                    },
+                    success: function (data) {
+
+
+                        // alert(clmn_LinkListText);
+
+                        clmn_LinkListText.html(data);
+
+
+                        // $("#div_DocumentList").html(data);
+
+                        // $('#div_CommandEdit').hide();
+                        // // ////$('#div_CommandPreview').hide();
+                        // $('#div_CommandUpload').hide();
+
+
+                        // alert('load_TabViewQueryDocumentList DONE !!!');
+                    }
+                });
+
+
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+
+        }
+        catch (err) {
+            console.error(err);
+            return;
+
+        }
+
+    }
+
+
+
+
+    function open_TabViewDocumentsQuery(blnIsNewRefresh) {
+
+        try {
+
+
+            // // // // // if (blnIsNewRefresh) {
+            // // // // //     load_TabViewDocumentList(true);
+            // // // // // }
+
+            $('#tab_Edit').hide();
+            $('#tab_Progress').hide();
+            $('#div_CommandUpload').hide();
+            $('#div_CommandActivity').hide();
+            $('#div_CommandEdit').hide();
+            //$('#div_CommandPreview').hide();
+
+            // $('#myTab button[bs-target="#edit"]').tab('show'); // Select tab by name`
+
+            $("#btn_Preview").removeClass("active");
+            $("#btn_Progress").removeClass("active");
+            $("#btn_Edit").removeClass("active");
+            $("#btn_Upload").removeClass("active");
+
+            $("#content_Preview").removeClass("active");
+            $("#content_Progress").removeClass("active");
+            $("#content_Edit").removeClass("active");
+            $("#content_Upload").removeClass("active");
+
+            $("#btn_View").addClass("active");
+            $("#content_View").addClass("active");
+        }
+        catch (err) {
+            console.error(err);
+            return;
+        }
+
+    }
+
+
+
+
+</script>
+
+
+
+
+<script>
+
+
+
+
+    $(document).ready(function () {
+
+        try {
+
+
+            //  // // // // XXX  $("#btnupload").click(function (e) {
+            // // // // //     e.preventDefault();
+            // // // // //     dz.processQueue();
+            // // // // //     // $(this).attr("disabled", "disabled");
+            // // // // //     //$(this).removeAttr('disabled'));
+            // // // // //     open_TabViewProgress();
+            // // // // // });
+
+            // // // // // $('#btnupload').on('click', function (e) {
+
+            // // // // //     try {
+
+
+            // // // // //         ////////////////////////////////////////////////////////////////
+
+            // // // // //         e.preventDefault();
+            // // // // //         dz.options.autoProcessQueue = true;
+            // // // // //         dz.processQueue();
+
+            // // // // //         open_TabViewProgress();
+
+            // // // // //     }
+
+            // // // // //     catch (err) {
+            // // // // //         alert(err);
+            // // // // //     }
+
+
+            // // // // // });
+
+            ///////////////////////////////////////////////
+
+
+
+
+
+
+
+            $(".nav-tabs li button").click(function () {
+                $(this).tab('show');
+            });
+
+            //////////////
+
+            $('.nav-tabs li button').on('shown.bs.tab', function (event) {
+                //var x = $(event.target).text();         // active tab
+                var x = $(event.target).data('tabcontent');         // active tab
+                //var y = $(event.relatedTarget).text();  // previous tab
+                //////$(".act span").text(x);
+                //////$(".prev span").text(y);
+
+                // alert('CLICKED TAB == ' + x);
+
+                if (x === 'upload') {
+                    $('#div_CommandEdit').hide();
+                    $('#div_CommandActivity').hide();
+                    //////$('#div_CommandPreview').hide();
+                    $('#div_CommandUpload').show();
+                }
+                else if (x === 'edit') {
+                    $('#div_CommandEdit').show();
+                    //////$('#div_CommandPreview').hide();
+                    $('#div_CommandUpload').hide();
+                    $('#div_CommandActivity').hide();
+                }
+                else if (x === 'preview') {
+
+
+                    $('#div_CommandEdit').hide();
+                    $('#div_CommandUpload').hide();
+                    $('#div_CommandActivity').show();
+                    //////$('#div_CommandPreview').hide();
+
+                }
+
+                else if (x === 'view') {
+
+                    // alert($("#div_DocumentList").is(':empty'));
+                    // alert($("#div_DocumentList").length);
+
+                    //alert($.trim($("#div_DocumentList").html()).length);
+
+                    //if ($.trim($("#div_DocumentList").html()).length === 0) {
+                    //    //alert('load_TabViewQueryDocumentList');
+                    //    load_TabViewQueryDocumentList();
+                    //}
+
+                    $('#div_CommandEdit').hide();
+                    //////$('#div_CommandPreview').hide();
+                    $('#div_CommandUpload').hide();
+                    $('#div_CommandActivity').hide();
+
+                }
+                // // // // // else {
+                // // // // //     $('#div_CommandEdit').hide();
+                // // // // //     $('#div_CommandUpload').hide();
+
+                // // // // // }
+
+
+                //  $('#div_CommandUpload').show();
+
+            });
+
+
+            $('.accordion-item').on('shown.bs.collapse', function (event) {
+
+                // do expand
+
+                //  alert('shown.bs.collapse');
+
+
+                // pane-1689793058866-1695879102829
+                var x = $(this).data('paneid');
+
+                // alert('shown.bs.collapse == ' + x);
+
+
+                // let text = "How are you doing today?";
+                // const myArray = text.split(" ");
+
+                //let text = "How are you doing today?";
+                const myArray = x.split("-");
+
+                // alert(myArray[1] + " , " + myArray[2]);
+
+                //alert('EMPTY');
+
+                if (myArray[1] !== '0') {
+
+                    if ($.trim($("#div_" + myArray[2]).html()).length === 0) {
+
+                        // alert('EMPTY-id == ' + "#div_" + myArray[2]);
+                        load_TabViewQueryList(myArray[1], myArray[2], myArray[3], 0, true);
+                        //load_TabViewQueryDocumentList();
+                    } else {
+                        // alert('FULL');
+                    }
+
+                }
+
+
+                // alert('Opened == ' + x);
+                // console.log("Opened")
+            });
+
+
+            $('.accordion-item').on('hidden.bs.collapse', function (event) {
+
+                //do collapse
+                var x = $(this).data('paneid');
+
+                //alert('Closed == ' + x);
+                // console.log("Closed")
+            });
+
+            //   $('#collapseDiv').on('shown.bs.collapse', function () {
+            //     console.log("Opened")
+            // });
+
+            // $('#collapseDiv').on('hidden.bs.collapse', function () {
+            //     console.log("Closed")
+            // });
+
+
+
+
+
+            $("#iDocumentDateStart")
+                .datepicker({
+                    //dateFormat: 'dd-mm-yy, DD',
+                    dateFormat: 'dM, yy',
+                    //defaultDate: "24-09-2019"
+
+                    orientation: "bottom",
+                    // add this for placemenet
+                });
+            // .click(function (e) {
+            //         $('.ui-datepicker').css('bottom left', e.pageY);
+            //     });
+
+            //$datepicker.datepicker('setDate', new Date());
+            $("#iDocumentDateStart").datepicker("setDate", new Date());
+            //iDocumentDateStart
+
+            ////////////$("#datepicker").datepicker({ dateFormat: "DD, d MM, yy" });
+            ////////////$("#datepicker").datepicker("setDate", $.datepicker.parseDate("yy-mm-dd", "2017-11-16"));
+
+
+            //$("#datepicker").datepicker();
+            //$("#datepicker").datepicker("setDate", "06/01/21");
+
+            // https://stackoverflow.com/questions/35013820/how-to-pass-date-value-created-by-datepicker-to-a-mvc-5-controller-with-ajax
+
+            ///////////////////////////////////////
+
+
+            var max_fields = 10;
+            var img_NewURL1 = $('#img_NewURL1');
+            var $add_input_button = $('#btn_NewFileHyperlink');
+            var $field_wrapper = $('#div_DocumentUpload');
+            var new_field_html_X1 = '<div><input name="title[]" class="form-control form-item type="text" value="" data-label="title" /><a href="javascript:void(0);" class="remove_input_button" title="remove field">-</a></div>';
+            var new_field_html = '<div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;"><div class="col-11" ><input type="text"  type="url" pattern="https?://.+" class="form-control" id="input_fileURL2" name="input_fileURL2" placeholder="Insert your hyperlink here ..." style="color:blue;"   data-inputfor="fupload"  required /></div><div class="col-1 text-center" style="width:50px;" ><img id="img_delURL2" name="img_delURL2" class="remove_input_button"  src="https://bsr.vemcoconsulting.com/img/img_delete.png" style="width:20px;height:20px;" alt="Delete" title="Delete" /></div></div>';
+            var input_count = 1;
+
+            //add inputs
+            img_NewURL1.click(function () {
+                if (input_count < max_fields) {
+                    input_count++;
+                    $field_wrapper.append(new_field_html);
+                }
+            });
+
+
+            //add inputs
+            $add_input_button.click(function () {
+                if (input_count < max_fields) {
+                    input_count++;
+                    $field_wrapper.append(new_field_html);
+                }
+            });
+
+            //remove_input
+            $field_wrapper.on('click', '.remove_input_button', function (e) {
+                e.preventDefault();
+                $(this).parent('div').parent('div').remove();
+                input_count--;
+            });
+
+        }
+        catch (err) {
+            console.error(err);
+            return;
+        }
+
+    });
+
+</script>
+
+
+
+

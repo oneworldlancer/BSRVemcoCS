@@ -316,123 +316,172 @@
 
             @if (Context.Request.Query["bldtknid"] != (string)null)
             {
-                @*@Context.Request.Query[ "bldtknid" ].ToString()*@
 
-                @* @Context.Request.Query[ "bldtknid" ].ToString()*@
                 <li class="nav-item">
-                    @* collapsed*@
-                    @*<span class="glyphicon glyphicon-collapse-down"> </span>*@
-                    @* bi-chevron-up *@
+                    @*  *@
+
                     <a class="nav-link collapse" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#" style="background-color:#152365;color:white;">
-                        <i class="bi bi-bar-chart" style="color:white;"></i><span style="width:100%;">View Building</span><i id="collapse_arrow" class="bi  float-end me-auto" style="color:white;float:right;"></i>
+                        <i class="bi bi-bar-chart" style="color:white;"></i><span style="width:100%;">View Building</span><i id="collapse_arrow" class="bi float-end me-auto" style="color:white;float:right;"></i>
                     </a>
-                    @**@   @*<i class="bi bi-chevron-up ms-auto"></i>*@   @* collapse
-                *@
-                    <ul id="charts-nav" class="collapse in" data-bs-parent="#sidebar-nav">
 
-                        @* <ul id="charts-nav" class="panel-collapse collapse in" data-bs-parent="#sidebar-nav" aria-expanded="true"> *@
+                    <div id="charts-nav" class="collapse in" data-bs-parent="#sidebar-nav">
 
 
 
 
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
-                               asp-action="Summary" asp-route-bldtknid="@Context.Request.Query[ "bldtknid" ].ToString()"
-                               asp-route-state="item">
-                                <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
-                                <span>Dashboard</span>
-                            </a>
-                        </li><!-- End Profile Page Nav -->
+                        @* id="charts-nav" class="collapse in" data-bs-parent="#sidebar-nav" *@
+                        <ul>
 
 
 
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
-                               asp-action="Page2_New" asp-route-bldtknid="@Context.Request.Query[ "bldtknid" ].ToString()"
-                               asp-route-state="item">
-                                <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
-                                <span>Infomation Gathering</span>
-                            </a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
+                                   asp-action="Summary" asp-route-bldtknid="@Context.Request.Query[ "bldtknid" ].ToString()"
+                                   asp-route-state="item">
+                                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+                            <!-- End Profile Page Nav -->
 
 
+                        </ul>
+
+                        @*  *@
+                        @* data-bs-target="#charts-nav" data-bs-toggle="collapse" *@
+                        <a class="nav-link" href="#" style="background-color:#152365;color:white;">
+                            Information Gathering
+                        </a>
 
 
+                        @* id="charts-nav" class="collapse in" data-bs-parent="#sidebar-nav" *@
+                        <ul>
 
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
-                               asp-action="Report" asp-route-bldtknid="@Context.Request.Query[ "bldtknid" ].ToString()"
-                               asp-route-state="item">
-                                <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
-                                <span>
-                                    Gap Analysis
-                                </span>
-                            </a>
-                        </li>
+                            @* <ul id="charts-nav" class="panel-collapse collapse in" data-bs-parent="#sidebar-nav" aria-expanded="true"> *@
 
 
 
 
 
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
-                               asp-action="Table4_Edit" asp-route-bldtknid="@Context.Request.Query[ "bldtknid" ].ToString()"
-                               asp-route-state="item">
-                                <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
-                                <span>
-                                    Risk Assessment
-                                </span>
-                            </a>
-                        </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
+                                   asp-action="Page2_New" asp-route-bldtknid="@Context.Request.Query[ "bldtknid" ].ToString()"
+                                   asp-route-state="item">
+                                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                                    <span>Golden Thread Documents</span>
+                                </a>
+                            </li>
+
+
+
+                            <li class="nav-item">
+                                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
+                                   asp-action="Query" asp-route-bldtknid="@Context.Request.Query[ "bldtknid" ].ToString()"
+                                   asp-route-state="item">
+                                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                                    <span>Resident Engagement</span>
+                                </a>
+                            </li>
 
 
 
 
 
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
-                               asp-action="Table3_Edit" asp-route-bldtknid="@Context.Request.Query[ "bldtknid" ].ToString()"
-                               asp-route-state="item">
-                                <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
-                                <span>
-                                    Resident Engagement
-                                </span>
-                            </a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
+                                   asp-action="Report" asp-route-bldtknid="@Context.Request.Query[ "bldtknid" ].ToString()"
+                                   asp-route-state="item">
+                                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                                    <span>
+                                        Gap Analysis
+                                    </span>
+                                </a>
+                            </li>
+
+
+                        </ul>
 
 
 
 
 
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
-                               asp-action="Table1_Edit" asp-route-bldtknid="@Context.Request.Query[ "bldtknid" ].ToString()"
-                               asp-route-state="item">
-                                <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
-                                <span>
-                                    Safety Management System
-                                </span>
-                            </a>
-                        </li>
+
+                        @*  *@
+
+                        @* data-bs-target="#charts-nav" data-bs-toggle="collapse" *@
+                        <a class="nav-link" href="#" style="background-color:#5a646c;color:white;">
+                            Building Risk Analysis
+                        </a>
+
+                        @* id="charts-nav" class="collapse in" data-bs-parent="#sidebar-nav" *@
+                        <ul>
 
 
 
 
-                        <li class="nav-item">
-                            <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
-                               asp-action="Table2_Edit" asp-route-bldtknid="@Context.Request.Query[ "bldtknid" ].ToString()"
-                               asp-route-state="item">
-                                <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
-                                <span>
-                                    Systems and Facilities
-                                </span>
-                            </a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
+                                   asp-action="Table4_Edit" asp-route-bldtknid="@Context.Request.Query[ "bldtknid" ].ToString()"
+                                   asp-route-state="item">
+                                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                                    <span>
+                                        Risk Assessment
+                                    </span>
+                                </a>
+                            </li>
 
 
 
 
-                    </ul>
+
+                            <li class="nav-item">
+                                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
+                                   asp-action="Table3_Edit" asp-route-bldtknid="@Context.Request.Query[ "bldtknid" ].ToString()"
+                                   asp-route-state="item">
+                                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                                    <span>
+                                        Occurrence Reporting and Resident Engagement
+                                    </span>
+                                </a>
+                            </li>
+
+
+
+
+
+                            <li class="nav-item">
+                                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
+                                   asp-action="Table1_Edit" asp-route-bldtknid="@Context.Request.Query[ "bldtknid" ].ToString()"
+                                   asp-route-state="item">
+                                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                                    <span>
+                                        Safety Management System
+                                    </span>
+                                </a>
+                            </li>
+
+
+
+
+                            <li class="nav-item">
+                                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
+                                   asp-action="Table2_Edit" asp-route-bldtknid="@Context.Request.Query[ "bldtknid" ].ToString()"
+                                   asp-route-state="item">
+                                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                                    <span>
+                                        Systems and Facilities
+                                    </span>
+                                </a>
+                            </li>
+
+
+
+
+                        </ul>
+
+                    </div>
+
                 </li>
 
             }
@@ -549,7 +598,7 @@
 
 
 
-            <li class="nav-heading">Sunscriptions</li>
+            <li class="nav-heading">Subscriptions</li>
 
 
             <li class="nav-item">
@@ -981,10 +1030,34 @@
                     }
                 </h1>
             </div>
+
+
         </div>
 
-
         @RenderBody()
+
+        @* xx *@
+
+        @*   <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+        *@
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    @* <img src="~/img/img_close_x.png" /> *@
+                    @* <img src="..." class="rounded me-2" alt="..."> *@
+                    <strong class="me-auto">BSR Service Suite</strong>
+                    @* <small>Confirm</small> *@
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+
+                <div id="toast_Message" name="toast_Message" class="toast-body bg-success bg-gradient text-black" style="background-image: var(--bs-gradient);">
+                    Hello, world! This is a toast message.
+                </div>
+            </div>
+        </div>
+
+        @* xx *@
     </div>
 
 
@@ -1153,8 +1226,141 @@
             //     $(".btn").html('<span class="glyphicon glyphicon-collapse-up"></span> Close');
             // });
 
+            ///////////////////////////
+
+            //const toastTrigger = document.getElementById('liveToastBtn')
+            toastLiveExample = document.getElementById('liveToast')
+
+            toast = new bootstrap.Toast(toastLiveExample)
+
+            // // // // toast.show();
+
+            ///////////////////////////////
+            //const toastTrigger = document.getElementById('liveToastBtn')
+            //const toastLiveExample = document.getElementById('liveToast')
+
+            // if (toastTrigger) {
+            //     toastTrigger.addEventListener('click', () => {
+            //         const toast = new bootstrap.Toast(toastLiveExample)
+
+            //         toast.show()
+            //     })
+            // }
+
+
+
+
 
         });
+
+        var toastLiveExample;
+        var toast;
+
+        window.BSR_ShowToastMessage = function (code) {
+
+            try {
+
+
+                //toast_Message
+                //const toastLiveExample = document.getElementById('liveToast')
+
+                //const toast = new bootstrap.Toast(toastLiveExample)
+
+                if (code == "delete") {
+
+
+                    $("#toast_Message").removeClass('bg-success');
+                    $("#toast_Message").removeClass('bg-warning');
+                    $("#toast_Message").removeClass('bg-info');
+                    $("#toast_Message").removeClass('bg-danger');
+
+                    $("#toast_Message").addClass('bg-danger');
+
+                    $("#toast_Message").html("Item deleted successfully.");
+
+                }
+
+                else if (code == "new") {
+
+
+                    $("#toast_Message").removeClass('bg-success');
+                    $("#toast_Message").removeClass('bg-warning');
+                    $("#toast_Message").removeClass('bg-danger');
+                    $("#toast_Message").removeClass('bg-info');
+
+                    $("#toast_Message").addClass('bg-success');
+
+                    $("#toast_Message").html("Item added successfully.");
+
+                }
+
+
+                else if (code == "upload") {
+
+
+                    $("#toast_Message").removeClass('bg-success');
+                    $("#toast_Message").removeClass('bg-warning');
+                    $("#toast_Message").removeClass('bg-danger');
+                    $("#toast_Message").removeClass('bg-info');
+
+                    $("#toast_Message").addClass('bg-success');
+
+                    $("#toast_Message").html("Item(s) uploaded successfully.");
+
+                }
+
+                else if (code == "update") {
+
+
+                    $("#toast_Message").removeClass('bg-success');
+                    $("#toast_Message").removeClass('bg-warning');
+                    $("#toast_Message").removeClass('bg-danger');
+                    $("#toast_Message").removeClass('bg-info');
+
+                    $("#toast_Message").addClass('bg-warning');
+
+                    $("#toast_Message").html("Item updated successfully.");
+
+                }
+
+
+                else if (code == "load") {
+
+
+                    $("#toast_Message").removeClass('bg-success');
+                    $("#toast_Message").removeClass('bg-warning');
+                    $("#toast_Message").removeClass('bg-danger');
+                    $("#toast_Message").removeClass('bg-info');
+
+                    $("#toast_Message").addClass('bg-info');
+
+                    $("#toast_Message").html("Loading ...");
+
+                }
+                
+                else if (code == "process") {
+
+
+                    $("#toast_Message").removeClass('bg-success');
+                    $("#toast_Message").removeClass('bg-warning');
+                    $("#toast_Message").removeClass('bg-danger');
+                    $("#toast_Message").removeClass('bg-warning');
+                    $("#toast_Message").removeClass('bg-info');
+
+                    $("#toast_Message").addClass('bg-info');
+
+                    $("#toast_Message").html("Processing ...");
+
+                }
+
+                toast.show();
+
+            }
+            catch (err) {
+                return;
+            }
+
+        }
 
     </script>
 

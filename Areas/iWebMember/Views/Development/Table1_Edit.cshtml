@@ -15,7 +15,7 @@
         <nav>
             <ol class="breadcrumb">
                 @*href="index.html"*@
-                <li class="breadcrumb-item"><a>Developments</a></li>
+                <li class="breadcrumb-item"><a>View Building</a></li>
                 <li class="breadcrumb-item active">New</li>
             </ol>
         </nav>
@@ -185,9 +185,7 @@
         </div>
     </div>
 
-
-    @*Popup-Modal*@
-
+ 
 </div>
 
 <script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
@@ -318,6 +316,10 @@
                     clmn_Score.html(iScoreAdjusted.value);
                     clmn_RiskMeasure.html(visible_RiskControlMeasure);
                     clmn_Total.html(result.total);
+
+
+                    BSR_ShowToastMessage('update');
+
 
                 },
                 error: function () {

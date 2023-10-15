@@ -20,49 +20,49 @@ namespace BSRVemcoCS.iAppViewModel
         //public string BuildingTokenID { get; set; }
 
 
-      
-        
-          
-          [Required]
-        [Display(Name= "Building name:" )]
-        public string BuildingName { get; set; }    = "0";
 
 
-       
-          [Required]
-        [Display(Name= "Building address:" )]
-        public string BuildingAddress { get; set; }    = "0";
+
+        [Required]
+        [Display(Name = "Building name:")]
+        public string BuildingName { get; set; } = "0";
+
+
+
+        [Required]
+        [Display(Name = "Building address:")]
+        public string BuildingAddress { get; set; } = "0";
 
 
 
         //[Required]
         //[Display ( Name = "Build date:" )]
         //public DateTime? BuildingDate { get; set; } = DateTime.Now;
-      
-        public string BuildingDateDay { get; set; }    = "0";
-        public string BuildingDateMonth { get; set; }   = "0";
+
+        public string BuildingDateDay { get; set; } = "0";
+        public string BuildingDateMonth { get; set; } = "0";
 
 
         [Required]
-        [Display ( Name = "Building date:" )]
-        public string BuildingDateYear { get; set; }   = "0";
+        [Display(Name = "Building date:")]
+        public string BuildingDateYear { get; set; } = "0";
 
-       [Required]
-        [Display ( Name = "Build date:" )] 
+        [Required]
+        [Display(Name = "Build date:")]
         public string? BuildingImageTokenID { get; set; } = "0";
-        
-        
+
+
         //[Required]
         ////[Display(Name= "Building Image:" )]
         //public string BuildingImageID { get; set; }
 
-        
-      
-        
-        
-        [Required]
-        [Display(Name= "Building Image:" )]
-        public IFormFile FUploadBuildingImage{ get; set; }
+
+
+
+
+        //[Required]
+        //[Display(Name= "Building Image:" )]
+        //public IFormFile FUploadBuildingImage{ get; set; }
 
 
 
