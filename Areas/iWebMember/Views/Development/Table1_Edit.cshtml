@@ -42,9 +42,9 @@
                     <th>@Model.ColumnDescription</th>
                     <th>@Model.ColumnCommentary</th>
                     <th style="width:150px;">@Model.ColumnCriterion</th>
-                    <th class="fw-bold" style="width:50px;">@Model.ColumnScore</th>
+                    <th class="fw-bold" style="width:50px;background-color:whitesmoke;">@Model.ColumnScore</th>
                     <th>@Model.ColumnRiskControlMeasure</th>
-                    <th class="fw-bold" style="width:110px;">@Model.ColumnScoreAdjused </th>
+                    <th class="fw-bold" style="width:110px;background-color:whitesmoke;">@Model.ColumnScoreAdjused </th>
                     @*<th class="fw-bold" style="width:50px;">Total</th>*@
 
                 </tr>
@@ -100,7 +100,7 @@
 
                             </table>
                         </td>
-                        <td class="fw-bold text-center" style="width:50px;">@iRow.ColumnScoreOriginal</td>
+                        <td class="fw-bold text-center" style="width:50px;background-color:whitesmoke;">@iRow.ColumnScoreOriginal</td>
                         @*class="d-inline-block text-truncate" style="max-width: 150px;"*@
 
                         <td class="text-break" style="max-width: 150px;" data-clmrisk="clmrisk_@iRow.InformationTokenID">
@@ -109,7 +109,7 @@
                                 @Html.Raw(@iRow.ColumnRiskControlMeasure)
                             }
                         </td>
-                        <td class="fw-bold text-center" style="width:110px;" data-clmscore="clmscore_@iRow.InformationTokenID">@iRow.ColumnScoreAdjused</td>
+                        <td class="fw-bold text-center" style="width:110px;background-color:whitesmoke;" data-clmscore="clmscore_@iRow.InformationTokenID">@iRow.ColumnScoreAdjused</td>
                         @*<td class="fw-bold text-center" style="width:50px;">@iRow.ColumnTotal</td>*@
 
                         @* <td>@Html.DropDownListFor(m => Model.PrescriptionList[i].MedicineId, new SelectList(ViewBag.MedicineId, "Id", "Name"))</td>
@@ -120,7 +120,7 @@
                 }
 
 
-                <tr>
+                <tr style="background-color:silver;color:black;">
                     <td class="fw-bold" colspan="5">Total score:</td>
                     <td class="fw-bold text-center" data-clmtotal="clmtotal">@Model.ColumnScoreTotal</td>
                 </tr>

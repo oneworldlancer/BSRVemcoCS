@@ -32,15 +32,17 @@
         *@
 
 
-       @*  <div class="row">
+        @*  <div class="row">
 
-            <span class="fs-5 ms-3">
-                Resident Engagement
-            </span>
+        <span class="fs-5 ms-3">
+        Resident Engagement
+        </span>
 
         </div> *@
 
-        @*<div style="overflow-x:auto;">*@
+
+        <div class="row">
+
 
         <table class="table table-hover table-bordered m-3" style="width:100%;padding:3px;table-layout:fixed;">
             <thead>
@@ -48,9 +50,9 @@
                     <th>@Model.ColumnDescription</th>
                     <th>@Model.ColumnCommentary</th>
                     <th style="width:150px;">@Model.ColumnCriterion</th>
-                    <th class="fw-bold" style="width:50px;">@Model.ColumnScore</th>
+                    <th class="fw-bold" style="width:50px;background-color:whitesmoke;">@Model.ColumnScore</th>
                     <th>@Model.ColumnRiskControlMeasure</th>
-                    <th class="fw-bold" style="width:110px;">@Model.ColumnScoreAdjused </th>
+                    <th class="fw-bold" style="width:110px;background-color:whitesmoke;">@Model.ColumnScoreAdjused </th>
                     @*<th class="fw-bold" style="width:50px;">Total</th>*@
 
                 </tr>
@@ -58,13 +60,13 @@
             <tbody>
                 @*@for (var i = 0; i < Model.PrescriptionList.Count; i++)*@
                 @*@for ( var i = 0 ; i < Model.RowContentList.Count! ; i++ )*@
-                @foreach ( var iRow in Model.RowContentList! )
+                @foreach (var iRow in Model.RowContentList!)
                 {
 
                     <tr data-bs-toggle="modal" onclick="Popup_LoadForm('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.InformationTokenID','clmscore_@iRow.InformationTokenID','clmrisk_@iRow.InformationTokenID');">
                         <td>@iRow.ColumnDescription</td>
                         <td>
-                            @if ( iRow.ColumnCommentary != "0" )
+                            @if (iRow.ColumnCommentary != "0")
                             {
                                 @iRow.ColumnCommentary
                             }
@@ -72,16 +74,16 @@
                         <td>
                             <table>
                                 @*@for ( int ii = 0 ; ii < 4 ; ii++ )*@
-                                @if ( iRow.ColumnCriterionList.Count > 0  )
+                                @if (iRow.ColumnCriterionList.Count > 0)
                                 {
 
-                                    @foreach ( var iRowNested in iRow.ColumnCriterionList! )
+                                    @foreach (var iRowNested in iRow.ColumnCriterionList!)
                                     {
 
                                         <tr>
 
 
-                                            @if ( iRowNested == iRow.ColumnCriterionList.Last ( ) )
+                                            @if (iRowNested == iRow.ColumnCriterionList.Last())
                                             {
 
                                                 <td class="text-center" style="padding-top:3px;padding-bottom:3px;border-bottom: 1px transparent solid;width:150px;">
@@ -104,16 +106,16 @@
 
                             </table>
                         </td>
-                        <td class="fw-bold text-center" style="width:50px;">@iRow.ColumnScoreOriginal</td>
+                        <td class="fw-bold text-center" style="width:50px;background-color:whitesmoke;">@iRow.ColumnScoreOriginal</td>
                         @*class="d-inline-block text-truncate" style="max-width: 150px;"*@
 
                         <td class="text-break" style="max-width: 150px;" data-clmrisk="clmrisk_@iRow.InformationTokenID">
-                            @if ( iRow.ColumnRiskControlMeasure != "0" )
+                            @if (iRow.ColumnRiskControlMeasure != "0")
                             {
                                 @Html.Raw(@iRow.ColumnRiskControlMeasure)
                             }
                         </td>
-                        <td class="fw-bold text-center" style="width:110px;" data-clmscore="clmscore_@iRow.InformationTokenID">@iRow.ColumnScoreAdjused</td>
+                        <td class="fw-bold text-center" style="width:110px;background-color:whitesmoke;" data-clmscore="clmscore_@iRow.InformationTokenID">@iRow.ColumnScoreAdjused</td>
                         @*<td class="fw-bold text-center" style="width:50px;">@iRow.ColumnTotal</td>*@
 
                         @* <td>@Html.DropDownListFor(m => Model.PrescriptionList[i].MedicineId, new SelectList(ViewBag.MedicineId, "Id", "Name"))</td>
@@ -123,13 +125,67 @@
                     </tr>
                 }
 
-                <tr>
+                <tr style="background-color:silver;color:black;">
                     <td class="fw-bold" colspan="5">Total score:</td>
                     <td class="fw-bold text-center" data-clmtotal="clmtotal">@Model.ColumnScoreTotal</td>
                 </tr>
             </tbody>
         </table>
-        @*</div>*@
+
+
+            <div class="mt-5" style="vertical-align:middle;display:flex;flex-direction:row;justify-content:space-between;">
+
+                <div class="float-start"></div>
+                <div>
+                    <div id="div_Paging_0000" style="display:block;margin:auto;vertical-align:middle;">
+                        <nav>
+                            <ul class="pagination">
+
+                                <li class="page-item">
+                                    @* *@
+
+@*                                     onclick="load_TabPageNumberList('@Model.BuildingTokenID', '0', 'true','1', true)" *@
+                                    <a href='#div_ItemsContent' id="pager1_0" class="page-link active"
+                                      >1</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href='#div_ItemsContent' id="pager2_0" class="page-link"
+                                     >2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href='#div_ItemsContent' id="pager3_0" class="page-link"
+                                     >3</a>
+                                </li>
+
+                                <li class="page-item">
+                                    <a href='#div_ItemsContent' id="pager4_0" class="page-link"
+                                     >4</a>
+                                </li>
+
+                                @*   <li class="page-item">
+                                <a href='#collapse444' id="pager3_444" class="page-link">4</a>
+                                </li>
+
+                                <li class="page-item">
+                                <a href='#collapse555' id="pager3_555" class="page-link">5</a>
+                                </li>
+
+                                <li class="page-item">
+                                <a href='#collapse666' id="pager3_666" class="page-link">6</a>
+                                </li> *@
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="float-end"></div>
+            </div>
+
+    
+    </div>
+
+ 
 
     </section>
 
@@ -219,7 +275,7 @@
 
 <script>
 
-    function clickRow (obj) {
+    function clickRow(obj) {
 
         try {
 
@@ -238,7 +294,7 @@
 
 
 
-    function readValue (obj) {
+    function readValue(obj) {
 
         try {
 
@@ -277,7 +333,7 @@
     window.clmscore;
     window.clmrisk;
 
-    function Popup_PostForm () {
+    function Popup_PostForm() {
 
         try {
 
@@ -384,7 +440,7 @@
 
 
 
-    function Popup_LoadForm (apptbltknid, tbltknid, bldtknid, inftknid, clmscore, clmrisk) {
+    function Popup_LoadForm(apptbltknid, tbltknid, bldtknid, inftknid, clmscore, clmrisk) {
 
         try {
 

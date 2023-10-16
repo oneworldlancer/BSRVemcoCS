@@ -43,6 +43,18 @@ public partial class BsrvemcoAppBuildingQueryInformationList
 
     public string? InformationDescription { get; set; }
 
+    public string? InformationTitleSystem { get; set; }
+
+    public string? InformationTextSystem { get; set; }
+
+    public string? InformationDescriptionSystem { get; set; }
+
+    public string? InformationTitleUser { get; set; }
+
+    public string? InformationTextUser { get; set; }
+
+    public string? InformationDescriptionUser { get; set; }
+
     public string? EvidenceName { get; set; }
 
     public string? EvidenceTitle { get; set; }

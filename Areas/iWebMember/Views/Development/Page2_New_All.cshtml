@@ -71,14 +71,107 @@
 
 
 
-                        <div id="div_ItemsContent" class="list-group list-group-flush m-3">
+                        <div class="list-group list-group-flush m-3">
                             @**@
 
-                            <div id="div_ItemsList">
+                            @foreach (var iRow in Model.BuildingInformationList!)
+                            {
+                                @* a href="#" *@   @*data-bs-target="#popupModal"*@
+                                <div class="list-group-item list-group-item-action bg-transparent">
+
+                                    <div class="row">
+
+                                        <div class="col-9" data-clminfotxt="clminfotxt_@iRow.InformationTokenID"
+                                             data-bs-toggle="modal"
+                                             style="cursor:pointer;"
+                                             onclick="Popup_LoadForm('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.APPInformationTokenID','@iRow.InformationTokenID','@iRow.DocumentCount','@iRow.TimeFrame','clminfotxt_@iRow.InformationTokenID','clmdoccount_@iRow.InformationTokenID');">
+                                            @iRow.InformationText
+                                        </div>
+
+                                        <div class="col-3 text-end" style="float:right;">
+                                            <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+
+                                            @if (iRow.DocumentCount != "0")
+                                            {
+
+                                                <div class="float-end" style="display:flex;flex-direction:row;">
+
+
+                                                    <small class="m-1 badge bg-primary rounded-pill text-end" style="float:right;" data-clmdoccount="clmdoccount_@iRow.InformationTokenID">@iRow.DocumentCount</small>
+
+                                                    <div class="d-flex flex-row" style="vertical-align:top;text-align:left;margin:0px;float:right;">
+
+
+                                                        <button type="button" class="btn btn-outline-secondary btn-sm" disabled
+                                                                data-btnnullfalse="btnnullfalse_@iRow.InformationTokenID"
+                                                                onclick="submit_DocumentNotAvailable('@iRow.BuildingTokenID','@iRow.InformationTokenID');">
+                                                            Nil return
+                                                        </button>
+                                                        <img src="~/img/img_question.png"
+                                                             style="width:15px;height:15px;margin:3px;"
+                                                             data-toggle="tooltip" data-placement="bottom"
+                                                             title="Click this button if you do NOT have documents to upload." />
+
+                                                    </div>
+
+
+                                                </div>
+
+
+                                            }
+                                            else
+                                            {
+
+                                                <small class="m-1 badge bg-primary rounded-pill text-end" style="float:right;" data-clmdoccount="clmdoccount_@iRow.InformationTokenID"></small>
+
+
+                                                <div class="d-flex flex-row" style="vertical-align:top;text-align:left;margin:0px;float:right;">
+
+
+                                                    <button type="button" class="btn @iRow.AnswerNULLButtonCSS btn-sm"
+                                                            data-btnnulltrue="btnnulltrue_@iRow.InformationTokenID"
+                                                            onclick="submit_DocumentNotAvailable('@iRow.BuildingTokenID','@iRow.InformationTokenID');">
+                                                        Nil return
+                                                    </button>
+
+                                                    <img src="~/img/img_question.png"
+                                                         style="width:15px;height:15px;margin:3px;"
+                                                         data-toggle="tooltip" data-placement="bottom"
+                                                         title="Click this button if you do NOT have documents to upload." />
+
+                                                </div>
+
+
+                                            }
+
+                                        </div>
+
+
+
+
+                                    </div>
+
+                                </div>
+
+
+
+                            }
+
+
+
+
+                        </div>
+
+
+                        <div id='collapse000'>
+
+
+                            @* class="accordion-body" *@
+                            <div id='div_ItemsListX' style="height:100vh;background-color:yellow;overflow:hidden;overflow-x:hidden;overflow-y:auto;">
 
                                 @await Component.InvokeAsync("BuildingPage2List",
                                 new {
-                                bldtknid = Model.BuildingTokenID,
+                                bldtknid = "1695939898394",
                                 iPageNumber = "0",
                                 blnIsPaging = true
                                 })
@@ -89,8 +182,6 @@
 
 
                         </div>
-
- 
 
 
                     </div>
@@ -125,32 +216,17 @@
                                 <ul class="pagination">
 
                                     <li class="page-item">
-                                        @* *@
+                                        @* onclick="load_TabViewQueryList('@iRow.BuildingTokenID', '@iRow.QueryTableTokenID', 'true','1', true)" *@
 
 
-                                        <a href='#div_ItemsContent' id="pager1_0" class="page-link active"
-                                           onclick="load_TabPageNumberList('@Model.BuildingTokenID', '0', 'true','1', true)">1</a>
+                                        <a href='#collapse111' id="pager1_111" class="page-link active">1</a>
                                     </li>
                                     <li class="page-item">
-                                        <a href='#div_ItemsContent' id="pager2_0" class="page-link"
-                                           onclick="load_TabPageNumberList('@Model.BuildingTokenID', '0', 'true','2', true)">2</a>
+                                        <a href='#collapse222' id="pager2_222" class="page-link">2</a>
                                     </li>
                                     <li class="page-item">
-                                        <a href='#div_ItemsContent' id="pager3_0" class="page-link"
-                                           onclick="load_TabPageNumberList('@Model.BuildingTokenID', '0', 'true','3', true)">3</a>
+                                        <a href='#collapse333' id="pager3_333" class="page-link">3</a>
                                     </li>
-
-                                    @*   <li class="page-item">
-                                    <a href='#collapse444' id="pager3_444" class="page-link">4</a>
-                                    </li>
-
-                                    <li class="page-item">
-                                    <a href='#collapse555' id="pager3_555" class="page-link">5</a>
-                                    </li>
-
-                                    <li class="page-item">
-                                    <a href='#collapse666' id="pager3_666" class="page-link">6</a>
-                                    </li> *@
 
                                 </ul>
                             </nav>
@@ -583,12 +659,6 @@ mb-3"></div>
 
                 //alert('inftknid == ' + window.inftknid);
 
-
-                var btn_NULL = $("[data-btnnull='btnnull_" + inftknid + "']");
-
-              //  alert("found == " + btn_NULL);
-
-
                 // var clmn_InfoText = $("[data-clminfotxt='clminfotxt_" + inftknid + "']");
                 // var clmn_DocumentCount = $("[data-clmdoc='clmdoc_" + inftknid + "']");
                 // var clmn_Total = $("[data-clmtotal='clmtotal']");
@@ -631,12 +701,6 @@ mb-3"></div>
                         // clmn_DocumentCount.html(visible_RiskControlMeasure);
                         // clmn_Total.html(result.total);
 
-                     //   alert("sucess == " + btn_NULL);
-                      
-                        btn_NULL.removeClass("btn-outline-secondary");
-                        btn_NULL.removeClass("btn-secondary");
-
-                        btn_NULL.addClass("btn-secondary");
 
                         BSR_ShowToastMessage('update');
 
@@ -1046,32 +1110,14 @@ mb-3"></div>
                             var iDocumentCount = document.getElementById('iDocumentCount');
 
 
-                            var btn_NULL = $("[data-btnnull='btnnull_" + inftknid + "']");
-
 
 
                             if (data.count != "0") {
                                 clmn_DocumentCount.html(data.count);
                                 iDocumentCount.innerHTML = data.count;
 
-                                btn_NULL.removeClass("btn-outline-secondary");
-                                btn_NULL.removeClass("btn-secondary");
-
-                                btn_NULL.addClass("btn-outline-secondary");
-
-                                btn_NULL.prop("disabled", true);
-
-
                             }
                             else {
-
-                                btn_NULL.removeClass("btn-outline-secondary");
-                                btn_NULL.removeClass("btn-secondary");
-
-                                btn_NULL.addClass("btn-outline-secondary");
-
-                                btn_NULL.prop("disabled", false);
-
                                 clmn_DocumentCount.html('');
                                 iDocumentCount.innerHTML = '';
 
@@ -1564,114 +1610,6 @@ mb-3"></div>
         if (isEmpty($('#element'))) {
             // do something
         }
-
-
-
-
-        function load_TabPageNumberList(iBuildingTokenID, iQueryTableTokenID, blnIsPaging, iPageNumber, blnIsNewRefresh) {
-
-
-            try {
-
-                // alert('load_TabPageNumberList XXX');
-
-
-                BSR_ShowToastMessage('load');
-
-                window.bldtknid = iBuildingTokenID;
-                //window.querytbltknid = iQueryTableTokenID;
-
-
-                //$("#iQueryTableTokenID").val(iQueryTableTokenID);
-                $("#iBuildingTokenID").val(iBuildingTokenID);
-
-                $.ajax({
-
-                    url: '/iWebMember/Development/ReloadBuildingPage2List',
-                    data: {
-                        bldtknid: $("#iBuildingTokenID").val(),//document.getElementById("cbShowPrevious").checked,
-                        //querytbltknid: $("#iQueryTableTokenID").val(), //document.getElementById("cbShowUpcoming").checked
-                        iPageNumber: iPageNumber, //document.getElementById("cbShowUpcoming").checked
-                        blnIsPaging: blnIsPaging //document.getElementById("cbShowUpcoming").checked
-                    },
-                    success: function (data) {
-
-                        $("#div_ItemsList").html(data);
-
-                        let _blnIsPagingList = blnIsPaging.toLowerCase();
-
-                        //alert('_blnIsPagingList == ' + _blnIsPagingList);
-
-
-                        // var companyElements = $("ul:data(group) li:data(company)");
-                        //  var companyElements = $("ul:data(group) li:data(company)");
-
-                        if (_blnIsPagingList == "true") {
-
-
-                            $("#pager1_" + iQueryTableTokenID).removeClass("active");
-                            $("#pager2_" + iQueryTableTokenID).removeClass("active");
-                            $("#pager3_" + iQueryTableTokenID).removeClass("active");
-
-                            // $("#pager1_" + iQueryTableTokenID).removeClass("active");
-                            //                          $("#pager2_" + iQueryTableTokenID).removeClass("active");
-                            //                          $("#pager3_" + iQueryTableTokenID).removeClass("active");
-
-
-                            if (iPageNumber == "0") {
-                                $("#pager1_" + iQueryTableTokenID).addClass("active");
-
-                            }
-
-                            else if (iPageNumber == "1") {
-                                $("#pager1_" + iQueryTableTokenID).addClass("active");
-
-                            }
-                            else if (iPageNumber == "2") {
-                                $("#pager2_" + iQueryTableTokenID).addClass("active");
-
-                            }
-
-                            else if (iPageNumber == "3") {
-                                $("#pager3_" + iQueryTableTokenID).addClass("active");
-
-                            }
-
-                            $("#div_Paging_" + iQueryTableTokenID).show();
-
-                        } else {
-                            $("#div_Paging_" + iQueryTableTokenID).hide();
-
-                        }
-
-
-
-                        // $('#div_CommandEdit').hide();
-                        // ////////$('#div_CommandPreview').hide();
-                        // $('#div_CommandUpload').hide();
-
-                        //alert('load_TabPageNumberList DONE !!!');
-                    }
-                });
-
-
-            }
-            catch (err) {
-                //alert(err);
-                console.error(err);
-                return;
-
-            }
-
-        }
-
-
-
-
-
-
-
-
 
     </script>
 

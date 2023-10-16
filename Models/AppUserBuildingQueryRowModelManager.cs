@@ -15,6 +15,7 @@ namespace BSRVemcoCS.Models
       
         public string? AppQueryInformationTokenID { get; set; } = "0";
         public string? QueryInformationTokenID { get; set; } = "0";
+        public string?  InformationTokenID { get; set; } = "0";
         public string? InformationText { get; set; } = "0";
         public string? InformationTitle { get; set; } = "0";
         public string? InformationDescription { get; set; } = "0";

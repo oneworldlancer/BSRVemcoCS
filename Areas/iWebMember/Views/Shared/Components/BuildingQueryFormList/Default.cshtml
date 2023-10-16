@@ -13,7 +13,7 @@
                 @* <th style="width:200px;">Y/N - If No, Describe Your Activities Here</th> *@
                 @* class="text-center"
                 *@
-                <th class="text-center" style="width:200px;">The text on the left accurately describes what we do?</th>
+                <th class="text-center" style="width:200px;background-color:whitesmoke;">The text on the left accurately describes what we do?</th>
                 @* <th style="width:150px;">@Model.ColumnCriterion</th> *@
                 @* class="fw-bold"
                 *@
@@ -34,7 +34,8 @@
 
                 <tr data-bs-toggle="modal">
                     <td data-clmactivity="clmactivity_@iRow.QueryInformationTokenID">
-                        @Html.Raw(@iRow.InformationTitle)@Html.Raw(@iRow.InformationDescriptionUser)
+                        
+                       <strong>@Html.Raw(@iRow.InformationTitle)</strong>@Html.Raw(@iRow.InformationDescriptionUser)
 
                         @*       <p><span style="font-size:11pt"><span style="font-family:Calibri,sans-serif"><strong>Internal Communication:&nbsp;</strong>The organisation ensures that all relevant personnel, including employees, contractors, and building management teams, are made aware of the mandatory occurrence reporting system. This information is communicated through comprehensive training sessions, written guidelines, and awareness campaigns.</span></span></p>
                     *@
@@ -65,7 +66,7 @@
                                 <a href="#" type="button" class="btn @iRow.AnswerYESButtonCSS btn-sm" style="width:120px;font-size:small;"
                                    data-bs-toggle="modal"
                                    data-btnyes="btnyes_@iRow.QueryInformationTokenID"
-                                   onclick="Popup_LoadQueryForm('@iRow.AppQueryTableTokenID', '@iRow.QueryTableTokenID', '@iRow.BuildingTokenID', '@iRow.AppQueryInformationTokenID','@iRow.QueryInformationTokenID', 'clmactivity_@iRow.QueryInformationTokenID', 'clmlinklist_@iRow.QueryInformationTokenID','@iRow.InformationTitle','@iRow.InformationDescriptionUser','yes');">
+                                   onclick="Popup_LoadQueryForm('@iRow.AppQueryTableTokenID', '@iRow.QueryTableTokenID', '@iRow.BuildingTokenID', '@iRow.AppQueryInformationTokenID','@iRow.QueryInformationTokenID', 'clmactivity_@iRow.QueryInformationTokenID', 'clmlinklist_@iRow.QueryInformationTokenID','@iRow.InformationTitle','@iRow.InformationDescriptionSystem','@iRow.InformationDescriptionUser','yes');">
                                     YES
                                 </a>
                                 <img src="~/img/img_question.png"
@@ -79,7 +80,7 @@
                                 <a href="#" type="button" class="btn @iRow.AnswerNOButtonCSS btn-sm" style="width:120px;font-size:small;"
                                    data-bs-toggle="modal"
                                    data-btnno="btnno_@iRow.QueryInformationTokenID"
-                                   onclick="Popup_LoadQueryForm('@iRow.AppQueryTableTokenID', '@iRow.QueryTableTokenID', '@iRow.BuildingTokenID', '@iRow.AppQueryInformationTokenID','@iRow.QueryInformationTokenID', 'clmactivity_@iRow.QueryInformationTokenID', 'clmlinklist_@iRow.QueryInformationTokenID','@iRow.InformationTitle','@iRow.InformationDescriptionUser','no');">
+                                   onclick="Popup_LoadQueryForm('@iRow.AppQueryTableTokenID', '@iRow.QueryTableTokenID', '@iRow.BuildingTokenID', '@iRow.AppQueryInformationTokenID','@iRow.QueryInformationTokenID', 'clmactivity_@iRow.QueryInformationTokenID', 'clmlinklist_@iRow.QueryInformationTokenID','@iRow.InformationTitle','@iRow.InformationDescriptionSystem','@iRow.InformationDescriptionUser','no');">
                                     NO
                                 </a>
                                 <img src="~/img/img_question.png"
@@ -93,7 +94,7 @@
                                 <a href="#" type="button" class="btn @iRow.AnswerNULLButtonCSS btn-sm" style="width:120px;font-size:small;"
                                    data-bs-toggle="modal"
                                    data-btnnull="btnnull_@iRow.QueryInformationTokenID"
-                                   onclick="Popup_LoadQueryForm('@iRow.AppQueryTableTokenID', '@iRow.QueryTableTokenID', '@iRow.BuildingTokenID', '@iRow.AppQueryInformationTokenID','@iRow.QueryInformationTokenID', 'clmactivity_@iRow.QueryInformationTokenID', 'clmlinklist_@iRow.QueryInformationTokenID','@iRow.InformationTitle','This area is under development.','null');">
+                                   onclick="Popup_LoadQueryForm('@iRow.AppQueryTableTokenID', '@iRow.QueryTableTokenID', '@iRow.BuildingTokenID', '@iRow.AppQueryInformationTokenID','@iRow.QueryInformationTokenID', 'clmactivity_@iRow.QueryInformationTokenID', 'clmlinklist_@iRow.QueryInformationTokenID','@iRow.InformationTitle','@iRow.InformationDescriptionSystem','This area is under development.','null');">
                                     NIL RETURN
                                 </a>
                                 <img src="~/img/img_question.png"

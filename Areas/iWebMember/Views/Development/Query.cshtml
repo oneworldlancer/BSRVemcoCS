@@ -121,7 +121,7 @@
                             </h2>
 
                             <div id='collapse@{
-                                                                                                                                                                                                                                                                                                                                                    @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                @iRow.QueryTableTokenID.ToString()
 }'
                                  class="accordion-collapse collapse" aria-labelledby="heading1"
                                  data-bs-parent="#accordionExample">
@@ -129,36 +129,36 @@
 
                                 @* class="accordion-body" *@
                                 <div id='div_@{
-                                                                                                                                                                                                                                                                                                                                                        @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                    @iRow.QueryTableTokenID.ToString()
 }'></div>
 
-                                <div id="div_Paging_@{
-                                                                                                                                                                                                                                                                                                                                                            @iRow.QueryTableTokenID.ToString()
-}" style="display:none;margin:10px;">
+                                <div class="text-center" id="div_Paging_@{
+                                                                                                                                                                                                                                                                                                                                                                                        @iRow.QueryTableTokenID.ToString()
+}" style="display:none;margin:10px;text-align:center;vertical-align:middle;">
                                     <nav>
                                         <ul class="pagination">
 
                                             <li class="page-item">
                                                 <a href='#collapse@{
-                                                                                                                                                                                                                                                                                                                                                        @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                    @iRow.QueryTableTokenID.ToString()
 }' id="pager1_@{
-                                                                                                                                                                                                                                                                                                                                                                    @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                                @iRow.QueryTableTokenID.ToString()
 }" class="page-link active"
                                                    onclick="load_TabViewQueryList('@iRow.BuildingTokenID', '@iRow.QueryTableTokenID', 'true','1', true)">1</a>
                                             </li>
                                             <li class="page-item">
                                                 <a href='#collapse@{
-                                                                                                                                                                                                                                                                                                                                                            @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                        @iRow.QueryTableTokenID.ToString()
 }' id="pager2_@{
-                                                                                                                                                                                                                                                                                                                                                                        @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                                    @iRow.QueryTableTokenID.ToString()
 }" class="page-link"
                                                    onclick="load_TabViewQueryList('@iRow.BuildingTokenID', '@iRow.QueryTableTokenID', 'true','2', true)">2</a>
                                             </li>
                                             <li class="page-item">
                                                 <a href='#collapse@{
-                                                                                                                                                                                                                                                                                                                                                                @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                            @iRow.QueryTableTokenID.ToString()
 }' id="pager3_@{
-                                                                                                                                                                                                                                                                                                                                                                        @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                                    @iRow.QueryTableTokenID.ToString()
 }" class="page-link"
                                                    onclick="load_TabViewQueryList('@iRow.BuildingTokenID', '@iRow.QueryTableTokenID', 'true','3', true)">3</a>
                                             </li>
@@ -573,7 +573,7 @@ mb-3"></div>
     window.answertext;
     window.systemtitle;
     window.systemdescription;
-
+    window.userdescription;
 
 
     function Popup_PostForm() {
@@ -715,7 +715,7 @@ mb-3"></div>
                 visible_ActivityDescription = editorActivity.getData();
 
                 clmn_ActivityText.html(
-                    systemtitle +
+                    '<strong>' + systemtitle + '</strong>' +
                     visible_ActivityDescription);
 
 
@@ -795,7 +795,7 @@ mb-3"></div>
 
 
 
-    function Popup_LoadQueryForm(apptbltknid, tbltknid, bldtknid, appinftknid, inftknid, clmactivity, clmlinklist, systemtitle, systemdescription, answercode) {
+    function Popup_LoadQueryForm(apptbltknid, tbltknid, bldtknid, appinftknid, inftknid, clmactivity, clmlinklist, systemtitle, systemdescription, userdescription, answercode) {
 
         try {
 
@@ -813,8 +813,10 @@ mb-3"></div>
             window.clmlinklist = clmlinklist;
 
             window.answercode = answercode;
+            window.answertext = systemdescription;
             window.systemtitle = systemtitle;
             window.systemdescription = systemdescription;
+            window.userdescription = userdescription;
 
 
 
@@ -871,7 +873,7 @@ mb-3"></div>
                 // RETURN-NULL
 
                 clmn_ActivityText.html(
-                    systemtitle +
+                    '<strong>' + systemtitle + '</strong>' +
                     '</br>This area is under development.');
 
                 clmn_LinkListText.html('N/A');
@@ -888,6 +890,8 @@ mb-3"></div>
                 $(btn_NO).removeClass("btn-secondary");
                 $(btn_NULL).removeClass("btn-secondary");
 
+                $(btn_YES).addClass("btn-outline-secondary");
+                $(btn_NO).addClass("btn-outline-secondary");
                 $(btn_NULL).addClass("btn-secondary");
 
 
@@ -959,6 +963,8 @@ mb-3"></div>
                 $(btn_NULL).removeClass("btn-secondary");
 
 
+                $(btn_NO).addClass("btn-outline-secondary");
+                $(btn_NULL).addClass("btn-outline-secondary");
                 $(btn_YES).addClass("btn-secondary");
 
 
@@ -1008,6 +1014,8 @@ mb-3"></div>
                 $(btn_NULL).removeClass("btn-secondary");
 
 
+                $(btn_YES).addClass("btn-outline-secondary");
+                $(btn_NULL).addClass("btn-outline-secondary");
                 $(btn_NO).addClass("btn-secondary");
 
 
@@ -1020,6 +1028,7 @@ mb-3"></div>
         catch (ex) {
             //  alert(ex);
             console.log(ex);
+            return;
         }
     }
 
@@ -1287,8 +1296,8 @@ mb-3"></div>
                         iQueryInformationTokenID: $("#iQueryInformationTokenID").val(),
                         iBuildingTokenID: $("#iBuildingTokenID").val(),
                         iFileLinkList: _urlLinkList,
-                        iAnswerCode: window.answercode
-
+                        iAnswerCode: window.answercode,
+                        iAnswerText: window.systemdescription
 
 
                         // // // // // doctknid: window.doctknid,
@@ -1302,6 +1311,16 @@ mb-3"></div>
                     },
                     success: function (data) {
 
+
+                        if (window.answercode == "yes") {
+
+                            var clmn_ActivityText = $("[data-clmactivity='clmactivity_" + window.inftknid + "']");
+
+                            clmn_ActivityText.html(
+                                '<strong>' + window.systemtitle + '</strong>' +
+                                window.systemdescription);
+
+                        }
 
                         refresh_TabViewQueryDocumentList(true);
 

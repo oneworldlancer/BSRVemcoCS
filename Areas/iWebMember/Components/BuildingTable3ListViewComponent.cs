@@ -16,7 +16,7 @@ using System.Collections;
 
 namespace BSRVemcoCS.Areas.iWebMember.Components
 {
-    public class BuildingQueryFormListViewComponent : ViewComponent
+    public class BuildingTable3ListViewComponent : ViewComponent
     {
         private readonly BSRDBModelContext _dbContext;
 
@@ -26,7 +26,7 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
 
 
         //List<SocialIcon> socialIcons = new List<SocialIcon> ( );
-        public BuildingQueryFormListViewComponent(BSRDBModelContext dbContext,
+        public BuildingTable3ListViewComponent(BSRDBModelContext dbContext,
             UserManager<AppCore_IdentityUser> iUserManager,
                         SignInManager<AppCore_IdentityUser> iSignManager)
         {
@@ -37,7 +37,7 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
 
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(string bldtknid,  string querytbltknid, string iPageNumber, bool blnIsPaging)
+        public async Task<IViewComponentResult> InvokeAsync(string bldtknid, string querytbltknid, string iPageNumber, bool blnIsPaging)
         {
 
 
@@ -69,53 +69,21 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
                  .ToList(); // This is what actually executes the request and return a response
 
 
-// Fill Query-InfoList
+
                 if (_arrCheckCountUserBuildingInfomationList.Count == 0)
                 {
 
-
-
-
-                    List<BsrvemcoUserBuildingInformationList>? _arrUserBuildingQuery_InfomationList = _dbContext.BsrvemcoUserBuildingInformationLists
+                    List<BsrvemcoAppBuildingQueryInformationList>? _arrAppDevelomentInfomationList = _dbContext.BsrvemcoAppBuildingQueryInformationLists
                          .Where(u =>
-                         u.AppqueryTableTokenId == _iUserBuildignQueryTableModel.AppqueryTableTokenId.ToString() &&
-                         u.BuildingTokenId == bldtknid &&
+                         u.AppqueryTableTokenId == _iUserBuildignQueryTableModel.AppqueryTableTokenId && //querytbltknid &&
                          u.IsVisible == true)
                          //.Select (u  )
                          //.FirstOrDefault ( ); // This is what actually executes the request and return a response
                          .ToList(); // This is what actually executes the request and return a response
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    //List<BsrvemcoAppBuildingQueryInformationList>? _arrAppDevelomentInfomationList = _dbContext.BsrvemcoAppBuildingQueryInformationLists
-                    //     .Where(u =>
-                    //     u.AppqueryTableTokenId == _iUserBuildignQueryTableModel.AppqueryTableTokenId && //querytbltknid &&
-                    //     u.IsVisible == true)
-                    //     //.Select (u  )
-                    //     //.FirstOrDefault ( ); // This is what actually executes the request and return a response
-                    //     .ToList(); // This is what actually executes the request and return a response
-
-
-                    //ArrayList _arrTokenList = new ArrayList();
-                    //_arrTokenList = AppUtility_ListTokenIDManager.ListTokenID_Generate_NewList(_arrUserBuildingQuery_InfomationList.Count.ToString());
+                    ArrayList _arrTokenList = new ArrayList();
+                    _arrTokenList = AppUtility_ListTokenIDManager.ListTokenID_Generate_NewList(_arrAppDevelomentInfomationList.Count.ToString());
 
 
 
@@ -123,7 +91,7 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
 
                     BsrvemcoUserBuildingQueryInformationList iBuildingQueryInformationModel;
 
-                    for (int i = 0; i < _arrUserBuildingQuery_InfomationList.Count; i++)
+                    for (int i = 0; i < _arrAppDevelomentInfomationList.Count; i++)
                     {
 
 
@@ -138,25 +106,21 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
                             CompanyTokenId = Program.iOwnerModel.CompanyTokenID,
                             BuildingTokenId = bldtknid,
 
-                            AppqueryTableTokenId = _arrUserBuildingQuery_InfomationList[i].AppqueryTableTokenId.ToString(),
-                            AppqueryInformationTokenId =  _arrUserBuildingQuery_InfomationList[i].AppqueryInformationTokenId.ToString(),
+                            AppqueryTableTokenId = _arrAppDevelomentInfomationList[i].AppqueryTableTokenId.ToString(),
+                            AppqueryInformationTokenId =  _arrAppDevelomentInfomationList[i].AppqueryInformationTokenId.ToString(),
                             QueryTableTokenId = querytbltknid,
-                            QueryInformationTokenId =  _arrUserBuildingQuery_InfomationList[i].QueryInformationTokenId,
-                          
-                            InformationTokenId = _arrUserBuildingQuery_InfomationList[i].InformationTokenId,
-                          
-                            
-                            InformationText = _arrUserBuildingQuery_InfomationList[i].InformationText.ToString(),
-                            InformationTitle = _arrUserBuildingQuery_InfomationList[i].InformationTitle.ToString(),
-                            InformationDescription = _arrUserBuildingQuery_InfomationList[i].InformationDescription.ToString(),
-                            InformationTitleSystem = _arrUserBuildingQuery_InfomationList[i].InformationTitle.ToString(),
-                            InformationDescriptionSystem = _arrUserBuildingQuery_InfomationList[i].InformationDescription.ToString(),
-                            InformationTitleUser = _arrUserBuildingQuery_InfomationList[i].InformationTitle.ToString(),
-                            InformationDescriptionUser = _arrUserBuildingQuery_InfomationList[i].InformationDescription.ToString(),
-                            EvidenceDescription =  "0",//_arrUserBuildingQuery_InfomationList[i].EvidenceDescription.ToString(),
-                            EvidenceLinkDescription =  "Provide hyperlinks to evidence here.",//_arrUserBuildingQuery_InfomationList[i].EvidenceLinkDescription.ToString(),
+                            QueryInformationTokenId = _arrTokenList[i].ToString(),
+                            InformationText = _arrAppDevelomentInfomationList[i].InformationText.ToString(),
+                            InformationTitle = _arrAppDevelomentInfomationList[i].InformationTitle.ToString(),
+                            InformationDescription = _arrAppDevelomentInfomationList[i].InformationDescription.ToString(),
+                            InformationTitleSystem = _arrAppDevelomentInfomationList[i].InformationTitle.ToString(),
+                            InformationDescriptionSystem = _arrAppDevelomentInfomationList[i].InformationDescription.ToString(),
+                            InformationTitleUser = _arrAppDevelomentInfomationList[i].InformationTitle.ToString(),
+                            InformationDescriptionUser = _arrAppDevelomentInfomationList[i].InformationDescription.ToString(),
+                            EvidenceDescription =  "0",//_arrAppDevelomentInfomationList[i].EvidenceDescription.ToString(),
+                            EvidenceLinkDescription = _arrAppDevelomentInfomationList[i].EvidenceLinkDescription.ToString(),
 
-                            //TimeoutYearCount=  _arrUserBuildingQuery_InfomationList[i].TimeoutYearCount.ToString(),
+                            //TimeoutYearCount=  _arrAppDevelomentInfomationList[i].TimeoutYearCount.ToString(),
 
                             //InformationScore = "5",
                             //Score = "5",
@@ -182,90 +146,6 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
 
 
                 }
-
-
-
-
-////////////////////////////////////////////////////////////////////
-
-
-
-                //////////if (_arrCheckCountUserBuildingInfomationList.Count == 0)
-                //////////{
-
-                //////////    List<BsrvemcoAppBuildingQueryInformationList>? _arrAppDevelomentInfomationList = _dbContext.BsrvemcoAppBuildingQueryInformationLists
-                //////////         .Where(u =>
-                //////////         u.AppqueryTableTokenId == _iUserBuildignQueryTableModel.AppqueryTableTokenId && //querytbltknid &&
-                //////////         u.IsVisible == true)
-                //////////         //.Select (u  )
-                //////////         //.FirstOrDefault ( ); // This is what actually executes the request and return a response
-                //////////         .ToList(); // This is what actually executes the request and return a response
-
-
-                //////////    ArrayList _arrTokenList = new ArrayList();
-                //////////    _arrTokenList = AppUtility_ListTokenIDManager.ListTokenID_Generate_NewList(_arrAppDevelomentInfomationList.Count.ToString());
-
-
-
-                //////////    ////////////////////////////////////////
-
-                //////////    BsrvemcoUserBuildingQueryInformationList iBuildingQueryInformationModel;
-
-                //////////    for (int i = 0; i < _arrAppDevelomentInfomationList.Count; i++)
-                //////////    {
-
-
-                //////////        iBuildingQueryInformationModel = new BsrvemcoUserBuildingQueryInformationList()
-                //////////        {
-
-                //////////            RowViewTokenId = new Guid(),
-
-
-
-                //////////            OwnerUserTokenId = Program.iOwnerModel.OwnerUserTokenID,
-                //////////            CompanyTokenId = Program.iOwnerModel.CompanyTokenID,
-                //////////            BuildingTokenId = bldtknid,
-
-                //////////            AppqueryTableTokenId = _arrAppDevelomentInfomationList[i].AppqueryTableTokenId.ToString(),
-                //////////            AppqueryInformationTokenId =  _arrAppDevelomentInfomationList[i].AppqueryInformationTokenId.ToString(),
-                //////////            QueryTableTokenId = querytbltknid,
-                //////////            QueryInformationTokenId = _arrTokenList[i].ToString(),
-                //////////            InformationText = _arrAppDevelomentInfomationList[i].InformationText.ToString(),
-                //////////            InformationTitle = _arrAppDevelomentInfomationList[i].InformationTitle.ToString(),
-                //////////            InformationDescription = _arrAppDevelomentInfomationList[i].InformationDescription.ToString(),
-                //////////            InformationTitleSystem = _arrAppDevelomentInfomationList[i].InformationTitle.ToString(),
-                //////////            InformationDescriptionSystem = _arrAppDevelomentInfomationList[i].InformationDescription.ToString(),
-                //////////            InformationTitleUser = _arrAppDevelomentInfomationList[i].InformationTitle.ToString(),
-                //////////            InformationDescriptionUser = _arrAppDevelomentInfomationList[i].InformationDescription.ToString(),
-                //////////            EvidenceDescription =  "0",//_arrAppDevelomentInfomationList[i].EvidenceDescription.ToString(),
-                //////////            EvidenceLinkDescription = _arrAppDevelomentInfomationList[i].EvidenceLinkDescription.ToString(),
-
-                //////////            //TimeoutYearCount=  _arrAppDevelomentInfomationList[i].TimeoutYearCount.ToString(),
-
-                //////////            //InformationScore = "5",
-                //////////            //Score = "5",
-                //////////            //ScoreManaged = "5",
-                //////////            //ScoreAdjusted = "5",
-                //////////            //ScoreOriginal = "5",
-
-
-                //////////            UploadDateTimeMilliSec = AppUtility_TimeManager.Time_GetCurrentTimeInMilliSecond(),
-                //////////            IsVisible = true,
-                //////////            IsActive = true,
-
-                //////////        };
-
-
-                //////////        await _dbContext.BsrvemcoUserBuildingQueryInformationLists.AddAsync(iBuildingQueryInformationModel);
-
-
-                //////////        await _dbContext.SaveChangesAsync();
-
-
-                //////////    }
-
-
-                //////////}
 
 
 
@@ -331,7 +211,6 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
 
                         AppQueryInformationTokenID = _arrUserBuildingQueryInfomationList[i].AppqueryInformationTokenId,
                         QueryInformationTokenID = _arrUserBuildingQueryInfomationList[i].QueryInformationTokenId,
-                        InformationTokenID = _arrUserBuildingQueryInfomationList[i].InformationTokenId,
 
                         CompanyTokenID = Program.iOwnerModel.CompanyTokenID,
                         BuildingTokenID = bldtknid,

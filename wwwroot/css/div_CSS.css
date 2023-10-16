@@ -1,0 +1,16 @@
+.divHighlight:hover {
+    background-color: silver !important;
+    color: black;
+    /*background-color: red;*/
+    /*opacity: 0.5;*/
+}
+
+
+/*.table td, .table th {
+    font-size: 12px;
+}
+
+
+table td, table th {
+    font-size: 12px;
+}*/

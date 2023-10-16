@@ -25,6 +25,8 @@ public partial class BsrvemcoAppBuildingInformationList
 
     public string? AppqueryTableCode { get; set; }
 
+    public string? AppqueryInformationTokenId { get; set; }
+
     public string? QueryTableTokenId { get; set; }
 
     public string? QueryTableName { get; set; }
@@ -54,6 +56,18 @@ public partial class BsrvemcoAppBuildingInformationList
     public string? InformationText { get; set; }
 
     public string? InformationDescription { get; set; }
+
+    public string? InformationTitleSystem { get; set; }
+
+    public string? InformationTextSystem { get; set; }
+
+    public string? InformationDescriptionSystem { get; set; }
+
+    public string? InformationTitleUser { get; set; }
+
+    public string? InformationTextUser { get; set; }
+
+    public string? InformationDescriptionUser { get; set; }
 
     public string? Commentary { get; set; }
 

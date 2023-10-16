@@ -36,7 +36,7 @@ namespace BSRVemcoCS.iAppViewModel
         ////public string BuildingImageID { get; set; }
 
 
-
+        public string BuildingTokenID { get; set; } = "0";
 
 
         //[Required]

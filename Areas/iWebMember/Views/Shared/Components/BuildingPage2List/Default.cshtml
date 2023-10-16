@@ -1,0 +1,115 @@
+﻿@model AppDevelomentNew2ViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@* <style>
+    .divHighlight:hover {
+        background-color: silver !important;
+        color:black;
+        /* background-color: #313233 !important; */
+        /*opacity: 0.5;*/
+    }
+
+</style> *@
+
+@foreach (var iRow in Model.BuildingInformationList!)
+{
+    @* a href="#" *@   @*data-bs-target="#popupModal"*@ @*  bg-transparent*@
+    <div class="list-group-item list-group-item-action divHighlight">
+
+        <div class="row">
+
+            <div class="col-9" data-clminfotxt="clminfotxt_@iRow.InformationTokenID"
+                 data-bs-toggle="modal"
+                 style="cursor:pointer;"
+                 onclick="Popup_LoadForm('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.APPInformationTokenID','@iRow.InformationTokenID','@iRow.DocumentCount','@iRow.TimeFrame','clminfotxt_@iRow.InformationTokenID','clmdoccount_@iRow.InformationTokenID');">
+                @iRow.InformationText
+            </div>
+
+            <div class="col-3 text-end" style="float:right;">
+                @* <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" /> *@
+
+                @if (iRow.DocumentCount != "0")
+                {
+
+                    <div class="float-end" style="display:flex;flex-direction:row;">
+
+                        <small class="m-1 badge bg-primary rounded-pill text-center" style="float:right;" data-clmdoccount="clmdoccount_@iRow.InformationTokenID">@iRow.DocumentCount</small>
+
+
+                        @* <div class="float-end" style="display:flex;flex-direction:row;"> *@
+
+                            <div class="d-flex flex-row" style="vertical-align:top;text-align:left;margin:0px;float:right;">
+
+
+                                <button type="button" class="btn btn-outline-secondary btn-sm" disabled
+                                        data-btnnull="btnnull_@iRow.InformationTokenID"
+                                        onclick="submit_DocumentNotAvailable('@iRow.BuildingTokenID','@iRow.InformationTokenID');">
+                                    Nil return
+                                </button>
+                                <img src="~/img/img_question.png"
+                                     style="width:15px;height:15px;margin:3px;"
+                                     data-toggle="tooltip" data-placement="bottom"
+                                     title="Click this button if you do NOT have documents to upload." />
+
+                            </div>
+
+
+                        @* </div> *@
+
+
+                    </div>
+
+
+
+
+
+                }
+                else
+                {
+
+                    
+                    <div class="float-end" style="display:flex;flex-direction:row;">
+
+
+                        <small class="m-1 badge bg-primary rounded-pill text-center" style="float:right;" data-clmdoccount="clmdoccount_@iRow.InformationTokenID"></small>
+
+                        <div class="d-flex flex-row" style="vertical-align:top;text-align:left;margin:0px;float:right;">
+
+
+                            <button type="button" class="btn @iRow.AnswerNULLButtonCSS btn-sm"
+                                    data-btnnull="btnnull_@iRow.InformationTokenID"
+                                    onclick="submit_DocumentNotAvailable('@iRow.BuildingTokenID','@iRow.InformationTokenID');">
+                                Nil return
+                            </button>
+
+                            <img src="~/img/img_question.png"
+                                 style="width:15px;height:15px;margin:3px;"
+                                 data-toggle="tooltip" data-placement="bottom"
+                                 title="Click this button if you do NOT have documents to upload." />
+
+                        </div>
+
+
+</div>
+
+
+
+                }
+
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+
+
+}
+
+

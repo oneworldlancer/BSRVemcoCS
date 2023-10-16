@@ -1142,6 +1142,9 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.AppinformationTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("APPInformationTokenID");
+            entity.Property(e => e.AppqueryInformationTokenId)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("APPQueryInformationTokenID");
             entity.Property(e => e.AppqueryTableCode)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("APPQueryTableCode");
@@ -1157,9 +1160,15 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.Commentary).HasDefaultValueSql("((0))");
             entity.Property(e => e.Criterion).HasDefaultValueSql("((0))");
             entity.Property(e => e.InformationDescription).HasDefaultValueSql("((0))");
+            entity.Property(e => e.InformationDescriptionSystem).HasDefaultValueSql("((0))");
+            entity.Property(e => e.InformationDescriptionUser).HasDefaultValueSql("((0))");
             entity.Property(e => e.InformationName).HasDefaultValueSql("((0))");
             entity.Property(e => e.InformationText).HasDefaultValueSql("((0))");
+            entity.Property(e => e.InformationTextSystem).HasDefaultValueSql("((0))");
+            entity.Property(e => e.InformationTextUser).HasDefaultValueSql("((0))");
             entity.Property(e => e.InformationTitle).HasDefaultValueSql("((0))");
+            entity.Property(e => e.InformationTitleSystem).HasDefaultValueSql("((0))");
+            entity.Property(e => e.InformationTitleUser).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsActive).HasDefaultValueSql("((1))");
             entity.Property(e => e.IsAnswered).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsPaging).HasDefaultValueSql("((0))");
@@ -1393,9 +1402,15 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.EvidenceText).HasDefaultValueSql("((0))");
             entity.Property(e => e.EvidenceTitle).HasDefaultValueSql("((0))");
             entity.Property(e => e.InformationDescription).HasDefaultValueSql("((0))");
+            entity.Property(e => e.InformationDescriptionSystem).HasDefaultValueSql("((0))");
+            entity.Property(e => e.InformationDescriptionUser).HasDefaultValueSql("((0))");
             entity.Property(e => e.InformationName).HasDefaultValueSql("((0))");
             entity.Property(e => e.InformationText).HasDefaultValueSql("((0))");
+            entity.Property(e => e.InformationTextSystem).HasDefaultValueSql("((0))");
+            entity.Property(e => e.InformationTextUser).HasDefaultValueSql("((0))");
             entity.Property(e => e.InformationTitle).HasDefaultValueSql("((0))");
+            entity.Property(e => e.InformationTitleSystem).HasDefaultValueSql("((0))");
+            entity.Property(e => e.InformationTitleUser).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsActive).HasDefaultValueSql("((1))");
             entity.Property(e => e.IsAnswered).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsOpened).HasDefaultValueSql("((0))");
@@ -2743,6 +2758,9 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.AppinformationTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("APPInformationTokenID");
+            entity.Property(e => e.AppqueryInformationTokenId)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("APPQueryInformationTokenID");
             entity.Property(e => e.AppqueryTableCode)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("APPQueryTableCode");
@@ -2768,10 +2786,16 @@ public partial class BSRDBModelContext : DbContext
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("ImageTokenID");
             entity.Property(e => e.InformationDescription).HasDefaultValueSql("((0))");
+            entity.Property(e => e.InformationDescriptionSystem).HasDefaultValueSql("((0))");
+            entity.Property(e => e.InformationDescriptionUser).HasDefaultValueSql("((0))");
             entity.Property(e => e.InformationName).HasDefaultValueSql("((0))");
             entity.Property(e => e.InformationScore).HasDefaultValueSql("((0))");
             entity.Property(e => e.InformationText).HasDefaultValueSql("((0))");
+            entity.Property(e => e.InformationTextSystem).HasDefaultValueSql("((0))");
+            entity.Property(e => e.InformationTextUser).HasDefaultValueSql("((0))");
             entity.Property(e => e.InformationTitle).HasDefaultValueSql("((0))");
+            entity.Property(e => e.InformationTitleSystem).HasDefaultValueSql("((0))");
+            entity.Property(e => e.InformationTitleUser).HasDefaultValueSql("((0))");
             entity.Property(e => e.InformationTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("InformationTokenID");
@@ -2791,6 +2815,9 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.PageCount).HasDefaultValueSql("((0))");
             entity.Property(e => e.PageNumber).HasDefaultValueSql("((0))");
             entity.Property(e => e.PageSize).HasDefaultValueSql("((0))");
+            entity.Property(e => e.QueryInformationTokenId)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("QueryInformationTokenID");
             entity.Property(e => e.QueryTableDescription).HasDefaultValueSql("((0))");
             entity.Property(e => e.QueryTableName).HasDefaultValueSql("((0))");
             entity.Property(e => e.QueryTableText).HasDefaultValueSql("((0))");
