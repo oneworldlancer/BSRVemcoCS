@@ -5,12 +5,12 @@
 
         @foreach (var iRow in Model.BuildingInformationDocumentList!)
         {
-            <div style="display:flex;flex-direction:column;">
+            <div style="display:flex;flex-direction:column;" data-clmddocname="clmddocname_@iRow.DocumentTokenID">
                 <table>
 
 
 
-                    <tr style="border-bottom: 1px dashed silver;" data-clmddocname="clmddocname_@iRow.DocumentTokenID">
+                    <tr style="border-bottom: 1px dashed silver;">
                         <td style="width:20px;text-align:left;vertical-align:text-top;padding:0px;">
                             <img src="~/img/img_file_pdf.png" style="width:20px;height:20px;margin:0px;" />
                         </td>

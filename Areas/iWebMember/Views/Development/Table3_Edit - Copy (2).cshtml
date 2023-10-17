@@ -16,35 +16,43 @@
             <ol class="breadcrumb">
                 @*href="index.html"*@
                 <li class="breadcrumb-item"><a>View Building</a></li>
-                <li class="breadcrumb-item active">New</li>
+                <li class="breadcrumb-item active">Occurrence Reporting and Resident Engagement</li>
             </ol>
         </nav>
     </div>
 
+    <!-- End Page Title -->
+    @*class="section dashboard" style="margin-top:0px;padding-top:0px;"*@
     <section>
 
-        @*  <button type="button" class="btn btn-primary"
-        onclick="readValue()">
-        readValue
-        </button>*@
+        @*  <p> Click on button to display popup modal function </p>
+        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#popupModal">
+        Open modal function
+        </button>
+        *@
+
+
+        @*  <div class="row">
+
+        <span class="fs-5 ms-3">
+        Resident Engagement
+        </span>
+
+        </div> *@
+
 
         <div class="row">
 
-            <span class="fs-5 ms-3">Safety Management System</span>
 
-        </div>
-
-        @*<div style="overflow-x:auto;">*@
-
-        <table class="table table-hover table-bordered m-3" style="width:100%;padding:3px;table-layout:fixed;background-color:white;">
+        <table class="table table-hover table-bordered m-3" style="width:100%;padding:3px;table-layout:fixed;">
             <thead>
                 <tr>
                     <th>@Model.ColumnDescription</th>
                     <th>@Model.ColumnCommentary</th>
                     <th style="width:150px;">@Model.ColumnCriterion</th>
-                    <th class="fw-bold" style="width:50px;background-color:#dde9f5;">@Model.ColumnScore</th>
+                    <th class="fw-bold" style="width:50px;background-color:whitesmoke;">@Model.ColumnScore</th>
                     <th>@Model.ColumnRiskControlMeasure</th>
-                    <th class="fw-bold" style="width:110px;background-color:#dde9f5;">@Model.ColumnScoreAdjused </th>
+                    <th class="fw-bold" style="width:110px;background-color:whitesmoke;">@Model.ColumnScoreAdjused </th>
                     @*<th class="fw-bold" style="width:50px;">Total</th>*@
 
                 </tr>
@@ -52,15 +60,13 @@
             <tbody>
                 @*@for (var i = 0; i < Model.PrescriptionList.Count; i++)*@
                 @*@for ( var i = 0 ; i < Model.RowContentList.Count! ; i++ )*@
-                @foreach ( var iRow in Model.RowContentList! )
+                @foreach (var iRow in Model.RowContentList!)
                 {
-                    @*data-bs-target="#popupModalEditor"*@          @*onclick="Popup_LoadForm('@iRow.BuildingTokenID','@iRow.InformationTokenID');"*@
-                    @*data-bs-toggle="modal" data-bs-target="#popupModal"*@
-                    @*<tr onclick="clickRow(@iRow._id);" data-obj="@iRow">*@
-                    <tr class="divHighlight" data-bs-toggle="modal" onclick="Popup_LoadForm('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.InformationTokenID','clmscore_@iRow.InformationTokenID','clmrisk_@iRow.InformationTokenID');">
-                        <td><strong>@iRow.ColumnDescription</strong></td>
+
+                    <tr data-bs-toggle="modal" onclick="Popup_LoadForm('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.InformationTokenID','clmscore_@iRow.InformationTokenID','clmrisk_@iRow.InformationTokenID');">
+                        <td>@iRow.ColumnDescription</td>
                         <td>
-                            @if ( iRow.ColumnCommentary != "0" )
+                            @if (iRow.ColumnCommentary != "0")
                             {
                                 @iRow.ColumnCommentary
                             }
@@ -68,16 +74,16 @@
                         <td>
                             <table>
                                 @*@for ( int ii = 0 ; ii < 4 ; ii++ )*@
-                                @if ( iRow.ColumnCriterionList.Count > 0 )
+                                @if (iRow.ColumnCriterionList.Count > 0)
                                 {
 
-                                    @foreach ( var iRowNested in iRow.ColumnCriterionList! )
+                                    @foreach (var iRowNested in iRow.ColumnCriterionList!)
                                     {
 
                                         <tr>
 
 
-                                            @if ( iRowNested == iRow.ColumnCriterionList.Last ( ) )
+                                            @if (iRowNested == iRow.ColumnCriterionList.Last())
                                             {
 
                                                 <td class="text-center" style="padding-top:3px;padding-bottom:3px;border-bottom: 1px transparent solid;width:150px;">
@@ -100,16 +106,16 @@
 
                             </table>
                         </td>
-                        <td class="fw-bold text-center" style="width:50px;background-color:#dde9f5;">@iRow.ColumnScoreOriginal</td>
+                        <td class="fw-bold text-center" style="width:50px;background-color:whitesmoke;">@iRow.ColumnScoreOriginal</td>
                         @*class="d-inline-block text-truncate" style="max-width: 150px;"*@
 
                         <td class="text-break" style="max-width: 150px;" data-clmrisk="clmrisk_@iRow.InformationTokenID">
-                            @if ( iRow.ColumnRiskControlMeasure != "0" )
+                            @if (iRow.ColumnRiskControlMeasure != "0")
                             {
                                 @Html.Raw(@iRow.ColumnRiskControlMeasure)
                             }
                         </td>
-                        <td class="fw-bold text-center" style="width:110px;background-color:#dde9f5;" data-clmscore="clmscore_@iRow.InformationTokenID">@iRow.ColumnScoreAdjused</td>
+                        <td class="fw-bold text-center" style="width:110px;background-color:whitesmoke;" data-clmscore="clmscore_@iRow.InformationTokenID">@iRow.ColumnScoreAdjused</td>
                         @*<td class="fw-bold text-center" style="width:50px;">@iRow.ColumnTotal</td>*@
 
                         @* <td>@Html.DropDownListFor(m => Model.PrescriptionList[i].MedicineId, new SelectList(ViewBag.MedicineId, "Id", "Name"))</td>
@@ -119,15 +125,69 @@
                     </tr>
                 }
 
-
-                <tr style="background-color:#152365;color:white;">
-                    <td class="fw-bold" colspan="5" style="color:white;">Total score:</td>
-                    <td class="fw-bold text-center" data-clmtotal="clmtotal" style="color:white;">@Model.ColumnScoreTotal</td>
+                <tr style="background-color:silver;color:black;">
+                    <td class="fw-bold" colspan="5">Total score:</td>
+                    <td class="fw-bold text-center" data-clmtotal="clmtotal">@Model.ColumnScoreTotal</td>
                 </tr>
             </tbody>
         </table>
-    </section>
 
+
+            <div class="mt-5" style="vertical-align:middle;display:flex;flex-direction:row;justify-content:space-between;">
+
+                <div class="float-start"></div>
+                <div>
+                    <div id="div_Paging_0000" style="display:block;margin:auto;vertical-align:middle;">
+                        <nav>
+                            <ul class="pagination">
+
+                                <li class="page-item">
+                                    @* *@
+
+@*                                     onclick="load_TabPageNumberList('@Model.BuildingTokenID', '0', 'true','1', true)" *@
+                                    <a href='#div_ItemsContent' id="pager1_0" class="page-link active"
+                                      >1</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href='#div_ItemsContent' id="pager2_0" class="page-link"
+                                     >2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href='#div_ItemsContent' id="pager3_0" class="page-link"
+                                     >3</a>
+                                </li>
+
+                                <li class="page-item">
+                                    <a href='#div_ItemsContent' id="pager4_0" class="page-link"
+                                     >4</a>
+                                </li>
+
+                                @*   <li class="page-item">
+                                <a href='#collapse444' id="pager3_444" class="page-link">4</a>
+                                </li>
+
+                                <li class="page-item">
+                                <a href='#collapse555' id="pager3_555" class="page-link">5</a>
+                                </li>
+
+                                <li class="page-item">
+                                <a href='#collapse666' id="pager3_666" class="page-link">6</a>
+                                </li> *@
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="float-end"></div>
+            </div>
+
+    
+    </div>
+
+ 
+
+    </section>
 
 
     @*POPUP*@
@@ -135,7 +195,7 @@
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header" style="background-color:whitesmoke;">
-                    <h4 class="modal-title">Safety Management System</h4>
+                    <h4 class="modal-title">Resident Engagement</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 
@@ -185,8 +245,10 @@
         </div>
     </div>
 
- 
+
 </div>
+
+
 
 <script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
 
@@ -209,9 +271,11 @@
 </script>
 
 
+
+
 <script>
 
-    function clickRow (obj) {
+    function clickRow(obj) {
 
         try {
 
@@ -230,7 +294,7 @@
 
 
 
-    function readValue (obj) {
+    function readValue(obj) {
 
         try {
 
@@ -269,7 +333,7 @@
     window.clmscore;
     window.clmrisk;
 
-    function Popup_PostForm () {
+    function Popup_PostForm() {
 
         try {
 
@@ -319,6 +383,7 @@
 
 
                     BSR_ShowToastMessage('update');
+
 
 
                 },
@@ -375,7 +440,7 @@
 
 
 
-    function Popup_LoadForm (apptbltknid, tbltknid, bldtknid, inftknid, clmscore, clmrisk) {
+    function Popup_LoadForm(apptbltknid, tbltknid, bldtknid, inftknid, clmscore, clmrisk) {
 
         try {
 
@@ -605,30 +670,24 @@
 
 
 
-@*<script src="https://cdn.tiny.cloud/1/ijhe5oqbrnz2y8emfxulfmdz478mpq5qfgwd038tw5ws5mw1/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>*@
+<!-- End #main -->
+@*<div class="row">
 
-<script>
+    <div class="d-flex align-items-start">
+        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
+            <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
+            <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</button>
+            <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</button>
+        </div>
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">This is some placeholder content the Messages tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.</div>
+            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">This is some placeholder content the Messages tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.</div>
+            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">This is some placeholder content the Messages tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.</div>
+            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">This is some placeholder content the Messages tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.</div>
+        </div>
+    </div>
 
-    // Remove existing instances of tinyMCE.
-    //tinyMCE.remove();
-
-    //tinymce.init({
-    //    selector: 'textarea',
-    //    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-    //    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-
-
-        // Prevent Bootstrap dialog from blocking focusin
-        //document.addEventListener('focusin', (e) => {
-        //    if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
-        //        e.stopImmediatePropagation();
-        //    }
-        //});
-
-</script>
+</div>*@

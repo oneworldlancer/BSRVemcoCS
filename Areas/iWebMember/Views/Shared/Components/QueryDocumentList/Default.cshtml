@@ -5,12 +5,12 @@
 
         @foreach (var iRow in Model.BuildingQueryDocumentList!)
         {
-            <div style="display:flex;flex-direction:column;">
+            <div style="display:flex;flex-direction:column;" data-clmddocname="clmddocname_@iRow.DocumentTokenID">
                 <table>
 
 
 
-                    <tr style="border-bottom: 1px dashed silver;" data-clmddocname="clmddocname_@iRow.DocumentTokenID">
+                    <tr style="border-bottom: 1px dashed silver;">
                         <td style="width:20px;text-align:left;vertical-align:text-top;padding:0px;">
                             <img src="~/img/img_file_pdf.png" style="width:20px;height:20px;margin:0px;" />
                         </td>
@@ -32,7 +32,7 @@
                             <div style="width:50px;display:flex;flex-direction:row;">
 
 
-                                <div class="text-center" style="width:50px;" onclick="Document_Confirm_DELETE('@iRow.DocumentTokenID');">
+                                <div class="text-center" style="width:50px;" onclick="DocumentQuery_Confirm_DELETE('@iRow.DocumentTokenID');">
                                     <img src="~/img/img_delete.png" style="width:20px;height:20px;" alt="Delete" title="Delete" />
                                 </div>
 

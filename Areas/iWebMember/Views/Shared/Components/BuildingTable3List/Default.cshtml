@@ -1,0 +1,89 @@
+﻿@model AppDevelomentTable1EditViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@* <style>
+    .divHighlight:hover {
+        background-color: silver !important;
+        color:black;
+        /* background-color: #313233 !important; */
+        /*opacity: 0.5;*/
+    }
+
+</style> *@
+
+@foreach (var iRow in Model.RowContentList!)
+{
+
+    <tr class="divHighlight" data-bs-toggle="modal" onclick="Popup_LoadForm('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.InformationTokenID','clmscore_@iRow.InformationTokenID','clmrisk_@iRow.InformationTokenID');">
+        <td><strong>@iRow.ColumnDescription</strong></td>
+        <td>
+            @if (iRow.ColumnCommentary != "0")
+            {
+                @iRow.ColumnCommentary
+            }
+        </td>
+        <td>
+            <table>
+                @*@for ( int ii = 0 ; ii < 4 ; ii++ )*@
+                @if (iRow.ColumnCriterionList.Count > 0)
+                {
+
+                    @foreach (var iRowNested in iRow.ColumnCriterionList!)
+                    {
+
+                        <tr>
+
+
+                            @if (iRowNested == iRow.ColumnCriterionList.Last())
+                            {
+
+                                <td class="text-center" style="padding-top:3px;padding-bottom:3px;border-bottom: 1px transparent solid;width:150px;">
+                                    <small>@iRowNested.CriterionText</small>
+                                </td>
+
+                            }
+                            else
+                            {
+                                <td class="text-center" style="padding-top:3px;padding-bottom:3px;border-bottom: 1px silver solid;width:150px;">
+                                    <small>@iRowNested.CriterionText</small>
+                                </td>
+                            }
+
+
+                        </tr>
+                    }
+
+                }
+
+            </table>
+        </td>
+        <td class="fw-bold text-center" style="width:50px;background-color:#dde9f5;">@iRow.ColumnScoreOriginal</td>
+        @*class="d-inline-block text-truncate" style="max-width: 150px;"*@
+
+        <td class="text-break" style="max-width: 150px;" data-clmrisk="clmrisk_@iRow.InformationTokenID">
+            @if (iRow.ColumnRiskControlMeasure != "0")
+            {
+                @Html.Raw(@iRow.ColumnRiskControlMeasure)
+            }
+        </td>
+        <td class="fw-bold text-center" style="width:110px;background-color:#dde9f5;" data-clmscore="clmscore_@iRow.InformationTokenID">@iRow.ColumnScoreAdjused</td>
+        @*<td class="fw-bold text-center" style="width:50px;">@iRow.ColumnTotal</td>*@
+
+        @* <td>@Html.DropDownListFor(m => Model.PrescriptionList[i].MedicineId, new SelectList(ViewBag.MedicineId, "Id", "Name"))</td>
+    <td>@Html.DropDownListFor(m => Model.PrescriptionList[i].PrescriptionDurationId, new SelectList(ViewBag.PrescriptionFrequencyId, "Id", "Name"))</td>
+    *@
+
+    </tr>
+}
+
+<tr style="background-color:#152365;color:white;">
+    <td class="fw-bold" colspan="5" style="color:white;">Total score:</td>
+    <td class="fw-bold text-center" data-clmtotal="clmtotal" style="color:white;">@Model.ColumnScoreTotal</td>
+</tr>
+
+
+

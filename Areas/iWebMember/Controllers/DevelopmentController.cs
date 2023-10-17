@@ -1738,6 +1738,157 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
                 string state = "0";
 
+                List<BsrvemcoUserBuildingInformationList>? _arrUserBuildingInfomationList = _dbContext.BsrvemcoUserBuildingInformationLists
+                             .Where(u =>
+                             u.ApptableTokenId == "1689162201957" &&
+                             u.BuildingTokenId == id &&
+                             u.IsVisible == true)
+                             //.Select (u  )
+                             //.FirstOrDefault ( ); // This is what actually executes the request and return a response
+                             .ToList(); // This is what actually executes the request and return a response
+
+                List<AppUserBuildingTableRowModelManager> _iRowContentList = new List<AppUserBuildingTableRowModelManager>();
+
+                for (int i = 0; i < _arrUserBuildingInfomationList.Count; i++)
+                {
+                    _iRowContentList
+                  .Add(new AppUserBuildingTableRowModelManager()
+                  {
+
+                      _id = i,
+
+                      AppTableTokenID = _arrUserBuildingInfomationList[i].ApptableTokenId,
+                      TableTokenID = _arrUserBuildingInfomationList[i].ApptableTokenId,
+
+                      AppInformationTokenID = _arrUserBuildingInfomationList[i].AppinformationTokenId,
+                      InformationTokenID = _arrUserBuildingInfomationList[i].InformationTokenId,
+
+                      CompanyTokenID = Program.iOwnerModel.CompanyTokenID,
+                      BuildingTokenID = id,
+
+                      ColumnDescription = _arrUserBuildingInfomationList[i].InformationText, //"Fire Strategy" ,
+                      ColumnCommentary = _arrUserBuildingInfomationList[i].Commentary,
+                      ColumnCriterion = "0",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      //AppTableTokenID = "X1AppTableTokenID" ,
+                      //TableTokenID = "X1TableTokenID" ,
+
+                      //AppInformationTokenID = "X1AppInformationTokenID" ,
+                      //InformationTokenID = "X1InformationTokenID" ,
+
+                      //CompanyTokenID = "X1CompanyTokenID" ,
+                      //BuildingTokenID = "X1BuildingTokenID" ,
+
+                      //ColumnDescription = _arrBuildingInfomationList[ i ].InformationText , //"Fire Strategy" ,
+                      //ColumnCommentary = _arrBuildingInfomationList[ i ].Commentary ,
+                      //ColumnCriterion = "0" ,
+
+                      ColumnScore = _arrUserBuildingInfomationList[i].Score,
+                      ColumnScoreOriginal = _arrUserBuildingInfomationList[i].ScoreOriginal,
+                      ColumnScoreManaged = _arrUserBuildingInfomationList[i].ScoreManaged,
+                      ColumnScoreAdjused = _arrUserBuildingInfomationList[i].ScoreAdjusted,
+                      ColumnRiskControlMeasure = _arrUserBuildingInfomationList[i].RiskControlMeasure,
+                      ColumnTotal = "0",
+
+
+
+
+                      //ColumnScore = "5" ,
+                      //ColumnScoreOriginal = "5" ,
+                      //ColumnScoreManaged = "5" ,
+                      //ColumnScoreAdjused = "5" ,
+                      //ColumnRiskControlMeasure = "" ,
+                      //ColumnTotal = "5" ,
+
+                      ColumnCriterionList = await AppBuildingInformationCriterionManager.getCriterionList(_dbContext, _arrUserBuildingInfomationList[i].AppinformationTokenId!)
+
+                  });
+                }
+
+
+
+                AppDevelomentTable1EditViewModel _iDevelomentTable1EditModel = new AppDevelomentTable1EditViewModel()
+                {
+                    BuildingTokenID = id,
+                    TableTitle = "TableTitle",
+                    TableDescription = "TableDescription",
+
+                    ColumnDescription = "Description",
+                    ColumnCommentary = "Commentary",
+                    ColumnCriterion = "Criterion",
+                    ColumnScore = "Score",
+                    ColumnScoreOriginal = "ScoreOriginal",
+                    ColumnScoreManaged = "Score",
+                    ColumnScoreAdjused = "Adjusted Score",
+                    //ColumnRiskControlMeasure = "Risk Control Measure Risk Control Measure" ,
+                    ColumnRiskControlMeasure = "Risk Control Measure",
+
+                    //ColumnScoreTotal = "333" ,
+                    ColumnScoreTotal = _dbContext.BsrvemcoUserBuildingInformationLists
+                    .Where(
+                        c =>
+                        c.ApptableTokenId == "1689162201957" &&
+                        c.BuildingTokenId == id)
+                    .Sum(clmn => Convert.ToDecimal(clmn.ScoreAdjusted!)).ToString("0.0"),
+
+
+                    RowContentList = _iRowContentList,
+                };
+
+
+
+
+
+                //////BuildingName = _iUserBuildignModel.BuildingName ,
+                //////BuildingAddress = _iUserBuildignModel.BuildingAddress ,
+                //////BuildingDate = DateTime.Parse ( _iUserBuildignModel.BuildingDate ) ,
+                //////BuildingImageTokenID = _iUserBuildignModel.ImageTokenId
+
+
+
+
+                return View(_iDevelomentTable1EditModel);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+
+            //
+            //return View ( );
+        }
+
+
+
+        [HttpGet]
+        public async Task<IActionResult> Table3_Edit_All()
+        {
+
+            try
+            {
+
+                string id = Request.Query["bldtknid"].ToString();
+
+                string state = "0";
+
 
                 //////var _iUserBuildignModel = _dbContext.BsrvemcoUserBuildingLists
                 //////     .Where ( u => u.BuildingTokenId == id )
@@ -4121,6 +4272,68 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
 
 
+
+
+        public async Task<IActionResult> DocumentQuery_Delete_ByDocumentTokenID(string doctknid)
+        {                                    /* bool showPrevious , bool showUpcoming */
+
+            try
+            {
+
+                var _iUserDocumentModel = _dbContext.BsrvemcoUserBuildingQueryDocumentLists
+             .Where(
+                 c =>
+                 c.DocumentTokenId == doctknid)
+             .FirstOrDefault();
+
+
+                //Update-Scores
+                _iUserDocumentModel.IsVisible = false;
+
+                ////////         string _iDocumentCount = _dbContext.BsrvemcoUserBuildingDocumentLists
+                ////////.Where (
+                ////////    c =>
+                ////////    c.BuildingTokenId == bldtknid &&
+                ////////    c.InformationTokenId == inftknid )
+                ////////.Count ( ).ToString ( );
+
+
+                //////var _iUserBuildignInfoModel = _dbContext.BsrvemcoUserBuildingInformationLists
+                //////        .Where ( u =>
+                //////        u.BuildingTokenId == bldtknid &&
+                //////        u.InformationTokenId == inftknid )
+                //////        //.Select (u  )
+                //////        .FirstOrDefault ( ); // This is what actually executes the request and return a response
+
+                //////_iUserBuildignInfoModel.Score = "3";
+                //////_iUserBuildignInfoModel.ScoreOriginal = "3";
+                //////_iUserBuildignInfoModel.DocumentCount = _iDocumentCount;
+
+
+                _dbContext.BsrvemcoUserBuildingQueryDocumentLists.Update(_iUserDocumentModel);
+
+                await _dbContext.SaveChangesAsync();
+
+
+                return Json(new { status = true });
+
+            }
+            catch (Exception ex)
+            {
+                AppUtility_DebugManager.Debug_Get_MessageText(ex.Message.ToString());
+                return null;
+            }
+
+
+
+            //return ViewComponent ( "DocumentList" ,
+            //    new { showPrevious = showPrevious , showUpcoming = showUpcoming } );
+
+
+        }
+
+
+
         #endregion
 
 
@@ -4669,6 +4882,22 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
                 {
                     bldtknid = bldtknid,
                     inftknid = inftknid
+                });
+
+
+
+        }
+
+
+        public IActionResult ReloadBuildingTable3List(string bldtknid, string iPageNumber, string blnIsPaging)
+        {                                    /* bool showPrevious , bool showUpcoming */
+
+            return ViewComponent("BuildingTable3List",
+                new
+                {
+                    bldtknid = bldtknid,
+                    iPageNumber = iPageNumber,
+                    blnIsPaging = Boolean.Parse(blnIsPaging)
                 });
 
 

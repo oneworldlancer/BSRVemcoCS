@@ -32,7 +32,7 @@
                 @* onclick="Popup_LoadForm('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.InformationTokenID','clmscore_@iRow.InformationTokenID','clmrisk_@iRow.InformationTokenID');" *@
 
 
-                <tr data-bs-toggle="modal">
+                <tr class="divHighlight" data-bs-toggle="modal">
                     <td data-clmactivity="clmactivity_@iRow.QueryInformationTokenID">
                         
                        <strong>@Html.Raw(@iRow.InformationTitle)</strong>@Html.Raw(@iRow.InformationDescriptionUser)

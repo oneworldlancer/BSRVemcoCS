@@ -30,7 +30,7 @@
                 <div class="accordion" id="accordionExample">
 
                     <div class="accordion-item" data-paneid="pane-0-0-false">
-                        <h2 class="accordion-header" id="heading0" style="background-color:whitesmoke;padding:3px;border-radius:3px;">
+                        <h2 class="accordion-header divHighlight" id="heading0" style="background-color:whitesmoke;padding:3px;border-radius:3px;">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse0" aria-expanded="true" aria-controls="collapse0">
 
                                 @* src="~/img/img_circle_black.png" *@
@@ -99,7 +99,7 @@
 
                         <div class="accordion-item" data-paneid="pane-@iRow.BuildingTokenID-@iRow.QueryTableTokenID-@iRow.IsPaging.ToString()">
 
-                            <h2 class="accordion-header" id="heading1" style="background-color:whitesmoke;padding:3px;border-radius:3px;">
+                            <h2 class="accordion-header divHighlight" id="heading1" style="background-color:whitesmoke;padding:3px;border-radius:3px;">
 
                                 @*                                 onclick="load_TabViewQueryList('@iRow.BuildingTokenID','@iRow.QueryTableTokenID',true)" *@
 
@@ -121,7 +121,7 @@
                             </h2>
 
                             <div id='collapse@{
-                                                                                                                                                                                                                                                                                                                                                                                @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                                    @iRow.QueryTableTokenID.ToString()
 }'
                                  class="accordion-collapse collapse" aria-labelledby="heading1"
                                  data-bs-parent="#accordionExample">
@@ -129,36 +129,36 @@
 
                                 @* class="accordion-body" *@
                                 <div id='div_@{
-                                                                                                                                                                                                                                                                                                                                                                                    @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                                        @iRow.QueryTableTokenID.ToString()
 }'></div>
 
                                 <div class="text-center" id="div_Paging_@{
-                                                                                                                                                                                                                                                                                                                                                                                        @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                                            @iRow.QueryTableTokenID.ToString()
 }" style="display:none;margin:10px;text-align:center;vertical-align:middle;">
                                     <nav>
                                         <ul class="pagination">
 
                                             <li class="page-item">
                                                 <a href='#collapse@{
-                                                                                                                                                                                                                                                                                                                                                                                    @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                                        @iRow.QueryTableTokenID.ToString()
 }' id="pager1_@{
-                                                                                                                                                                                                                                                                                                                                                                                                @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                                                    @iRow.QueryTableTokenID.ToString()
 }" class="page-link active"
                                                    onclick="load_TabViewQueryList('@iRow.BuildingTokenID', '@iRow.QueryTableTokenID', 'true','1', true)">1</a>
                                             </li>
                                             <li class="page-item">
                                                 <a href='#collapse@{
-                                                                                                                                                                                                                                                                                                                                                                                        @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                                            @iRow.QueryTableTokenID.ToString()
 }' id="pager2_@{
-                                                                                                                                                                                                                                                                                                                                                                                                    @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                                                        @iRow.QueryTableTokenID.ToString()
 }" class="page-link"
                                                    onclick="load_TabViewQueryList('@iRow.BuildingTokenID', '@iRow.QueryTableTokenID', 'true','2', true)">2</a>
                                             </li>
                                             <li class="page-item">
                                                 <a href='#collapse@{
-                                                                                                                                                                                                                                                                                                                                                                                            @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                                                @iRow.QueryTableTokenID.ToString()
 }' id="pager3_@{
-                                                                                                                                                                                                                                                                                                                                                                                                    @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                                                        @iRow.QueryTableTokenID.ToString()
 }" class="page-link"
                                                    onclick="load_TabViewQueryList('@iRow.BuildingTokenID', '@iRow.QueryTableTokenID', 'true','3', true)">3</a>
                                             </li>
@@ -443,6 +443,28 @@ mb-3"></div>
                         </div>
 
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="confirmPopup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmPopupLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="height:auto;">
+                <div class="modal-header" style="background-color:whitesmoke;">
+                    <h5 class="modal-title" id="confirmPopupLabel">Confirm</h5>
+                    @* <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> *@
+                </div>
+                <div class="modal-body">
+                    Are you sure want to DELTE! ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    @* <button type="button" class="btn btn-primary" onclick="Building_Set_DELETE()">Delete</button> *@
+                    <button type="button" class="btn btn-danger" onclick="DocumentQuery_Set_DELETE()">Delete</button>
                 </div>
             </div>
         </div>
@@ -1477,7 +1499,17 @@ mb-3"></div>
                     success: function (data) {
 
 
-                        clmn_LinkListText.html(data);
+                       //clmn_LinkListText.html(data);
+
+
+                        if (data.length == 4) {
+
+                            clmn_LinkListText.html("Provide hyperlinks to evidence here.");
+
+                        } else {
+                            clmn_LinkListText.html(data);
+                        }
+
 
 
                         // $("#div_DocumentList").html(data);
@@ -1645,6 +1677,134 @@ mb-3"></div>
         }
 
     }
+
+
+
+
+    function DocumentQuery_Confirm_DELETE(doctknid) {
+
+        try {
+
+            window.doctknid = doctknid;
+            $("#iDocumentTokenID").val(doctknid);
+            // alert(bldtknid);
+
+            // var clmn_DocumentCount = $("[data-clmdbldname='clmdbldname_" + bldtknid + "']");
+
+            // $("[data-clmdbldname='clmdbldname_" + bldtknid + "']").hide();
+
+
+
+
+            $('#confirmPopup').modal('show');
+
+
+        }
+        catch (err) {
+            alert(err);
+        }
+    }
+
+
+
+
+
+
+    function DocumentQuery_Set_DELETE() {
+
+        try {
+
+
+            $.ajax({
+
+                url: '/iWebMember/Development/DocumentQuery_Delete_ByDocumentTokenID',
+                data: {
+                    doctknid: $("#iDocumentTokenID").val()//,
+                    //inftknid: $("#iInformationTokenID").val()
+                },
+                success: function (data) {
+
+                    //alert('load_TabViewDocumentList DONE !!!  ' + data.count);
+
+                    // var clmn_DocumentCount = $("[data-clmdoccount='clmdoccount_" + window.inftknid + "']");
+
+
+                    // if (data.count != "0") {
+                    //     clmn_DocumentCount.html(data.count);
+
+                    // }
+                    // else {
+                    //     clmn_DocumentCount.html('');
+
+                    // }
+
+
+
+                    $('#confirmPopup').modal('hide');
+
+
+                    $("[data-clmddocname='clmddocname_" + window.doctknid + "']").hide();
+                    // alert('Building_Delete_ByBuildingTokenID DONE !!!');
+
+
+
+                    //GetCountDocumentList();
+
+
+                    BSR_ShowToastMessage('delete');
+
+
+
+                    $.ajax({
+
+                        url: '/iWebMember/Development/ReloadQueryFormTableDocumentList',
+                        data: {
+                            bldtknid: $("#iBuildingTokenID").val(),
+                            iqueryinftknid: $("#iQueryInformationTokenID").val()
+                        },
+                        success: function (data) {
+
+
+                            //alert(data);
+
+                            var clmn_LinkListText = $("[data-clmlinklist='clmlinklist_" + $("#iQueryInformationTokenID").val() + "']");
+
+                            //alert('clmn_LinkListTextv == ' + clmn_LinkListText);
+                            //alert('data.length == ' + data.length);
+
+                            if (data.length == 4) {
+                           
+                                clmn_LinkListText.html("Provide hyperlinks to evidence here.");
+
+                            } else {
+                                clmn_LinkListText.html(data);
+                            }
+
+                            // $("#div_DocumentList").html(data);
+
+                            // $('#div_CommandEdit').hide();
+                            // // ////$('#div_CommandPreview').hide();
+                            // $('#div_CommandUpload').hide();
+
+
+                            // alert('load_TabViewQueryDocumentList DONE !!!');
+                        }
+                    });
+
+
+
+
+                }
+            });
+
+
+
+        }
+        catch (err) {
+            alert(err);
+        }
+    }
+
 
 
 

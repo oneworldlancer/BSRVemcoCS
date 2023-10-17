@@ -40,15 +40,15 @@
 
         @*<div style="overflow-x:auto;">*@
 
-        <table class="table table-hover table-bordered m-3" style="width:100%;padding:3px;table-layout:fixed;">
+        <table class="table table-hover table-bordered m-3" style="width:100%;padding:3px;table-layout:fixed;background-color:white;">
             <thead>
                 <tr>
                     <th>@Model.ColumnDescription</th>
                     <th>@Model.ColumnCommentary</th>
                     <th style="width:150px;">@Model.ColumnCriterion</th>
-                    <th class="fw-bold" style="width:50px;background-color:whitesmoke;">@Model.ColumnScore</th>
+                    <th class="fw-bold" style="width:50px;background-color:#dde9f5;">@Model.ColumnScore</th>
                     <th>@Model.ColumnRiskControlMeasure</th>
-                    <th class="fw-bold" style="width:110px;background-color:whitesmoke;">@Model.ColumnScoreAdjused </th>
+                    <th class="fw-bold" style="width:110px;background-color:#dde9f5;">@Model.ColumnScoreAdjused </th>
                    @* <th class="fw-bold" style="width:50px;">Total</th>*@
 
                 </tr>
@@ -59,8 +59,8 @@
                 @foreach ( var iRow in Model.RowContentList! )
                 {
 
-                    <tr data-bs-toggle="modal" onclick="Popup_LoadForm('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.InformationTokenID','clmscore_@iRow.InformationTokenID','clmrisk_@iRow.InformationTokenID');">
-                        <td>@iRow.ColumnDescription</td>
+                    <tr class="divHighlight" data-bs-toggle="modal" onclick="Popup_LoadForm('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.InformationTokenID','clmscore_@iRow.InformationTokenID','clmrisk_@iRow.InformationTokenID');">
+                        <td><strong>@iRow.ColumnDescription</strong></td>
                         <td>
                             @if ( iRow.ColumnCommentary != "0" )
                             {
@@ -102,7 +102,7 @@
 
                             </table>
                         </td>
-                        <td class="fw-bold text-center" style="width:50px;background-color:whitesmoke;">@iRow.ColumnScoreOriginal</td>
+                        <td class="fw-bold text-center" style="width:50px;background-color:#dde9f5;">@iRow.ColumnScoreOriginal</td>
 
                         @*class="d-inline-block text-truncate" style="max-width: 150px;"*@
 
@@ -112,7 +112,7 @@
                             @Html.Raw(@iRow.ColumnRiskControlMeasure)    
                             }
                         </td>
-                        <td class="fw-bold text-center" style="width:110px;background-color:whitesmoke;" data-clmscore="clmscore_@iRow.InformationTokenID">@iRow.ColumnScoreAdjused</td>
+                        <td class="fw-bold text-center" style="width:110px;background-color:#dde9f5;" data-clmscore="clmscore_@iRow.InformationTokenID">@iRow.ColumnScoreAdjused</td>
                         @*<td class="fw-bold text-center" style="width:50px;">@iRow.ColumnTotal</td>*@
 
                         @* <td>@Html.DropDownListFor(m => Model.PrescriptionList[i].MedicineId, new SelectList(ViewBag.MedicineId, "Id", "Name"))</td>
@@ -122,9 +122,9 @@
                     </tr>
                 }
 
-                <tr style="background-color:silver;color:black;">
-                    <td class="fw-bold" colspan="5">Total score:</td>
-                    <td class="fw-bold text-center" data-clmtotal="clmtotal">@Model.ColumnScoreTotal</td>
+                <tr style="background-color:#152365;color:white;">
+                    <td class="fw-bold" colspan="5" style="color:white;">Total score:</td>
+                    <td class="fw-bold text-center" data-clmtotal="clmtotal" style="color:white;">@Model.ColumnScoreTotal</td>
                 </tr>
             </tbody>
         </table>

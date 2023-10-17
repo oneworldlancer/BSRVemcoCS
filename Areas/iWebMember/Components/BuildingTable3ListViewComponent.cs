@@ -37,7 +37,7 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
 
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(string bldtknid, string querytbltknid, string iPageNumber, bool blnIsPaging)
+        public async Task<IViewComponentResult> InvokeAsync(string bldtknid, string iPageNumber, bool blnIsPaging)
         {
 
 
@@ -45,316 +45,190 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
             try
             {
 
-                var _iUserBuildignQueryTableModel = _dbContext.BsrvemcoUserBuildingQueryInformationTableLists
-                   .Where(u =>
-                   u.QueryTableTokenId == querytbltknid &&
-                   u.IsVisible == true)
-                   //.Select (u  )
-                   .FirstOrDefault(); // This is what actually executes the request and return a response
 
 
+                List<BsrvemcoUserBuildingInformationList>? _arrUserBuildingInfomationList = _dbContext.BsrvemcoUserBuildingInformationLists
+                             .Where(u =>
+                             u.ApptableTokenId == "1689162201957" &&
+                             u.BuildingTokenId == bldtknid &&
+                             u.IsVisible == true)
+                             //.Select (u  )
+                             //.FirstOrDefault ( ); // This is what actually executes the request and return a response
+                             .ToList(); // This is what actually executes the request and return a response
 
+                List<AppUserBuildingTableRowModelManager> _iRowContentList = new List<AppUserBuildingTableRowModelManager>();
 
-
-                // string id = HttpContext.Request.RouteValues[ "bldtknid" ].ToString ( );
-
-
-                List<BsrvemcoUserBuildingQueryInformationList>? _arrCheckCountUserBuildingInfomationList = _dbContext.BsrvemcoUserBuildingQueryInformationLists
-                .Where(u =>
-                u.BuildingTokenId == bldtknid  &&
-                u.QueryTableTokenId == querytbltknid &&
-                u.IsVisible == true)
-                 //.Select (u  )
-                 //.FirstOrDefault ( ); // This is what actually executes the request and return a response
-                 .ToList(); // This is what actually executes the request and return a response
-
-
-
-                if (_arrCheckCountUserBuildingInfomationList.Count == 0)
+                for (int i = 0; i < _arrUserBuildingInfomationList.Count; i++)
                 {
+                    _iRowContentList
+                  .Add(new AppUserBuildingTableRowModelManager()
+                  {
 
-                    List<BsrvemcoAppBuildingQueryInformationList>? _arrAppDevelomentInfomationList = _dbContext.BsrvemcoAppBuildingQueryInformationLists
-                         .Where(u =>
-                         u.AppqueryTableTokenId == _iUserBuildignQueryTableModel.AppqueryTableTokenId && //querytbltknid &&
-                         u.IsVisible == true)
-                         //.Select (u  )
-                         //.FirstOrDefault ( ); // This is what actually executes the request and return a response
-                         .ToList(); // This is what actually executes the request and return a response
+                      _id = i,
 
+                      AppTableTokenID = _arrUserBuildingInfomationList[i].ApptableTokenId,
+                      TableTokenID = _arrUserBuildingInfomationList[i].ApptableTokenId,
 
-                    ArrayList _arrTokenList = new ArrayList();
-                    _arrTokenList = AppUtility_ListTokenIDManager.ListTokenID_Generate_NewList(_arrAppDevelomentInfomationList.Count.ToString());
+                      AppInformationTokenID = _arrUserBuildingInfomationList[i].AppinformationTokenId,
+                      InformationTokenID = _arrUserBuildingInfomationList[i].InformationTokenId,
 
+                      CompanyTokenID = Program.iOwnerModel.CompanyTokenID,
+                      BuildingTokenID = bldtknid,
 
-
-                    ////////////////////////////////////////
-
-                    BsrvemcoUserBuildingQueryInformationList iBuildingQueryInformationModel;
-
-                    for (int i = 0; i < _arrAppDevelomentInfomationList.Count; i++)
-                    {
-
-
-                        iBuildingQueryInformationModel = new BsrvemcoUserBuildingQueryInformationList()
-                        {
-
-                            RowViewTokenId = new Guid(),
+                      ColumnDescription = _arrUserBuildingInfomationList[i].InformationText, //"Fire Strategy" ,
+                      ColumnCommentary = _arrUserBuildingInfomationList[i].Commentary,
+                      ColumnCriterion = "0",
 
 
 
-                            OwnerUserTokenId = Program.iOwnerModel.OwnerUserTokenID,
-                            CompanyTokenId = Program.iOwnerModel.CompanyTokenID,
-                            BuildingTokenId = bldtknid,
-
-                            AppqueryTableTokenId = _arrAppDevelomentInfomationList[i].AppqueryTableTokenId.ToString(),
-                            AppqueryInformationTokenId =  _arrAppDevelomentInfomationList[i].AppqueryInformationTokenId.ToString(),
-                            QueryTableTokenId = querytbltknid,
-                            QueryInformationTokenId = _arrTokenList[i].ToString(),
-                            InformationText = _arrAppDevelomentInfomationList[i].InformationText.ToString(),
-                            InformationTitle = _arrAppDevelomentInfomationList[i].InformationTitle.ToString(),
-                            InformationDescription = _arrAppDevelomentInfomationList[i].InformationDescription.ToString(),
-                            InformationTitleSystem = _arrAppDevelomentInfomationList[i].InformationTitle.ToString(),
-                            InformationDescriptionSystem = _arrAppDevelomentInfomationList[i].InformationDescription.ToString(),
-                            InformationTitleUser = _arrAppDevelomentInfomationList[i].InformationTitle.ToString(),
-                            InformationDescriptionUser = _arrAppDevelomentInfomationList[i].InformationDescription.ToString(),
-                            EvidenceDescription =  "0",//_arrAppDevelomentInfomationList[i].EvidenceDescription.ToString(),
-                            EvidenceLinkDescription = _arrAppDevelomentInfomationList[i].EvidenceLinkDescription.ToString(),
-
-                            //TimeoutYearCount=  _arrAppDevelomentInfomationList[i].TimeoutYearCount.ToString(),
-
-                            //InformationScore = "5",
-                            //Score = "5",
-                            //ScoreManaged = "5",
-                            //ScoreAdjusted = "5",
-                            //ScoreOriginal = "5",
 
 
-                            UploadDateTimeMilliSec = AppUtility_TimeManager.Time_GetCurrentTimeInMilliSecond(),
-                            IsVisible = true,
-                            IsActive = true,
-
-                        };
 
 
-                        await _dbContext.BsrvemcoUserBuildingQueryInformationLists.AddAsync(iBuildingQueryInformationModel);
 
 
-                        await _dbContext.SaveChangesAsync();
 
 
-                    }
 
 
+
+
+
+                      //AppTableTokenID = "X1AppTableTokenID" ,
+                      //TableTokenID = "X1TableTokenID" ,
+
+                      //AppInformationTokenID = "X1AppInformationTokenID" ,
+                      //InformationTokenID = "X1InformationTokenID" ,
+
+                      //CompanyTokenID = "X1CompanyTokenID" ,
+                      //BuildingTokenID = "X1BuildingTokenID" ,
+
+                      //ColumnDescription = _arrBuildingInfomationList[ i ].InformationText , //"Fire Strategy" ,
+                      //ColumnCommentary = _arrBuildingInfomationList[ i ].Commentary ,
+                      //ColumnCriterion = "0" ,
+
+                      ColumnScore = _arrUserBuildingInfomationList[i].Score,
+                      ColumnScoreOriginal = _arrUserBuildingInfomationList[i].ScoreOriginal,
+                      ColumnScoreManaged = _arrUserBuildingInfomationList[i].ScoreManaged,
+                      ColumnScoreAdjused = _arrUserBuildingInfomationList[i].ScoreAdjusted,
+                      ColumnRiskControlMeasure = _arrUserBuildingInfomationList[i].RiskControlMeasure,
+                      ColumnTotal = "0",
+
+
+
+
+                      //ColumnScore = "5" ,
+                      //ColumnScoreOriginal = "5" ,
+                      //ColumnScoreManaged = "5" ,
+                      //ColumnScoreAdjused = "5" ,
+                      //ColumnRiskControlMeasure = "" ,
+                      //ColumnTotal = "5" ,
+
+                      ColumnCriterionList = await AppBuildingInformationCriterionManager.getCriterionList(_dbContext, _arrUserBuildingInfomationList[i].AppinformationTokenId!)
+
+                  });
                 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                List<BsrvemcoUserBuildingQueryInformationList>? _arrUserBuildingQueryInfomationList = _dbContext.BsrvemcoUserBuildingQueryInformationLists
-                    .Where(u =>
-                    u.BuildingTokenId == bldtknid  &&
-                    u.QueryTableTokenId == querytbltknid &&
-                    u.IsVisible== true)
-                     //.Select (u  )
-                     //.FirstOrDefault ( ); // This is what actually executes the request and return a response
-                     .ToList(); // This is what actually executes the request and return a response
-
-
-
-                List<AppUserBuildingQueryRowModelManager> _iRowContentList = new List<AppUserBuildingQueryRowModelManager>();
-
-                AppUserBuildingQueryRowModelManager iNewQueryDocument;
-
-                for (int i = 0; i < _arrUserBuildingQueryInfomationList.Count; i++)
+                AppDevelomentTable1EditViewModel _iDevelomentTable1EditModel = new AppDevelomentTable1EditViewModel()
                 {
-
-                    iNewQueryDocument= new AppUserBuildingQueryRowModelManager()
-                    {
-                        _id = i,
-
-                        AppQueryTableTokenID = _arrUserBuildingQueryInfomationList[i].AppqueryTableTokenId,
-                        QueryTableTokenID = _arrUserBuildingQueryInfomationList[i].QueryTableTokenId,
-
-                        AppQueryInformationTokenID = _arrUserBuildingQueryInfomationList[i].AppqueryInformationTokenId,
-                        QueryInformationTokenID = _arrUserBuildingQueryInfomationList[i].QueryInformationTokenId,
-
-                        CompanyTokenID = Program.iOwnerModel.CompanyTokenID,
-                        BuildingTokenID = bldtknid,
-
-                        InformationText = _arrUserBuildingQueryInfomationList[i].InformationText, //"Fire Strategy" ,
-
-                        InformationTitle = _arrUserBuildingQueryInfomationList[i].InformationTitle, //"Fire Strategy" ,
-                        InformationDescription = _arrUserBuildingQueryInfomationList[i].InformationDescription, //"Fire Strategy" ,
-
-                        InformationTitleSystem = _arrUserBuildingQueryInfomationList[i].InformationTitleSystem, //"Fire Strategy" ,
-                        InformationDescriptionSystem = _arrUserBuildingQueryInfomationList[i].InformationDescriptionSystem, //"Fire Strategy" ,
-
-                        InformationTitleUser = _arrUserBuildingQueryInfomationList[i].InformationTitleUser, //"Fire Strategy" ,
-                        InformationDescriptionUser = _arrUserBuildingQueryInfomationList[i].InformationDescriptionUser, //"Fire Strategy" ,
-
-                        ColumnEvidenceDescription = _arrUserBuildingQueryInfomationList[i].EvidenceDescription, //"Fire Strategy" ,
-
-                        AnswerCode = _arrUserBuildingQueryInfomationList[i].AnswerCode, //"Fire Strategy" ,
-
-                        ColumnCommentary = "0",//_arrUserBuildingQueryInfomationList[i].Commentary,
-                        ColumnEvidenceText = "0",
-
-
-                        ColumnEvideceLink = "0",// _arrUserBuildingQueryInfomationList[i].Score,
-
-                        //ColumnScoreOriginal = _arrUserBuildingQueryInfomationList[i].ScoreOriginal,
-                        //ColumnScoreManaged = _arrUserBuildingQueryInfomationList[i].ScoreManaged,
-                        //ColumnScoreAdjused = _arrUserBuildingQueryInfomationList[i].ScoreAdjusted,
-                        //ColumnRiskControlMeasure = _arrUserBuildingQueryInfomationList[i].RiskControlMeasure,
-                        //ColumnTotal = "0",
-
-
-
-                        ColumnEvidenceList = await AppBuildingQueryInformationEvidenceManager.getEvidenceList(_dbContext, _arrUserBuildingQueryInfomationList[i].AppqueryInformationTokenId!),
-
-                        ColumnQueryDocumentList = await AppBuildingQueryInformationEvidenceManager.GetQueryDocumentList(_dbContext, _arrUserBuildingQueryInfomationList[i].BuildingTokenId!, _arrUserBuildingQueryInfomationList[i].QueryInformationTokenId),
-
-                    };
-
-                    iNewQueryDocument.DocumentCount=   iNewQueryDocument.ColumnQueryDocumentList.Count().ToString();
-
-                    if (iNewQueryDocument.AnswerCode== "0")
-                    {
-                        iNewQueryDocument.AnswerYESButtonCSS="btn-outline-secondary";
-                        iNewQueryDocument.AnswerNOButtonCSS="btn-outline-secondary";
-                        iNewQueryDocument.AnswerNULLButtonCSS="btn-outline-secondary";
-                    }
-                      if (iNewQueryDocument.AnswerCode== "yes")
-                    {
-                        iNewQueryDocument.AnswerYESButtonCSS="btn-secondary";
-                        iNewQueryDocument.AnswerNOButtonCSS="btn-outline-secondary";
-                        iNewQueryDocument.AnswerNULLButtonCSS="btn-outline-secondary";
-                    }
-                      if (iNewQueryDocument.AnswerCode== "no")
-                    {
-                        iNewQueryDocument.AnswerYESButtonCSS="btn-outline-secondary";
-                        iNewQueryDocument.AnswerNOButtonCSS="btn-secondary";
-                        iNewQueryDocument.AnswerNULLButtonCSS="btn-outline-secondary";
-                    }
-                      if (iNewQueryDocument.AnswerCode== "null")
-                    {
-                        iNewQueryDocument.AnswerYESButtonCSS="btn-outline-secondary";
-                        iNewQueryDocument.AnswerNOButtonCSS="btn-outline-secondary";
-                        iNewQueryDocument.AnswerNULLButtonCSS="btn-secondary";
-                    
-                        iNewQueryDocument.ColumnEvideceLink="N/A";
-                   
-                    
-                    }
-
-
-
-                    _iRowContentList.Add(iNewQueryDocument);
-                }
-
-
-
-                List<AppUserBuildingQueryRowModelManager> _iRowContentPagingList = new List<AppUserBuildingQueryRowModelManager>();
-
-                if (blnIsPaging == false)
-                {
-                    _iRowContentPagingList= _iRowContentList;
-                }
-                else
-                {
-                    if (iPageNumber== "0")
-                    {
-                        _iRowContentPagingList= _iRowContentList.Take(5).ToList();
-                    }
-
-                    else if (iPageNumber== "1")
-                    {
-                        _iRowContentPagingList= _iRowContentList.Take(5).ToList();
-                    }
-
-                    else if (iPageNumber== "2")
-                    {
-                        _iRowContentPagingList= _iRowContentList
-                                                  .Skip(5)
-                                                  .Take(5).ToList();
-                    }
-
-                    else if (iPageNumber== "3")
-                    {
-                        _iRowContentPagingList= _iRowContentList
-                                                  .Skip(10)
-                                                  .Take(5).ToList();
-                    }
-
-
-
-                }
-
-
-                AppDevelomentQueryTableViewModel _iDevelomentQueryTableViewModel = new AppDevelomentQueryTableViewModel()
-                {
+                    BuildingTokenID = bldtknid,
                     TableTitle = "TableTitle",
                     TableDescription = "TableDescription",
 
                     ColumnDescription = "Description",
                     ColumnCommentary = "Commentary",
                     ColumnCriterion = "Criterion",
-                    //ColumnScore = "Score",
-                    //ColumnScoreOriginal = "ScoreOriginal",
-                    //ColumnScoreManaged = "Score",
-                    //ColumnScoreAdjused = "Adjusted Score",
-                    ////ColumnRiskControlMeasure = "Risk Control Measure Risk Control Measure" ,
-                    //ColumnRiskControlMeasure = "Risk Control Measure",
-                    ////ColumnScoreTotal = "333" ,
-                    //ColumnScoreTotal = _dbContext.BsrvemcoUserBuildingInformationLists
-                    //.Where(
-                    //    c =>
-                    //    c.ApptableTokenId == "1689022008239" &&
-                    //    c.BuildingTokenId == id)
-                    //.Sum(clmn => Convert.ToDecimal(clmn.ScoreAdjusted!)).ToString("0.0"),
+                    ColumnScore = "Score",
+                    ColumnScoreOriginal = "ScoreOriginal",
+                    ColumnScoreManaged = "Score",
+                    ColumnScoreAdjused = "Adjusted Score",
+                    //ColumnRiskControlMeasure = "Risk Control Measure Risk Control Measure" ,
+                    ColumnRiskControlMeasure = "Risk Control Measure",
 
-                    RowContentList = _iRowContentPagingList,
+                    //ColumnScoreTotal = "333" ,
+                    ColumnScoreTotal = _dbContext.BsrvemcoUserBuildingInformationLists
+                    .Where(
+                        c =>
+                        c.ApptableTokenId == "1689162201957" &&
+                        c.BuildingTokenId == bldtknid)
+                    .Sum(clmn => Convert.ToDecimal(clmn.ScoreAdjusted!)).ToString("0.0"),
+
+
+                    RowContentList = _iRowContentList,
                 };
 
 
-                //return View(_iDevelomentTable1EditModel);
 
-                return await Task.FromResult((IViewComponentResult)View("Default", _iDevelomentQueryTableViewModel));
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                ////////////////////////////////////////// 
+
+
+
+
+                List<AppUserBuildingTableRowModelManager> _iRowContentPagingList = new List<AppUserBuildingTableRowModelManager>();
+
+             
+                    if (iPageNumber== "0")
+                    {
+                        _iRowContentPagingList= _iRowContentList.Take(10).ToList();
+                    }
+
+                    else if (iPageNumber== "1")
+                    {
+                        _iRowContentPagingList= _iRowContentList.Take(10).ToList();
+                    }
+
+                    else if (iPageNumber== "2")
+                    {
+                        _iRowContentPagingList= _iRowContentList
+                                                  .Skip(10)
+                                                  .Take(10).ToList();
+                    }
+
+                    else if (iPageNumber== "3")
+                    {
+                        _iRowContentPagingList= _iRowContentList
+                                                  .Skip(20)
+                                                  .Take(10).ToList();
+                    }
+                       else if (iPageNumber== "4")
+                    {
+                        _iRowContentPagingList= _iRowContentList
+                                                  .Skip(30)
+                                                  .Take(2).ToList();
+                    }
+
+
+                _iDevelomentTable1EditModel.RowContentList=_iRowContentPagingList;
+
+                return await Task.FromResult((IViewComponentResult)View("Default", _iDevelomentTable1EditModel));
 
             }
             catch (Exception ex)

@@ -19,7 +19,8 @@ namespace BSRVemcoCS.iAppViewModel
 
         //[Required]
         //[Display(Name= "Accountable Person (AP):" )]
-        public string? TableTitle { get; set; } = "0";
+        public string? BuildingTokenID { get; set; } = "0";
+         public string? TableTitle { get; set; } = "0";
         public string? TableDescription { get; set; } = "0";
 
         public string? ColumnDescription { get; set; } = "0";
