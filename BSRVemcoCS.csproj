@@ -42,6 +42,7 @@
     <Folder Include="Areas\iWebMembership\Models\" />
     <Folder Include="Areas\iWebMember\Data\" />
     <Folder Include="Areas\iWebMember\Models\" />
+    <Folder Include="Views_X1\Shared\Components\" />
     <Folder Include="Views\Shared\Components\" />
     <Folder Include="wwwroot\_iUMedia\_iUBuilding\" />
     <Folder Include="wwwroot\_iUMedia\_iUDocument\" />
