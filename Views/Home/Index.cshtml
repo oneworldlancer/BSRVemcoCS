@@ -9,41 +9,54 @@
     <div class="p-2 m-2 bg-info text-white shadow rounded-2">Flex item</div>
 </div>*@
 
-<div class="d-flex align-items-center justify-content-center" style="height: 250px;">
+<div class="row col-12" style="width:100%;padding:0px;margin:0px;">
+
+    @* style="height:calc(100vh - 20px);" *@
+    @* height:400px; *@
+
+    <div class="col-6">
+        @* class="d-flex align-items-center justify-content-center" *@
+        <div class="p-5 text-center middleCenter" style="height:calc(100vh - 180px);">
 
 
-    <div>
 
+            <div class="text-center middleCenter mt-5" style="display:flex;flex-direction:column;">
 
-        <div  >
+                <span class="display-5" style="color:white;font-weight:normal;">Welcome to BSR</span>
+                
+                <span class="display-5" style="color:white;font-weight:normal;">Building Portal</span>
 
-            <h2>Welcome to BSR Service Suite</h2>
-
-
-            <div class="row mt-5">
-
-                <div class="col-2"></div>
-@*                d-flex align-items-center justify-content-center*@
-                <div class="col-3">
-                    <button type="button" class="btn btn-primary d-block btn-lg" style="margin:auto;width:120px;background-color:#152365;"
+                @* justify-content:space-between; *@
+                <div class="mt-5 middleCenter" style="width:300px;display:flex;flex-direction:row;margin:auto;">
+                    @* margin:auto;width:120px; height:50px;*@
+                    <button type="button" class="btn btn-primary btn-sm" style="width:160px;height:40px;background-color:#152365;"
                             onclick="location.href='@Url.Action("Register", "Account")'">
-                        Register
+                        New member ?
                     </button>
-                </div>
-
-                <div class="col-2"></div>
-              
-                <div class="col-3">
-                    <button type="button" class="btn btn-secondary d-block btn-lg" style="margin:auto;width:120px;"
+                     <div style="width:20px;">
+                    </div>
+                   
+                    @*height:50px; style="margin:auto;width:120px;" *@
+                    <button type="button" class="btn btn-light btn-sm" style="width:130px;height:40px;color:#0a75bb"
                             onclick="location.href='@Url.Action("Login", "Account")'">
                         Login
                     </button>
-                </div>
+                    <div class="col-2"></div>
 
-                <div class="col-2"></div>
+
+                </div>
 
             </div>
 
         </div>
-   
-</div></div>
+
+    </div>
+
+
+    @* class="img-fluid" *@
+
+    <div class="col-6" style="height:calc(100vh - 180px);">
+
+        <img src="~/img/slash_bg.png" style="width:auto;height:calc(100vh - 250px);float:right;" />
+    </div>
+</div>

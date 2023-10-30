@@ -1,0 +1,43 @@
+.topLeft {
+    vertical-align: top;
+    text-align: left;
+}
+
+
+.topRight {
+    vertical-align: top;
+    text-align: right;
+}
+
+.bottomLeft {
+    vertical-align: bottom;
+    text-align: left;
+}
+
+
+
+.bottomRight {
+    vertical-align: bottom;
+    text-align: right;
+}
+
+
+
+.middleCenter {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.topCenter {
+    vertical-align: top;
+    text-align: center;
+}
+
+
+.bottomCenter {
+    vertical-align: bottom;
+    text-align: center;
+}
+
+
+

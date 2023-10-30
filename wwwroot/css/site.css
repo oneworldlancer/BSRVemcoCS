@@ -2,6 +2,7 @@ html {
     position: relative;
     min-height: 100%;
     font-size: 14px;
+    background-color: #f6f9ff;
 }
 
 @media (min-width: 768px) {
@@ -16,5 +17,7 @@ html {
 }*/
 
 body {
-  margin-bottom: 60px;
+    /*  margin-bottom: 60px;*/
+   background-color: #f6f9ff;
+   color: #444444; 
 }

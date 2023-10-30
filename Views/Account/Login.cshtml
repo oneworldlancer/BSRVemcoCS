@@ -4,64 +4,79 @@
     Layout = "/Views/Shared/_Layout.cshtml";
 }
 
-<div class="text-center" style="margin-top:100px;">
+@* LOGIN *@
+@* style="margin-top:100px;" *@
+<div class="text-center">
 
-
+    @* class="col-md-6 offset-md-3 d-flex align-items-center justify-content-center" *@
     <div class="col-md-6 offset-md-3 d-flex align-items-center justify-content-center">
 
-
-        <div class="card mb-3">
-
-            <div class="card-body">
-
-                <div class="pt-4 pb-2">
-                    <h2 class="card-title text-center pb-0 fs-4">BSR Service Suite</h2>
-                    <h5 class="text-center pb-0 fs-4">Login to Your Account</h5>
-                    <p class="text-center small">Enter your E-mail & password to login</p>
+        @* class="card mb-3" *@
+        <div>
+@*             class="card-body" *@
+            <div>
+                @* class="pt-4 pb-1 *@
+                <div class="mb-3">
+                    @* card-title  *@  
+                    <span class="text-center pb-0 h2" style="color:black;font-weight:bold;"><span class="h2" style="color:#0a75bb;font-weight:bold;">BSR </span>Building Portal</span>
+                    <h5 class="text-center pb-0 fs-4">Login to your account</h5>
+                    <span class="text-center small">Enter your E-mail & password to login</span>
                 </div>
-
-                <form method="post" class="row g-3 needs-validation" novalidate>
+                @* g-3 *@
+               
+                <form method="post" class="row needs-validation" novalidate>
 
 
                     <div asp-validation-summary="All" class="text-danger"></div>
 
-
-                    <div class="form-floating col-12">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="E-mail address"
+                    <div class="mb-3">
+                        @* <div class="form-floating col-12"> *@
+                     
+                            <input type="email" class="form-control form-control-sm" id="floatingInput" placeholder="E-mail address"
                                asp-for="Email"
                                required>
-                        <label for="floatingInput">E-mail address</label>
-
-                        @*<div class="valid-feedback text-start">Looks good!</div>*@
                         <div class="invalid-feedback text-start">Please fill in this field</div>
+
+                        @*  <label for="floatingInput">E-mail address</label>
+
+
+                        <div class="invalid-feedback text-start">Please fill in this field</div>
+
+                        </div> *@
 
                     </div>
 
+                    <div class="mb-3">
 
-                    <div class="form-floating col-12">
-                        <input type="password" class="form-control" id="floatingInput" placeholder="Password"
+                        @* <div class="form-floating col-12"> *@
+                        <input type="password" class="form-control form-control-sm" id="floatingInput" placeholder="Password"
                                asp-for="Password"
                                required>
-                        <label for="floatingInput">Password</label>
-
-                        @*<div class="valid-feedback text-start">Looks good!</div>*@
                         <div class="invalid-feedback text-start">Please fill in this field</div>
 
+                        @*  <label for="floatingInput">Password</label>
+
+
+                        <div class="invalid-feedback text-start">Please fill in this field</div>
+
+                        </div> *@
+                 
                     </div>
 
-
-                    <div class="col-12 text-start">
+                    <div class="mb-2 text-start">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
                             <label class="form-check-label  text-start" for="rememberMe">Remember me</label>
                         </div>
                     </div>
-                    <div class="col-12">
-                        @*     asp-area="iWebMember" asp-controller="Development" asp-action="Edit"*@
-                        <button class="btn btn-primary w-100" type="submit">Login</button>
+                 
+                    <div class="mb-3 col-12">
+@*                         w-100 *@
+                        <button class="btn btn-primary btn-sm" type="submit" style="width:100px;height:30px;">Login</button>
                     </div>
+                  
                     <div class="col-12">
-                        <p class="small mb-0">Don't have account? <a asp-controller="Account" asp-action="Register">Create an account</a></p>
+                        <p class="small mb-0">Don't have account ? <a asp-controller="Account" asp-action="Register">Create an account</a></p>
                     </div>
                 </form>
 

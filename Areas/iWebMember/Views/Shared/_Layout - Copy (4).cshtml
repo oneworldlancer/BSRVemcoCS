@@ -1,4 +1,25 @@
-﻿<!DOCTYPE html>
+﻿@using Newtonsoft.Json;
+@*@model AppUserOwnerModelManager;*@
+@{
+
+    // var iOwnerModel = ( IEnumerable<Employee> ) Session[ "employee" ];
+    //   var iOwnerModel = JsonConvert.DeserializeObject<List<PopupMessage>> ( AppUserOwnerModelManager ) TempData[ "iOwnerModel" ];
+    // AppUserOwnerModelManager? iOwnerModel = null;
+
+    //if (TempData[ "iOwnerModel" ]!= null) {
+
+    //     iOwnerModel = ( AppUserOwnerModelManager ) JsonConvert.DeserializeObject<AppUserOwnerModelManager> ( TempData[ "iOwnerModel" ].ToString ( ) )!;
+
+    //}
+
+    //   AppUserOwnerModelManager?  iOwnerModel = Program.iOwnerModel;// Globals.iOwnerModel;
+
+    AppUserOwnerModelManager? iOwnerModel = (AppUserOwnerModelManager)JsonConvert.DeserializeObject<AppUserOwnerModelManager>(TempData["iOwnerModel"].ToString())!;
+
+    TempData.Keep("iOwnerModel");
+
+}
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,8 +31,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="~/iMaster_Member/assets/img/favicon.png" rel="icon">
-    <link href="~/iMaster_Member/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="~/img/favicon.png" rel="icon">
+    <link href="~/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -19,6 +40,9 @@
 
     <!-- Vendor CSS Files -->
     <link href="~/iMaster_Member/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
     <link href="~/iMaster_Member/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="~/iMaster_Member/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="~/iMaster_Member/assets/vendor/quill/quill.snow.css" rel="stylesheet">
@@ -26,8 +50,19 @@
     <link href="~/iMaster_Member/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="~/iMaster_Member/assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
     <!-- Template Main CSS File -->
     <link href="~/iMaster_Member/assets/css/style.css" rel="stylesheet">
+
+    <link href="~/css/table_css.css" rel="stylesheet" />
+
+    <link href="~/css/fckeditor_css.css" rel="stylesheet" />
+
+    <link href="~/css/popup_css.css" rel="stylesheet" />
+
+    <link href="~/css/div_css.css" rel="stylesheet" />
 
     <!-- =======================================================
     * Template Name: NiceAdmin
@@ -36,17 +71,33 @@
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
+
+    @*<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+
+    @*    <script src="~/lib/jqueryui/jquery-ui.min.js"></script>*@
+
+    @*<script src="https://cdn.tiny.cloud/1/ijhe5oqbrnz2y8emfxulfmdz478mpq5qfgwd038tw5ws5mw1/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/ijhe5oqbrnz2y8emfxulfmdz478mpq5qfgwd038tw5ws5mw1/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
 
- 
-
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>*@
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     <!-- ======= Header ======= -->
-        <header id="header" class="header fixed-top d-flex align-items-center" style="background-color:#d9d9d9;border-bottom:3px #152365 solid;">
+    <header id="header" class="header fixed-top d-flex align-items-center" style="background-color:#d9d9d9;border-bottom:3px #152365 solid;">
 
         <div class="d-flex align-items-center justify-content-between align-middle" style="background-color:#d9d9d9;">
 
@@ -55,88 +106,83 @@
                     @*  <span class="d-none d-lg-block fs-5"
                     style="color:black;margin:5px;">BSR Service Suite</span>*@
 
-              @*      <img src="~/img/vemco_logo.png" alt="" style="height:30px;width:auto;padding:0px;margin:0px;">
-               *@ 
-           
-           </div>
+                    <img src="~/img/vemco_logo.png" alt="" style="height:30px;width:auto;padding:0px;margin:0px;">
+
+
+                </div>
             </a>
 
-            
-            
+
+
             @*   <a href="/" class="logo d-flex align-items-center">
-                <img src="~/img/vemco_logo.png" alt="" style="height:30px;width:auto;padding:0px;margin:0px;">
-                <span class="d-none d-lg-block fs-6 align-middle" style="color:black;margin-left:10px;margin-top:8px;margin-right:5px;">BSR Service Suite</span>
+            <img src="~/img/vemco_logo.png" alt="" style="height:30px;width:auto;padding:0px;margin:0px;">
+            <span class="d-none d-lg-block fs-6 align-middle" style="color:black;margin-left:10px;margin-top:8px;margin-right:5px;">BSR Service Suite</span>
             </a>*@
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div>
         <!-- End Logo -->
-
-      @*  <div class="search-bar">
-            <form class="search-form d-flex align-items-center" method="POST" action="#">
-                <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-            </form>
+        @*  <div class="search-bar">
+        <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+        </form>
         </div>*@<!-- End Search Bar -->
+        @*   Logout*@
+
+        @*     @if ( iSignInManager.IsSignedIn ( User ) )
+        {
+        <form method="post" asp-controller="Account" asp-action="Logout">
+        <button type="submit" class="nav-link btn btn-link py-0"
+        style="width:auto;font-size:small;">
+        @User.Identity.Name
+        </button>
+
+        </form>
+
+        } *@
+
 
         <nav class="header-nav ms-3">
 
-                     <ul class="navbar-nav ml-auto">
-xxx
-                        @if ( iSignInManager.IsSignedIn ( User ) )
-                            {
-                            <form method="post" asp-controller="Account" asp-action="Logout">
-                                <button type="submit" class="nav-link btn btn-link py-0"
-                                    style="width:auto;">
-                                    Logout @User.Identity.Name
-                                </button>
-
-                            </form>
-
-                            }
-                       @* else
-                            {
-
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
-                            </li>
-
-                            }*@
 
 
+            <ul class="d-flex align-items-center">
 
-                    </ul>
-                    
-@*                    @if ( iSignInManager.IsSignedIn ( User ) )
-                            {
-                            <form method="post" asp-controller="Account" asp-action="Logout">
-                                <button type="submit" class="nav-link btn btn-link py-0"
-                                    style="width:auto;">
-                                    Logout @User.Identity.Name
-                                </button>
 
-                            </form>
-
-                            }*@
-
-           @* <ul class="d-flex align-items-center">
-
-            
 
                 <li class="nav-item dropdown pe-3">
 
+                    @*           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                    <img src="~/img/img_user.png" alt="Profile" class="rounded-circle">
+                    <span class="d-none d-md-block dropdown-toggle ps-2">@User.Identity.Name</span>
+                    </a>*@
+
+                    <!-- End Profile Iamge Icon -->
+
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="~/img/MyPic.jpeg" alt="Profile" class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2">Shaymaa Hafez</span>
-                    </a><!-- End Profile Iamge Icon -->
+                        <img src="~/img/img_user.png" alt="Profile" class="rounded-circle">
+                        <span class="d-none d-md-block dropdown-toggle ps-2">@User.Identity.Name</span>
+                    </a>
+
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        @* <li class="dropdown-header">
+                        <h6>Kevin Anderson</h6>
+                        <span>Web Designer</span>
+                        </li>*@
                         <li class="dropdown-header">
-                            <h6>Kevin Anderson</h6>
-                            <span>Web Designer</span>
+                            @*Kevin Anderson*@ <h6>
+                                @if (iOwnerModel != null)
+                                {
+                                    @iOwnerModel.FullName
+                                }
+                            </h6>
+                            <span>
+                                @if (iOwnerModel != null)
+                                {
+                                    @iOwnerModel.RoleName
+                                }
+                            </span>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -144,7 +190,7 @@ xxx
 
                         <li>
                             <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                                <i class="bi bi-person"></i>
+                                <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
                                 <span>My Profile</span>
                             </a>
                         </li>
@@ -173,18 +219,39 @@ xxx
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <i class="bi bi-box-arrow-right"></i>
-                                <span>Sign Out</span>
-                            </a>
+                            <form method="post" asp-area="/" asp-controller="Account" asp-action="Logout">
+                                <button type="submit" class="dropdown-item d-flex align-items-center">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    <span>
+
+                                        Sign Out
+
+
+                                    </span>
+                                </button>
+                            </form>
                         </li>
 
-                    </ul><!-- End Profile Dropdown Items -->
+                    </ul>
+                    <!-- End Profile Dropdown Items -->
                 </li>
                 <!-- End Profile Nav -->
 
-            </ul>*@
-        </nav><!-- End Icons Navigation -->
+            </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+        </nav>
+        <!-- End Icons Navigation -->
 
         <div class="d-none d-md-block" style="width:100%;float:right;">
 
@@ -210,9 +277,7 @@ xxx
         </div>
 
     </header>
-  <!-- End Header -->
-  
-    
+    <!-- End Header -->
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
 
@@ -222,21 +287,217 @@ xxx
                 <a class="nav-link " asp-area="iWebMember" asp-controller="Dashboard"
                    asp-action="Index">
                     <i class="bi bi-grid"></i>
-                    <span>Dashboard</span>
+                    <span>Menu</span>
                 </a>
-            </li><!-- End Dashboard Nav -->
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="BSRVemcoPage"
+                   asp-action="About">
+                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                    <span>About BSR Service Suite</span>
+                </a>
+            </li>
 
 
 
-            <li class="nav-heading">Developments</li>
+
+            <!-- End Dashboard Nav -->
+            @* @if ( iHttpContextAccessor.HttpContext.Request.Query[ "bldtknid" ] == (string)null )
+            {
+            }
+            else
+            {
+
+            }*@
+
+
+            @*@RenderSection("building_view",false)*@
+
+            @if (Context.Request.Query["bldtknid"] != (string)null)
+            {
+
+                <li class="nav-item">
+                    @*  *@
+
+                    <a class="nav-link collapse" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#" style="background-color:#152365;color:white;">
+                        <i class="bi bi-bar-chart" style="color:white;"></i><span style="width:100%;">View Building</span><i id="collapse_arrow" class="bi float-end me-auto" style="color:white;float:right;"></i>
+                    </a>
+
+                    <div id="charts-nav" class="collapse in" data-bs-parent="#sidebar-nav">
+
+
+
+
+                        @* id="charts-nav" class="collapse in" data-bs-parent="#sidebar-nav" *@
+                        <ul>
+
+
+
+                            <li class="nav-item">
+                                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
+                                   asp-action="Summary" asp-route-bldtknid="@Context.Request.Query[ "bldtknid" ].ToString()"
+                                   asp-route-state="item">
+                                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+                            <!-- End Profile Page Nav -->
+
+
+                        </ul>
+
+                        @*  *@
+                        @* data-bs-target="#charts-nav" data-bs-toggle="collapse" *@
+                        <a class="nav-link" href="#" style="background-color:#152365;color:white;">
+                            Information Gathering
+                        </a>
+
+
+                        @* id="charts-nav" class="collapse in" data-bs-parent="#sidebar-nav" *@
+                        <ul>
+
+                            @* <ul id="charts-nav" class="panel-collapse collapse in" data-bs-parent="#sidebar-nav" aria-expanded="true"> *@
+
+
+
+
+
+
+                            <li class="nav-item">
+                                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
+                                   asp-action="Page2_New" asp-route-bldtknid="@Context.Request.Query[ "bldtknid" ].ToString()"
+                                   asp-route-state="item">
+                                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                                    <span>Golden Thread Documents</span>
+                                </a>
+                            </li>
+
+
+
+                            <li class="nav-item">
+                                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
+                                   asp-action="Query" asp-route-bldtknid="@Context.Request.Query[ "bldtknid" ].ToString()"
+                                   asp-route-state="item">
+                                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                                    <span>Resident Engagement</span>
+                                </a>
+                            </li>
+
+
+
+
+
+                            <li class="nav-item">
+                                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
+                                   asp-action="Report" asp-route-bldtknid="@Context.Request.Query[ "bldtknid" ].ToString()"
+                                   asp-route-state="item">
+                                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                                    <span>
+                                        Gap Analysis
+                                    </span>
+                                </a>
+                            </li>
+
+
+                        </ul>
+
+
+
+
+
+
+                        @*  *@
+
+                        @* data-bs-target="#charts-nav" data-bs-toggle="collapse" *@
+                        <a class="nav-link" href="#" style="background-color:#5a646c;color:white;">
+                            Building Risk Analysis
+                        </a>
+
+                        @* id="charts-nav" class="collapse in" data-bs-parent="#sidebar-nav" *@
+                        <ul>
+
+
+
+
+                            <li class="nav-item">
+                                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
+                                   asp-action="Table4_Edit" asp-route-bldtknid="@Context.Request.Query[ "bldtknid" ].ToString()"
+                                   asp-route-state="item">
+                                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                                    <span>
+                                        Risk Assessment
+                                    </span>
+                                </a>
+                            </li>
+
+
+
+
+
+                            <li class="nav-item">
+                                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
+                                   asp-action="Table3_Edit" asp-route-bldtknid="@Context.Request.Query[ "bldtknid" ].ToString()"
+                                   asp-route-state="item">
+                                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                                    <span>
+                                        Occurrence Reporting and Resident Engagement
+                                    </span>
+                                </a>
+                            </li>
+
+
+
+
+
+                            <li class="nav-item">
+                                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
+                                   asp-action="Table1_Edit" asp-route-bldtknid="@Context.Request.Query[ "bldtknid" ].ToString()"
+                                   asp-route-state="item">
+                                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                                    <span>
+                                        Safety Management System
+                                    </span>
+                                </a>
+                            </li>
+
+
+
+
+                            <li class="nav-item">
+                                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
+                                   asp-action="Table2_Edit" asp-route-bldtknid="@Context.Request.Query[ "bldtknid" ].ToString()"
+                                   asp-route-state="item">
+                                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                                    <span>
+                                        Systems and Facilities
+                                    </span>
+                                </a>
+                            </li>
+
+
+
+
+                        </ul>
+
+                    </div>
+
+                </li>
+
+            }
+
+
+            <!-- End Dashboard Nav -->
+            <li class="nav-heading">Buildings</li>
 
 
 
             <li class="nav-item">
                 <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
-                   asp-action="Edit">
-                    <i class="bi bi-person"></i>
-                    <span>Summary info</span>
+                   asp-action="Page1_New" asp-route-state="new">
+                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                    <span>Create New</span>
                 </a>
             </li><!-- End Profile Page Nav -->
 
@@ -247,60 +508,63 @@ xxx
 
             <li class="nav-item">
                 <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
-                   asp-action="Edit">
-                    <i class="bi bi-person"></i>
-                    <span>Infomation Gathering</span>
+                   asp-action="List">
+                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                    <span>List</span>
                 </a>
             </li>
 
 
-            
 
-
-            <li class="nav-item">
-                <a class="nav-link collapsed"  >
-                    <i class="bi bi-person"></i>
-                    <span>
-                        Gap Analysis</span>
-                </a>
-            </li>
-
-
-            
 
 
             <li class="nav-item">
-                <a class="nav-link collapsed"  >
-                    <i class="bi bi-person"></i>
+                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="Development"
+                   asp-action="Manage">
+                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
                     <span>
-                        Risk Assessment
-                   </span>
-                </a>
-            </li>
-
-
-            
-
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" >
-                    <i class="bi bi-person"></i>
-                    <span>
-                        Resident Engagement
+                        Manage
                     </span>
                 </a>
             </li>
 
 
-            
+
+
+
+            @* <li class="nav-item">
+            <a class="nav-link collapsed"  >
+            <i  class="bi bi-circle-fill" style="font-size:xx-small;"  ></i>
+            <span>
+            Risk Assessment
+            </span>
+            </a>
+            </li>
+
+
+
 
 
             <li class="nav-item">
-                <a class="nav-link collapsed"  >
-                    <i class="bi bi-person"></i>
-                    <span>Monitoring System</span>
-                </a>
+            <a class="nav-link collapsed" >
+            <i  class="bi bi-circle-fill" style="font-size:xx-small;"  ></i>
+            <span>
+            Resident Engagement
+            </span>
+            </a>
             </li>
+
+
+
+
+
+            <li class="nav-item">
+            <a class="nav-link collapsed"  >
+            <i  class="bi bi-circle-fill" style="font-size:xx-small;"  ></i>
+            <span>Monitoring System</span>
+            </a>
+            </li>
+            *@
 
 
 
@@ -309,19 +573,18 @@ xxx
 
 
 
-
             <li class="nav-item">
-                <a class="nav-link collapsed"  >
-                    <i class="bi bi-person"></i>
+                <a class="nav-link collapsed">
+                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
                     <span>Personal Info</span>
                 </a>
             </li>
 
 
-            
+
             <li class="nav-item">
-                <a class="nav-link collapsed"  >
-                    <i class="bi bi-person"></i>
+                <a class="nav-link collapsed">
+                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
                     <span>Invite Users</span>
                 </a>
             </li>
@@ -336,309 +599,413 @@ xxx
 
 
 
+            <li class="nav-heading">Subscriptions</li>
 
-
-
-
-
-          @*  <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-menu-button-wide"></i><span>Accountable Person (AP)</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="components-alerts.html">
-                            <i class="bi bi-circle"></i><span>Alerts</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-accordion.html">
-                            <i class="bi bi-circle"></i><span>Accordion</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-badges.html">
-                            <i class="bi bi-circle"></i><span>Badges</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-breadcrumbs.html">
-                            <i class="bi bi-circle"></i><span>Breadcrumbs</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-buttons.html">
-                            <i class="bi bi-circle"></i><span>Buttons</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-cards.html">
-                            <i class="bi bi-circle"></i><span>Cards</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-carousel.html">
-                            <i class="bi bi-circle"></i><span>Carousel</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-list-group.html">
-                            <i class="bi bi-circle"></i><span>List group</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-modal.html">
-                            <i class="bi bi-circle"></i><span>Modal</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-tabs.html">
-                            <i class="bi bi-circle"></i><span>Tabs</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-pagination.html">
-                            <i class="bi bi-circle"></i><span>Pagination</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-progress.html">
-                            <i class="bi bi-circle"></i><span>Progress</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-spinners.html">
-                            <i class="bi bi-circle"></i><span>Spinners</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-tooltips.html">
-                            <i class="bi bi-circle"></i><span>Tooltips</span>
-                        </a>
-                    </li>
-                </ul>
-            </li><!-- End Components Nav -->
-
-          
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="components-alerts.html">
-                            <i class="bi bi-circle"></i><span>Alerts</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-accordion.html">
-                            <i class="bi bi-circle"></i><span>Accordion</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-badges.html">
-                            <i class="bi bi-circle"></i><span>Badges</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-breadcrumbs.html">
-                            <i class="bi bi-circle"></i><span>Breadcrumbs</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-buttons.html">
-                            <i class="bi bi-circle"></i><span>Buttons</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-cards.html">
-                            <i class="bi bi-circle"></i><span>Cards</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-carousel.html">
-                            <i class="bi bi-circle"></i><span>Carousel</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-list-group.html">
-                            <i class="bi bi-circle"></i><span>List group</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-modal.html">
-                            <i class="bi bi-circle"></i><span>Modal</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-tabs.html">
-                            <i class="bi bi-circle"></i><span>Tabs</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-pagination.html">
-                            <i class="bi bi-circle"></i><span>Pagination</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-progress.html">
-                            <i class="bi bi-circle"></i><span>Progress</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-spinners.html">
-                            <i class="bi bi-circle"></i><span>Spinners</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-tooltips.html">
-                            <i class="bi bi-circle"></i><span>Tooltips</span>
-                        </a>
-                    </li>
-                </ul>
-            </li><!-- End Components Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
+                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="BSRVemcoPage"
+                   asp-action="Subscription">
+                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                    <span>
+                        Subscription and billing
+                    </span>
                 </a>
-                <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="forms-elements.html">
-                            <i class="bi bi-circle"></i><span>Form Elements</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="forms-layouts.html">
-                            <i class="bi bi-circle"></i><span>Form Layouts</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="forms-editors.html">
-                            <i class="bi bi-circle"></i><span>Form Editors</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="forms-validation.html">
-                            <i class="bi bi-circle"></i><span>Form Validation</span>
-                        </a>
-                    </li>
-                </ul>
+            </li>
+
+            <li class="nav-heading">Help & Support</li>
+
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="BSRVemcoPage"
+                   asp-action="Terms">
+                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                    <span>
+                        Terms of Use
+                    </span>
+                </a>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="BSRVemcoPage"
+                   asp-action="FAQ">
+                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                    <span>
+                        FAQ
+                    </span>
+                </a>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" asp-area="iWebMember" asp-controller="BSRVemcoPage"
+                   asp-action="ContactUs">
+                    <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                    <span>
+                        Contact us
+                    </span>
+                </a>
+            </li>
+
+
+
+
+
+
+
+            @*
+            <li class="nav-item">
+            <a class="nav-link " asp-area="iWebMember" asp-controller="BSRVemcoPage"
+            asp-action="Subscription">
+            <i class="bi bi-grid"></i>
+            <span>Subscription and billing</span>
+            </a>
+            </li>
+
+
+
+            <li class="nav-item">
+            <a class="nav-link " asp-area="iWebMember" asp-controller="BSRVemcoPage"
+            asp-action="Terms">
+            <i class="bi bi-grid"></i>
+            <span>Terms of Use</span>
+            </a>
+            </li>
+
+
+
+            <li class="nav-item">
+            <a class="nav-link " asp-area="iWebMember" asp-controller="BSRVemcoPage"
+            asp-action="FAQ">
+            <i class="bi bi-grid"></i>
+            <span>FAQ</span>
+            </a>
+            </li>
+
+
+
+            <li class="nav-item">
+            <a class="nav-link " asp-area="iWebMember" asp-controller="BSRVemcoPage"
+            asp-action="ContactUs">
+            <i class="bi bi-grid"></i>
+            <span>Contact us</span>
+            </a>
+            </li>
+
+
+            *@
+
+
+
+
+
+
+
+
+
+
+
+
+
+            @*  <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+            <i class="bi bi-menu-button-wide"></i><span>Accountable Person (AP)</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <li>
+            <a href="components-alerts.html">
+            <i class="bi bi-circle"></i><span>Alerts</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-accordion.html">
+            <i class="bi bi-circle"></i><span>Accordion</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-badges.html">
+            <i class="bi bi-circle"></i><span>Badges</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-breadcrumbs.html">
+            <i class="bi bi-circle"></i><span>Breadcrumbs</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-buttons.html">
+            <i class="bi bi-circle"></i><span>Buttons</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-cards.html">
+            <i class="bi bi-circle"></i><span>Cards</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-carousel.html">
+            <i class="bi bi-circle"></i><span>Carousel</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-list-group.html">
+            <i class="bi bi-circle"></i><span>List group</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-modal.html">
+            <i class="bi bi-circle"></i><span>Modal</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-tabs.html">
+            <i class="bi bi-circle"></i><span>Tabs</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-pagination.html">
+            <i class="bi bi-circle"></i><span>Pagination</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-progress.html">
+            <i class="bi bi-circle"></i><span>Progress</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-spinners.html">
+            <i class="bi bi-circle"></i><span>Spinners</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-tooltips.html">
+            <i class="bi bi-circle"></i><span>Tooltips</span>
+            </a>
+            </li>
+            </ul>
+            </li><!-- End Components Nav -->
+
+
+            <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+            <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <li>
+            <a href="components-alerts.html">
+            <i class="bi bi-circle"></i><span>Alerts</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-accordion.html">
+            <i class="bi bi-circle"></i><span>Accordion</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-badges.html">
+            <i class="bi bi-circle"></i><span>Badges</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-breadcrumbs.html">
+            <i class="bi bi-circle"></i><span>Breadcrumbs</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-buttons.html">
+            <i class="bi bi-circle"></i><span>Buttons</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-cards.html">
+            <i class="bi bi-circle"></i><span>Cards</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-carousel.html">
+            <i class="bi bi-circle"></i><span>Carousel</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-list-group.html">
+            <i class="bi bi-circle"></i><span>List group</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-modal.html">
+            <i class="bi bi-circle"></i><span>Modal</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-tabs.html">
+            <i class="bi bi-circle"></i><span>Tabs</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-pagination.html">
+            <i class="bi bi-circle"></i><span>Pagination</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-progress.html">
+            <i class="bi bi-circle"></i><span>Progress</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-spinners.html">
+            <i class="bi bi-circle"></i><span>Spinners</span>
+            </a>
+            </li>
+            <li>
+            <a href="components-tooltips.html">
+            <i class="bi bi-circle"></i><span>Tooltips</span>
+            </a>
+            </li>
+            </ul>
+            </li><!-- End Components Nav -->
+
+            <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+            <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <li>
+            <a href="forms-elements.html">
+            <i class="bi bi-circle"></i><span>Form Elements</span>
+            </a>
+            </li>
+            <li>
+            <a href="forms-layouts.html">
+            <i class="bi bi-circle"></i><span>Form Layouts</span>
+            </a>
+            </li>
+            <li>
+            <a href="forms-editors.html">
+            <i class="bi bi-circle"></i><span>Form Editors</span>
+            </a>
+            </li>
+            <li>
+            <a href="forms-validation.html">
+            <i class="bi bi-circle"></i><span>Form Validation</span>
+            </a>
+            </li>
+            </ul>
             </li><!-- End Forms Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="tables-general.html">
-                            <i class="bi bi-circle"></i><span>General Tables</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="tables-data.html">
-                            <i class="bi bi-circle"></i><span>Data Tables</span>
-                        </a>
-                    </li>
-                </ul>
+            <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+            <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <li>
+            <a href="tables-general.html">
+            <i class="bi bi-circle"></i><span>General Tables</span>
+            </a>
+            </li>
+            <li>
+            <a href="tables-data.html">
+            <i class="bi bi-circle"></i><span>Data Tables</span>
+            </a>
+            </li>
+            </ul>
             </li><!-- End Tables Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-bar-chart"></i><span>Charts</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="charts-chartjs.html">
-                            <i class="bi bi-circle"></i><span>Chart.js</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="charts-apexcharts.html">
-                            <i class="bi bi-circle"></i><span>ApexCharts</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="charts-echarts.html">
-                            <i class="bi bi-circle"></i><span>ECharts</span>
-                        </a>
-                    </li>
-                </ul>
+            <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+            <i class="bi bi-bar-chart"></i><span>Charts</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <li>
+            <a href="charts-chartjs.html">
+            <i class="bi bi-circle"></i><span>Chart.js</span>
+            </a>
+            </li>
+            <li>
+            <a href="charts-apexcharts.html">
+            <i class="bi bi-circle"></i><span>ApexCharts</span>
+            </a>
+            </li>
+            <li>
+            <a href="charts-echarts.html">
+            <i class="bi bi-circle"></i><span>ECharts</span>
+            </a>
+            </li>
+            </ul>
             </li><!-- End Charts Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-gem"></i><span>Icons</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="icons-bootstrap.html">
-                            <i class="bi bi-circle"></i><span>Bootstrap Icons</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="icons-remix.html">
-                            <i class="bi bi-circle"></i><span>Remix Icons</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="icons-boxicons.html">
-                            <i class="bi bi-circle"></i><span>Boxicons</span>
-                        </a>
-                    </li>
-                </ul>
+            <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+            <i class="bi bi-gem"></i><span>Icons</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <li>
+            <a href="icons-bootstrap.html">
+            <i class="bi bi-circle"></i><span>Bootstrap Icons</span>
+            </a>
+            </li>
+            <li>
+            <a href="icons-remix.html">
+            <i class="bi bi-circle"></i><span>Remix Icons</span>
+            </a>
+            </li>
+            <li>
+            <a href="icons-boxicons.html">
+            <i class="bi bi-circle"></i><span>Boxicons</span>
+            </a>
+            </li>
+            </ul>
             </li><!-- End Icons Nav -->
 
             <li class="nav-heading">Pages</li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="users-profile.html">
-                    <i class="bi bi-person"></i>
-                    <span>Profile</span>
-                </a>
+            <a class="nav-link collapsed" href="users-profile.html">
+            <i  class="bi bi-circle-fill" style="font-size:xx-small;"  ></i>
+            <span>Profile</span>
+            </a>
             </li><!-- End Profile Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-faq.html">
-                    <i class="bi bi-question-circle"></i>
-                    <span>F.A.Q</span>
-                </a>
+            <a class="nav-link collapsed" href="pages-faq.html">
+            <i class="bi bi-question-circle"></i>
+            <span>F.A.Q</span>
+            </a>
             </li><!-- End F.A.Q Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-contact.html">
-                    <i class="bi bi-envelope"></i>
-                    <span>Contact</span>
-                </a>
+            <a class="nav-link collapsed" href="pages-contact.html">
+            <i class="bi bi-envelope"></i>
+            <span>Contact</span>
+            </a>
             </li><!-- End Contact Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-register.html">
-                    <i class="bi bi-card-list"></i>
-                    <span>Register</span>
-                </a>
+            <a class="nav-link collapsed" href="pages-register.html">
+            <i class="bi bi-card-list"></i>
+            <span>Register</span>
+            </a>
             </li><!-- End Register Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-login.html">
-                    <i class="bi bi-box-arrow-in-right"></i>
-                    <span>Login</span>
-                </a>
+            <a class="nav-link collapsed" href="pages-login.html">
+            <i class="bi bi-box-arrow-in-right"></i>
+            <span>Login</span>
+            </a>
             </li><!-- End Login Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-error-404.html">
-                    <i class="bi bi-dash-circle"></i>
-                    <span>Error 404</span>
-                </a>
+            <a class="nav-link collapsed" href="pages-error-404.html">
+            <i class="bi bi-dash-circle"></i>
+            <span>Error 404</span>
+            </a>
             </li><!-- End Error 404 Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-blank.html">
-                    <i class="bi bi-file-earmark"></i>
-                    <span>Blank</span>
-                </a>
+            <a class="nav-link collapsed" href="pages-blank.html">
+            <i class="bi bi-file-earmark"></i>
+            <span>Blank</span>
+            </a>
             </li><!-- End Blank Page Nav -->*@
 
         </ul>
@@ -646,93 +1013,377 @@ xxx
     </aside>
     <!-- End Sidebar-->
 
-   
-    <div class="main" style="margin-top:55px;padding:0px;margin-left:0px;margin-right:0px;margin-bottom:0px;">
+
+    <div class="main" style="margin-top:10px;padding:0px;margin-left:0px;margin-right:0px;margin-bottom:50px;">
 
 
-        <div id="main" class="row text-center align-middle" style="height:60px;background-color:#5a646c;color:white;padding:0px;">
+        <div id="main" class="text-center align-middle" style="height:60px;background-color:#5a646c;color:white;padding:0px;">
 
-            <h3 style="margin-top:10px;">BSR Service Suite</h3>
+            <h3 style="margin-top:20px;padding-top:15px;">BSR Service Suite</h3>
 
+        </div>
+        <div id="main" style="margin-top:0px;padding-top:10px;">
+
+            <div class="pagetitle" style="padding-left:0px;padding-top:0px;padding-bottom:0px;">
+                <h1>
+                    @{
+                        @iOwnerModel!.CompanyName
+                    }
+                </h1>
+            </div>
 
 
         </div>
+
         @RenderBody()
+
+        @* xx *@
+
+        @*   <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+        *@
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+
+            <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    @* <img src="~/img/img_close_x.png" /> *@
+                    @* <img src="..." class="rounded me-2" alt="..."> *@
+                    <strong class="me-auto">BSR Service Suite</strong>
+                    @* <small>Confirm</small> *@
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+
+                <div id="toast_Message" name="toast_Message" class="toast-body bg-success bg-gradient text-black" style="background-image: var(--bs-gradient);">
+                    Hello, world! This is a toast message.
+                </div>
+            </div>
+        </div>
+
+        @* xx *@
     </div>
-    
-    
-    
-    
-    
-    
-    
-@*    <div style="padding:0px;margin-bottom:50px;">
+
+
+    @*    <div style="padding:0px;margin-bottom:50px;">
     @RenderBody()
     </div> *@
     <!-- End #main -->
-   
-    
+    @* fixed-bottom*@
+
     <!-- ======= Footer ======= -->
-    <footer id="footer" class=" footer text-center fixed-bottom" style="height:75px;font-size:small;background-color:#152365;">
+    <footer id="footer" class="footer text-center mt-auto" style="padding-top:10px;height:60px;background-color:#152365;">
         <div class="copyright">
-            <strong><span style="font-size:large;color:white;">VEMCO</span></strong>
+            @* <strong><span style="font-size:medium;color:white;">Vemco Consulting Limited is a registered company in England with company no. 08276458.</span></strong>
+            *@
+            <span style="color:white;">
+                <a href="http://vemcoconsulting.com/" target="_blank" style="color:white;text-decoration:underline;font-weight:bold;">Vemco Consulting Limited</a> is a registered company in England with company no. 08276458.
+            </span>
         </div>
+        @* <div class="col-6 float-start">
+        <small class="col-12" style="color:white;">Vemco Consulting Limited registered office is:</small>
+        <small class="col-12" style="color:white;">William James House, Cowley Road, Cambridge CB4 0WX, United Kingdom.</small>
+        </div>  <div class="col-6 float-end">
+        <small class="col-12" style="color:white;">For further information please click here to visit our website including our privacy statement.</small>
+        <small class="col-12" style="color:white;">William James House, Cowley Road, Cambridge CB4 0WX, United Kingdom.</small>
+        </div>*@
+
         <div class="credits">
-            <small style="color:whitesmoke;">Designed by </small>  <a href="https://OneWorldLancer.com/" target="_blank" style="color:whitesmoke;text-decoration:underline;">OneWorldLancer</a>
+            <span style="color:whitesmoke;">Copyright © 2023 Designed by </span><a href="mailto:OneWorldLancer@gmail.com" target="_blank" style="font-weight:bold;color:white;text-decoration:underline;">OneWorldLancer</a>
         </div>
     </footer>
 
 
 
-  @*  <footer id="footer" class="footer" style="font-size:small;color:white;background-color:#152365;">
-        <div class="copyright">
-            &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-            Designed by <a href="https://OneWorldLancer.com/">OneWorldLancer</a>
-        </div>
+    @*  <footer id="footer" class="footer" style="font-size:small;color:white;background-color:#152365;">
+    <div class="copyright">
+    &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+    <!-- All the links in the footer should remain intact. -->
+    <!-- You can delete the links only if you purchased the pro version. -->
+    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+    Designed by <a href="https://OneWorldLancer.com/">OneWorldLancer</a>
+    </div>
     </footer>*@
 
 
 
     <!-- ======= Footer ======= -->
-@*    <footer id="footer" class="footer">
-        <div class="copyright">
-            &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
+    @*    <footer id="footer" class="footer">
+    <div class="copyright">
+    &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+    <!-- All the links in the footer should remain intact. -->
+    <!-- You can delete the links only if you purchased the pro version. -->
+    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    </div>
     </footer>*@
-    
-    
+
+
     <!-- End Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
-    <script src="~/iMaster_Member/assets/vendor/apexcharts/apexcharts.min.js"></script>
-    <script src="~/iMaster_Member/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    @*<script src="~/iMaster_Member/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>*@
+    @* <script src="~/iMaster_Member/assets/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="~/iMaster_Member/assets/vendor/chart.js/chart.umd.js"></script>
     <script src="~/iMaster_Member/assets/vendor/echarts/echarts.min.js"></script>
     <script src="~/iMaster_Member/assets/vendor/quill/quill.min.js"></script>
     <script src="~/iMaster_Member/assets/vendor/simple-datatables/simple-datatables.js"></script>
     <script src="~/iMaster_Member/assets/vendor/tinymce/tinymce.min.js"></script>
     <script src="~/iMaster_Member/assets/vendor/php-email-form/validate.js"></script>
+    *@
+
+    @*    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js" integrity="sha512-3dZ9wIrMMij8rOH7X3kLfXAzwtcHpuYpEgQg1OA4QAob1e81H8ntUQmQm3pBudqIoySO5j0tHN4ENzA6+n2r4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.esm.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.esm.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script>*@
     <!-- Template Main JS File -->
     <script src="~/iMaster_Member/assets/js/main.js"></script>
+    @*
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
+    *@
+
+    @await RenderSectionAsync("iScript", required: false)
+
+
+    <script>
+
+        window.onload = function () {
+
+            if (localStorage.getItem('jsBuildingContextMenu') == null) {
+                localStorage.setItem('jsBuildingContextMenu', 'show');
+            }
+
+
+
+            //alert( localStorage.getItem('jsBuildingContextMenu'));
+
+        };
+
+
+        $(document).ready(function () {
+
+            // $("#charts-nav").collapse("show")
+            // $("#charts-nav").collapse("hide")
+            if (localStorage.getItem('jsBuildingContextMenu') == null) {
+                localStorage.setItem('jsBuildingContextMenu', 'show');
+            }
+
+            var state = localStorage.getItem('jsBuildingContextMenu');
+
+            if (state == "show") {
+                $("#collapse_arrow").removeClass('bi-chevron-down');
+                $("#collapse_arrow").removeClass('bi-chevron-up');
+                $("#collapse_arrow").addClass('bi-chevron-up');
+
+            } else if (state == "hide") {
+                $("#collapse_arrow").removeClass('bi-chevron-down');
+                $("#collapse_arrow").removeClass('bi-chevron-up');
+                $("#collapse_arrow").addClass('bi-chevron-down');
+            }
+
+            $("#charts-nav").collapse(localStorage.getItem('jsBuildingContextMenu'));
+
+            $("#charts-nav").on("hide.bs.collapse", function () {
+
+                localStorage.setItem('jsBuildingContextMenu', 'hide');
+
+                //$(".btn").html('<span class="glyphicon glyphicon-collapse-down"></span> Open');
+                $("#collapse_arrow").removeClass('bi-chevron-down');
+                $("#collapse_arrow").removeClass('bi-chevron-up');
+                $("#collapse_arrow").addClass('bi-chevron-down');
+
+            });
+
+            $("#charts-nav").on("show.bs.collapse", function () {
+
+                localStorage.setItem('jsBuildingContextMenu', 'show');
+
+                //$(".btn").html('<span class="glyphicon glyphicon-collapse-up"></span> Close');
+                $("#collapse_arrow").removeClass('bi-chevron-down');
+                $("#collapse_arrow").removeClass('bi-chevron-up');
+                $("#collapse_arrow").addClass('bi-chevron-up');
+            });
+
+
+            // $("#demo").on("hide.bs.collapse", function () {
+            //     $(".btn").html('<span class="glyphicon glyphicon-collapse-down"></span> Open');
+            // });
+            // $("#demo").on("show.bs.collapse", function () {
+            //     $(".btn").html('<span class="glyphicon glyphicon-collapse-up"></span> Close');
+            // });
+
+            ///////////////////////////
+
+            //const toastTrigger = document.getElementById('liveToastBtn')
+            toastLiveExample = document.getElementById('liveToast')
+
+            toast = new bootstrap.Toast(toastLiveExample)
+
+            // // // // toast.show();
+
+            ///////////////////////////////
+            //const toastTrigger = document.getElementById('liveToastBtn')
+            //const toastLiveExample = document.getElementById('liveToast')
+
+            // if (toastTrigger) {
+            //     toastTrigger.addEventListener('click', () => {
+            //         const toast = new bootstrap.Toast(toastLiveExample)
+
+            //         toast.show()
+            //     })
+            // }
+
+
+
+
+
+        });
+
+        var toastLiveExample;
+        var toast;
+
+        window.BSR_ShowToastMessage = function (code) {
+
+            try {
+
+
+                //toast_Message
+                //const toastLiveExample = document.getElementById('liveToast')
+
+                //const toast = new bootstrap.Toast(toastLiveExample)
+
+                if (code == "delete") {
+
+
+                    $("#toast_Message").removeClass('bg-success');
+                    $("#toast_Message").removeClass('bg-warning');
+                    $("#toast_Message").removeClass('bg-info');
+                    $("#toast_Message").removeClass('bg-danger');
+
+                    $("#toast_Message").addClass('bg-danger');
+
+                    $("#toast_Message").html("Item deleted successfully.");
+
+                }
+
+                else if (code == "new") {
+
+
+                    $("#toast_Message").removeClass('bg-success');
+                    $("#toast_Message").removeClass('bg-warning');
+                    $("#toast_Message").removeClass('bg-danger');
+                    $("#toast_Message").removeClass('bg-info');
+
+                    $("#toast_Message").addClass('bg-success');
+
+                    $("#toast_Message").html("Item added successfully.");
+
+                }
+
+
+                else if (code == "upload") {
+
+
+                    $("#toast_Message").removeClass('bg-success');
+                    $("#toast_Message").removeClass('bg-warning');
+                    $("#toast_Message").removeClass('bg-danger');
+                    $("#toast_Message").removeClass('bg-info');
+
+                    $("#toast_Message").addClass('bg-success');
+
+                    $("#toast_Message").html("Item(s) uploaded successfully.");
+
+                }
+
+                else if (code == "update") {
+
+
+                    $("#toast_Message").removeClass('bg-success');
+                    $("#toast_Message").removeClass('bg-warning');
+                    $("#toast_Message").removeClass('bg-danger');
+                    $("#toast_Message").removeClass('bg-info');
+
+                    $("#toast_Message").addClass('bg-warning');
+
+                    $("#toast_Message").html("Item updated successfully.");
+
+                }
+
+
+                else if (code == "load") {
+
+
+                    $("#toast_Message").removeClass('bg-success');
+                    $("#toast_Message").removeClass('bg-warning');
+                    $("#toast_Message").removeClass('bg-danger');
+                    $("#toast_Message").removeClass('bg-info');
+
+                    $("#toast_Message").addClass('bg-info');
+
+                    $("#toast_Message").html("Loading ...");
+
+                }
+                
+                else if (code == "process") {
+
+
+                    $("#toast_Message").removeClass('bg-success');
+                    $("#toast_Message").removeClass('bg-warning');
+                    $("#toast_Message").removeClass('bg-danger');
+                    $("#toast_Message").removeClass('bg-warning');
+                    $("#toast_Message").removeClass('bg-info');
+
+                    $("#toast_Message").addClass('bg-info');
+
+                    $("#toast_Message").html("Processing ...");
+
+                }
+
+                toast.show();
+
+            }
+            catch (err) {
+                return;
+            }
+
+        }
+
+    </script>
+
+    @*    <script>
+
+    // Remove existing instances of tinyMCE.
+    tinyMCE.remove();
+
+    tinymce.init({
+    selector: 'textarea',
+    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+
+
+
+    document.addEventListener('focusin', (e) => {
+    if (e.target.closest(".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root") !== null) {
+    e.stopImmediatePropagation();
+    }
+    });
+    });
+    </script>*@
 
 </body>
 
