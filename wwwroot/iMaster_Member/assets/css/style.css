@@ -50,8 +50,11 @@ h6 {
   transition: all 0.3s;*/
 
 
+/*    margin-top: 50px;*/
+    
     margin-top: 50px;
-    padding: 10px 20px;
+   /* padding: 10px 20px;*/
+    padding-top: -50px;
     transition: all 0.3s;
 }
 

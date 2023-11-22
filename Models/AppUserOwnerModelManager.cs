@@ -18,10 +18,11 @@ namespace BSRVemcoCS.Models
         public string FirstName { get; set; } = "0";
         public string LastName { get; set; } = "0";
         public string FullName { get; set; } = "0";
-        public string Email { get; set; } = "0";
+        //public string EmailAddress { get; set; } = "0";
         public string RoleTokenID { get; set; } = "0";
         public string RoleCode { get; set; } = "0";
         public string RoleName { get; set; } = "0";
+        public string MobileNumberE164 { get; set; } = "0";
 
 
 

@@ -27,10 +27,10 @@ namespace BSRVemcoCS.Controllers
         private readonly UserManager<AppCore_IdentityUser> iUserManager;
         private readonly SignInManager<AppCore_IdentityUser> iSignManager;
 
-        public AccountController (
-                      BSRDBModelContext dbContext ,
-            UserManager<AppCore_IdentityUser> iUserManager ,
-                        SignInManager<AppCore_IdentityUser> iSignManager )
+        public AccountController(
+                      BSRDBModelContext dbContext,
+            UserManager<AppCore_IdentityUser> iUserManager,
+                        SignInManager<AppCore_IdentityUser> iSignManager)
         {
             _dbContext = dbContext;
             this.iUserManager = iUserManager;
@@ -51,9 +51,9 @@ namespace BSRVemcoCS.Controllers
 
 
 
-        public IActionResult Index ( )
+        public IActionResult Index()
         {
-            return View ( );
+            return View();
         }
 
 
@@ -63,23 +63,23 @@ namespace BSRVemcoCS.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Register ( )
+        public async Task<IActionResult> Register()
         {
 
             try
             {
 
-                await iSignManager.SignOutAsync ( );
+                await iSignManager.SignOutAsync();
 
 
-                return View ( );
+                return View();
 
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                AppUtility_DebugManager.Debug_Get_MessageText ( ex.Message.ToString ( ) );
+                AppUtility_DebugManager.Debug_Get_MessageText(ex.Message.ToString());
 
-                return View ( );
+                return View();
             }
 
 
@@ -89,149 +89,149 @@ namespace BSRVemcoCS.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Register ( AppRegisterViewModel iRegisterModel )
+        public async Task<IActionResult> Register(AppRegisterViewModel iRegisterModel)
         {
 
 
-            if ( ModelState.IsValid )
+            if (ModelState.IsValid)
             {
 
                 AppCore_IdentityUser iUser = new AppCore_IdentityUser
                 {
 
-                    UserName = iRegisterModel.Email ,
+                    UserName = iRegisterModel.Email,
                     Email = iRegisterModel.Email
 
                 };
 
-                var iResult = await iUserManager.CreateAsync ( iUser , iRegisterModel.Password );
+                var iResult = await iUserManager.CreateAsync(iUser, iRegisterModel.Password);
 
-                if ( iResult.Succeeded )
+                if (iResult.Succeeded)
                 {
 
                     // Get List-TokenID
-                    ArrayList _arrTokenList = new ArrayList ( );
-                    _arrTokenList = AppUtility_ListTokenIDManager.ListTokenID_Generate_NewList ( "2" );
+                    ArrayList _arrTokenList = new ArrayList();
+                    _arrTokenList = AppUtility_ListTokenIDManager.ListTokenID_Generate_NewList("2");
 
 
 
                     //   Register User-List
 
 
-                    BsrvemcoUserList iUserModel = new BsrvemcoUserList ( )
+                    BsrvemcoUserList iUserModel = new BsrvemcoUserList()
                     {
 
-                        RowViewTokenId = new Guid ( ) ,
+                        RowViewTokenId = new Guid(),
 
 
-                        OwnerUserTokenId = _arrTokenList[ 0 ]!.ToString ( ) ,
-                        CompanyTokenId = _arrTokenList[ 1 ].ToString ( ) ,
-                        CompanyName = iRegisterModel.CompanyName.ToString ( ) ,
+                        OwnerUserTokenId = _arrTokenList[0]!.ToString(),
+                        CompanyTokenId = _arrTokenList[1].ToString(),
+                        CompanyName = iRegisterModel.CompanyName.ToString(),
 
-                        FirstName = iRegisterModel.FirstName.ToString ( ) ,
-                        FirstNameLower = iRegisterModel.FirstName.ToString ( ).ToLower ( ) ,
+                        FirstName = iRegisterModel.FirstName.ToString(),
+                        FirstNameLower = iRegisterModel.FirstName.ToString().ToLower(),
 
-                        LastName = iRegisterModel.LastName.ToString ( ) ,
-                        LastNameLower = iRegisterModel.LastName.ToString ( ).ToLower ( ) ,
+                        LastName = iRegisterModel.LastName.ToString(),
+                        LastNameLower = iRegisterModel.LastName.ToString().ToLower(),
 
-                        Email = iRegisterModel.Email.ToString ( ).ToLower ( ) ,
-                        EmailAddress = iRegisterModel.Email.ToString ( ).ToLower ( ) ,
+                        Email = iRegisterModel.Email.ToString().ToLower(),
+                        EmailAddress = iRegisterModel.Email.ToString().ToLower(),
 
-                        AppRoleTokenId = IEnum_AppRole.Role_PRIMARY_TOKENID ,
-                        AppRoleCode = IEnum_AppRole.Role_PRIMARY_CODE ,
-                        AppRoleName = IEnum_AppRole.Role_PRIMARY_NAME ,
+                        AppRoleTokenId = IEnum_AppRole.Role_PRIMARY_TOKENID,
+                        AppRoleCode = IEnum_AppRole.Role_PRIMARY_CODE,
+                        AppRoleName = IEnum_AppRole.Role_PRIMARY_NAME,
 
 
-                        RoleTokenId = IEnum_AppRole.Role_PRIMARY_TOKENID ,
-                        RoleCode = IEnum_AppRole.Role_PRIMARY_CODE ,
-                        RoleName = IEnum_AppRole.Role_PRIMARY_NAME ,
+                        RoleTokenId = IEnum_AppRole.Role_PRIMARY_TOKENID,
+                        RoleCode = IEnum_AppRole.Role_PRIMARY_CODE,
+                        RoleName = IEnum_AppRole.Role_PRIMARY_NAME,
 
-                        UploadDateTimeMilliSec = AppUtility_TimeManager.Time_GetCurrentTimeInMilliSecond ( ) ,
-                        IsVisible = true ,
-                        IsActive = true ,
+                        UploadDateTimeMilliSec = AppUtility_TimeManager.Time_GetCurrentTimeInMilliSecond(),
+                        IsVisible = true,
+                        IsActive = true,
 
                     };
 
 
-                    await _dbContext.BsrvemcoUserLists.AddAsync ( iUserModel );
+                    await _dbContext.BsrvemcoUserLists.AddAsync(iUserModel);
 
-                    await _dbContext.SaveChangesAsync ( );
+                    await _dbContext.SaveChangesAsync();
 
 
 
                     // Role-List
 
-                    BsrvemcoUserRoleList iUserRoleModel = new BsrvemcoUserRoleList ( )
+                    BsrvemcoUserRoleList iUserRoleModel = new BsrvemcoUserRoleList()
                     {
 
-                        RowViewTokenId = new Guid ( ) ,
+                        RowViewTokenId = new Guid(),
 
 
-                        OwnerUserTokenId = _arrTokenList[ 0 ]!.ToString ( ) ,
+                        OwnerUserTokenId = _arrTokenList[0]!.ToString(),
 
-                        AppRoleTokenId = IEnum_AppRole.Role_PRIMARY_TOKENID ,
-                        AppRoleCode = IEnum_AppRole.Role_PRIMARY_CODE ,
-                        AppRoleName = IEnum_AppRole.Role_PRIMARY_NAME ,
+                        AppRoleTokenId = IEnum_AppRole.Role_PRIMARY_TOKENID,
+                        AppRoleCode = IEnum_AppRole.Role_PRIMARY_CODE,
+                        AppRoleName = IEnum_AppRole.Role_PRIMARY_NAME,
 
-                        UserRole = IEnum_AppRole.Role_PRIMARY_NAME ,
-                        RoleCode = IEnum_AppRole.Role_PRIMARY_CODE ,
-                        RoleValue = IEnum_AppRole.Role_PRIMARY_CODE ,
-                        RoleName = IEnum_AppRole.Role_PRIMARY_NAME ,
-                        RoleTitle = IEnum_AppRole.Role_PRIMARY_NAME ,
+                        UserRole = IEnum_AppRole.Role_PRIMARY_NAME,
+                        RoleCode = IEnum_AppRole.Role_PRIMARY_CODE,
+                        RoleValue = IEnum_AppRole.Role_PRIMARY_CODE,
+                        RoleName = IEnum_AppRole.Role_PRIMARY_NAME,
+                        RoleTitle = IEnum_AppRole.Role_PRIMARY_NAME,
 
 
                         //  UploadDateTimeMilliSec = AppUtility_TimeManager.Time_GetCurrentTimeInMilliSecond ( ) ,
                         // IsVisible = true ,
-                        IsActive = true ,
+                        IsActive = true,
 
                     };
 
 
 
-                    await _dbContext.BsrvemcoUserRoleLists.AddAsync ( iUserRoleModel );
+                    await _dbContext.BsrvemcoUserRoleLists.AddAsync(iUserRoleModel);
 
-                    await _dbContext.SaveChangesAsync ( );
+                    await _dbContext.SaveChangesAsync();
 
 
 
                     // Company-List
 
 
-                    BsrvemcoUserCompanyList iUserCompanyModel = new BsrvemcoUserCompanyList ( )
+                    BsrvemcoUserCompanyList iUserCompanyModel = new BsrvemcoUserCompanyList()
                     {
 
-                        RowViewTokenId = new Guid ( ) ,
+                        RowViewTokenId = new Guid(),
 
 
-                        OwnerUserTokenId = _arrTokenList[ 0 ]!.ToString ( ) ,
+                        OwnerUserTokenId = _arrTokenList[0]!.ToString(),
 
-                        CompanyTokenId = _arrTokenList[ 1 ].ToString ( ) ,
-                        CompanyName = iRegisterModel.CompanyName.ToString ( ) ,
+                        CompanyTokenId = _arrTokenList[1].ToString(),
+                        CompanyName = iRegisterModel.CompanyName.ToString(),
 
-                        UploadDateTimeMilliSec = AppUtility_TimeManager.Time_GetCurrentTimeInMilliSecond ( ) ,
-                        IsVisible = true ,
-                        IsActive = true ,
+                        UploadDateTimeMilliSec = AppUtility_TimeManager.Time_GetCurrentTimeInMilliSecond(),
+                        IsVisible = true,
+                        IsActive = true,
 
                     };
 
 
-                    await _dbContext.BsrvemcoUserCompanyLists.AddAsync ( iUserCompanyModel );
+                    await _dbContext.BsrvemcoUserCompanyLists.AddAsync(iUserCompanyModel);
 
-                    await _dbContext.SaveChangesAsync ( );
+                    await _dbContext.SaveChangesAsync();
 
 
 
-                    await iSignManager.SignInAsync ( iUser , true );
+                    await iSignManager.SignInAsync(iUser, true);
 
                     ////////////////////
 
 
                     var _iUserOwnerModel = _dbContext.BsrvemcoUserLists
-                            .Where ( u => u.Email == iRegisterModel.Email.ToString ( ).ToLower ( ) )
+                            .Where(u => u.Email == iRegisterModel.Email.ToString().ToLower())
                             //.Select ( u => u.RoleName )
-                            .SingleOrDefault ( ); // This is what actually executes the request and return a response
+                            .SingleOrDefault(); // This is what actually executes the request and return a response
 
-                    if ( _iUserOwnerModel != null )
+                    if (_iUserOwnerModel != null)
                     {
                         //////var _iUserRoleName = _dbContext.BsrvemcoUserRoleLists
                         ////// .Where ( u => u.OwnerUserTokenId == _iUserOwnerModel!.OwnerUserTokenId )
@@ -246,15 +246,15 @@ namespace BSRVemcoCS.Controllers
 
                         AppUserOwnerModelManager _xOwnerModel = new AppUserOwnerModelManager
                         {
-                            OwnerUserTokenID = _iUserOwnerModel!.OwnerUserTokenId ,
-                            FirstName = _iUserOwnerModel!.FirstName ,
-                            LastName = _iUserOwnerModel!.LastName ,
-                            FullName = _iUserOwnerModel!.FirstName + " " + _iUserOwnerModel!.LastName ,
-                            Email = iRegisterModel.Email.ToString ( ).ToLower ( ) ,
-                            CompanyTokenID = _iUserOwnerModel!.CompanyTokenId ,
-                            CompanyName = _iUserOwnerModel!.CompanyName ,
-                            RoleTokenID = _iUserOwnerModel!.AppRoleTokenId ,
-                            RoleCode = _iUserOwnerModel!.AppRoleCode ,
+                            OwnerUserTokenID = _iUserOwnerModel!.OwnerUserTokenId,
+                            FirstName = _iUserOwnerModel!.FirstName,
+                            LastName = _iUserOwnerModel!.LastName,
+                            FullName = _iUserOwnerModel!.FirstName + " " + _iUserOwnerModel!.LastName,
+                            EmailAddress = iRegisterModel.Email.ToString().ToLower(),
+                            CompanyTokenID = _iUserOwnerModel!.CompanyTokenId,
+                            CompanyName = _iUserOwnerModel!.CompanyName,
+                            RoleTokenID = _iUserOwnerModel!.AppRoleTokenId,
+                            RoleCode = _iUserOwnerModel!.AppRoleCode,
                             RoleName = _iUserOwnerModel!.AppRoleName
                         };
 
@@ -262,14 +262,14 @@ namespace BSRVemcoCS.Controllers
 
                         Program.iOwnerModel = _xOwnerModel;
 
-                        TempData[ "iOwnerModel" ] = JsonConvert.SerializeObject ( _xOwnerModel );
+                        TempData["iOwnerModel"] = JsonConvert.SerializeObject(_xOwnerModel);
 
 
 
-                        return RedirectToAction (
-                        "Index" ,
-                        "Dashboard" ,
-                        new { area = "iWebMember" } );
+                        return RedirectToAction(
+                        "Index",
+                        "Dashboard",
+                        new { area = "iWebMember" });
 
                     }
 
@@ -277,17 +277,17 @@ namespace BSRVemcoCS.Controllers
                     //    new { id = "1101" , Area = "iWebMember" } );
                 }
 
-                foreach ( var iError in iResult.Errors )
+                foreach (var iError in iResult.Errors)
                 {
 
-                    ModelState.AddModelError ( "iErrorKey" , iError.Description );
+                    ModelState.AddModelError("iErrorKey", iError.Description);
 
                 }
 
             }
 
 
-            return View ( iRegisterModel );
+            return View(iRegisterModel);
 
         }
 
@@ -316,28 +316,28 @@ namespace BSRVemcoCS.Controllers
         // https://samlearnsazure.blog/2019/07/26/extending-external-authentication-with-google-twitter-and-facebook/
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> Login ( string? returnUrl = null )
+        public async Task<IActionResult> Login(string? returnUrl = null)
         {
 
             try
             {
-                await iSignManager.SignOutAsync ( );
+                await iSignManager.SignOutAsync();
 
-                returnUrl = returnUrl ?? Url.Content ( "~/" );
+                returnUrl = returnUrl ?? Url.Content("~/");
 
                 AppLoginViewModel _AppLoginViewModel = new AppLoginViewModel
                 {
-                    ReturnUrl = returnUrl ,
-                    ExternalLogins = ( await iSignManager.GetExternalAuthenticationSchemesAsync ( ) ).ToList ( )
+                    ReturnUrl = returnUrl,
+                    ExternalLogins = (await iSignManager.GetExternalAuthenticationSchemesAsync()).ToList()
                 };
 
-                return View ( _AppLoginViewModel );
+                return View(_AppLoginViewModel);
 
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                AppUtility_DebugManager.Debug_Get_MessageText ( ex.Message.ToString ( ) );
-                return View ( );
+                AppUtility_DebugManager.Debug_Get_MessageText(ex.Message.ToString());
+                return View();
             }
 
 
@@ -356,27 +356,27 @@ namespace BSRVemcoCS.Controllers
         /// <param name="returnUrl"></param>
         /// <returns></returns>
 		[HttpPost]
-        public async Task<IActionResult> Login ( AppLoginViewModel iLoginModel , string? returnUrl = null )
+        public async Task<IActionResult> Login(AppLoginViewModel iLoginModel, string? returnUrl = null)
         {
 
-            if ( ModelState.IsValid )
+            if (ModelState.IsValid)
             {
 
-                var iResult = await iSignManager.PasswordSignInAsync (
-                    iLoginModel.Email , iLoginModel.Password ,
-                    iLoginModel.RememberMe , false );
+                var iResult = await iSignManager.PasswordSignInAsync(
+                    iLoginModel.Email, iLoginModel.Password,
+                    iLoginModel.RememberMe, false);
 
-                if ( iResult.Succeeded )
+                if (iResult.Succeeded)
                 {
 
                     //string? _iUserEmail = User.Identity!.Name;
 
                     var _iUserOwnerModel = _dbContext.BsrvemcoUserLists
-                            .Where ( u => u.Email == iLoginModel.Email!.ToLower ( ).ToString ( ) )
+                            .Where(u => u.Email == iLoginModel.Email!.ToLower().ToString())
                             //.Select ( u => u.RoleName )
-                            .SingleOrDefault ( ); // This is what actually executes the request and return a response
+                            .SingleOrDefault(); // This is what actually executes the request and return a response
 
-                    if ( _iUserOwnerModel != null )
+                    if (_iUserOwnerModel != null)
                     {
                         //////var _iUserRoleName = _dbContext.BsrvemcoUserRoleLists
                         ////// .Where ( u => u.OwnerUserTokenId == _iUserOwnerModel!.OwnerUserTokenId )
@@ -391,15 +391,15 @@ namespace BSRVemcoCS.Controllers
 
                         _iOwnerModel = new AppUserOwnerModelManager
                         {
-                            OwnerUserTokenID = _iUserOwnerModel!.OwnerUserTokenId ,
-                            FirstName = _iUserOwnerModel!.FirstName ,
-                            LastName = _iUserOwnerModel!.LastName ,
-                            FullName = _iUserOwnerModel!.FirstName + " " + _iUserOwnerModel!.LastName ,
-                            Email = iLoginModel.Email!.ToLower ( ).ToString ( ) ,
-                            CompanyTokenID = _iUserOwnerModel!.CompanyTokenId ,
-                            CompanyName = _iUserOwnerModel!.CompanyName ,
-                            RoleTokenID = _iUserOwnerModel!.AppRoleTokenId ,
-                            RoleCode = _iUserOwnerModel!.AppRoleCode ,
+                            OwnerUserTokenID = _iUserOwnerModel!.OwnerUserTokenId,
+                            FirstName = _iUserOwnerModel!.FirstName,
+                            LastName = _iUserOwnerModel!.LastName,
+                            FullName = _iUserOwnerModel!.FirstName + " " + _iUserOwnerModel!.LastName,
+                            EmailAddress = iLoginModel.Email!.ToLower().ToString(),
+                            CompanyTokenID = _iUserOwnerModel!.CompanyTokenId,
+                            CompanyName = _iUserOwnerModel!.CompanyName,
+                            RoleTokenID = _iUserOwnerModel!.AppRoleTokenId,
+                            RoleCode = _iUserOwnerModel!.AppRoleCode,
                             RoleName = _iUserOwnerModel!.AppRoleName
 
                         };
@@ -408,30 +408,30 @@ namespace BSRVemcoCS.Controllers
 
                         Program.iOwnerModel = _iOwnerModel;
 
-                        TempData[ "iOwnerModel" ] = JsonConvert.SerializeObject ( _iOwnerModel );
+                        TempData["iOwnerModel"] = JsonConvert.SerializeObject(_iOwnerModel);
 
 
-                        if ( !string.IsNullOrEmpty ( returnUrl ) && Url.IsLocalUrl ( returnUrl ) )
+                        if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                         {
-                            return LocalRedirect ( returnUrl );
+                            return LocalRedirect(returnUrl);
                         }
                         else
                         {
 
 
-                            return RedirectToAction (
-                                "Index" ,
-                                "Dashboard" ,
-                                new { area = "iWebMember" } );
+                            return RedirectToAction(
+                                "Index",
+                                "Dashboard",
+                                new { area = "iWebMember" });
 
                         }
 
 
                     }
 
-                    ModelState.AddModelError ( "iErrorKey" , "Invalid Login Attempt" );
+                    ModelState.AddModelError("iErrorKey", "Invalid Login Attempt");
 
-                    return View ( iLoginModel );
+                    return View(iLoginModel);
 
                 }
 
@@ -439,10 +439,10 @@ namespace BSRVemcoCS.Controllers
                 //return RedirectToAction ( "Index" , "Home" );
 
 
-                ModelState.AddModelError ( "iErrorKey" , "Invalid Login Attempt" );
+                ModelState.AddModelError("iErrorKey", "Invalid Login Attempt");
 
             }
-            return View ( iLoginModel );
+            return View(iLoginModel);
 
         }
 
@@ -455,11 +455,11 @@ namespace BSRVemcoCS.Controllers
         #region Logout
 
         [HttpPost]
-        public async Task<IActionResult> Logout ( )
+        public async Task<IActionResult> Logout()
         {
 
-            await iSignManager.SignOutAsync ( );
-            return RedirectToAction ( "Index" , "Home" );
+            await iSignManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
 
         }
 

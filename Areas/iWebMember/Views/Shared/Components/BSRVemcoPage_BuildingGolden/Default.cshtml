@@ -1,0 +1,1923 @@
+﻿@model AppDevelomentNew2ViewModel
+
+@* class="accordion-body" *@
+<div id="div_PageHTMLContent" style="margin:0px;padding:0px;display:flex;flex-direction:column;">
+
+    @* g-3 *@
+   @*  <form method="post" class="row needs-validation" novalidate> *@
+
+@* 
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+ *@
+            <div class="row p-3">
+
+
+                @*class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"*@
+
+             @*    <div> *@
+
+
+        @* class="row" *@
+                    <div >
+                    @* class="m-3" *@     @*fs-6*@
+                        <span >You will not able to generate a "Gap Analysis" report untill you've responded to all items.</span>
+                    <span>Please identify which of the following documents exist</span>
+                </div>
+
+
+             
+
+                @*     <div class="row"> *@
+
+        @* m-3*@
+
+        <div id="div_ItemsContent" class="list-group list-group-flush" style="margin-left:10px;margin-right:10px;">
+                            @**@
+
+                            <div id="div_ItemsList">
+
+                                @await Component.InvokeAsync("BuildingPage2List",
+                                new {
+                                bldtknid = Model.BuildingTokenID,
+                                iPageNumber = "0",
+                                blnIsPaging = true
+                                })
+
+                            </div>
+
+
+
+
+                        </div>
+
+
+
+
+                   @*  </div> *@
+
+
+              @*   </div> *@
+
+
+                @* style="background-color:red;"*@
+                <div class="mt-1" style="vertical-align:middle;display:flex;flex-direction:row;justify-content:space-between;">
+
+                    @*<a href="@Url.Action("Page1_New", "Development",new {area="iWebMember", id= ViewContext.RouteData.Values["id"], state="edit"})" class="btn btn-secondary float-start">
+                    <span>Clients</span>
+                    </a>*@
+                    @*  <a type="button" class="btn btn-secondary float-start" value="Back" style="width:100px;height:auto;"
+                    href="@Url.Action("Page1_New", "Development",new {area="iWebMember", id= ViewContext.RouteData.Values["id"], state="edit"})" />
+
+                    <a class="btn btn-primary float-end" type="submit"  value="Next" style="width:100px;height:auto;" />
+                    *@
+                    @* *@
+                    <input type="button"
+                           value="Back"
+                           class="btn btn-secondary float-start btn-sm"
+                           style="width:100px;height:40px;font-size:small;vertical-align:middle;" onclick='location.href="@Url.Action("Page1_Edit", "Development" ,new {area="iWebMember", bldtknid= Context.Request.Query["bldtknid"], state="edit"})"' />
+
+
+
+                    @* class="text-center" style="text-align:center;margin:auto;justify-content:center;" *@
+                    <div>
+                        <div id="div_Paging_0000" style="display:block;margin:auto;vertical-align:middle;">
+                            <nav>
+                                <ul class="pagination">
+
+                                    <li class="page-item">
+                                        @* *@
+
+
+                                        <a href='#div_ItemsContent' id="pager1_0" class="page-link active"
+                                           onclick="load_TabPageNumberList('@Model.BuildingTokenID', '0', 'true','1', true)">1</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a href='#div_ItemsContent' id="pager2_0" class="page-link"
+                                           onclick="load_TabPageNumberList('@Model.BuildingTokenID', '0', 'true','2', true)">2</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a href='#div_ItemsContent' id="pager3_0" class="page-link"
+                                           onclick="load_TabPageNumberList('@Model.BuildingTokenID', '0', 'true','3', true)">3</a>
+                                    </li>
+
+                                    @*   <li class="page-item">
+                                    <a href='#collapse444' id="pager3_444" class="page-link">4</a>
+                                    </li>
+
+                                    <li class="page-item">
+                                    <a href='#collapse555' id="pager3_555" class="page-link">5</a>
+                                    </li>
+
+                                    <li class="page-item">
+                                    <a href='#collapse666' id="pager3_666" class="page-link">6</a>
+                                    </li> *@
+
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+
+
+                    @*   onclick='location.href="@Url.Action("Page1_New", "Development" ,new {area="iWebMember", id= ViewContext.RouteData.Values["id"], state="edit"})"'*@
+                    @* style="width:100px;height:50px;" *@
+                    <input type="submit"
+                           value="Submit"
+                           style="width:100px;height:40px;font-size:small;vertical-align:middle;" class="btn btn-primary float-end btn-sm" />
+                </div>
+
+            </div>
+       @*  </form> *@
+
+   
+</div>
+
+@*POPUP*@
+<div class="modal" id="popupModalEditor">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:whitesmoke;">
+                <h4 class="modal-title">Upload Documents</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+
+                @*  <button onclick="openEdit();" value="tab" />*@
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li id='tab_Preview' class="nav-item" role="presentation">
+                        <button class="nav-link active" id="btn_Preview" data-bs-toggle="tab" data-bs-target="#content_Preview" type="button" role="tab" aria-controls="home" aria-selected="true" data-tabcontent="preview">Preview</button>
+                    </li>
+                    <li id='tab_View' class="nav-item" role="presentation">
+                        <button class="nav-link" id="btn_View" data-bs-toggle="tab" data-bs-target="#content_View" type="button" role="tab" aria-controls="profile" aria-selected="false" data-tabcontent="view">View Files</button>
+                    </li>
+                    <li id='tab_Upload' class="nav-item" role="presentation">
+                        <button class="nav-link" id="btn_Upload" data-bs-toggle="tab" data-bs-target="#content_Upload" type="button" role="tab" aria-controls="messages" aria-selected="false" data-tabcontent="upload">Upload Files</button>
+                    </li>
+                    <li id='tab_Edit' class="nav-item" role="presentation">
+                        <button class="nav-link" id="btn_Edit" data-bs-toggle="tab" data-bs-target="#content_Edit" type="button" role="tab" aria-controls="settings" aria-selected="false" data-tabcontent="edit">Edit</button>
+                    </li>
+                    <li id='tab_Progress' class="nav-item" role="presentation">
+                        <button class="nav-link" id="btn_Progress" data-bs-toggle="tab" data-bs-target="#content_Progress" type="button" role="tab" aria-controls="settings" aria-selected="false" data-tabcontent="progress">Progress</button>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+
+                    <div class="tab-pane active" id="content_Preview" role="tabpanel" aria-labelledby="home-tab">
+
+
+                        @* <div class="row">
+
+
+
+                        <div class="list-group list-group-flush m-3">
+
+
+                        <a href="#" class="list-group-item list-group-item-action bg-transparent"   >*@
+
+                        <div class="row mt-3 mb-3">
+
+                            <div id="iInformationText" class="col-10">Up-to-date Fire Risk Assessment (FRA)</div>
+
+                            <div class="col-2 text-end" style="float:right;">
+
+                                @*  <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                                *@
+                                @* @if ( iRow.DocumentCount != "0" )
+                                {
+                                <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+
+                                }
+                                else
+                                {*@
+                                <small id="iDocumentCount" class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">11</small>
+
+                                @*}*@
+
+                            </div>
+
+
+
+
+                        </div>
+
+
+                        @* background-color:orange; *@
+
+                    </div>
+
+                    <div class="tab-pane" id="content_View" role="tabpanel" aria-labelledby="profile-tab">
+
+                        <div id="div_DocumentList" class="row
+mb-3"></div>
+
+                    </div>
+
+                    <div class="tab-pane" id="content_Upload" role="tabpanel" aria-labelledby="messages-tab">
+
+                        @*class="row m-3"*@
+                        <div class="row m-3" id="dropzone">
+                            @* autocomplete="off" asp-area="iWebMember" asp-controller="Development"  asp-action="UploadFiles"*@
+                            <form action="/iWebMember/Development/UploadFiles" asp-antiforgery="true" class="dropzone"
+                                  id="demo-upload" name="filedata" enctype="multipart/form-data" method="post" data-parsley-validate>
+                                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                                <div class="form-row">
+                                </div>
+                              
+                             @*    <input id="hdn_InformationTokenID" name="hdn_InformationTokenID" type="hidden" value="0" />
+                                <input id="iAppinformationTokenID" name="iAppinformationTokenID" type="hidden" value="0" />
+                                <input id="iInformationTokenID" name="iInformationTokenID" type="hidden" value="0" />
+                                <input id="iBuildingTokenID" name="iBuildingTokenID" type="hidden" value="0" />
+                                <input id="iDocumentTokenID" name="iDocumentTokenID" type="hidden" value="0" />
+                                <input id="iTimeFrame" name="iTimeFrame" type="hidden" value="0" />
+                                <input id="iDocumentCount" name="iDocumentCount" type="hidden" value="0" />
+                            *@
+                        
+                        </form>
+                        </div>
+
+                        @*   <div class="row m-3">
+                        <label for="formFileMultiple" class="mt-3f orm-label">Upload a file(s)</label>
+                        <input class="form-control" type="file" id="formFileMultiple" multiple>
+                        </div>
+
+                        <small class="text-danger">(You must upload a file in order to select YES)</small>*@
+
+
+                    </div>
+
+                    <div class="tab-pane" id="content_Edit" role="tabpanel" aria-labelledby="messages-tab">
+
+
+
+                        <div class="mt-3 mb-3" id="popup_FormContent">
+                            @* @await Component.InvokeAsync("Editor")*@
+
+                            @*class="ms-3 me-3 mb-3"*@
+
+                            <table class="ms-1">
+
+
+
+
+                                <tr>
+                                    <td style="text-align:left;vertical-align:text-top;padding:0px;">
+                                        <img src="~/img/img_file_pdf.png" style="width:20px;height:20px;margin:0px;" />
+                                    </td>
+
+                                    <td style="width:100%;text-align:left;vertical-align:text-top;padding:0px;">
+
+                                        <div class="p-1" style="display:flex;flex-direction:column;">
+                                            <a id="iDocumentName" name="iDocumentName" target="_blank" style="text-decoration:underline;">File_1101.pdf (151.2KB)</a>
+
+                                        </div>
+                                    </td>
+
+                                </tr>
+
+                            </table>
+
+
+
+
+                            @*                                placeholder="dd-mm-yyyy" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"*@
+
+                            <div class="mt-3">
+                                <label class="form-label">Document publication date:</label>
+                                <input class="form-control"
+                                       type="text" id="iDocumentDateStart" name="iDocumentDateStart"
+                                       style="text-transform:uppercase;" required>
+                                @*  <input class="form-control"
+                                type="date" id="iScoreAdjusted" name="iScoreAdjusted"
+                                format="dd-mm-yyyy" required>
+                                *@
+                            </div>
+                            @*                                    me-3 mb-3*@
+                            <div class="mt-3">
+                                <label class="form-label">Document description:</label>
+                                <textarea id="txt_HTMLContent" name="txt_HTMLContent" style="width:100%;height:auto;" rows="20" class="form-control">
+                                        default
+                                    </textarea>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="tab-pane" id="content_Progress" role="tabpanel" aria-labelledby="settings-tab">
+                        <div class="text-center">
+                            <img src="~/img/loading.gif" width="auto" height="auto" style="margin:auto;" />
+                        </div>
+                    </div>
+
+                    @*   <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                    settings
+                    </div>*@
+                </div>
+
+                @* <script>
+                var firstTabEl = document.querySelector('#myTab li:last-child a')
+                var firstTab = new bootstrap.Tab(firstTabEl)
+
+                firstTab.show()
+                </script>*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+            <div class="modal-footer">
+                <div style="width:100%;display:flex;flex-direction:row;justify-content:space-between;">
+
+                    <div class="flex-start">
+
+                        <div id="div_CommandUpload" class="flex-start">
+                            <button type="button" id="btnupload" class="btn btn-primary">Upload</button>
+                            @* <input type="button" style="width: 100%;" value="Uploadxxx" class="fill-width" onclick="upload()">*@
+                            @*<a class="btn btn-danger" onclick="load_TabViewDocumentList();">Clear</a>*@
+                        </div>
+
+                        <div id="div_CommandEdit" class="flex-start">
+                            <button type="button" id="btnSubmitUpdate" onclick="submit_TabEditDocument();" class="btn btn-primary">Submit</button>
+
+                            <a class="btn btn-danger" onclick="cancel_TabEditDocument();">Cancel</a>
+                        </div>
+
+                        <div id="div_CommandPreview" class="flex-start">
+
+                            <span style="color:red;">Click here if you NOT have this document. </span><button type="button" class="btn btn-outline-danger" style="width:90px;font-size:medium;margin:5px;">Submit</button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="flex-end">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="confirmPopup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmPopupLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="height:auto;">
+            <div class="modal-header" style="background-color:whitesmoke;">
+                <h5 class="modal-title" id="confirmPopupLabel">Confirm</h5>
+                @* <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> *@
+            </div>
+            <div class="modal-body">
+                Are you sure want to DELTE! ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                @* <button type="button" class="btn btn-primary" onclick="Building_Set_DELETE()">Delete</button> *@
+                <button type="button" class="btn btn-danger" onclick="Document_Set_DELETE()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<link href="~/dropzone/dropzone.min.css" rel="stylesheet" />
+<script src="~/dropzone/dropzone.min.js"></script>
+
+@*     <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" /> *@
+
+
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
+
+
+<script>
+
+    let editor;
+
+    ClassicEditor
+        .create(document.querySelector('#txt_HTMLContent'))
+        .then(newEditor => {
+            editor = newEditor;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+
+
+</script>
+
+
+<script>
+
+
+
+    window.apptbltknid;
+    window.tbltknid;
+    window.bldtknid;
+    window.appinftknid;
+    window.inftknid;
+    window.doccount;
+    window.clminfotxt;
+    window.clmdoccount;
+
+    // doctknid, doctcod, docname, docsize, docdesc
+
+    window.doctknid;
+    window.doctyp;
+    window.docname;
+    window.docsize;
+    window.docdesc;
+
+
+    //   datday,datmonth,datyear,dattxt,yearcnt
+
+    window.datday;
+    window.datmonth;
+    window.datyear;
+    window.dattxt;
+    window.timeframe;
+
+
+
+    function Popup_PostForm() {
+
+        try {
+
+            //alert('inftknid == ' + window.inftknid);
+
+            var clmn_InfoText = $("[data-clminfotxt='clminfotxt_" + inftknid + "']");
+            var clmn_DocumentCount = $("[data-clmdoc='clmdoc_" + inftknid + "']");
+            var clmn_Total = $("[data-clmtotal='clmtotal']");
+
+            var txt_RiskControlMeasure = '0';
+            var visible_RiskControlMeasure = '0';
+
+            if (editor.getData() == '') {
+                txt_RiskControlMeasure = "0";
+                visible_RiskControlMeasure = "";
+            }
+            else {
+                txt_RiskControlMeasure = editor.getData();
+                visible_RiskControlMeasure = editor.getData();
+
+            }
+
+            var iInformationText = document.getElementById('iInformationText');
+
+
+
+            $.ajax({
+                type: "POST",
+
+                //url: @Url.Action("Update_Score_ByInformationTokenID","Development",new { Area = "iWebMember" }),
+                url: '/iWebMember/Development/Update_Score_ByInformationTokenID',
+
+                data: {
+                    iAppTableTokenID: apptbltknid,
+                    iTableTokenID: tbltknid,
+                    iBuildingTokenID: bldtknid,
+                    iInformationTokenID: inftknid,
+                    iInformationText: iInformationText.value,
+                    iRiskControlMeasure: txt_RiskControlMeasure
+                },
+                success: function (result) {
+
+
+                    clmn_InfoText.html(iInformationText.value);
+                    clmn_DocumentCount.html(visible_RiskControlMeasure);
+                    clmn_Total.html(result.total);
+
+
+                    BSR_ShowToastMessage('update');
+
+
+                },
+                error: function () {
+                    alert('Failed to receive the Data');
+                    console.log('Failed ');
+                }
+            });
+
+
+
+
+            $('#popupModalEditor').modal('hide');
+
+
+
+        }
+
+        catch (ex) {
+            //  alert(ex);
+            return;
+        }
+    }
+
+
+
+    function submit_DocumentNotAvailable(bldtknid, inftknid) {
+
+        try {
+
+            //alert('inftknid == ' + window.inftknid);
+
+
+            var btn_NULL = $("[data-btnnull='btnnull_" + inftknid + "']");
+
+            //  alert("found == " + btn_NULL);
+
+
+            // var clmn_InfoText = $("[data-clminfotxt='clminfotxt_" + inftknid + "']");
+            // var clmn_DocumentCount = $("[data-clmdoc='clmdoc_" + inftknid + "']");
+            // var clmn_Total = $("[data-clmtotal='clmtotal']");
+
+            // var txt_RiskControlMeasure = '0';
+            // var visible_RiskControlMeasure = '0';
+
+            // if (editor.getData() == '') {
+            //     txt_RiskControlMeasure = "0";
+            //     visible_RiskControlMeasure = "";
+            // }
+            // else {
+            //     txt_RiskControlMeasure = editor.getData();
+            //     visible_RiskControlMeasure = editor.getData();
+
+            // }
+
+            // var iInformationText = document.getElementById('iInformationText');
+
+
+
+            $.ajax({
+                type: "POST",
+
+
+                url: '/iWebMember/Development/UploadFiles_NOT_AVAILABLE',
+
+                data: {
+                    //iAppTableTokenID: apptbltknid,
+                    //iTableTokenID: tbltknid,
+                    iBuildingTokenID: bldtknid,
+                    iInformationTokenID: inftknid
+                    // iInformationText: iInformationText.value,
+                    //iRiskControlMeasure: txt_RiskControlMeasure
+                },
+                success: function (result) {
+
+
+                    // clmn_InfoText.html(iInformationText.value);
+                    // clmn_DocumentCount.html(visible_RiskControlMeasure);
+                    // clmn_Total.html(result.total);
+
+                    //   alert("sucess == " + btn_NULL);
+
+                    btn_NULL.removeClass("btn-outline-secondary");
+                    btn_NULL.removeClass("btn-secondary");
+
+                    btn_NULL.addClass("btn-secondary");
+
+                    BSR_ShowToastMessage('update');
+
+
+                },
+                error: function () {
+                    // alert('Failed to receive the Data');
+                    console.log('Failed ');
+                }
+            });
+
+        }
+
+        catch (ex) {
+            //  alert(ex);
+            return;
+        }
+    }
+
+
+
+    function Popup_LoadForm(apptbltknid, tbltknid, bldtknid, appinftknid, inftknid, doccount, timeframe, clminfotxt, clmdoccount) {
+
+        try {
+
+
+            window.apptbltknid = apptbltknid;
+            window.tbltknid = tbltknid;
+            window.bldtknid = bldtknid;
+            window.appinftknid = appinftknid;
+            window.inftknid = inftknid;
+            window.doccount = doccount;
+            window.clminfotxt = clminfotxt;
+            window.clmdoccount = clmdoccount;
+            window.timeframe = timeframe;
+
+            // alert('popup form here' + bldtknid + " , " + inftknid + " , " + clminfotxt + " , " + clmdoc);
+
+            var clmn_InfoText = $("[data-clminfotxt='clminfotxt_" + inftknid + "']");
+            // var clmn_DocumentCount = $("[data-clmdoccount='clmdoccount_" + inftknid + "']");
+
+            var txt_RiskControlMeasure = '0';
+
+            //////if (editor.getData() == '') {
+            //////    txt_RiskControlMeasure = "0";
+            //////}
+            //////else {
+            //////    txt_RiskControlMeasure = editor.getData();
+
+            //////}
+
+
+
+
+            //var divTestMe = document.getElementById('txt_HTMLContent');
+            var iInformationText = document.getElementById('iInformationText');
+            var iDocumentCount = document.getElementById('iDocumentCount');
+
+            //  iInformationText.value = '3';
+
+            iInformationText.innerHTML = clmn_InfoText.html();
+
+
+            if (doccount != "0") {
+                iDocumentCount.innerHTML = doccount;
+            }
+            else {
+                iDocumentCount.innerHTML = '';
+            }
+
+            //////  editor.setData(clmn_DocumentCount.html());
+
+
+
+
+            $("#iAppinformationTokenID").val(appinftknid);
+            $("#iInformationTokenID").val(inftknid);
+            $("#iBuildingTokenID").val(bldtknid);
+            $("#iTimeFrame").val(timeframe);
+            //$("#hdn_InformationTokenID").val(inftknid);
+
+
+
+
+            $('#tab_Edit').hide();
+            $('#tab_Progress').hide();
+
+            $('#div_CommandUpload').hide();
+            $('#div_CommandEdit').hide();
+
+            // $('#myTab button[bs-target="#edit"]').tab('show'); // Select tab by name`
+
+            $("#btn_View").removeClass("active");
+            $("#btn_Progress").removeClass("active");
+            $("#btn_Edit").removeClass("active");
+            $("#btn_Upload").removeClass("active");
+
+            $("#content_View").removeClass("active");
+            $("#content_Progress").removeClass("active");
+            $("#content_Edit").removeClass("active");
+            $("#content_Upload").removeClass("active");
+
+            $("#btn_Preview").addClass("active");
+            $("#content_Preview").addClass("active");
+
+            // TODO ////////////////////////////////////////////
+
+            // $('#div_CommandPreview').show();
+
+
+
+
+            $('#popupModalEditor').modal('show');
+
+            // $('#div_CommandPreview').show();
+
+
+            load_TabViewDocumentList(false);
+
+        }
+
+        catch (ex) {
+            //  alert(ex);
+            console.log(ex);
+            return;
+        }
+    }
+
+
+
+
+
+    function open_TabEditDocument(apptbltknid, tbltknid, bldtknid, appinftknid, inftknid, doctknid,
+        doctyp, docname, docsize, docdesc,
+        datday, datmonth, datyear, dattxt, yearcnt,
+        clmdocname, clmdocdate, clmdocdesc) {
+
+        try {
+
+            // alert('open_TabEditDocument == ' + datday + " , " + datmonth + " , " + datyear);
+
+            // doctknid, doctcod, docname, docsize, docdesc
+
+
+            window.doctknid = doctknid;
+            window.doctyp = doctyp;
+            window.docname = docname;
+            window.docsize = docsize;
+            window.docdesc = docdesc;
+
+            window.datday = datday;
+            window.datmonth = datmonth;
+            window.datyear = datyear;
+            window.dattxt = dattxt;
+            window.timeframe = yearcnt;
+
+
+
+            var iDocumentName = document.getElementById('iDocumentName');
+            var iDocumentDateStart = document.getElementById('iDocumentDateStart');
+
+            iDocumentName.innerHTML = docname + " (" + docsize + ")";
+            // iDocumentName.href = '/_iUMedia/_iUDocument/doc_' + doctknid + '.' + doctyp;
+            $("#iDocumentName").attr("href", '/_iUMedia/_iUDocument/doc_' + doctknid + '.' + doctyp);
+            //  var iDocumentCount = document.getElementById('iDocumentCount');
+
+            //  iInformationText.value = '3';
+
+            //   iInformationText.innerHTML = clmn_InfoText.html();
+            //   iDocumentCount.innerHTML = clmn_DocumentCount.html();
+
+
+            //  var clmn_Score = $("[data-clmscore='clmscore_" + inftknid + "']");
+            //  var clmn_RiskMeasure = $("[data-clmrisk='clmrisk_" + inftknid + "']");
+
+
+            ////////////////////////////////
+
+
+            //$("#iDocumentDateStart").datepicker("setDate", new Date());
+            //iDocumentDateStart
+
+            ////////////$("#datepicker").datepicker({ dateFormat: "DD, d MM, yy" });
+            ////////////$("#datepicker").datepicker("setDate", $.datepicker.parseDate("yy-mm-dd", "2017-11-16"));
+
+            //var strDate = "6-2-1979";//'"' + datday + '-' + datmonth + '-' + datyear + '"';
+
+
+            //$("#iDocumentDateStart").datepicker("setDate", new Date());
+
+            var strDate;
+            //&& datmonth == "0" && datyear == "0"
+
+            if (datday == "0") {
+
+                $("#iDocumentDateStart").datepicker(
+                    "setDate", $.datepicker.parseDate("dd-mm-yy", new Date()));
+
+                // $("#iDocumentDateStart").datepicker("setDate", new Date());
+                //alert("strDate = 0");
+            }
+            else {
+
+                strDate = datday + '-' + datmonth + '-' + datyear;
+                // alert("strDate = " + strDate);
+
+                // alert(strDate);
+
+                // $("#iDocumentDateStart").datepicker(
+                //     "setDate", $.datepicker.parseDate("dM, yy", strDate));
+
+
+                $("#iDocumentDateStart").datepicker(
+                    "setDate", $.datepicker.parseDate("dd-mm-yy", strDate));
+
+
+            }
+
+            if (docdesc !== '0') {
+
+                editor.setData(docdesc);
+            } else {
+                editor.setData('');
+            }
+
+
+
+
+            $('#tab_Edit').hide();
+            $('#tab_Progress').hide();
+            // $('#myTab button[bs-target="#edit"]').tab('show'); // Select tab by name`
+
+            $("#btn_Preview").removeClass("active");
+            $("#btn_Progress").removeClass("active");
+            $("#btn_View").removeClass("active");
+            $("#btn_Upload").removeClass("active");
+
+            $("#content_Preview").removeClass("active");
+            $("#content_Progress").removeClass("active");
+            $("#content_View").removeClass("active");
+            $("#content_Upload").removeClass("active");
+
+            $("#btn_Edit").addClass("active");
+            $("#content_Edit").addClass("active");
+
+            $('#div_CommandUpload').hide();
+            $('#div_CommandPreview').hide();
+            $('#div_CommandEdit').show();
+
+
+        }
+        catch (err) {
+            return;
+            //alert(err);
+        }
+
+    }
+
+
+
+
+    function open_TabViewDocuments(blnIsNewRefresh) {
+
+        try {
+
+
+            if (blnIsNewRefresh) {
+                load_TabViewDocumentList(true);
+            }
+
+            $('#tab_Edit').hide();
+            $('#tab_Progress').hide();
+            $('#div_CommandUpload').hide();
+            $('#div_CommandEdit').hide();
+            $('#div_CommandPreview').hide();
+
+            // $('#myTab button[bs-target="#edit"]').tab('show'); // Select tab by name`
+
+            $("#btn_Preview").removeClass("active");
+            $("#btn_Progress").removeClass("active");
+            $("#btn_Edit").removeClass("active");
+            $("#btn_Upload").removeClass("active");
+
+            $("#content_Preview").removeClass("active");
+            $("#content_Progress").removeClass("active");
+            $("#content_Edit").removeClass("active");
+            $("#content_Upload").removeClass("active");
+
+            $("#btn_View").addClass("active");
+            $("#content_View").addClass("active");
+        }
+        catch (err) {
+            console.error(err);
+            return;
+        }
+
+    }
+
+
+
+
+    function open_TabViewProgress() {
+
+        try {
+
+
+
+            $('#tab_Edit').hide();
+            $('#tab_Progress').hide();
+            $('#div_CommandUpload').hide();
+            $('#div_CommandEdit').hide();
+            $('#div_CommandPreview').hide();
+
+            // $('#myTab button[bs-target="#edit"]').tab('show'); // Select tab by name`
+
+            $("#btn_Preview").removeClass("active");
+            $("#btn_View").removeClass("active");
+            $("#btn_Edit").removeClass("active");
+            $("#btn_Upload").removeClass("active");
+
+            $("#content_Preview").removeClass("active");
+            $("#content_View").removeClass("active");
+            $("#content_Edit").removeClass("active");
+            $("#content_Upload").removeClass("active");
+
+            $("#btn_Progress").addClass("active");
+            $("#content_Progress").addClass("active");
+        }
+        catch (err) {
+            console.error(err);
+            return;
+        }
+
+    }
+
+
+
+
+
+
+
+
+    function clearFiles() {
+        try {
+
+            ////$("#hdn_InformationTokenID").val("comment");
+
+            ////alert($("#hdn_InformationTokenID").val());
+
+            //dz.removeAllFiles(true);
+        }
+        catch (err) {
+
+            alert(err);
+        }
+
+    }
+
+
+
+
+    function load_TabViewDocumentList(blnIsNewRefresh) {
+
+
+        try {
+
+
+
+            //  $("#iInformationTokenID").val(inftknid);
+            //  $("#iBuildingTokenID").val(bldtknid);
+
+            $.ajax({
+                //url: '@Url.Action("ReloadEvents", "Home")',
+                url: '/iWebMember/Development/ReloadDocumentList',
+                data: {
+                    bldtknid: $("#iBuildingTokenID").val(),//document.getElementById("cbShowPrevious").checked,
+                    inftknid: $("#iInformationTokenID").val() //document.getElementById("cbShowUpcoming").checked
+                },
+                success: function (data) {
+
+                    $("#div_DocumentList").html(data);
+
+                    $('#div_CommandEdit').hide();
+                    $('#div_CommandPreview').hide();
+                    $('#div_CommandUpload').hide();
+
+                    // alert('load_TabViewDocumentList DONE !!!');
+                }
+            });
+
+
+            if (blnIsNewRefresh) {
+
+                $.ajax({
+                    //url: '@Url.Action("ReloadEvents", "Home")',
+                    url: '/iWebMember/Development/GetCountDocumentList',
+                    data: {
+                        bldtknid: $("#iBuildingTokenID").val(),
+                        inftknid: $("#iInformationTokenID").val()
+                    },
+                    success: function (data) {
+
+                        //alert('load_TabViewDocumentList DONE !!!  ' + data.count);
+
+                        var clmn_DocumentCount = $("[data-clmdoccount='clmdoccount_" + window.inftknid + "']");
+
+                        var iDocumentCount = document.getElementById('iDocumentCount');
+
+
+                        var btn_NULL = $("[data-btnnull='btnnull_" + inftknid + "']");
+
+
+
+                        if (data.count != "0") {
+                            clmn_DocumentCount.html(data.count);
+                            iDocumentCount.innerHTML = data.count;
+
+                            btn_NULL.removeClass("btn-outline-secondary");
+                            btn_NULL.removeClass("btn-secondary");
+
+                            btn_NULL.addClass("btn-outline-secondary");
+
+                            btn_NULL.prop("disabled", true);
+
+
+                        }
+                        else {
+
+                            btn_NULL.removeClass("btn-outline-secondary");
+                            btn_NULL.removeClass("btn-secondary");
+
+                            btn_NULL.addClass("btn-outline-secondary");
+
+                            btn_NULL.prop("disabled", false);
+
+                            clmn_DocumentCount.html('');
+                            iDocumentCount.innerHTML = '';
+
+                        }
+
+
+                        // alert('load_TabViewDocumentList DONE !!!');
+                    }
+                });
+
+
+
+            }
+
+
+
+
+        }
+        catch (err) {
+            console.error(err);
+            return;
+
+        }
+
+    }
+
+
+
+    function cancel_TabEditDocument() {
+
+        try {
+
+
+            $('#tab_Edit').hide();
+            $('#tab_Progress').hide();
+            // $('#myTab button[bs-target="#edit"]').tab('show'); // Select tab by name`
+
+            $("#btn_Preview").removeClass("active");
+            $("#btn_Progress").removeClass("active");
+            $("#btn_Edit").removeClass("active");
+            $("#btn_Upload").removeClass("active");
+
+            $("#content_Preview").removeClass("active");
+            $("#content_Progress").removeClass("active");
+            $("#content_Edit").removeClass("active");
+            $("#content_Upload").removeClass("active");
+
+            $('#div_CommandEdit').hide();
+            $('#div_CommandPreview').hide();
+            $('#div_CommandUpload').hide();
+
+            $("#btn_View").addClass("active");
+            $("#content_View").addClass("active");
+
+
+        }
+        catch (err) {
+            console.error(err);
+            return;
+        }
+
+
+        //$.ajax({
+        //    //url: '@Url.Action("ReloadEvents", "Home")',
+        //    url: '/iWebMember/Development/load_TabViewDocumentList',
+        //    data: {
+        //        bldtknid: $("#iBuildingTokenID").val(),//document.getElementById("cbShowPrevious").checked,
+        //        inftknid: $("#iInformationTokenID").val() //document.getElementById("cbShowUpcoming").checked
+        //    },
+        //    success: function (data) {
+        //        $("#div_DocumentList").html(data);
+        //        // alert('load_TabViewDocumentList DONE !!!');
+        //    }
+        //})
+    }
+
+    var weekday = new Array(7);
+    weekday[0] = "Sunday";
+    weekday[1] = "Monday";
+    weekday[2] = "Tuesday";
+    weekday[3] = "Wednesday";
+    weekday[4] = "Thursday";
+    weekday[5] = "Friday";
+    weekday[6] = "Saturday";
+
+    function submit_TabEditDocument() {
+
+        try {
+
+
+
+
+            var iDocumentName = document.getElementById('iDocumentName');
+            var iDocumentDateStart = document.getElementById('iDocumentDateStart');
+
+            // iDocumentName.innerHTML = docname + " (" + docsize + ")";
+            // // iDocumentName.href = '/_iUMedia/_iUDocument/doc_' + doctknid + '.' + doctyp;
+            // $("#iDocumentName").attr("href", '/_iUMedia/_iUDocument/doc_' + doctknid + '.' + doctyp);
+            //  var iDocumentCount = document.getElementById('iDocumentCount');
+
+            //  iInformationText.value = '3';
+
+            //   iInformationText.innerHTML = clmn_InfoText.html();
+            //   iDocumentCount.innerHTML = clmn_DocumentCount.html();
+
+
+            //  var clmn_Score = $("[data-clmscore='clmscore_" + inftknid + "']");
+            //  var clmn_RiskMeasure = $("[data-clmrisk='clmrisk_" + inftknid + "']");
+
+
+            ////////////////////////////////
+
+
+            //$("#iDocumentDateStart").datepicker("setDate", new Date());
+            //iDocumentDateStart
+
+            ////////////$("#datepicker").datepicker({ dateFormat: "DD, d MM, yy" });
+            ////////////$("#datepicker").datepicker("setDate", $.datepicker.parseDate("yy-mm-dd", "2017-11-16"));
+
+            //var strDate = "6-2-1979";//'"' + datday + '-' + datmonth + '-' + datyear + '"';
+            var datday, datmonth, datyear;
+
+            // var strDate = datday + '-' + datmonth + '-' + datyear;
+
+            // alert(strDate);
+
+            // // // $("#iDocumentDateStart").datepicker(
+            // // //     "setDate", $.datepicker.parseDate("dd-mm-yy", strDate));
+
+            var date = $("#iDocumentDateStart").datepicker('getDate');
+            // // // // // // // alert(date.getDate());         // Day of the month
+            // // // // // // // alert(date.getMonth() + 1);        // Month with a zero index
+            // // // // // // // //alert(date.getDay());          // Day of the week
+            // // // // // // // alert(date.getFullYear());     // The "full" year, e.g. 2011
+
+            // // // // // // // alert(weekday[date.getUTCDay() + 1]);     // The "full" year, e.g. 2011
+
+            // // // // // // // alert($("#iDocumentDateStart").val());     // The "full" year, e.g. 2011
+            //////alert(window.timeframe);     // The "full" year, e.g. 2011
+
+
+            // // // // if (docdesc !== '0') {
+
+            // // // //     editor.setData(docdesc);
+            // // // // } else {
+            // // // //     editor.setData('');
+            // // // // }
+
+
+            // txt_DocumentDescription
+            var txt_DocumentDescription = "0", visible_RiskControlMeasure = "0";
+
+            if (editor.getData() == '') {
+                txt_DocumentDescription = "0";
+                visible_RiskControlMeasure = "FILL IN DESCRIPTION";
+            }
+            else {
+                txt_DocumentDescription = editor.getData();
+                visible_RiskControlMeasure = editor.getData();
+
+            }
+
+
+
+            var clmn_DocumentDate = $("[data-clmdocdate='clmdocdate_" + window.doctknid + "']");
+            var clmn_DocumentDescription = $("[data-clmdocdesc='clmdocdesc_" + window.doctknid + "']");
+
+
+
+            $.ajax({
+                //url: '@Url.Action("ReloadEvents", "Home")',
+                url: '/iWebMember/Development/Document_Update_ByDocumentTokenID',
+                data: {
+                    doctknid: window.doctknid,
+                    iday: date.getDate(),
+                    // idayname: $("#iBuildingTokenID").val(),
+                    imonth: date.getMonth() + 1,
+                    iyear: date.getFullYear(),
+                    iDateText: $("#iDocumentDateStart").val(),
+                    idesc: txt_DocumentDescription,
+                    timeframe: window.timeframe
+                },
+                success: function (data) {
+
+
+                    clmn_DocumentDate.css('color', 'black');
+
+
+                    if (txt_DocumentDescription == "0") {
+                        clmn_DocumentDescription.css('color', 'red');
+                    }
+
+                    else {
+                        clmn_DocumentDescription.css('color', 'black');
+                    }
+
+
+                    clmn_DocumentDate.html($("#iDocumentDateStart").val());
+                    clmn_DocumentDescription.html(visible_RiskControlMeasure);
+
+
+                    cancel_TabEditDocument();
+
+
+                    BSR_ShowToastMessage('update');
+
+
+                    //alert('load_TabViewDocumentList DONE !!!  ' + data.count);
+
+                    // // // // // // // // // // // var clmn_DocumentCount = $("[data-clmdoccount='clmdoccount_" + window.inftknid + "']");
+
+
+                    // // // // // // // // // // // if (data.count != "0") {
+                    // // // // // // // // // // //     clmn_DocumentCount.html(data.count);
+                    // // // // // // // // // // //     //  clmn_DocumentCount.html('AAA');
+
+                    // // // // // // // // // // // }
+                    // // // // // // // // // // // else {
+                    // // // // // // // // // // //     clmn_DocumentCount.html('');
+
+                    // // // // // // // // // // // }
+
+
+                    // alert('load_TabViewDocumentList DONE !!!');
+                }
+            });
+
+
+            //////alert('submit_TabEditDocument');
+        }
+        catch (err) {
+            console.error(err);
+            return;
+        }
+        //$.ajax({
+        //    //url: '@Url.Action("ReloadEvents", "Home")',
+        //    url: '/iWebMember/Development/load_TabViewDocumentList',
+        //    data: {
+        //        bldtknid: $("#iBuildingTokenID").val(),//document.getElementById("cbShowPrevious").checked,
+        //        inftknid: $("#iInformationTokenID").val() //document.getElementById("cbShowUpcoming").checked
+        //    },
+        //    success: function (data) {
+        //        $("#div_DocumentList").html(data);
+        //        // alert('load_TabViewDocumentList DONE !!!');
+        //    }
+        //})
+    }
+
+
+
+
+
+
+    function GetCountDocumentList() {
+
+        try {
+
+            var iDocumentCount = document.getElementById('iDocumentCount');
+
+
+            $.ajax({
+                //url: '@Url.Action("ReloadEvents", "Home")',
+                url: '/iWebMember/Development/GetCountDocumentList',
+                data: {
+                    bldtknid: $("#iBuildingTokenID").val(),
+                    inftknid: $("#iInformationTokenID").val()
+                },
+                success: function (data) {
+
+                    //alert('load_TabViewDocumentList DONE !!!  ' + data.count);
+
+                    var clmn_DocumentCount = $("[data-clmdoccount='clmdoccount_" + window.inftknid + "']");
+
+
+                    if (data.count != "0") {
+                        clmn_DocumentCount.html(data.count);
+                        iDocumentCount.innerHTML = data.count;
+                        //  clmn_DocumentCount.html('AAA');
+
+                    }
+                    else {
+                        clmn_DocumentCount.html('');
+
+                        iDocumentCount.innerHTML = '';
+                    }
+
+
+                    // alert('load_TabViewDocumentList DONE !!!');
+                }
+            });
+
+
+
+            // alert('GetCountDocumentList');
+
+            //$.ajax({
+            //    //url: '@Url.Action("ReloadEvents", "Home")',
+            //    url: '/iWebMember/Development/load_TabViewDocumentList',
+            //    data: {
+            //        bldtknid: $("#iBuildingTokenID").val(),//document.getElementById("cbShowPrevious").checked,
+            //        inftknid: $("#iInformationTokenID").val() //document.getElementById("cbShowUpcoming").checked
+            //    },
+            //    success: function (data) {
+            //        $("#div_DocumentList").html(data);
+            //        // alert('load_TabViewDocumentList DONE !!!');
+            //    }
+            //})
+
+
+
+        }
+        catch (err) {
+            console.error(err);
+            return;
+        }
+
+    }
+
+
+
+
+
+    function Document_Confirm_DELETE(doctknid) {
+
+        try {
+
+            window.doctknid = doctknid;
+            $("#iDocumentTokenID").val(doctknid);
+            // alert(bldtknid);
+
+            // var clmn_DocumentCount = $("[data-clmdbldname='clmdbldname_" + bldtknid + "']");
+
+            // $("[data-clmdbldname='clmdbldname_" + bldtknid + "']").hide();
+
+
+
+
+            $('#confirmPopup').modal('show');
+
+
+        }
+        catch (err) {
+            alert(err);
+        }
+    }
+
+
+
+
+
+
+    function Document_Set_DELETE() {
+
+        try {
+
+
+            $.ajax({
+                //url: '@Url.Action("ReloadEvents", "Home")',
+                url: '/iWebMember/Development/Document_Delete_ByDocumentTokenID',
+                data: {
+                    doctknid: $("#iDocumentTokenID").val()//,
+                    //inftknid: $("#iInformationTokenID").val()
+                },
+                success: function (data) {
+
+                    //alert('load_TabViewDocumentList DONE !!!  ' + data.count);
+
+                    // var clmn_DocumentCount = $("[data-clmdoccount='clmdoccount_" + window.inftknid + "']");
+
+
+                    // if (data.count != "0") {
+                    //     clmn_DocumentCount.html(data.count);
+
+                    // }
+                    // else {
+                    //     clmn_DocumentCount.html('');
+
+                    // }
+
+
+
+                    $('#confirmPopup').modal('hide');
+
+
+                    $("[data-clmddocname='clmddocname_" + window.doctknid + "']").hide();
+                    // alert('Building_Delete_ByBuildingTokenID DONE !!!');
+
+
+
+                    GetCountDocumentList();
+
+
+                    BSR_ShowToastMessage('delete');
+
+                }
+            });
+
+
+
+        }
+        catch (err) {
+            alert(err);
+        }
+    }
+
+
+
+
+
+    function Document_Set_UPDATE() {
+
+        try {
+
+            // apptbltknid, tbltknid, bldtknid, appinftknid, inftknid, doctknid,
+            //     doctyp, docname, docsize, docdesc,
+            //     datday, datmonth, datyear, dattxt, yearcnt,
+            //     clmdocname, clmdocdate, clmdocdesc
+
+            /////////////////////////
+
+
+            // // // // string doctknid,
+            // // // // string iday,
+            // // // // string idayname,
+            // // // // string imonth,
+            // // // // string imonthname,
+            // // // // string iyear,
+            // // // // string iDateText,
+            // // // // string idesc,
+            // // // // string timeframe = "1"
+
+
+            $.ajax({
+                //url: '@Url.Action("ReloadEvents", "Home")',
+                url: '/iWebMember/Development/Document_Update_ByDocumentTokenID',
+                data: {
+                    doctknid: $("#iDocumentTokenID").val()//,
+                    //inftknid: $("#iInformationTokenID").val()
+                },
+                success: function (data) {
+
+                    //alert('load_TabViewDocumentList DONE !!!  ' + data.count);
+
+                    // var clmn_DocumentCount = $("[data-clmdoccount='clmdoccount_" + window.inftknid + "']");
+
+
+                    // if (data.count != "0") {
+                    //     clmn_DocumentCount.html(data.count);
+
+                    // }
+                    // else {
+                    //     clmn_DocumentCount.html('');
+
+                    // }
+
+
+
+                    // // // // // // $('#confirmPopup').modal('hide');
+
+
+                    // // // // // // $("[data-clmddocname='clmddocname_" + window.doctknid + "']").hide();
+                    // // // // // // // alert('Building_Delete_ByBuildingTokenID DONE !!!');
+
+
+
+                    // // // // // // GetCountDocumentList();
+
+
+
+
+                }
+            });
+
+
+
+        }
+        catch (err) {
+            alert(err);
+        }
+    }
+
+
+
+
+
+
+    function isEmpty(el) {
+        return !$.trim(el.html())
+    }
+    if (isEmpty($('#element'))) {
+        // do something
+    }
+
+
+
+
+    function load_TabPageNumberList(iBuildingTokenID, iQueryTableTokenID, blnIsPaging, iPageNumber, blnIsNewRefresh) {
+
+
+        try {
+
+            // alert('load_TabPageNumberList XXX');
+
+
+            BSR_ShowToastMessage('load');
+
+            window.bldtknid = iBuildingTokenID;
+            //window.querytbltknid = iQueryTableTokenID;
+
+
+            //$("#iQueryTableTokenID").val(iQueryTableTokenID);
+            $("#iBuildingTokenID").val(iBuildingTokenID);
+
+            $.ajax({
+
+                url: '/iWebMember/Development/ReloadBuildingPage2List',
+                data: {
+                    bldtknid: $("#iBuildingTokenID").val(),//document.getElementById("cbShowPrevious").checked,
+                    //querytbltknid: $("#iQueryTableTokenID").val(), //document.getElementById("cbShowUpcoming").checked
+                    iPageNumber: iPageNumber, //document.getElementById("cbShowUpcoming").checked
+                    blnIsPaging: blnIsPaging //document.getElementById("cbShowUpcoming").checked
+                },
+                success: function (data) {
+
+                    $("#div_ItemsList").html(data);
+
+                    let _blnIsPagingList = blnIsPaging.toLowerCase();
+
+                    //alert('_blnIsPagingList == ' + _blnIsPagingList);
+
+
+                    // var companyElements = $("ul:data(group) li:data(company)");
+                    //  var companyElements = $("ul:data(group) li:data(company)");
+
+                    if (_blnIsPagingList == "true") {
+
+
+                        $("#pager1_" + iQueryTableTokenID).removeClass("active");
+                        $("#pager2_" + iQueryTableTokenID).removeClass("active");
+                        $("#pager3_" + iQueryTableTokenID).removeClass("active");
+
+                        // $("#pager1_" + iQueryTableTokenID).removeClass("active");
+                        //                          $("#pager2_" + iQueryTableTokenID).removeClass("active");
+                        //                          $("#pager3_" + iQueryTableTokenID).removeClass("active");
+
+
+                        if (iPageNumber == "0") {
+                            $("#pager1_" + iQueryTableTokenID).addClass("active");
+
+                        }
+
+                        else if (iPageNumber == "1") {
+                            $("#pager1_" + iQueryTableTokenID).addClass("active");
+
+                        }
+                        else if (iPageNumber == "2") {
+                            $("#pager2_" + iQueryTableTokenID).addClass("active");
+
+                        }
+
+                        else if (iPageNumber == "3") {
+                            $("#pager3_" + iQueryTableTokenID).addClass("active");
+
+                        }
+
+                        $("#div_Paging_" + iQueryTableTokenID).show();
+
+                    } else {
+                        $("#div_Paging_" + iQueryTableTokenID).hide();
+
+                    }
+
+
+
+                    // $('#div_CommandEdit').hide();
+                    // ////////$('#div_CommandPreview').hide();
+                    // $('#div_CommandUpload').hide();
+
+                    //alert('load_TabPageNumberList DONE !!!');
+                }
+            });
+
+
+        }
+        catch (err) {
+            //alert(err);
+            console.error(err);
+            return;
+
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+<script>
+
+
+    function myFileParam() {
+        //return "Files";
+        return "filedata";
+    }
+    var clearDropzone;
+
+    var dz = null;
+
+    Dropzone.autoDiscover = false;
+
+    $(function () {
+
+        $("#demo-upload").dropzone({
+            autoDiscover: false,
+            autoProcessQueue: false,
+            paramName: myFileParam,//"filedata",
+            parallelUploads: 1,
+            maxFilesize: 5, //mb
+            maxThumbnailFilesize: 5, //mb
+            maxFiles: 10,
+            acceptedFiles: ".jpeg,.png,.jpg,.pdf,.docx,.doc,.xls,.xlsx,.txt",
+            uploadMultiple: true,
+            addRemoveLinks: true,
+            //disablePreviews: true,
+
+            init: function () {
+                dz = this;
+                // // // // // $("#btnupload").click(function (e) {
+                // // // // //     e.preventDefault();
+                // // // // //     dz.processQueue();
+                // // // // //     // $(this).attr("disabled", "disabled");
+                // // // // //     //$(this).removeAttr('disabled'));
+                // // // // //     open_TabViewProgress();
+                // // // // // });
+
+                //clearDropzone = function () {
+                //    dz.removeAllFiles(true);
+                //};
+
+            },
+            success: function (file) {
+                //var preview = $(file.previewElement);
+                //preview.addClass("dz-success text-success");
+                setTimeout(function () {
+                    this.removeFile(file);
+
+                }, 2000);
+                //open_TabViewProgress();
+
+            },
+
+
+            processing: function () {
+
+                this.options.autoProcessQueue = true;
+            },
+
+            queuecomplete: function () {
+                //alert('Files Uploaded Successfully!');
+                this.options.autoProcessQueue = false;
+                this.removeAllFiles(true);
+
+                setTimeout(function () {
+
+                    open_TabViewDocuments(true);
+
+                }, 2000);
+
+
+                BSR_ShowToastMessage('upload');
+
+            },
+            dictDefaultMessage: "<div style='display:flex;flex-direction:column;'><div><b>Drag and drop your files here to upload.</b></div><div><img src='https://bsr.vemcoconsulting.com/img/img_upload.png' style='width:50px;height:50px;'/></div><div><span class='m-3' >- or -</span></div><div class='m-3'><span style='width:auto;height:40px;border:1px solid silver;border-radius:2px;padding:5px;color:black;background-color:white;'>Select from device</span></div></div>",
+            dictRemoveFile: "Remove"
+        });
+
+
+
+        // // // // CALLBACK ON COMPLETE UPLOADING EACH FILE
+        // // // dz.on("complete", function (file) {
+        // // //     // IF THERE ARE NO MORE FILES TO UPLOAD AND THE QUEUE IS EMPTY DO SOMETHING, ELSE GO ON WITH QUEUE PROCESS
+        // // //     if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
+        // // //         console.log("END ", this.getQueuedFiles().length);
+        // // //     }
+        // // //     else {
+        // // //         // START QUEUE PROCESSING AGAIN
+        // // //         Dropzone.forElement("#demo-upload").processQueue();
+        // // //     }
+        // // // });
+
+
+
+
+
+
+
+    });
+
+
+</script>
+
+
+
+
+<script>
+
+
+
+
+    $(document).ready(function () {
+
+        try {
+
+
+            //  // // // // XXX  $("#btnupload").click(function (e) {
+            // // // // //     e.preventDefault();
+            // // // // //     dz.processQueue();
+            // // // // //     // $(this).attr("disabled", "disabled");
+            // // // // //     //$(this).removeAttr('disabled'));
+            // // // // //     open_TabViewProgress();
+            // // // // // });
+
+            $('#btnupload').on('click', function (e) {
+
+                try {
+
+                    // alert('btnupload');
+                    // alert(dz);
+
+
+                    // // // // // // // // // // // // e.preventDefault();
+
+                    // // // // // // // // // // // // function tryQueue() {
+                    // // // // // // // // // // // //     var numQueued = dz.getQueuedFiles().length;
+                    // // // // // // // // // // // //     var numFiles = numQueued + dz.getUploadingFiles().length;
+                    // // // // // // // // // // // //     if (numQueued > 0) {
+                    // // // // // // // // // // // //         dz.processQueue();
+                    // // // // // // // // // // // //     }
+                    // // // // // // // // // // // //     if (numFiles > 0) {
+                    // // // // // // // // // // // //         setTimeout(tryQueue, 1000);
+                    // // // // // // // // // // // //     }
+                    // // // // // // // // // // // //     //else window.location = '/'; //redirect when finished
+                    // // // // // // // // // // // //     else alert('GOD HELP'); //redirect when finished
+                    // // // // // // // // // // // // }
+
+                    // // // // // // // // // // // // tryQueue();
+
+
+
+
+
+                    ////////////////////////////////////////////////////////////////
+
+                    e.preventDefault();
+                    dz.options.autoProcessQueue = true;
+                    dz.processQueue();
+
+                    open_TabViewProgress();
+
+                }
+
+                catch (err) {
+                    alert(err);
+                }
+
+
+            });
+
+
+
+
+            ///////////////////////////////////////////////
+
+
+
+
+
+
+
+            $(".nav-tabs li button").click(function () {
+                $(this).tab('show');
+            });
+
+            $('.nav-tabs li button').on('shown.bs.tab', function (event) {
+                //var x = $(event.target).text();         // active tab
+                var x = $(event.target).data('tabcontent');         // active tab
+                //var y = $(event.relatedTarget).text();  // previous tab
+                //////$(".act span").text(x);
+                //////$(".prev span").text(y);
+
+                // alert('CLICKED TAB == ' + x);
+
+                if (x === 'upload') {
+                    $('#div_CommandEdit').hide();
+                    $('#div_CommandPreview').hide();
+                    $('#div_CommandUpload').show();
+                }
+                else if (x === 'edit') {
+                    $('#div_CommandEdit').show();
+                    $('#div_CommandPreview').show();
+                    $('#div_CommandUpload').hide();
+                }
+                else if (x === 'preview') {
+
+
+                    $('#div_CommandEdit').hide();
+                    $('#div_CommandUpload').hide();
+                    $('#div_CommandPreview').show();
+
+                }
+
+                else if (x === 'view') {
+
+                    // alert($("#div_DocumentList").is(':empty'));
+                    // alert($("#div_DocumentList").length);
+
+                    //alert($.trim($("#div_DocumentList").html()).length);
+
+                    //if ($.trim($("#div_DocumentList").html()).length === 0) {
+                    //    //alert('load_TabViewDocumentList');
+                    //    load_TabViewDocumentList();
+                    //}
+
+                    $('#div_CommandEdit').hide();
+                    $('#div_CommandPreview').hide();
+                    $('#div_CommandUpload').hide();
+
+                }
+                else {
+                    $('#div_CommandEdit').hide();
+                    $('#div_CommandUpload').hide();
+                    $('#div_CommandPreview').hide();
+                }
+
+
+                //  $('#div_CommandUpload').show();
+
+            });
+
+            $("#iDocumentDateStart")
+                .datepicker({
+                    //dateFormat: 'dd-mm-yy, DD',
+                    dateFormat: 'dM, yy',
+                    //defaultDate: "24-09-2019"
+
+                    orientation: "bottom",
+                    // add this for placemenet
+                });
+            // .click(function (e) {
+            //         $('.ui-datepicker').css('bottom left', e.pageY);
+            //     });
+
+            //$datepicker.datepicker('setDate', new Date());
+            $("#iDocumentDateStart").datepicker("setDate", new Date());
+            //iDocumentDateStart
+
+            ////////////$("#datepicker").datepicker({ dateFormat: "DD, d MM, yy" });
+            ////////////$("#datepicker").datepicker("setDate", $.datepicker.parseDate("yy-mm-dd", "2017-11-16"));
+
+
+            //$("#datepicker").datepicker();
+            //$("#datepicker").datepicker("setDate", "06/01/21");
+
+            // https://stackoverflow.com/questions/35013820/how-to-pass-date-value-created-by-datepicker-to-a-mvc-5-controller-with-ajax
+
+
+
+            $(function () {
+
+            });
+
+
+        }
+        catch (err) {
+            console.error(err);
+            return;
+        }
+
+    });
+
+</script>
+

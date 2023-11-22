@@ -44,6 +44,8 @@ namespace BSRVemcoCS.iAppViewModel
 
 
         public List<AppUserBuildingInformationModelManager>? BuildingInformationList { get; set; } = null;
+        public List<AppUserBuildingInformationModelManager>? BuildingInformationList1 { get; set; } = null;
+        public List<AppUserBuildingInformationModelManager>? BuildingInformationList2 { get; set; } = null;
 
 
 

@@ -31,8 +31,12 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="~/img/favicon.png" rel="icon">
-    <link href="~/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="~/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/img/favicon-16x16.png">
+    <link rel="manifest" href="~/img/site.webmanifest">
+    @*     <link href="~/img/favicon.png" rel="icon">
+    <link href="~/img/apple-touch-icon.png" rel="apple-touch-icon"> *@
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -100,6 +104,7 @@
     <link href="~/css/bsr_floatinginput_CSS.css" rel="stylesheet" />
     <link href="~/css/bsr_input_CSS.css" rel="stylesheet" />
     <link href="~/css/bsr_scrollbar_CSS.css" rel="stylesheet" />
+    <link href="~/css/bsr_link_CSS.css" rel="stylesheet" />
 
 
 
@@ -136,7 +141,7 @@
             <div class="pagetitle" style="padding-left:50px;margin-top:5px;padding-bottom:0px;">
                 <h3>
                     @{
-                                @iOwnerModel!.CompanyName
+                        @iOwnerModel!.CompanyName
                     }
                 </h3>
             </div>
@@ -217,35 +222,35 @@
                                     <hr class="dropdown-divider">
                                 </li>
 
-                                <li>
-                                    <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                                        <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
-                                        <span>My Profile</span>
-                                    </a>
+                                @*        <li>
+                                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                                <i class="bi bi-circle-fill" style="font-size:xx-small;"></i>
+                                <span>My Profile</span>
+                                </a>
                                 </li>
                                 <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-
-                                <li>
-                                    <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                                        <i class="bi bi-gear"></i>
-                                        <span>Account Settings</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
+                                <hr class="dropdown-divider">
                                 </li>
 
                                 <li>
-                                    <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                                        <i class="bi bi-question-circle"></i>
-                                        <span>Need Help?</span>
-                                    </a>
+                                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                                <i class="bi bi-gear"></i>
+                                <span>Account Settings</span>
+                                </a>
                                 </li>
                                 <li>
-                                    <hr class="dropdown-divider">
+                                <hr class="dropdown-divider">
                                 </li>
+
+                                <li>
+                                <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                                <i class="bi bi-question-circle"></i>
+                                <span>Need Help?</span>
+                                </a>
+                                </li>
+                                <li>
+                                <hr class="dropdown-divider">
+                                </li> *@
 
                                 <li>
                                     <form method="post" asp-area="/" asp-controller="Account" asp-action="Logout">
@@ -296,7 +301,7 @@
 
         <div style="background-color:#0a65bb;display:flex;flex-direction:column;padding:0px;margin:0px;">
 
-           <div class="topCenter" style="padding:0px;margin:0px;">
+            <div class="topCenter" style="padding:0px;margin:0px;">
 
                 <div>
 
@@ -305,18 +310,18 @@
                         @* class="middleCenter" *@
                         <a class="nav-link " asp-area="iWebMember" asp-controller="Dashboard"
                            asp-action="Index">
-                        
-                        <div class="middleCenter" style="display:flex;flex-direction:column;">
+
+                            <div class="middleCenter" style="display:flex;flex-direction:column;">
 
                                 <span style="color:white;font-size:45px;letter-spacing:2px;font-stretch:expanded;">BSR</span>
-@* letter-spacing:0px;font-stretch:expanded; *@
-                            <span style="color:white;font-size:15px;margin-top:-18px;">Building Portal</span>
+                                @* letter-spacing:0px;font-stretch:expanded; *@
+                                <span style="color:white;font-size:15px;margin-top:-18px;">Building Portal</span>
 
-                        </div>
-</a>
+                            </div>
+                        </a>
                     </div>
 
-                    <div class="mb-4" id="div_About" style="cursor:pointer;">
+                    <div class="mb-4" id="div_About" style="cursor:pointer;" onclick="BSRVideo()">
 
                         @* *@
                         <table class="middleCenter" style="width:100%;padding:5px;">
@@ -338,12 +343,246 @@
 
                     </div>
 
+                    <div class="mb-4" id="div_ViewBuilding" style="display:none;">
+
+                        @*      onclick="open_MenuHeaderItemList('collapseViewBuilding');" *@
+                        <div id="div_CollapseViewBuilding" data-bs-toggle="collapse" data-bs-target="#collapseViewBuilding" aria-expanded="false" aria-controls="collapseViewBuilding">
+
+                            <div id="div_ViewBuilding_Collapse" style="cursor:pointer;">
+
+                                <table class="middleCenter" style="width:100%;padding:5px;">
+                                    <tr>
+                                        <td class="bottomCenter">
+
+                                            <img src="~/img/img_meun_ViewBuilding.png" style="width:30px;height:30px;" />
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+
+                                        <td class="topCenter">
+                                            <span style="color:white;">VIEW BUILDING</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+
+                        </div>
+
+                        <div class="collapse" id="collapseViewBuilding" data-mnuid="viewbuilding">
+
+                            <div class="col-12" id="div_ViewBuilding_MenuList">
+
+                                <div class="middleCenter mt-1" style="width:100%;">
+
+                                    @* background-color:#18a6ff; *@
+                                    <div id="div_building_summary" class="mb-1 divHighlightMenu" style="cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px #00000000;"
+                                         onclick="load_PageContent_Dynamic_ByPageTokenID('building_summary')">
+
+                                        <table style="padding:5px;">
+                                            <tr>
+                                                <td style="width:20px;padding-top:5px;">
+                                                    <i class="bi bi-circle-fill" style="color:white;font-size:xx-small;"></i>
+                                                </td>
+                                                <td style="padding-left:5px;padding-top:5px;">
+                                                    <span style="color:white;">Summary Information</span>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+
+
+
+                                    <table style="padding:5px;margin-left:50px;">
+                                        <tr>
+                                            <td style="width:20px;padding-top:5px;">
+
+                                                @* <i class="bi bi-circle-fill" style="color:white;font-size:small;"></i> *@
+                                                <img src="/img/img_menu_info.png" style="width:15px;height:15px;" />
+                                            </td>
+                                            <td style="padding-left:5px;padding-top:5px;">
+                                                <span style="color:white;">Information Gathering</span>
+
+                                            </td>
+                                        </tr>
+
+                                    </table>
+
+
+                                    @*                                  *@
+                                    <div id="div_building_golden" class="mb-1 divHighlightMenu" style="cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px#00000000;"
+                                         onclick="load_PageContent_Dynamic_ByPageTokenID('building_golden')">
+
+                                        <table style="padding:5px;">
+                                            <tr>
+                                                <td style="width:20px;padding-top:5px;">
+
+                                                    <i class="bi bi-circle-fill" style="color:white;font-size:xx-small;"></i>
+                                                </td>
+                                                <td style="padding-left:5px;padding-top:5px;">
+                                                    <span style="color:white;">Golden Thread Documents</span>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+
+
+                                    @*  *@
+                                    <div id="div_building_resident" class="mb-1 divHighlightMenu" style="cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px#00000000;"
+                                         onclick="load_PageContent_Dynamic_ByPageTokenID('building_resident')">
+
+                                        <table style="padding:5px;">
+                                            <tr>
+                                                <td style="width:20px;padding-top:5px;">
+
+                                                    <i class="bi bi-circle-fill" style="color:white;font-size:xx-small;"></i>
+                                                </td>
+                                                <td style="padding-left:5px;padding-top:5px;">
+                                                    <span style="color:white;">Resident Engagement</span>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+
+
+
+                                    @*                                 *@
+                                    <div id="div_building_gap" class="mb-1 divHighlightMenu" style="cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px#00000000;"
+                                         onclick="load_PageContent_Dynamic_ByPageTokenID('building_gap')">
+
+                                        <table style="padding:5px;">
+                                            <tr>
+                                                <td style="width:20px;padding-top:5px;">
+
+                                                    <i class="bi bi-circle-fill" style="color:white;font-size:xx-small;"></i>
+                                                </td>
+                                                <td style="padding-left:5px;padding-top:5px;">
+                                                    <span style="color:white;">Gap Analysis</span>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+
+
+
+
+                                    <div style="background-color:#f6f9ff;">
+
+                                        <table style="padding:5px;margin-left:50px;">
+                                            <tr>
+                                                <td style="width:20px;padding-top:5px;">
+
+                                                    <img src="/img/img_menu_static.png" style="width:15px;height:15px;" />
+                                                </td>
+                                                <td style="padding-left:5px;padding-top:5px;">
+                                                    <span style="color:gray;">Building Risk Analysis</span>
+
+                                                </td>
+                                            </tr>
+
+                                        </table>
+
+                                        @*    *@
+                                        <div id="div_building_report" class="mb-1 divHighlightMenu" style="cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px#00000000;"
+                                             onclick="load_PageContent_Dynamic_ByPageTokenID('building_report')">
+
+                                            <table style="padding:5px;">
+                                                <tr>
+                                                    <td style="width:20px;padding-top:5px;">
+
+                                                        <i class="bi bi-circle-fill" style="color:gray;font-size:xx-small;"></i>
+                                                    </td>
+                                                    <td style="padding-left:5px;padding-top:5px;">
+                                                        <span style="color:gray;">Occurrence Reporting</span>
+                                                        @* <br /><span style="color:white;">and Resident Engagement</span> *@
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+                                        </div>
+
+                                        @*                                         onclick="load_PageContent_Dynamic_ByPageTokenID('building_safety')" *@
+                                        <div id="div_building_safety" class="mb-1 divHighlightMenu" style="cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px#00000000;">
+
+                                            <table style="padding:5px;">
+                                                <tr>
+                                                    <td style="width:20px;padding-top:5px;">
+
+                                                        <i class="bi bi-circle-fill" style="color:gray;font-size:xx-small;"></i>
+                                                    </td>
+                                                    <td style="padding-left:5px;padding-top:5px;">
+                                                        <span style="color:gray;">Safety Management System</span>
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+                                        </div>
+
+                                        @*    onclick="load_PageContent_Dynamic_ByPageTokenID('building_system')" *@
+                                        <div id="div_building_system" class="mb-1 divHighlightMenu" style="cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px#00000000;">
+
+                                            <table style="padding:5px;">
+                                                <tr>
+                                                    <td style="width:20px;padding-top:5px;">
+
+                                                        <i class="bi bi-circle-fill" style="color:gray;font-size:xx-small;"></i>
+                                                    </td>
+                                                    <td style="padding-left:5px;padding-top:5px;">
+                                                        <span style="color:gray;">System Testing</span>
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+                                        </div>
+
+                                        @*                                         onclick="load_PageContent_Dynamic_ByPageTokenID('building_risk')" *@
+                                        <div id="div_building_risk" class="mb-1 divHighlightMenu" style="cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px#00000000;">
+
+                                            <table style="padding:5px;">
+                                                <tr>
+                                                    <td style="width:20px;padding-top:5px;">
+
+                                                        <i class="bi bi-circle-fill" style="color:gray;font-size:xx-small;"></i>
+                                                    </td>
+                                                    <td style="padding-left:5px;padding-top:5px;">
+                                                        <span style="color:gray;">Risk Assesment</span>
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+                                        </div>
+
+
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+
+
+
+                            @*   <div class="card card-body">
+                            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                            </div> *@
+                        </div>
+
+
+                    </div>
+
                     <div class="mb-4" id="div_Building">
 
-
+                        @*      onclick="open_MenuHeaderItemList('collapseBuilding');" *@
                         <div id="div_CollapseBuilding" data-bs-toggle="collapse" data-bs-target="#collapseBuilding" aria-expanded="false" aria-controls="collapseBuilding">
-                   
-                            <div id="div_Building_Collapse" class="divHighlightMenu" style="cursor:pointer;">
+
+                            <div id="div_Building_Collapse" style="cursor:pointer;">
 
                                 <table class="middleCenter" style="width:100%;padding:5px;">
                                     <tr>
@@ -361,18 +600,18 @@
                                     </tr>
                                 </table>
                             </div>
-                    
+
 
                         </div>
-                 
+
                         <div class="collapse" id="collapseBuilding" data-mnuid="building">
 
                             <div class="col-12" id="div_Building_MenuList">
 
                                 <div class="middleCenter mt-1" style="width:100%;">
 
-
-                                    <div class="mb-1 divHighlightMenu" style="width:100%;height:30px;padding-left:70px;background-color:#18a6ff;border:solid 1px #00000000;">
+                                    @*      onclick="load_PageContent_Static_ByPageTokenID('building_new')" *@
+                                    <div id="div_building_new" class="mb-1 divHighlightMenu" style="cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px #00000000;">
 
                                         <table style="padding:5px;">
                                             <tr>
@@ -391,7 +630,8 @@
 
 
 
-                                    <div class="mb-1 divHighlightMenu" style="width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px#00000000;">
+                                    <div id="div_building_list" class="mb-1 divHighlightMenu" style="cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px#00000000;"
+                                         onclick="load_PageContent_Static_ByPageTokenID('building_list')">
 
                                         <table style="padding:5px;">
                                             <tr>
@@ -420,11 +660,11 @@
                             </div> *@
                         </div>
 
-                      
+
                     </div>
 
                     <div class="mb-4" id="div_Admin">
-                    
+
 
                         <div id="div_CollapseAdmin" data-bs-toggle="collapse" data-bs-target="#collapseAdmin" aria-expanded="false" aria-controls="collapseAdmin">
 
@@ -454,11 +694,12 @@
 
                             <div class="col-12" id="div_Admin_MenuList">
 
-                            
+
                                 <div class="middleCenter mt-1" style="width:100%;">
 
 
-                                    <div class="mb-1 divHighlightMenu" style="width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px #00000000;">
+                                    <div id="div_profile" class="mb-1 divHighlightMenu" style="cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px #00000000;"
+                                         onclick="load_PageContent_Static_ByPageTokenID('profile')">
 
                                         <table style="padding:5px;">
                                             <tr>
@@ -477,7 +718,27 @@
 
 
 
-                                    <div class="mb-1 divHighlightMenu" style="width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px#00000000;display:block;">
+                                    <div id="div_password" class="mb-1 divHighlightMenu" style="display:none;cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px #00000000;"
+                                         onclick="load_PageContent_Static_ByPageTokenID('password')">
+
+                                        <table style="padding:5px;">
+                                            <tr>
+                                                <td style="width:20px;padding-top:5px;">
+
+                                                    <i class="bi bi-circle-fill" style="color:white;font-size:xx-small;"></i>
+                                                </td>
+                                                <td style="padding-left:5px;padding-top:5px;">
+                                                    <span style="color:white;">Change Password</span>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+
+
+
+                                    <div id="div_invite" class="mb-1 divHighlightMenu" style="cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px#00000000;display:block;"
+                                         onclick="load_PageContent_Static_ByPageTokenID('invite')">
 
                                         <table style="padding:5px;">
                                             <tr>
@@ -539,12 +800,13 @@
 
                             <div class="col-12" id="div_Subscription_MenuList">
 
-                            
+
 
                                 <div class="middleCenter mt-1" style="width:100%;">
 
 
-                                    <div class="mb-1 divHighlightMenu" style="width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px #00000000;">
+                                    <div id="div_subscription" class="mb-1 divHighlightMenu" style="cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px #00000000;"
+                                         onclick="load_PageContent_Static_ByPageTokenID('subscription')">
 
                                         <table style="padding:5px;">
                                             <tr>
@@ -560,7 +822,7 @@
 
                                         </table>
                                     </div>
- 
+
 
 
                                 </div>
@@ -573,7 +835,7 @@
                     </div>
 
                     <div class="mb-4" id="div_HelpSupport">
-                       
+
 
                         <div id="div_CollapseSupport" data-bs-toggle="collapse" data-bs-target="#collapseSupport" aria-expanded="false" aria-controls="collapseSupport">
 
@@ -603,12 +865,13 @@
 
                             <div class="col-12" id="div_Support_MenuList">
 
-                         
+
 
                                 <div class="middleCenter mt-1" style="width:100%;">
 
 
-                                    <div class="mb-1 divHighlightMenu" style="width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px #00000000;">
+                                    <div id="div_terms" class="mb-1 divHighlightMenu" style="cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px #00000000;"
+                                         onclick="load_PageContent_Static_ByPageTokenID('terms')">
 
                                         <table style="padding:5px;">
                                             <tr>
@@ -618,7 +881,7 @@
                                                     <i class="bi bi-circle-fill" style="color:white;font-size:xx-small;"></i>
                                                 </td>
                                                 <td style="padding-left:5px;padding-top:5px;">
-                                                    <span style="color:white;">Term of use</span>
+                                                    <span style="color:white;">Terms of use</span>
                                                 </td>
                                             </tr>
 
@@ -626,28 +889,28 @@
                                     </div>
 
 
-
+                                    @*
                                     <div class="mb-1 divHighlightMenu" style="width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px#00000000;">
 
-                                        <table style="padding:5px;">
-                                            <tr>
-                                                <td style="width:20px;padding-top:5px;">
+                                    <table style="padding:5px;">
+                                    <tr>
+                                    <td style="width:20px;padding-top:5px;">
 
-                                                    @* <img src="~/img/img_setting_white.png" style="width:20px;height:20px;" /> *@
-                                                    <i class="bi bi-circle-fill" style="color:white;font-size:xx-small;"></i>
-                                                </td>
-                                                <td style="padding-left:5px;padding-top:5px;">
-                                                    <span style="color:white;">FAQ</span>
-                                                </td>
-                                            </tr>
+                                    <i class="bi bi-circle-fill" style="color:white;font-size:xx-small;"></i>
+                                    </td>
+                                    <td style="padding-left:5px;padding-top:5px;">
+                                    <span style="color:white;">FAQ</span>
+                                    </td>
+                                    </tr>
 
-                                        </table>
+                                    </table>
                                     </div>
+                                    *@
 
-                           
-                              
 
-                                    <div class="mb-1 divHighlightMenu" style="width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px#00000000;">
+
+                                    <div id="div_contactus" class="mb-1 divHighlightMenu" style="cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px#00000000;"
+                                         onclick="load_PageContent_Static_ByPageTokenID('contactus')">
 
                                         <table style="padding:5px;">
                                             <tr>
@@ -664,8 +927,8 @@
                                         </table>
                                     </div>
 
-                           
-                              
+
+
                                 </div>
 
                             </div>
@@ -1081,7 +1344,31 @@
 
             @*  <i class="bi bi-list toggle-sidebar-btn"></i> *@
 
-            <span class="fs-6" style="margin-left:10px;padding-top:10px;color:#0a75bb;float:left;">BSR Building Portal</span>
+
+
+            <div id="div_PagePathName" class="fs-6" style="display:inline;margin-left:10px;padding-top:10px;float:left;">
+                @await Component.InvokeAsync("BSRVemcoPagePathName",
+                new { ParentPageName =  "BSR Building Portal",
+                ChildPageName = "Dashboard",
+                ParentPageNameColorCSS = "#9999cc",
+                ChildPageNameColorCSS = "#0a75bb",
+                ChildPageNameCSS = "block"})
+            </div>
+            @* <span class="fs-6" style="margin-left:10px;padding-top:10px;color:#0a75bb;float:left;">BSR Building Portal</span> *@
+
+
+            <div id="div_BuildingBlock" style="display:none;width:250px;margin-right:10px;padding-top:10px;float:right;">
+                <div style="display:flex;flex-direction:row;justify-content:space-between;">
+                    @*      div_BuildingName  div_BuildingName  div_BuildingName  div_BuildingName  div_BuildingName  div_BuildingName  div_BuildingName *@
+                    <div id="div_BuildingName" class="fs-6 div_TextTruncate" style="width:210px;color:black;">
+                    </div>
+
+                    <button type="button" class="btn btn-sm btn-outline-dark" style="height:30px;width:auto;">Edit</button>
+
+
+
+                </div>
+            </div>
 
         </div>
 
@@ -1097,8 +1384,8 @@
 
 
         </div> *@
-        @* background-color:yellow;" *@
-        <div class="topLeft" style="height:calc(100vh - 160px);overflow:hidden;overflow-x:hidden;overflow-y:auto;">
+        @* id="div_RenderBody" background-color:red; background-color:yellow;" *@
+        <div class="topLeft" style="padding-top:0px;height:calc(100vh - 160px);overflow:hidden;overflow-x:hidden;overflow-y:auto;">
 
 
             @RenderBody()
@@ -1153,6 +1440,22 @@ font-size:small;background-color:#152365;">
             <span style="color:whitesmoke;">Copyright © 2023 Designed by </span><a href="mailto:OneWorldLancer@gmail.com" target="_blank" style="font-weight:bold;color:white;text-decoration:underline;">OneWorldLancer</a>
         </div>
     </footer>
+
+
+    <input id="iBuildingTokenID" name="iBuildingTokenID" type="hidden" value="0" />
+    <input id="iBuildingName" name="iBuildingName" type="hidden" value="0" />
+    <input id="hdn_InformationTokenID" name="hdn_InformationTokenID" type="hidden" value="0" />
+    <input id="iAppQueryInformationTokenID" name="iAppQueryInformationTokenID" type="hidden" value="0" />
+    <input id="iAppQueryTableTokenID" name="iAppQueryTableTokenID" type="hidden" value="0" />
+    <input id="iQueryTableTokenID" name="iQueryTableTokenID" type="hidden" value="0" />
+    <input id="iQueryInformationTokenID" name="iQueryInformationTokenID" type="hidden" value="0" />
+    <input id="iInformationTokenID" name="iInformationTokenID" type="hidden" value="0" />
+    <input id="iDocumentTokenID" name="iDocumentTokenID" type="hidden" value="0" />
+    <input id="iTimeFrame" name="iTimeFrame" type="hidden" value="0" />
+    <input id="iDocumentCount" name="iDocumentCount" type="hidden" value="0" />
+
+    <input id="iAppinformationTokenID" name="iAppinformationTokenID" type="hidden" value="0" />
+
 
 
 
@@ -1355,6 +1658,14 @@ font-size:small;background-color:#152365;">
 
 
 
+            // // // // // $('.collapse').on('show.bs.collapse', function (event) {
+
+            // // // // //     // do expand
+            // // // // //     $(".collapse").hide("slow");
+
+            // // // // // });
+
+
             $('.collapse').on('shown.bs.collapse', function (event) {
 
                 // do expand
@@ -1376,6 +1687,10 @@ font-size:small;background-color:#152365;">
 
                 if (x == 'building') {
                     objMenuHeader = $('#div_Building_Collapse');
+                }
+
+                else if (x == 'viewbuilding') {
+                    objMenuHeader = $('#div_ViewBuilding_Collapse');
                 }
 
                 else if (x == 'admin') {
@@ -1401,6 +1716,20 @@ font-size:small;background-color:#152365;">
 
 
 
+                window.iGloablMenuHeader_OpenCurrent = objMenuHeader;
+                //window.iGloablMenuItemSelectedCurrent = 'building';
+
+                if (window.iGloablMenuHeader_OpenPrevious != null) {
+                    alert('window.iGloablMenuHeader_OpenPrevious' + window.iGloablMenuHeader_OpenPrevious);
+                    //if (window.iGloablMenuHeader_OpenCurrent != window.iGloablMenuHeader_OpenPrevious) {
+
+                    // $(window.iGloablMenuHeader_OpenPrevious).collapse('hide');
+
+                    // $("#charts-nav").collapse(localStorage.getItem('jsBuildingContextMenu'));
+                    window.iGloablMenuHeader_OpenPrevious = objMenuHeader;
+
+                    //}
+                }
 
 
 
@@ -1451,23 +1780,28 @@ font-size:small;background-color:#152365;">
 
                 var objMenuHeader;
 
-                if (x == 'building') { 
+                if (x == 'building') {
                     objMenuHeader = $('#div_Building_Collapse');
                 }
 
-                else   if (x == 'admin') { 
-                       objMenuHeader = $('#div_Admin_Collapse');
+                else if (x == 'viewbuilding') {
+                    objMenuHeader = $('#div_ViewBuilding_Collapse');
                 }
 
-                
+
+                else if (x == 'admin') {
+                    objMenuHeader = $('#div_Admin_Collapse');
+                }
+
+
                 else if (x == 'subscription') {
                     //div_Subscription_Collapse
                     objMenuHeader = $('#div_Subscription_Collapse');
                 }
 
-                
-                else   if (x == 'support') { 
-                       objMenuHeader = $('#div_Support_Collapse');
+
+                else if (x == 'support') {
+                    objMenuHeader = $('#div_Support_Collapse');
                 }
 
                 // $('#div_Building_Collapse').css('-webkit-transform', 'translate(' + 0 + 'px,' + 0 + 'px)');
@@ -1476,14 +1810,14 @@ font-size:small;background-color:#152365;">
                 $(objMenuHeader).animate({
                     marginLeft: "0px"
                 });
-                
-              
+
+
                 // $('#div_Building_Collapse').animate({
                 //     marginLeft: "0px"
                 // });
-                
-                
-                
+
+
+
                 // alert('hidden.bs.collapse == ' + x);
 
                 // console.log("Closed")
@@ -1791,9 +2125,201 @@ font-size:small;background-color:#152365;">
 
 
 
+        window.iGloablMenuHeader_OpenCurrent = null,
+            window.iGloablMenuHeader_OpenPrevious = null,
+            window.iGloablMenuItemSelectedPrevious = null;
+        window.iGloablMenuItemSelectedCurrent = null;
+
+
+        function open_MenuHeaderItemList(mnuHeaderCode) {
+
+            try {
+
+                // window.iGloablMenuHeader = 'building';
+                // window.iGloablMenuItemSelectedCurrent = 'building';
+
+                // if (window.iGloablMenuItemSelectedPrevious != null) {
+
+                //     $("#collapseSupport").collapse('hide');
+
+                //     // $("#charts-nav").collapse(localStorage.getItem('jsBuildingContextMenu'));
+
+
+                // }
+
+
+
+                // // // // // // // // // // //alert('upload_DocumentLinkList');
+                // // // // // // // // // // var _urlLinkList = "";
+
+                // // // // // // // // // // var inputs = $('[data-inputfor="fupload"]');
+
+                // // // // // // // // // // //alert(inputs.length);
+
+
+                // // // // // // // // // // for (var i = 0; i < inputs.length; i++) {
+
+                // // // // // // // // // //     // alert($(inputs[i]).val());
+                // // // // // // // // // //     // alert(isValidUrl($(inputs[i]).val()));
+
+                // // // // // // // // // //     if ($(inputs[i]).val().length != 0) {
+
+
+                // // // // // // // // // //         if (isValidUrl($(inputs[i]).val())) {
+
+                // // // // // // // // // //             if (_urlLinkList == "") {
+                // // // // // // // // // //                 _urlLinkList = $(inputs[i]).val();
+                // // // // // // // // // //             }
+
+                // // // // // // // // // //             else {
+                // // // // // // // // // //                 _urlLinkList += ',' + $(inputs[i]).val();
+                // // // // // // // // // //             }
+
+                // // // // // // // // // //         }
+                // // // // // // // // // //     }
+
+                // // // // // // // // // //     // else {
+                // // // // // // // // // //     //     alert('empty');
+
+                // // // // // // // // // //     // }
+
+
+                // // // // // // // // // // }
+
+                // // // // // // // // // // if (_urlLinkList != "") {
+
+                // // // // // // // // // //     // alert('_urlLinkList != ""');
+
+
+                // // // // // // // // // //     BSR_ShowToastMessage('process');
+
+                // // // // // // // // // //     open_TabViewProgressQuery();
+
+
+
+
+
+                // // // // // // // // // //     $.ajax({
+
+                // // // // // // // // // //         url: '/iWebMember/Development/QueryForm_Upload_FileLinks',
+                // // // // // // // // // //         data: {
+                // // // // // // // // // //             iAppQueryTableTokenID: $("#iAppQueryTableTokenID").val(),
+                // // // // // // // // // //             iAppQueryInformationTokenID: $("#iAppQueryInformationTokenID").val(),
+                // // // // // // // // // //             iQueryTableTokenID: $("#iQueryTableTokenID").val(),
+                // // // // // // // // // //             iQueryInformationTokenID: $("#iQueryInformationTokenID").val(),
+                // // // // // // // // // //             iBuildingTokenID: $("#iBuildingTokenID").val(),
+                // // // // // // // // // //             iFileLinkList: _urlLinkList,
+                // // // // // // // // // //             iAnswerCode: window.answercode,
+                // // // // // // // // // //             iAnswerText: window.systemdescription
+
+
+                // // // // // // // // // //             // // // // // doctknid: window.doctknid,
+                // // // // // // // // // //             // // // // // iday: date.getDate(),
+                // // // // // // // // // //             // // // // // // idayname: $("#iBuildingTokenID").val(),
+                // // // // // // // // // //             // // // // // imonth: date.getMonth() + 1,
+                // // // // // // // // // //             // // // // // iyear: date.getFullYear(),
+                // // // // // // // // // //             // // // // // iDateText: $("#iDocumentDateStart").val(),
+                // // // // // // // // // //             // // // // // idesc: txt_DocumentDescription,
+                // // // // // // // // // //             // // // // // timeframe: window.timeframe
+                // // // // // // // // // //         },
+                // // // // // // // // // //         success: function (data) {
+
+
+                // // // // // // // // // //             if (window.answercode == "yes") {
+
+                // // // // // // // // // //                 var clmn_ActivityText = $("[data-clmactivity='clmactivity_" + window.inftknid + "']");
+
+                // // // // // // // // // //                 clmn_ActivityText.html(
+                // // // // // // // // // //                     '<strong>' + window.systemtitle + '</strong>' +
+                // // // // // // // // // //                     window.systemdescription);
+
+                // // // // // // // // // //             }
+
+                // // // // // // // // // //             refresh_TabViewQueryDocumentList(true);
+
+
+
+                // // // // // // // // // //             for (var i = 0; i < inputs.length; i++) {
+
+
+                // // // // // // // // // //                 $(inputs[i]).val('');
+
+                // // // // // // // // // //             }
+
+
+                // // // // // // // // // //             // // // // clmn_DocumentDate.css('color', 'black');
+
+
+                // // // // // // // // // //             // // // // if (txt_DocumentDescription == "0") {
+                // // // // // // // // // //             // // // //     clmn_DocumentDescription.css('color', 'red');
+                // // // // // // // // // //             // // // // }
+
+                // // // // // // // // // //             // // // // else {
+                // // // // // // // // // //             // // // //     clmn_DocumentDescription.css('color', 'black');
+                // // // // // // // // // //             // // // // }
+
+
+                // // // // // // // // // //             // // // // clmn_DocumentDate.html($("#iDocumentDateStart").val());
+                // // // // // // // // // //             // // // // clmn_DocumentDescription.html(visible_RiskControlMeasure);
+
+
+                // // // // // // // // // //             // // // // cancel_TabEditDocument();
+
+                // // // // // // // // // //         }
+                // // // // // // // // // //     });
+
+
+
+                // // // // // // // // // // }
+
+                ///////////////////////////////////////////////////
+
+
+                // // // // // $('#tab_Edit').hide();
+                // // // // // $('#tab_Progress').hide();
+                // // // // // $('#div_CommandUpload').hide();
+                // // // // // $('#div_CommandEdit').hide();
+                // // // // // ////$('#div_CommandPreview').hide();
+
+                // // // // // // $('#myTab button[bs-target="#edit"]').tab('show'); // Select tab by name`
+
+                // // // // // $("#btn_Preview").removeClass("active");
+                // // // // // $("#btn_View").removeClass("active");
+                // // // // // $("#btn_Edit").removeClass("active");
+                // // // // // $("#btn_Upload").removeClass("active");
+
+                // // // // // $("#content_Preview").removeClass("active");
+                // // // // // $("#content_View").removeClass("active");
+                // // // // // $("#content_Edit").removeClass("active");
+                // // // // // $("#content_Upload").removeClass("active");
+
+                // // // // // $("#btn_Progress").addClass("active");
+                // // // // // $("#content_Progress").addClass("active");
+            }
+
+
+            catch (err) {
+                alert(err);
+                console.error(err);
+                return;
+            }
+
+        }
+
+
+
+
+
+
+
+
+
 
 
     </script>
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
+
 
 
     @*    <script>

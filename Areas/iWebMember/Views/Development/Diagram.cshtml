@@ -61,66 +61,70 @@
 @**@
 <body id="div_diagram" style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;">
 
-    <div  style="margin:10px;">
-       @*style="background-color:yellow;"*@
+    <div style="margin:20px;">
+        @*style="background-color:yellow;"*@
         @*text-align:center;*@
-     
+
         <div class="container_Diagram">
 
             <div class="txt_Vertical">Impact<span style="background-color:#0000007F;border-radius:5px;padding-top:3px;padding-bottom:3px;margin:5px;color:white;">@Model.PointYText</span></div>
 
-       <div>
-            
-            <div style="position:relative;">
-            @*opacity:0.8;*@
-               <div style="position:absolute;width:302px;height:302px;background-color:transparent;margin-left:18px;margin-bottom:52px;opacity:1;">
+            <div>
+
+                <div style="position:relative;">
+                    @*opacity:0.8;*@
+                    <div style="position:absolute;width:302px;height:302px;background-color:transparent;margin-left:18px;margin-bottom:52px;opacity:1;">
 
 
-                @* Point-1*@
-             
-                <img src="~/img/img_faq_pin_color.png" width="20px" height="20px"
-                     style="position:absolute;bottom:@{@Model.PointY}px;left:@{@Model.PointX}px;" />
+                        @* Point-1*@
 
-           @*     <img src="~/img/img_faq_pin_color.png" width="20px" height="20px"
-                     style="position:absolute;bottom:182px;left:182px;" />
-
-           *@   
-              
-           
-           
-           
-           @*Span-Point*@
-           
-           
-@*           <span style="background-color:#0000007F;border-radius:5px;padding:3px;color:white;position:absolute;bottom:@{
-                    @Model.PointYSpan
+                        <img src="~/img/img_faq_pin_color.png" width="20px" height="20px"
+                             style="position:absolute;bottom:@{
+                                @Model.PointY
 }px;left:@{
-                    @Model.PointXSpan
-}px;">( @Model.PointXText , @Model.PointYText )</span>*@
+                                @Model.PointX
+}px;" />
 
-             
+                        @*     <img src="~/img/img_faq_pin_color.png" width="20px" height="20px"
+                        style="position:absolute;bottom:182px;left:182px;" />
 
-@* Point-2*@
-               @* <img src="~/img/img_faq_pin_color.png" width="20px" height="20px"
-                     style="position:absolute;bottom:352px;left:442px;" />
-
-                <span style="color:black;position:absolute;bottom:330px;left:420px;">(4.5 , 3.5)</span>
-
-*@
-
-
-            </div>
+                        *@
 
 
 
 
-            <img src="~/img/img_diagram.png" width="320"  height="320"  />
-          
-        </div>
+                        @*Span-Point*@
+
+
+                        @*           <span style="background-color:#0000007F;border-radius:5px;padding:3px;color:white;position:absolute;bottom:@{
+                        @Model.PointYSpan
+                        }px;left:@{
+                        @Model.PointXSpan
+                        }px;">( @Model.PointXText , @Model.PointYText )</span>*@
+
+
+
+                        @* Point-2*@
+                        @* <img src="~/img/img_faq_pin_color.png" width="20px" height="20px"
+                        style="position:absolute;bottom:352px;left:442px;" />
+
+                        <span style="color:black;position:absolute;bottom:330px;left:420px;">(4.5 , 3.5)</span>
+
+                        *@
+
+
+                    </div>
+
+
+
+
+                    <img src="~/img/img_diagram.png" width="320" height="320" />
+
+                </div>
                 <div style="margin-left:100px;">Likelihood<span style="background-color:#0000007F;border-radius:5px;padding-left:3px;padding-right:3px;margin:5px;color:white;">@Model.PointXText</span></div>
-              
+
             </div>
-        
+
 
         </div>
     </div>

@@ -37,7 +37,7 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
                                 .Where ( u =>
                                 u.PageCode == iPageCode )
                                 //.Select (u  )
-                                .SingleOrDefault ( );
+                                .FirstOrDefault ( );
 
 
 

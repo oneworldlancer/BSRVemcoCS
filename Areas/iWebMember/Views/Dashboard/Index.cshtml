@@ -11,31 +11,1042 @@
             <h3 style="margin-top:10px;">BSR Service Suite</h3>
 
 
-       
+
     </div>
 </div>*@
 
-@* class="row"*@
+@* class="row"  style="margin:0px;padding:0px;"*@
+
+@* <div class="row" onclick="load_PageContent_Static_ByPageTokenID('xxx')">
+    clixk me
+</div> *@@* style="margin-top:0px;padding-top:0px;" *@
+@* igo *@
 <div id="main" style="margin-top:0px;padding-top:0px;">
 
-  @*   <div class="pagetitle" style="padding-top:0px;">
-        <h1>Home</h1>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
-        </nav>
-    </div> *@
+    <div class="pagetitle" style="padding:10px;margin:0px;">
+        @* xxxxxxx title *@
 
-    <!-- End Page Title -->
-    xxx
-@*     <section class="section dashboard" style="margin-top:0px;padding-top:0px;">
 
-        <div class="row">
+        <div class="div_RenderBody">
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <span class="card-header fs-6" style="height:50px;background-color:#0a75bb;color:white;">
+                            <img src="~/img/img_message_white.png" style="width:20px;height:auto;margin-left:5px;margin-right:5px;" />Messages
+                        </span>
+                        <div class="card-body">
+                            <h6 class="card-title">Special title treatment</h6>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+
+                    <div class="card">
+                        <span class="card-header fs-6" style="height:50px;background-color:#0a75bb;color:white;">
+                            <img src="~/img/img_meun_building_white.png" style="width:20px;height:20px;margin-left:5px;margin-right:5px;" />Buildings
+                        </span>
+                        <div class="card-body">
+                            <h6 class="card-title">Special title treatment</h6>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+
+                        <span class="card-header fs-6" style="height:50px;background-color:#0a75bb;color:white;">
+                            <img src="~/img/img_meun_admin_white.png" style="width:20px;height:20px;margin-left:5px;margin-right:5px;" />Invite Users
+                        </span>
+                        <div class="card-body">
+                            <h6 class="card-title">Special title treatment</h6>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+
+                        <span class="card-header fs-6" style="height:50px;background-color:#0a75bb;color:white;">
+                            <img src="~/img/img_meun_subscribe_white.png" style="width:20px;height:20px;margin-left:5px;margin-right:5px;" />Subscription & Billing
+                        </span>
+                        <div class="card-body">
+                            <h6 class="card-title">Special title treatment</h6>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
 
         </div>
-    </section> *@
 
+
+
+        @*         @await Component.InvokeAsync("CMS_PageViewHTMLContent","about")
+
+        <nav>
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">About BSR Business Suite</li>
+        </ol>
+        </nav> *@
+    </div>
+
+    @*    <section class="section" style="margin-top:0px;padding-top:0px;">
+
+    <div class="row">
+
+    <div class="p-3">
+
+
+
+    </div>
+
+    </div>
+    </section>
+    *@
 </div>
+
+
+
+
 <!-- End #main -->
+<!-- Full screen modal -->
+
+<div class="modal" id="popupModalVideo" style="background-color:white;">
+    <div class="modal-dialog modal-fullscreen">
+        @* style="height:auto;" *@
+        <div class="modal-content">
+
+            <div style="float:right;">
+                <img class="float-end" src="~/img/img_close_x.png" style="width:20px;height:20px;float:right;margin:10px;"
+                     data-bs-dismiss="modal" title="Close" />
+            </div>
+
+            @*   <div class="modal-header" style="background-color:whitesmoke;">
+            <h5 class="modal-title" id="confirmPopupLabel">Confirm</h5>
+            </div> *@
+            @*  https://bsr.vemcoconsulting.com/_iBSRMedia/_iBSRVideo/poster_about.png  *@
+            <div class="modal-body text-center">
+                @* <img src="~/_ibsrmedia/_ibsrvideo/poster_about.png" style="height:90%;width:auto;margin:auto;" /> *@
+
+                <video width="auto" height="99%" style="height:99%;width:auto;margin:auto;" controls
+                       poster="~/_ibsrmedia/_ibsrvideo/poster_about.png">
+                    <source src="https://bsr.vemcoconsulting.com/_iBSRMedia/_iBSRVideo/vid_about.mp4" type="video/mp4">
+
+                    @* <source src="movie.ogg" type="video/ogg"> *@
+                    Your browser does not support the video tag.
+                </video>
+
+            </div>
+            @*   <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-danger" onclick="DocumentQuery_Set_DELETE()">Delete</button>
+            </div> *@
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+
+    window.bldtknid;
+
+
+
+    function BSRVideo() {
+
+        try {
+
+            //alert(' am clicked == ' + $('#popupModalEditor'));
+
+            //jQuery.noConflict();
+            $('#popupModalVideo').modal('show');
+
+        }
+
+        catch (ex) {
+            //alert(ex);
+
+        }
+    }
+
+
+    function load_PageContent_Static_ByPageTokenID(iPageCode) {
+
+
+        try {
+
+            reset_Building_ByBuildingTokenID(iPageCode);
+
+            if (window.iGloablMenuItemSelectedCurrent != null) {
+
+                $("#div_" + window.iGloablMenuItemSelectedCurrent).css('background-color', '#00000000');
+
+                // window.iGloablMenuItemSelectedCurrent = iPageCode;
+            }
+
+            //$("#div_contactus").css('background-color', '#18a6ff');
+
+            $("#div_" + iPageCode).css('background-color', '#18a6ff');
+
+            window.iGloablMenuItemSelectedCurrent = iPageCode;
+
+            // alert(iPageCode + " div_RenderBody ...  --- " + $(".div_RenderBody"));
+
+            // alert(iPageCode + " loaded ...");
+
+            // alert('load_TabViewQueryList XXX');
+
+
+            // // BSR_ShowToastMessage('load');
+
+            // window.bldtknid = iBuildingTokenID;
+            // window.querytbltknid = iQueryTableTokenID;
+
+
+            // $("#iQueryTableTokenID").val(iQueryTableTokenID);
+            // $("#iBuildingTokenID").val(iBuildingTokenID);
+
+            var _iURL;
+
+            if (iPageCode == 'contactus') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_ContactUsPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "Help & Support",
+                    "Contact us",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+            else if (iPageCode == 'terms') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_TermsPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "Help & Support",
+                    "Terms of use",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+            else if (iPageCode == 'subscription') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_SubscriptionPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "Subscription",
+                    "Subscription & Billing",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+            else if (iPageCode == 'profile') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_ProfilePage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "Admin",
+                    "Personal Info",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+            else if (iPageCode == 'invite') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_InvitePage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "Admin",
+                    "Invite Users",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+
+            else if (iPageCode == 'password') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_PasswordPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "Admin",
+                    "Change Password",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+
+            else if (iPageCode == 'building_new') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingNewPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "Buildings",
+                    "New",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+
+            else if (iPageCode == 'building_edit') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingEditPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "View Building",
+                    "Edit",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+
+            else if (iPageCode == 'building_list') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingListPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "Buildings",
+                    "List",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+            ///////////////////////////////////
+
+            else if (iPageCode == 'building_summary') {
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingSummaryPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "View Building",
+                    "Summary Information",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+            else if (iPageCode == 'building_golden') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingGoldenPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "View Building",
+                    "Golden Thread Documents",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+            else if (iPageCode == 'building_resident') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingResidentPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "View Building",
+                    "Resident Engagement",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+
+            else if (iPageCode == 'building_gap') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingGapPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "View Building",
+                    "Gap Analysis",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+
+            else if (iPageCode == 'building_report') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingReportPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "View Building",
+                    "Occurrence Reporting",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+
+            else if (iPageCode == 'building_safety') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingSafetyPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "View Building",
+                    "Safety Management System",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+
+            else if (iPageCode == 'building_system') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingSystemPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "View Building",
+                    "System Testing",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+
+            else if (iPageCode == 'building_risk') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingRiskPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "View Building",
+                    "Risk Assesment",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+            $.ajax({
+
+                url: _iURL,
+                // // // data: {
+                // // //     // // // // // bldtknid: $("#iBuildingTokenID").val(),//document.getElementById("cbShowPrevious").checked,
+                // // //     // // // // // querytbltknid: $("#iQueryTableTokenID").val(), //document.getElementById("cbShowUpcoming").checked
+                // // //     // // // // // iPageNumber: iPageNumber, //document.getElementById("cbShowUpcoming").checked
+                // // //     // // // // // blnIsPaging: blnIsPaging //document.getElementById("cbShowUpcoming").checked
+                // // // },
+                success: function (data) {
+
+
+                    // alert(iPageCode + " div_RenderBody ...  --- " + $(".div_RenderBody"));
+
+                    // alert(iPageCode + " loaded ...  --- " + data);
+
+
+                    $(".div_RenderBody").html(data);
+
+                }
+
+            });
+
+        } catch (err) {
+
+            console.error(err);
+            return;
+
+        }
+
+    }
+
+
+
+    function load_PageContent_Dynamic_ByPageTokenID(iPageCode) {
+
+
+        try {
+
+
+            var iBuildingTokenID = window.bldtknid;// $("#iBuildingTokenID").val();//'1695939898394';
+
+            //window.bldtknid = iBuildingTokenID;
+
+            // alert('iBuildingTokenID == ' + iBuildingTokenID);
+
+            //$("#iBuildingTokenID").val(iBuildingTokenID);
+
+
+
+
+            if (window.iGloablMenuItemSelectedCurrent != null) {
+
+                $("#div_" + window.iGloablMenuItemSelectedCurrent).css('background-color', '#00000000');
+
+                // window.iGloablMenuItemSelectedCurrent = iPageCode;
+            }
+
+            //$("#div_contactus").css('background-color', '#18a6ff');
+
+            $("#div_" + iPageCode).css('background-color', '#18a6ff');
+
+            window.iGloablMenuItemSelectedCurrent = iPageCode;
+
+
+
+
+
+
+            // alert(iPageCode + " div_RenderBody ...  --- " + $(".div_RenderBody"));
+
+            // alert(iPageCode + " loaded ...");
+
+            // alert('load_TabViewQueryList XXX');
+
+
+            // // BSR_ShowToastMessage('load');
+
+            // window.bldtknid = iBuildingTokenID;
+            // window.querytbltknid = iQueryTableTokenID;
+
+
+            // $("#iQueryTableTokenID").val(iQueryTableTokenID);
+            // $("#iBuildingTokenID").val(iBuildingTokenID);
+
+            var _iURL;
+
+            if (iPageCode == 'contactus') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_ContactUsPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "Help & Support",
+                    "Contact us",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+            else if (iPageCode == 'terms') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_TermsPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "Help & Support",
+                    "Terms of use",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+            else if (iPageCode == 'subscription') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_SubscriptionPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "Subscription",
+                    "Subscription & Billing",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+            else if (iPageCode == 'profile') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_ProfilePage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "Admin",
+                    "Personal Info",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+            else if (iPageCode == 'invite') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_InvitePage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "Admin",
+                    "Invite Users",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+
+            else if (iPageCode == 'password') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_PasswordPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "Admin",
+                    "Change Password",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+
+            else if (iPageCode == 'building_new') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingNewPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "Buildings",
+                    "New",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+
+            else if (iPageCode == 'building_edit') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingEditPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "View Building",
+                    "Edit",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+
+            else if (iPageCode == 'building_list') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingListPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "Buildings",
+                    "List",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+            ///////////////////////////////////
+
+            else if (iPageCode == 'building_summary') {
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingSummaryPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "View Building",
+                    "Summary Information",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+            else if (iPageCode == 'building_golden') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingGoldenPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "View Building",
+                    "Golden Thread Documents",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+            else if (iPageCode == 'building_resident') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingResidentPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "View Building",
+                    "Resident Engagement",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+
+            else if (iPageCode == 'building_gap') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingGapPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "View Building",
+                    "Gap Analysis",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+
+            else if (iPageCode == 'building_report') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingReportPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "View Building",
+                    "Occurrence Reporting",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+
+            else if (iPageCode == 'building_safety') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingSafetyPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "View Building",
+                    "Safety Management System",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+
+            else if (iPageCode == 'building_system') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingSystemPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "View Building",
+                    "System Testing",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+
+            else if (iPageCode == 'building_risk') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingRiskPage';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "View Building",
+                    "Risk Assesment",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+            $.ajax({
+
+                url: _iURL,
+                data: {
+                    iBuildingTokenID: iBuildingTokenID//$("#iBuildingTokenID").val()//,//document.getElementById("cbShowPrevious").checked,
+                    //querytbltknid: $("#iQueryTableTokenID").val(), //document.getElementById("cbShowUpcoming").checked
+                    //iPageNumber: iPageNumber, //document.getElementById("cbShowUpcoming").checked
+                    //blnIsPaging: blnIsPaging //document.getElementById("cbShowUpcoming").checked
+                },
+                success: function (data) {
+
+
+                    // alert(iPageCode + " div_RenderBody ...  --- " + $(".div_RenderBody"));
+
+                    // alert(iPageCode + " loaded ...  --- " + data);
+
+
+                    $(".div_RenderBody").html(data);
+
+                }
+
+            });
+
+        } catch (err) {
+
+            console.error(err);
+            return;
+
+        }
+
+    }
+
+
+    function load_PageContent_PagePathName(
+        iPageCode,
+        iParentPageName,
+        iChildPageName,
+        iParentPageNameColorCSS,
+        iChildPageNameColorCSS,
+        iChildPageNameCSS) {
+
+
+        try {
+
+            // alert(iPageCode + " div_RenderBody ...  --- " + $(".div_RenderBody"));
+
+            // alert(iPageCode + " loaded ...");
+
+            // alert('load_TabViewQueryList XXX');
+
+
+            // // BSR_ShowToastMessage('load');
+
+            // window.bldtknid = iBuildingTokenID;
+            // window.querytbltknid = iQueryTableTokenID;
+
+
+            // $("#iQueryTableTokenID").val(iQueryTableTokenID);
+            // $("#iBuildingTokenID").val(iBuildingTokenID);
+
+            var _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BSRVemcoPagePathName';
+
+            // if (iPageCode == 'contactus') {
+            //     _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_ContactUsPage';
+            // }
+
+            // else if (iPageCode == 'terms') {
+            //     _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_TermsPage';
+            // }
+
+            // else if (iPageCode == 'subscription') {
+            //     _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_SubscriptionPage';
+            // }
+
+            // else if (iPageCode == 'profile') {
+            //     _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_ProfilePage';
+            // }
+
+            // else if (iPageCode == 'invite') {
+            //     _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_InvitePage';
+            // }
+
+
+            // else if (iPageCode == 'password') {
+            //     _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_PasswordPage';
+            // }
+
+
+            // else if (iPageCode == 'building_new') {
+            //     _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingNewPage';
+            // }
+
+
+            // else if (iPageCode == 'building_edit') {
+            //     _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingEditPage';
+            // }
+
+
+            // else if (iPageCode == 'building_list') {
+            //     _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingListPage';
+            // }
+
+            // ///////////////////////////////////
+
+            // else if (iPageCode == 'building_summary') {
+            //     _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingSummaryPage';
+            // }
+
+            // else if (iPageCode == 'building_golden') {
+            //     _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingGoldenPage';
+            // }
+
+            // else if (iPageCode == 'building_resident') {
+            //     _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingResidentPage';
+            // }
+
+
+            // else if (iPageCode == 'building_gap') {
+            //     _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingGapPage';
+            // }
+
+
+            // else if (iPageCode == 'building_report') {
+            //     _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingReportPage';
+            // }
+
+
+            // else if (iPageCode == 'building_safety') {
+            //     _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingSafetyPage';
+            // }
+
+
+            // else if (iPageCode == 'building_system') {
+            //     _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingSystemPage';
+            // }
+
+
+            // else if (iPageCode == 'building_risk') {
+            //     _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_BulidingRiskPage';
+            // }
+
+            $.ajax({
+
+                url: _iURL,
+                data: {
+                    ParentPageName: iParentPageName,//document.getElementById("cbShowPrevious").checked,
+                    ChildPageName: iChildPageName, //document.getElementById("cbShowUpcoming").checked
+                    ParentPageNameColorCSS: iParentPageNameColorCSS, //document.getElementById("cbShowUpcoming").checked
+                    ChildPageNameColorCSS: iChildPageNameColorCSS, //document.getElementById("cbShowUpcoming").checked
+                    ChildPageNameCSS: iChildPageNameCSS
+                },
+                success: function (data) {
+
+
+                    // alert(iPageCode + " div_RenderBody ...  --- " + $(".div_RenderBody"));
+
+                    // alert(iPageCode + " loaded ...  --- " + data);
+
+
+                    $("#div_PagePathName").html(data);
+
+                }
+
+            });
+
+        } catch (err) {
+
+            console.error(err);
+            return;
+
+        }
+
+    }
+
+
+
+
+    function load_Building_ByBuildingTokenID(
+        iPageCode,
+        iBuildingTokenID,
+        iBuildingName) {
+
+
+        try {
+
+            window.bldtknid = iBuildingTokenID;
+
+
+            $("#iBuildingTokenID").val(iBuildingTokenID);
+
+            $("#iBuildingName").val(iBuildingName);
+
+            $("#div_BuildingName").html(iBuildingName);
+
+            $("#div_ViewBuilding").show(500);
+
+            $("#div_BuildingBlock").show(500);
+
+
+
+            load_PageContent_Dynamic_ByPageTokenID(iPageCode);
+
+            //return false;
+
+            // alert(iPageCode + " div_RenderBody ...  --- " + $(".div_RenderBody"));
+
+            // alert(iPageCode + " loaded ...");
+
+            // alert('load_TabViewQueryList XXX');
+
+
+            // // BSR_ShowToastMessage('load');
+
+            // window.bldtknid = iBuildingTokenID;
+            // window.querytbltknid = iQueryTableTokenID;
+
+
+            // $("#iQueryTableTokenID").val(iQueryTableTokenID);
+            // $("#iBuildingTokenID").val(iBuildingTokenID);
+
+        } catch (err) {
+
+            console.error(err);
+            return;
+
+        }
+
+    }
+
+    function reset_Building_ByBuildingTokenID(
+        iPageCode) {
+
+
+        try {
+
+            $("#iBuildingTokenID").val('0');
+
+            $("#iBuildingName").val('0');
+
+            $("#div_BuildingName").html('');
+
+            $("#div_ViewBuilding").hide(500);
+
+            $("#div_BuildingBlock").hide(500);
+
+            //load_PageContent_Dynamic_ByPageTokenID(iPageCode);
+
+            //return false;
+
+            // alert(iPageCode + " div_RenderBody ...  --- " + $(".div_RenderBody"));
+
+            // alert(iPageCode + " loaded ...");
+
+            // alert('load_TabViewQueryList XXX');
+
+
+            // // BSR_ShowToastMessage('load');
+
+            // window.bldtknid = iBuildingTokenID;
+            // window.querytbltknid = iQueryTableTokenID;
+
+
+            // $("#iQueryTableTokenID").val(iQueryTableTokenID);
+            // $("#iBuildingTokenID").val(iBuildingTokenID);
+
+        } catch (err) {
+
+            console.error(err);
+            return;
+
+        }
+
+    }
+
+
+
+
+</script>

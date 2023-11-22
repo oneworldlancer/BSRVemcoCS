@@ -1,0 +1,120 @@
+﻿@model AppProfileViewModel
+@* class="accordion-body" *@
+<div id="div_PageHTMLContent" style="margin:0px;padding:0px;display:flex;flex-direction:column;">
+
+    @*   <div class="text-center fs-5">Contact Us</div> *@
+    <div class="text-center fs-6">Update your user profile:</div>
+
+
+    <div class="row">
+        <div class="col">
+            @*   1 of 3 *@
+        </div>
+
+        <div class="col-8" style="margin-top:20px;padding:0px;display:flex;flex-direction:row;">
+            <div class="col-3" style="padding:20px;">
+                <img src="~/img/img_user.png" style="width:100px;height:auto;" />
+                <br />
+                <a href="#"><strong>+</strong> Upload image</a>
+            </div>
+
+            <div class="col-8">
+
+                <form method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+
+
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+
+
+                    <div class="row">
+
+                        <div class="mb-3">
+
+                            @*  asp-for="CompanyName" *@ <input type="text" class="form-control form-control-sm" id="floatingInput" placeholder="Accountable Person (AP)"
+                                                                value="@Model.CompanyName"
+                                                                required>
+                            <div class="invalid-feedback text-start">Please fill in this field</div>
+
+                        </div>
+
+
+                        <div style="display:flex;flex-direction:row;justify-content:space-between;">
+                            <div class="mb-3">
+                                @*     asp-for="FirstName" *@
+                                <input type="text" class="form-control form-control-sm" id="floatingInput" placeholder="First name"
+                                       value="@Model.FirstName"
+                                       required>
+                                <div class="invalid-feedback text-start">Please fill in this field</div>
+                            </div>
+                            <div style="width:10px;"></div>
+                            <div class="mb-3">
+                                @*   asp-for="LastName" *@
+                                <input type="text" class="form-control form-control-sm" id="floatingInput" placeholder="Last name"
+                                       value="@Model.LastName"
+                                       required>
+                                <div class="invalid-feedback text-start">Please fill in this field</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+
+                            @*   asp-for="Email" *@  <input type="email" class="form-control form-control-sm" id="floatingInput" placeholder="E-mail address"
+                                                            value="@Model.EmailAddress"
+                                                            required>
+                            <div class="invalid-feedback text-start">Please fill in this field</div>
+
+                        </div>
+
+
+
+                        @*  ////////////////////////////
+                        *@
+
+
+
+                        <div class="mb-3">
+
+                            @*   asp-for="Email" *@  <input type="tel" class="form-control form-control-sm" id="floatingInput" placeholder="Whatsapp number for alerts"
+                                                            value="@Model.MobileNumberE164"
+                                                            required>
+                            <div class="invalid-feedback text-start">Please fill in this field</div>
+
+                        </div>
+
+
+
+
+                        @* xxx *@
+
+
+
+
+
+
+                        @*style="background-color:red;"*@
+                        @*      type="submit" *@     <div class="mt-3">
+                            <input class="btn btn-primary" value="Submit" style="width:100%;height:auto;background-color:#19c571;height:auto;border-color:#19c571;color:white;">
+                        </div>
+
+
+                    </div>
+                    <br />
+
+                </form>
+
+
+            </div>
+
+
+
+
+        </div>
+
+        <div class="col">
+            @*  3 of 3 *@
+        </div>
+    </div>
+
+
+
+</div>
