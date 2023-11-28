@@ -165,6 +165,31 @@
 
     window.bldtknid;
 
+    window.apptbltknid;
+    window.tbltknid;
+    window.inftknid;
+    window.clmscore;
+    window.clmrisk;
+
+    window.doccount;
+    window.clminfotxt;
+    window.clmdoccount;
+
+    // doctknid, doctcod, docname, docsize, docdesc
+
+    window.doctknid;
+    window.doctyp;
+    window.docname;
+    window.docsize;
+    window.docdesc;
+
+    window.datday;
+    window.datmonth;
+    window.datyear;
+    window.dattxt;
+    window.timeframe;
+
+
 
 
     function BSRVideo() {
@@ -791,6 +816,11 @@
 
                     $(".div_RenderBody").html(data);
 
+                    if (iPageCode == 'building_resident') {
+                        load_FCKEditor();
+
+                    }
+
                 }
 
             });
@@ -1048,5 +1078,59 @@
 
 
 
+    let editorActivity;
+
+
+    function load_FCKEditor() {
+
+        try {
+
+
+            ClassicEditor
+                .create(document.querySelector('#txt_HTMLContent_Activity'))
+                .then(newEditor => {
+                    editorActivity = newEditor;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+
+        }
+
+        catch (err) {
+            console.error(err);
+        }
+
+    }
+
+
+
 
 </script>
+
+
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
+
+@* <script>
+
+    let editor;
+
+    ClassicEditor
+        .create(document.querySelector('#txt_HTMLContent'))
+        .then(newEditor => {
+            editor = newEditor;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+
+
+
+
+
+
+</script> *@
+
+
+

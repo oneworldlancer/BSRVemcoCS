@@ -46,10 +46,166 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
             {
 
 
-                BSRVemcoPage_ContactUsViewModel _iBSRVemcoPageViewModel = new BSRVemcoPage_ContactUsViewModel();
+                //  BSRVemcoPage_ContactUsViewModel _iBSRVemcoPageViewModel = new BSRVemcoPage_ContactUsViewModel();
 
 
-                return await Task.FromResult((IViewComponentResult)View("Default", _iBSRVemcoPageViewModel));
+               // string id = Request.Query["bldtknid"].ToString();
+
+                string state = "0";
+
+
+                //////var _iUserBuildignModel = _dbContext.BsrvemcoUserBuildingLists
+                //////     .Where ( u => u.BuildingTokenId == id )
+                //////     //.Select (u  )
+                //////     .FirstOrDefault ( ); // This is what actually executes the request and return a response
+                ///
+
+
+
+                //  List<AppUserBuildingTable1ModelManager> _iRowContentList;
+
+
+
+                List<BsrvemcoUserBuildingInformationList>? _arrUserBuildingInfomationList = _dbContext.BsrvemcoUserBuildingInformationLists
+                     .Where(u =>
+                     u.ApptableTokenId == "1689162197100" &&
+                     u.BuildingTokenId == iBuildingTokenID &&
+                     u.IsVisible == true)
+                     //.Select (u  )
+                     //.FirstOrDefault ( ); // This is what actually executes the request and return a response
+                     .ToList(); // This is what actually executes the request and return a response
+
+
+
+                List<AppUserBuildingTableRowModelManager> _iRowContentList = new List<AppUserBuildingTableRowModelManager>();
+
+                for (int i = 0; i < _arrUserBuildingInfomationList.Count; i++)
+                {
+                    _iRowContentList
+                  .Add(new AppUserBuildingTableRowModelManager()
+                  {
+
+                      _id = i,
+
+                      AppTableTokenID = _arrUserBuildingInfomationList[i].ApptableTokenId,
+                      TableTokenID = _arrUserBuildingInfomationList[i].ApptableTokenId,
+
+                      AppInformationTokenID = _arrUserBuildingInfomationList[i].AppinformationTokenId,
+                      InformationTokenID = _arrUserBuildingInfomationList[i].InformationTokenId,
+
+                      CompanyTokenID = Program.iOwnerModel.CompanyTokenID,
+                      BuildingTokenID = iBuildingTokenID,
+
+                      ColumnDescription = _arrUserBuildingInfomationList[i].InformationText, //"Fire Strategy" ,
+                      ColumnCommentary = _arrUserBuildingInfomationList[i].Commentary,
+                      ColumnCriterion = "0",
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      //AppTableTokenID = "X1AppTableTokenID" ,
+                      //TableTokenID = "X1TableTokenID" ,
+
+                      //AppInformationTokenID = "X1AppInformationTokenID" ,
+                      //InformationTokenID = "X1InformationTokenID" ,
+
+                      //CompanyTokenID = "X1CompanyTokenID" ,
+                      //BuildingTokenID = "X1BuildingTokenID" ,
+
+                      //ColumnDescription = _arrBuildingInfomationList[ i ].InformationText , //"Fire Strategy" ,
+                      //ColumnCommentary = _arrBuildingInfomationList[ i ].Commentary ,
+                      //ColumnCriterion = "0" ,
+
+
+
+
+
+                      ColumnScore = _arrUserBuildingInfomationList[i].Score,
+                      ColumnScoreOriginal = _arrUserBuildingInfomationList[i].ScoreOriginal,
+                      ColumnScoreManaged = _arrUserBuildingInfomationList[i].ScoreManaged,
+                      ColumnScoreAdjused = _arrUserBuildingInfomationList[i].ScoreAdjusted,
+                      ColumnRiskControlMeasure = _arrUserBuildingInfomationList[i].RiskControlMeasure,
+                      ColumnTotal = "0",
+
+
+
+
+
+
+                      //ColumnScore = "5" ,
+                      //ColumnScoreOriginal = "5" ,
+                      //ColumnScoreManaged = "5" ,
+                      //ColumnScoreAdjused = "5" ,
+                      //ColumnRiskControlMeasure = "" ,
+                      //ColumnTotal = "5" ,
+
+                      ColumnCriterionList = await AppBuildingInformationCriterionManager.getCriterionList(_dbContext, _arrUserBuildingInfomationList[i].AppinformationTokenId!)
+
+                  });
+                }
+
+
+
+
+                AppDevelomentTable1EditViewModel _iDevelomentTable1EditModel = new AppDevelomentTable1EditViewModel()
+                {
+                    TableTitle = "TableTitle",
+                    TableDescription = "TableDescription",
+
+                    ColumnDescription = "Description",
+                    ColumnCommentary = "Commentary",
+                    ColumnCriterion = "Criterion",
+                    ColumnScore = "Score",
+                    ColumnScoreOriginal = "ScoreOriginal",
+                    ColumnScoreManaged = "Score",
+                    ColumnScoreAdjused = "Adjusted Score",
+                    //ColumnRiskControlMeasure = "Risk Control Measure Risk Control Measure" ,
+                    ColumnRiskControlMeasure = "Risk Control Measure",
+
+                    //ColumnScoreTotal = "333" ,
+                    ColumnScoreTotal = _dbContext.BsrvemcoUserBuildingInformationLists
+                    .Where(
+                        c =>
+                        c.ApptableTokenId == "1689162197100" &&
+                        c.BuildingTokenId == iBuildingTokenID)
+                    .Sum(clmn => Convert.ToDecimal(clmn.ScoreAdjusted!)).ToString("0.0"),
+
+
+
+                    RowContentList = _iRowContentList,
+                };
+
+
+
+
+
+                //////BuildingName = _iUserBuildignModel.BuildingName ,
+                //////BuildingAddress = _iUserBuildignModel.BuildingAddress ,
+                //////BuildingDate = DateTime.Parse ( _iUserBuildignModel.BuildingDate ) ,
+                //////BuildingImageTokenID = _iUserBuildignModel.ImageTokenId
+
+
+
+
+                return await Task.FromResult((IViewComponentResult)View("Default", _iDevelomentTable1EditModel));
             }
             catch (Exception ex)
             {

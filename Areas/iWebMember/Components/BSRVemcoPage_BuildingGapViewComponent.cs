@@ -116,8 +116,8 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
 
 
                 iDevelomentInformationReportViewModel.BuildingInformationList = _arrBuildingInformationModelList;
-                iDevelomentInformationReportViewModel.BuildingInformationList1 = _arrBuildingInformationModelList.Take(10).ToList();
-                iDevelomentInformationReportViewModel.BuildingInformationList2 = _arrBuildingInformationModelList.Skip(10).Take(10).ToList();
+                iDevelomentInformationReportViewModel.BuildingInformationList1 = _arrBuildingInformationModelList.Take(11).ToList();
+                iDevelomentInformationReportViewModel.BuildingInformationList2 = _arrBuildingInformationModelList.Skip(11).Take(9).ToList();
 
 
                 return await Task.FromResult((IViewComponentResult)View("Default", iDevelomentInformationReportViewModel));

@@ -5,37 +5,41 @@
 
     <div class="row">
 
-
-        <div class="row">
+        @*class="row"  *@
+        <div style="width:100%;margin-left:3px;margin-right:3px;margin-bottom:5px;display:flex;flex-direction:row;justify-content:space-between;">
             @*fs-6*@
-            <span class="m-3">You will not able to generate a "Gap Analysis" report untill you've responded.</span>
-        </div>
+            <span>You will not able to generate a "Gap Analysis" report untill you've responded.</span>
+           
+            <div class="float-end" style="float:right;">
+@*                 text-center *@
+                <div class="float-end d-flex flex-row" style="vertical-align:top;text-align:left;float:right;">
+                    <button type="button" class="btn btn-warning" style="font-size:small;">
+                        Generate Report
+                    </button>
+                    <img src="~/img/img_question.png"
+                         style="width:15px;height:15px;margin:3px;"
+                         data-toggle="tooltip" data-placement="bottom" title="When you've responded to all the entries for the &quot;Golden Thread Documents&quot;, you may press this button to generate your &quot;Gap Analysis Report.&quot;." />
+                </div>
 
 
-        <div class="p-3 float-end" style="width:100%;float:right;">
-
-            <div class="float-end d-flex flex-row text-center" style="vertical-align:top;text-align:left;margin:5px;float:right;">
-                <button type="button" class="btn btn-warning" style="font-size:medium;">
-                    Generate Report
-                </button>
-                <img src="~/img/img_question.png"
-                     style="width:15px;height:15px;margin:3px;"
-                     data-toggle="tooltip" data-placement="bottom" title="When you've responded to all the entries for the &quot;Golden Thread Documents&quot;, you may press this button to generate your &quot;Gap Analysis Report.&quot;." />
             </div>
-
-
         </div>
+
+
+      
         <div class="row">
 
             <div class="col">
 
 
                 @* class="shadow p-1 mb-1 rounded" *@
-                @foreach (var iRow in Model.BuildingInformationList!)
+                @foreach (var iRow in Model.BuildingInformationList1!)
                 {
 
-                   
-<div  style="width:100%;background-color:@iRow.RowBackgroundColor;">
+
+                    <div class="shadow mb-1 rounded" style="width:100%;background-color:@{
+@iRow.RowBackgroundColor
+};">
 
 
                         <div style="width:100%;display:flex;flex-direction:column;">
@@ -58,7 +62,7 @@
 
 
 
-                            <div class="row" style="margin:5px;padding-left:0px;padding-right:10px;color:gray;">
+                            <div class="row" style="margin-left:5px;padding-left:0px;padding-right:5px;color:gray;">
 
                                 <div class="d-flex flex-row" style="vertical-align:top;text-align:left;margin:0px;color:@iRow.TextColor">
                                     [@iRow.AnswerText]
@@ -92,9 +96,72 @@
 
             </div>
 
-            <div style="width:5px;"></div>
+            @* <div style="width:5px;"></div> *@
 
-            <div class="col"></div>
+            <div class="col">
+
+                @foreach (var iRow in Model.BuildingInformationList2!)
+                {
+
+
+                    <div class="shadow mb-1 rounded" style="width:100%;background-color:@{
+    @iRow.RowBackgroundColor
+};">
+
+
+                        <div style="width:100%;display:flex;flex-direction:column;">
+
+
+                            <div class="row" style="padding:5px;">
+
+                                <div class="col-12" style="display:flex;flex-direction:row;">
+
+                                    <i class="bi-square-fill" style="font-size:10px;padding:0px;margin-top:5px;"></i>
+
+                                    <div style="padding:0px;margin-left:5px;color:@iRow.TitleColor">
+                                        <strong>@iRow.InformationText</strong>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+
+
+                            <div class="row" style="margin-left:5px;padding-left:0px;padding-right:5px;color:gray;">
+
+                                <div class="d-flex flex-row" style="vertical-align:top;text-align:left;margin:0px;color:@iRow.TextColor">
+                                    [@iRow.AnswerText]
+                                    @{
+                                        if (iRow.IsViewTooltip)
+                                        {
+                                            <img src="~/img/img_question.png"
+                                                 style="width:15px;height:15px;margin:3px;"
+                                                 data-toggle="tooltip" data-placement="bottom"
+                                                 title="You will NOT able to generate a &quot;Gap Analysis Report&quot; untill you've responded." />
+
+                                        }
+                                    }
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                }
+
+
+
+
+
+            </div>
 
 
 

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using System.Net;
 using System.Net.Mail;
+using BSRVemcoCS.iAppUtility;
 
 namespace BSRVemcoCS.Areas.iWebMember.Controllers
 {
@@ -81,30 +82,38 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
         {
             /*string bldtknid, string iPageNumber, string blnIsPaging*/           /* bool showPrevious , bool showUpcoming */
 
+            try
+            {
 
 
-            ////////////////////System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                ////////System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-            ////////////////////MailMessage msg = new MailMessage(
-            ////////////////////    "BSRHelpDesk@vemcoconsulting.com", "oneworldlancer@gmail.com",
-            ////////////////////    "Test E-mail 1101", "Hi there ...");
+                ////////MailMessage msg = new MailMessage(
+                ////////    "BSRHelpDesk@vemcoconsulting.com", "oneworldlancer@gmail.com",
+                ////////    "Test E-mail 1101", "Hi there ...");
 
-            //////////////////////  SmtpClient smtp = new SmtpClient("vemcoconsulting-com.mail.protection.outlook.com", 25);
-            //////////////////////  SmtpClient smtp = new SmtpClient("vemcoconsulting-com.mail.protection.outlook.com", 25);
-            ////////////////////SmtpClient smtp = new SmtpClient("smtp.office365.com", 25);
+                //////////  SmtpClient smtp = new SmtpClient("vemcoconsulting-com.mail.protection.outlook.com", 25);
+                //////////  SmtpClient smtp = new SmtpClient("vemcoconsulting-com.mail.protection.outlook.com", 25);
+                ////////SmtpClient smtp = new SmtpClient("smtp.office365.com", 25);
 
-            ////////////////////smtp.UseDefaultCredentials = false;
-            ////////////////////smtp.EnableSsl = true;
-            ////////////////////smtp.Credentials= new NetworkCredential(
-            ////////////////////    "bsrhelpdesk@vemcoconsulting.com", "@Laq43362", "vemcoconsulting.com");
+                ////////smtp.UseDefaultCredentials = false;
+                ////////smtp.EnableSsl = true;
+                ////////smtp.Credentials= new NetworkCredential(
+                ////////    "bsrhelpdesk@vemcoconsulting.com", "@Laq43362", "vemcoconsulting.com");
 
-            ////////////////////smtp.TargetName = "STARTTLS/smtp.office365.com";
+                ////////smtp.TargetName = "STARTTLS/smtp.office365.com";
 
 
-            ////////////////////smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                ////////smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
 
-            ////////////////////smtp.Send(msg);
+                ////////smtp.Send(msg);
 
+
+            }
+            catch (Exception ex)
+            {
+                AppUtility_DebugManager.Debug_Get_MessageText(ex.Message.ToString());
+            }
 
 
             //////////////// MailMessage msg = new MailMessage("BSRHelpDesk@vemcoconsulting.com", "oneworldlancer@gmail.com", "Test E-mail 1101", "Hi there ...");
@@ -367,10 +376,10 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
         {
             /*string bldtknid, string iPageNumber, string blnIsPaging*/           /* bool showPrevious , bool showUpcoming */
 
-          //  string id = Request.Query["bldtknid"].ToString();
+            //  string id = Request.Query["bldtknid"].ToString();
 
 
-          //  string state = "edit";
+            //  string state = "edit";
 
 
 
@@ -441,9 +450,10 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
             /*string bldtknid, string iPageNumber, string blnIsPaging*/           /* bool showPrevious , bool showUpcoming */
 
             return ViewComponent("BSRVemcoPage_BuildingSummary",
-                new {
-                    iBuildingTokenID= iBuildingTokenID
-                }) ;
+                new
+                {
+                    iBuildingTokenID = iBuildingTokenID
+                });
 
 
             //return ViewComponent("BSRVemcoPage_",
@@ -692,7 +702,7 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
             ////////////smtp.UseDefaultCredentials = false;
             ////////////smtp.Credentials= new NetworkCredential("bsrhelpdesk@vemcoconsulting.com", "@goShaymaaHafez06021979");
 
-         return ViewComponent("BSRVemcoPage_ContactUsPage");
+            return ViewComponent("BSRVemcoPage_ContactUsPage");
 
 
             //return ViewComponent("BSRVemcoPage_",
