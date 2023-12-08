@@ -4,133 +4,133 @@
 <div id="div_PageHTMLContent" style="margin:0px;padding:0px;display:flex;flex-direction:column;">
 
     @* g-3 *@
-    @*  <form method="post" class="row needs-validation" novalidate> *@
+   @*  <form method="post" class="row needs-validation" novalidate> *@
 
-    @*
-    <div asp-validation-summary="All" class="text-danger"></div>
+@* 
+            <div asp-validation-summary="All" class="text-danger"></div>
 
-    *@
-    <div class="row">
+ *@
+            <div class="row">
 
 
-        @*class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"*@
+                @*class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"*@
 
-        @*    <div> *@
+             @*    <div> *@
 
 
         @* class="row" *@
         <div style="width:100%;margin-left:3px;margin-right:3px;margin-bottom:5px;">
-            @* class="m-3" *@     @*fs-6*@
-            <span>You will not able to generate a "Gap Analysis" report untill you've responded to all items.</span>
-            <span>Please identify which of the following documents exist</span>
-        </div>
+                    @* class="m-3" *@     @*fs-6*@
+                        <span >You will not able to generate a "Gap Analysis" report untill you've responded to all items.</span>
+                    <span>Please identify which of the following documents exist</span>
+                </div>
 
 
+             
 
-
-        @*     <div class="row"> *@
+                @*     <div class="row"> *@
 
         @* m-3*@
 
         <div id="div_ItemsContent" class="list-group list-group-flush" style="margin-left:10px;margin-right:10px;">
-            @**@
+                            @**@
 
-            <div id="div_ItemsList">
+                            <div id="div_ItemsList">
 
-                @await Component.InvokeAsync("BuildingPage2List",
-                new {
-                bldtknid = Model.BuildingTokenID,
-                iPageNumber = "0",
-                blnIsPaging = true
-                })
+                                @await Component.InvokeAsync("BuildingPage2List",
+                                new {
+                                bldtknid = Model.BuildingTokenID,
+                                iPageNumber = "0",
+                                blnIsPaging = true
+                                })
 
-            </div>
-
-
-
-
-        </div>
+                            </div>
 
 
 
 
-        @*  </div> *@
-
-
-        @*   </div> *@
-
-
-        @* style="background-color:red;"*@
-        <div class="mt-3" style="vertical-align:middle;display:flex;flex-direction:row;justify-content:space-between;">
-
-            @*<a href="@Url.Action("Page1_New", "Development",new {area="iWebMember", id= ViewContext.RouteData.Values["id"], state="edit"})" class="btn btn-secondary float-start">
-            <span>Clients</span>
-            </a>*@
-            @*  <a type="button" class="btn btn-secondary float-start" value="Back" style="width:100px;height:auto;"
-            href="@Url.Action("Page1_New", "Development",new {area="iWebMember", id= ViewContext.RouteData.Values["id"], state="edit"})" />
-
-            <a class="btn btn-primary float-end" type="submit"  value="Next" style="width:100px;height:auto;" />
-            *@
-            @* *@
-            <input type="button"
-                   value="Back"
-                   class="btn btn-secondary float-start btn-sm"
-                   style="width:100px;height:40px;font-size:small;vertical-align:middle;" onclick='location.href="@Url.Action("Page1_Edit", "Development" ,new {area="iWebMember", bldtknid= Context.Request.Query["bldtknid"], state="edit"})"' />
+                        </div>
 
 
 
-            @* class="text-center" style="text-align:center;margin:auto;justify-content:center;" *@
-            <div>
-                <div id="div_Paging_0000" style="display:block;margin:auto;vertical-align:middle;">
-                    <nav>
-                        <ul class="pagination">
 
-                            <li class="page-item">
-                                @* *@
+                   @*  </div> *@
 
 
-                                <a href='#div_ItemsContent' id="pager1_0" class="page-link active"
-                                   onclick="load_TabPageNumberList('@Model.BuildingTokenID', '0', 'true','1', true)">1</a>
-                            </li>
-                            <li class="page-item">
-                                <a href='#div_ItemsContent' id="pager2_0" class="page-link"
-                                   onclick="load_TabPageNumberList('@Model.BuildingTokenID', '0', 'true','2', true)">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a href='#div_ItemsContent' id="pager3_0" class="page-link"
-                                   onclick="load_TabPageNumberList('@Model.BuildingTokenID', '0', 'true','3', true)">3</a>
-                            </li>
+              @*   </div> *@
 
-                            @*   <li class="page-item">
-                            <a href='#collapse444' id="pager3_444" class="page-link">4</a>
-                            </li>
 
-                            <li class="page-item">
-                            <a href='#collapse555' id="pager3_555" class="page-link">5</a>
-                            </li>
+                @* style="background-color:red;"*@
+                <div class="mt-3" style="vertical-align:middle;display:flex;flex-direction:row;justify-content:space-between;">
 
-                            <li class="page-item">
-                            <a href='#collapse666' id="pager3_666" class="page-link">6</a>
-                            </li> *@
+                    @*<a href="@Url.Action("Page1_New", "Development",new {area="iWebMember", id= ViewContext.RouteData.Values["id"], state="edit"})" class="btn btn-secondary float-start">
+                    <span>Clients</span>
+                    </a>*@
+                    @*  <a type="button" class="btn btn-secondary float-start" value="Back" style="width:100px;height:auto;"
+                    href="@Url.Action("Page1_New", "Development",new {area="iWebMember", id= ViewContext.RouteData.Values["id"], state="edit"})" />
 
-                        </ul>
-                    </nav>
+                    <a class="btn btn-primary float-end" type="submit"  value="Next" style="width:100px;height:auto;" />
+                    *@
+                    @* *@
+                    <input type="button"
+                           value="Back"
+                           class="btn btn-secondary float-start btn-sm"
+                           style="width:100px;height:40px;font-size:small;vertical-align:middle;" onclick='location.href="@Url.Action("Page1_Edit", "Development" ,new {area="iWebMember", bldtknid= Context.Request.Query["bldtknid"], state="edit"})"' />
+
+
+
+                    @* class="text-center" style="text-align:center;margin:auto;justify-content:center;" *@
+                    <div>
+                        <div id="div_Paging_0000" style="display:block;margin:auto;vertical-align:middle;">
+                            <nav>
+                                <ul class="pagination">
+
+                                    <li class="page-item">
+                                        @* *@
+
+
+                                        <a href='#div_ItemsContent' id="pager1_0" class="page-link active"
+                                           onclick="load_TabPageNumberList('@Model.BuildingTokenID', '0', 'true','1', true)">1</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a href='#div_ItemsContent' id="pager2_0" class="page-link"
+                                           onclick="load_TabPageNumberList('@Model.BuildingTokenID', '0', 'true','2', true)">2</a>
+                                    </li>
+                                    <li class="page-item">
+                                        <a href='#div_ItemsContent' id="pager3_0" class="page-link"
+                                           onclick="load_TabPageNumberList('@Model.BuildingTokenID', '0', 'true','3', true)">3</a>
+                                    </li>
+
+                                    @*   <li class="page-item">
+                                    <a href='#collapse444' id="pager3_444" class="page-link">4</a>
+                                    </li>
+
+                                    <li class="page-item">
+                                    <a href='#collapse555' id="pager3_555" class="page-link">5</a>
+                                    </li>
+
+                                    <li class="page-item">
+                                    <a href='#collapse666' id="pager3_666" class="page-link">6</a>
+                                    </li> *@
+
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+
+
+                    @*   onclick='location.href="@Url.Action("Page1_New", "Development" ,new {area="iWebMember", id= ViewContext.RouteData.Values["id"], state="edit"})"'*@
+                    @* style="width:100px;height:50px;" *@
+                    <input type="submit"
+                           value="Submit"
+                           style="width:100px;height:40px;font-size:small;vertical-align:middle;" class="btn btn-primary float-end btn-sm" />
                 </div>
+
             </div>
+       @*  </form> *@
 
-
-
-            @*   onclick='location.href="@Url.Action("Page1_New", "Development" ,new {area="iWebMember", id= ViewContext.RouteData.Values["id"], state="edit"})"'*@
-            @* style="width:100px;height:50px;" *@
-            <input type="submit"
-                   value="Submit"
-                   style="width:100px;height:40px;font-size:small;vertical-align:middle;" class="btn btn-primary float-end btn-sm" />
-        </div>
-
-    </div>
-    @*  </form> *@
-
-
+   
 </div>
 
 @*POPUP*@
@@ -138,7 +138,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header" style="background-color:whitesmoke;">
-                <h4 class="modal-title">Upload Hyperlinks</h4>
+                <h4 class="modal-title">Upload Documents</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
@@ -147,14 +147,14 @@
                 @*  <button onclick="openEdit();" value="tab" />*@
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    @*   <li id='tab_Preview' class="nav-item" role="presentation">
-                    <button class="nav-link active" id="btn_Preview" data-bs-toggle="tab" data-bs-target="#content_Preview" type="button" role="tab" aria-controls="home" aria-selected="true" data-tabcontent="preview">Preview</button>
-                    </li> *@
+                    <li id='tab_Preview' class="nav-item" role="presentation">
+                        <button class="nav-link active" id="btn_Preview" data-bs-toggle="tab" data-bs-target="#content_Preview" type="button" role="tab" aria-controls="home" aria-selected="true" data-tabcontent="preview">Preview</button>
+                    </li>
                     <li id='tab_View' class="nav-item" role="presentation">
                         <button class="nav-link" id="btn_View" data-bs-toggle="tab" data-bs-target="#content_View" type="button" role="tab" aria-controls="profile" aria-selected="false" data-tabcontent="view">View Files</button>
                     </li>
                     <li id='tab_Upload' class="nav-item" role="presentation">
-                        <button class="nav-link" id="btn_Upload" data-bs-toggle="tab" data-bs-target="#content_Upload" type="button" role="tab" aria-controls="messages" aria-selected="false" data-tabcontent="upload">Upload Hyperlinks</button>
+                        <button class="nav-link" id="btn_Upload" data-bs-toggle="tab" data-bs-target="#content_Upload" type="button" role="tab" aria-controls="messages" aria-selected="false" data-tabcontent="upload">Upload Files</button>
                     </li>
                     <li id='tab_Edit' class="nav-item" role="presentation">
                         <button class="nav-link" id="btn_Edit" data-bs-toggle="tab" data-bs-target="#content_Edit" type="button" role="tab" aria-controls="settings" aria-selected="false" data-tabcontent="edit">Edit</button>
@@ -166,6 +166,48 @@
 
                 <div class="tab-content">
 
+                    <div class="tab-pane active" id="content_Preview" role="tabpanel" aria-labelledby="home-tab">
+
+
+                        @* <div class="row">
+
+
+
+                        <div class="list-group list-group-flush m-3">
+
+
+                        <a href="#" class="list-group-item list-group-item-action bg-transparent"   >*@
+
+                        <div class="row mt-3 mb-3">
+
+                            <div id="iInformationText" class="col-10">Up-to-date Fire Risk Assessment (FRA)</div>
+
+                            <div class="col-2 text-end" style="float:right;">
+
+                                @*  <img src="~/img/arrow_right_black.png" style="width:30px;height:30px;float:right;" />
+                                *@
+                                @* @if ( iRow.DocumentCount != "0" )
+                                {
+                                <small class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">10</small>
+
+                                }
+                                else
+                                {*@
+                                <small id="iDocumentCount" class="me-3 badge bg-primary rounded-pill text-end" style="float:right;">11</small>
+
+                                @*}*@
+
+                            </div>
+
+
+
+
+                        </div>
+
+
+                        @* background-color:orange; *@
+
+                    </div>
 
                     <div class="tab-pane" id="content_View" role="tabpanel" aria-labelledby="profile-tab">
 
@@ -176,61 +218,33 @@ mb-3"></div>
 
                     <div class="tab-pane" id="content_Upload" role="tabpanel" aria-labelledby="messages-tab">
 
-
-
-                        <div id="div_DocumentUpload" class="mt-3 me-3" style="width:100%;display:flex;flex-direction:column;">
-
-                            <div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
-
-                                <div class="col-11">
-                                    <input type="url" pattern="https?://.+" class="form-control" id="input_fileURL1" name="input_fileURL1" placeholder="Insert your hyperlink here ..."
-                                           style="color:blue;" data-inputfor="fupload" required />
+                        @*class="row m-3"*@
+                        <div class="row m-3" id="dropzone">
+                            @* autocomplete="off" asp-area="iWebMember" asp-controller="Development"  asp-action="UploadFiles"*@
+                            <form action="/iWebMember/Development/UploadFiles" asp-antiforgery="true" class="dropzone"
+                                  id="demo-upload" name="filedata" enctype="multipart/form-data" method="post" data-parsley-validate>
+                                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                                <div class="form-row">
                                 </div>
-
-                                @* onclick="Building_Confirm_DELETE('@iRow.BuildingTokenID');" *@
-                                <div class="col-1 text-center" style="width:50px;">
-                                    <img id="img_NewURL1" name="img_NewURL1" src="~/img/img_new.png" style="width:20px;height:20px;" alt="Delete" title="New" />
-                                </div>
-
-
-
-                            </div>
-
-
-                            @*File 2*@
-                            @*                                 <div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
-
-                            <div class="col-11" >
-                            <input type="text" class="form-control" id="input_fileURL2" name="input_fileURL2" placeholder="Insert your hyperlink here ..."
-                            required />
-                            </div>
-
-                            <div class="col-1 text-center" style="width:50px;">
-                            <img  id="img_delURL2"  name="img_delURL2"  src="~/img/img_delete.png" style="width:20px;height:20px;" alt="Delete" title="Delete" />
-                            </div>
-                            </div> *@
-
-
-
+                              
+                             @*    <input id="hdn_InformationTokenID" name="hdn_InformationTokenID" type="hidden" value="0" />
+                                <input id="iAppinformationTokenID" name="iAppinformationTokenID" type="hidden" value="0" />
+                                <input id="iInformationTokenID" name="iInformationTokenID" type="hidden" value="0" />
+                                <input id="iBuildingTokenID" name="iBuildingTokenID" type="hidden" value="0" />
+                                <input id="iDocumentTokenID" name="iDocumentTokenID" type="hidden" value="0" />
+                                <input id="iTimeFrame" name="iTimeFrame" type="hidden" value="0" />
+                                <input id="iDocumentCount" name="iDocumentCount" type="hidden" value="0" />
+                            *@
+                        
+                        </form>
                         </div>
 
-                        <div class="mt-3" style="width:89%;display:flex;flex-direction:row;justify-content:space-between;">
-                            @*   <span class="text-muted">
-                            You may use Google drive or other similar platforms to produce a hyperlink to your document. Please provide the hyperlink to your file in the box above.
-                            </span> *@
-
-                            <span class="text-muted flex-start" style="width:90%;font-size:small;padding:5px;">
-                                (You may use Google drive or other similar platforms to produce a hyperlink to your document. Please provide the hyperlink to your file in the box above.)
-                            </span>
-
-                            @* width:200px; *@
-                            <button id="btn_NewFileHyperlink" href="#" type="button" class="btn btn-outline-secondary btn-sm flex-end" style="font-size:small;float:right;width:150px;height:30px;">Add new hyperlink</button>
-
-
+                        @*   <div class="row m-3">
+                        <label for="formFileMultiple" class="mt-3f orm-label">Upload a file(s)</label>
+                        <input class="form-control" type="file" id="formFileMultiple" multiple>
                         </div>
 
-
-
+                        <small class="text-danger">(You must upload a file in order to select YES)</small>*@
 
 
                     </div>
@@ -302,6 +316,9 @@ mb-3"></div>
                         </div>
                     </div>
 
+                    @*   <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                    settings
+                    </div>*@
                 </div>
 
                 @* <script>
@@ -330,21 +347,23 @@ mb-3"></div>
 
                     <div class="flex-start">
 
-                        <div id="div_CommandUpload" class="flex-start" style="display:none;">
-                            <button type="button" id="btnuploadX" class="btn btn-primary"
-                                    onclick="upload_DocumentLinkList();">
-                                Upload
-                            </button>
-                            <span style="margin-left:10px;">Max files to upload (10s)</span>
+                        <div id="div_CommandUpload" class="flex-start">
+                            <button type="button" id="btnupload" class="btn btn-primary">Upload</button>
+                            @* <input type="button" style="width: 100%;" value="Uploadxxx" class="fill-width" onclick="upload()">*@
+                            @*<a class="btn btn-danger" onclick="load_TabViewDocumentList();">Clear</a>*@
                         </div>
 
-                        <div id="div_CommandEdit" class="flex-start" style="display:none;">
+                        <div id="div_CommandEdit" class="flex-start">
                             <button type="button" id="btnSubmitUpdate" onclick="submit_TabEditDocument();" class="btn btn-primary">Submit</button>
 
                             <a class="btn btn-danger" onclick="cancel_TabEditDocument();">Cancel</a>
                         </div>
 
-                       
+                        <div id="div_CommandPreview" class="flex-start">
+
+                            <span style="color:red;">Click here if you NOT have this document. </span><button type="button" class="btn btn-outline-danger" style="width:90px;font-size:medium;margin:5px;">Submit</button>
+
+                        </div>
 
                     </div>
 
@@ -381,14 +400,14 @@ mb-3"></div>
 </div>
 
 
-@* <link href="~/dropzone/dropzone.min.css" rel="stylesheet" />
-<script src="~/dropzone/dropzone.min.js"></script> *@
+<link href="~/dropzone/dropzone.min.css" rel="stylesheet" />
+<script src="~/dropzone/dropzone.min.js"></script>
 
 @*     <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" /> *@
 
 
-@* <script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
 
 
 <script>
@@ -406,7 +425,7 @@ mb-3"></div>
 
 
 
-</script> *@
+</script>
 
 
 <script>
@@ -421,7 +440,7 @@ mb-3"></div>
     // window.doccount;
     // window.clminfotxt;
     // window.clmdoccount;
-
+ 
     // window.doctknid;
     // window.doctyp;
     // window.docname;
@@ -629,20 +648,23 @@ mb-3"></div>
 
 
 
+            //var divTestMe = document.getElementById('txt_HTMLContent');
+            var iInformationText = document.getElementById('iInformationText');
+            var iDocumentCount = document.getElementById('iDocumentCount');
 
-            // var iInformationText = document.getElementById('iInformationText');
-            // var iDocumentCount = document.getElementById('iDocumentCount');
+            //  iInformationText.value = '3';
+
+            iInformationText.innerHTML = clmn_InfoText.html();
 
 
-            // iInformationText.innerHTML = clmn_InfoText.html();
+            if (doccount != "0") {
+                iDocumentCount.innerHTML = doccount;
+            }
+            else {
+                iDocumentCount.innerHTML = '';
+            }
 
-
-            // if (doccount != "0") {
-            //     iDocumentCount.innerHTML = doccount;
-            // }
-            // else {
-            //     iDocumentCount.innerHTML = '';
-            // }
+            //////  editor.setData(clmn_DocumentCount.html());
 
 
 
@@ -651,31 +673,45 @@ mb-3"></div>
             $("#iInformationTokenID").val(inftknid);
             $("#iBuildingTokenID").val(bldtknid);
             $("#iTimeFrame").val(timeframe);
+            //$("#hdn_InformationTokenID").val(inftknid);
 
 
 
-            load_TabViewDocumentList(false);
+
+            $('#tab_Edit').hide();
+            $('#tab_Progress').hide();
+
+            $('#div_CommandUpload').hide();
+            $('#div_CommandEdit').hide();
+
+            // $('#myTab button[bs-target="#edit"]').tab('show'); // Select tab by name`
+
+            $("#btn_View").removeClass("active");
+            $("#btn_Progress").removeClass("active");
+            $("#btn_Edit").removeClass("active");
+            $("#btn_Upload").removeClass("active");
+
+            $("#content_View").removeClass("active");
+            $("#content_Progress").removeClass("active");
+            $("#content_Edit").removeClass("active");
+            $("#content_Upload").removeClass("active");
+
+            $("#btn_Preview").addClass("active");
+            $("#content_Preview").addClass("active");
+
+            // TODO ////////////////////////////////////////////
+
+            // $('#div_CommandPreview').show();
 
 
-            // // // // // $('#tab_Edit').hide();
-            // // // // // $('#tab_Progress').hide();
 
-            // // // // // $('#div_CommandUpload').hide();
-            // // // // // $('#div_CommandEdit').hide();
-
-
-            // // // // // $("#btn_View").removeClass("active");
-            // // // // // $("#btn_Progress").removeClass("active");
-            // // // // // $("#btn_Edit").removeClass("active");
-            // // // // // $("#btn_Upload").removeClass("active");
-
-            // // // // // $("#content_View").removeClass("active");
-            // // // // // $("#content_Progress").removeClass("active");
-            // // // // // $("#content_Edit").removeClass("active");
-            // // // // // $("#content_Upload").removeClass("active");
 
             $('#popupModalEditor').modal('show');
 
+            // $('#div_CommandPreview').show();
+
+
+            load_TabViewDocumentList(false);
 
         }
 
@@ -790,12 +826,12 @@ mb-3"></div>
             $('#tab_Progress').hide();
             // $('#myTab button[bs-target="#edit"]').tab('show'); // Select tab by name`
 
-            //$("#btn_Preview").removeClass("active");
+            $("#btn_Preview").removeClass("active");
             $("#btn_Progress").removeClass("active");
             $("#btn_View").removeClass("active");
             $("#btn_Upload").removeClass("active");
 
-            //$("#content_Preview").removeClass("active");
+            $("#content_Preview").removeClass("active");
             $("#content_Progress").removeClass("active");
             $("#content_View").removeClass("active");
             $("#content_Upload").removeClass("active");
@@ -804,7 +840,7 @@ mb-3"></div>
             $("#content_Edit").addClass("active");
 
             $('#div_CommandUpload').hide();
-            //$('#div_CommandPreview').hide();
+            $('#div_CommandPreview').hide();
             $('#div_CommandEdit').show();
 
 
@@ -832,13 +868,16 @@ mb-3"></div>
             $('#tab_Progress').hide();
             $('#div_CommandUpload').hide();
             $('#div_CommandEdit').hide();
+            $('#div_CommandPreview').hide();
 
+            // $('#myTab button[bs-target="#edit"]').tab('show'); // Select tab by name`
 
+            $("#btn_Preview").removeClass("active");
             $("#btn_Progress").removeClass("active");
             $("#btn_Edit").removeClass("active");
             $("#btn_Upload").removeClass("active");
 
-            //$("#content_Preview").removeClass("active");
+            $("#content_Preview").removeClass("active");
             $("#content_Progress").removeClass("active");
             $("#content_Edit").removeClass("active");
             $("#content_Upload").removeClass("active");
@@ -866,16 +905,16 @@ mb-3"></div>
             $('#tab_Progress').hide();
             $('#div_CommandUpload').hide();
             $('#div_CommandEdit').hide();
-            //$('#div_CommandPreview').hide();
+            $('#div_CommandPreview').hide();
 
             // $('#myTab button[bs-target="#edit"]').tab('show'); // Select tab by name`
 
-            //$("#btn_Preview").removeClass("active");
+            $("#btn_Preview").removeClass("active");
             $("#btn_View").removeClass("active");
             $("#btn_Edit").removeClass("active");
             $("#btn_Upload").removeClass("active");
 
-            //$("#content_Preview").removeClass("active");
+            $("#content_Preview").removeClass("active");
             $("#content_View").removeClass("active");
             $("#content_Edit").removeClass("active");
             $("#content_Upload").removeClass("active");
@@ -937,27 +976,9 @@ mb-3"></div>
 
                     $("#div_DocumentList").html(data);
 
-
-
-                    $('#tab_Edit').hide();
-                    $('#tab_Progress').hide();
-                    $('#div_CommandUpload').hide();
                     $('#div_CommandEdit').hide();
-
-
-                    $("#btn_Progress").removeClass("active");
-                    $("#btn_Edit").removeClass("active");
-                    $("#btn_Upload").removeClass("active");
-
-                    //$("#content_Preview").removeClass("active");
-                    $("#content_Progress").removeClass("active");
-                    $("#content_Edit").removeClass("active");
-                    $("#content_Upload").removeClass("active");
-
-                    $("#btn_View").addClass("active");
-                    $("#content_View").addClass("active");
-
-
+                    $('#div_CommandPreview').hide();
+                    $('#div_CommandUpload').hide();
 
                     // alert('load_TabViewDocumentList DONE !!!');
                 }
@@ -1045,18 +1066,18 @@ mb-3"></div>
             $('#tab_Progress').hide();
             // $('#myTab button[bs-target="#edit"]').tab('show'); // Select tab by name`
 
-            //$("#btn_Preview").removeClass("active");
+            $("#btn_Preview").removeClass("active");
             $("#btn_Progress").removeClass("active");
             $("#btn_Edit").removeClass("active");
             $("#btn_Upload").removeClass("active");
 
-            //$("#content_Preview").removeClass("active");
+            $("#content_Preview").removeClass("active");
             $("#content_Progress").removeClass("active");
             $("#content_Edit").removeClass("active");
             $("#content_Upload").removeClass("active");
 
             $('#div_CommandEdit').hide();
-            //$('#div_CommandPreview').hide();
+            $('#div_CommandPreview').hide();
             $('#div_CommandUpload').hide();
 
             $("#btn_View").addClass("active");
@@ -1583,7 +1604,7 @@ mb-3"></div>
 
 
                     // $('#div_CommandEdit').hide();
-                    // //////////$('#div_CommandPreview').hide();
+                    // ////////$('#div_CommandPreview').hide();
                     // $('#div_CommandUpload').hide();
 
                     //alert('load_TabPageNumberList DONE !!!');
@@ -1738,27 +1759,51 @@ mb-3"></div>
             // // // // //     open_TabViewProgress();
             // // // // // });
 
-            /////////////////////////////////////////////////////////
+            $('#btnupload').on('click', function (e) {
 
-            // // // // // // // // // // // // $('#btnupload').on('click', function (e) {
+                try {
 
-            // // // // // // // // // // // //     try {
-
-
-            // // // // // // // // // // // //         e.preventDefault();
-            // // // // // // // // // // // //         dz.options.autoProcessQueue = true;
-            // // // // // // // // // // // //         dz.processQueue();
-
-            // // // // // // // // // // // //         open_TabViewProgress();
-
-            // // // // // // // // // // // //     }
-
-            // // // // // // // // // // // //     catch (err) {
-            // // // // // // // // // // // //         alert(err);
-            // // // // // // // // // // // //     }
+                    // alert('btnupload');
+                    // alert(dz);
 
 
-            // // // // // // // // // // // // });
+                    // // // // // // // // // // // // e.preventDefault();
+
+                    // // // // // // // // // // // // function tryQueue() {
+                    // // // // // // // // // // // //     var numQueued = dz.getQueuedFiles().length;
+                    // // // // // // // // // // // //     var numFiles = numQueued + dz.getUploadingFiles().length;
+                    // // // // // // // // // // // //     if (numQueued > 0) {
+                    // // // // // // // // // // // //         dz.processQueue();
+                    // // // // // // // // // // // //     }
+                    // // // // // // // // // // // //     if (numFiles > 0) {
+                    // // // // // // // // // // // //         setTimeout(tryQueue, 1000);
+                    // // // // // // // // // // // //     }
+                    // // // // // // // // // // // //     //else window.location = '/'; //redirect when finished
+                    // // // // // // // // // // // //     else alert('GOD HELP'); //redirect when finished
+                    // // // // // // // // // // // // }
+
+                    // // // // // // // // // // // // tryQueue();
+
+
+
+
+
+                    ////////////////////////////////////////////////////////////////
+
+                    e.preventDefault();
+                    dz.options.autoProcessQueue = true;
+                    dz.processQueue();
+
+                    open_TabViewProgress();
+
+                }
+
+                catch (err) {
+                    alert(err);
+                }
+
+
+            });
 
 
 
@@ -1786,12 +1831,12 @@ mb-3"></div>
 
                 if (x === 'upload') {
                     $('#div_CommandEdit').hide();
-                    //$('#div_CommandPreview').hide();
+                    $('#div_CommandPreview').hide();
                     $('#div_CommandUpload').show();
                 }
                 else if (x === 'edit') {
                     $('#div_CommandEdit').show();
-                    //$('#div_CommandPreview').show();
+                    $('#div_CommandPreview').show();
                     $('#div_CommandUpload').hide();
                 }
                 else if (x === 'preview') {
@@ -1799,7 +1844,7 @@ mb-3"></div>
 
                     $('#div_CommandEdit').hide();
                     $('#div_CommandUpload').hide();
-                    //$('#div_CommandPreview').show();
+                    $('#div_CommandPreview').show();
 
                 }
 
@@ -1816,14 +1861,14 @@ mb-3"></div>
                     //}
 
                     $('#div_CommandEdit').hide();
-                    //$('#div_CommandPreview').hide();
+                    $('#div_CommandPreview').hide();
                     $('#div_CommandUpload').hide();
 
                 }
                 else {
                     $('#div_CommandEdit').hide();
                     $('#div_CommandUpload').hide();
-                    //$('#div_CommandPreview').hide();
+                    $('#div_CommandPreview').hide();
                 }
 
 
@@ -1904,208 +1949,6 @@ mb-3"></div>
         }
 
     });
-
-
-
-
-
-    function upload_DocumentLinkList() {
-
-        try {
-
-
-            //alert('upload_DocumentLinkList');
-            var _urlLinkList = "";
-
-            var inputs = $('[data-inputfor="fupload"]');
-
-            //alert(inputs.length);
-
-
-            for (var i = 0; i < inputs.length; i++) {
-
-                // alert($(inputs[i]).val());
-                // alert(isValidUrl($(inputs[i]).val()));
-
-                if ($(inputs[i]).val().length != 0) {
-
-
-                    if (isValidUrl($(inputs[i]).val())) {
-
-                        if (_urlLinkList == "") {
-                            _urlLinkList = $(inputs[i]).val();
-                        }
-
-                        else {
-                            _urlLinkList += ',' + $(inputs[i]).val();
-                        }
-
-                    }
-                }
-
-                // else {
-                //     alert('empty');
-
-                // }
-
-
-            }
-
-            // alert('_urlLinkList == ' + _urlLinkList);
-
-
-            // // // // // alert($("#iAppQueryTableTokenID").val());
-            // // // // // alert($("#iAppQueryInformationTokenID").val());
-            // // // // // alert($("#iQueryTableTokenID").val());
-            // // // // // alert($("#iQueryInformationTokenID").val());
-            // // // // // alert($("#iBuildingTokenID").val());
-            // // // // // alert(_urlLinkList);
-
-
-
-            // var clmn_DocumentDate = $("[data-clmdocdate='clmdocdate_" + window.doctknid + "']");
-            // var clmn_DocumentDescription = $("[data-clmdocdesc='clmdocdesc_" + window.doctknid + "']");
-
-            if (_urlLinkList != "") {
-
-                // alert('_urlLinkList != ""');
-
-
-                BSR_ShowToastMessage('process');
-
-                open_TabViewProgress();
-
-
-
-
-
-                // // // // // // // // // // $.ajax({
-
-                // // // // // // // // // //     url: '/iWebMember/Development/GoldenForm_Upload_FileLinks',
-                // // // // // // // // // //     data: {
-                // // // // // // // // // //         iAppQueryTableTokenID: $("#iAppQueryTableTokenID").val(),
-                // // // // // // // // // //         iAppQueryInformationTokenID: $("#iAppQueryInformationTokenID").val(),
-                // // // // // // // // // //         iQueryTableTokenID: $("#iQueryTableTokenID").val(),
-                // // // // // // // // // //         iQueryInformationTokenID: $("#iQueryInformationTokenID").val(),
-                // // // // // // // // // //         iBuildingTokenID: $("#iBuildingTokenID").val(),
-                // // // // // // // // // //         iFileLinkList: _urlLinkList,
-                // // // // // // // // // //         iAnswerCode: window.answercode,
-                // // // // // // // // // //         iAnswerText: window.systemdescription
-
-
-                // // // // // // // // // //         // // // // // doctknid: window.doctknid,
-                // // // // // // // // // //         // // // // // iday: date.getDate(),
-                // // // // // // // // // //         // // // // // // idayname: $("#iBuildingTokenID").val(),
-                // // // // // // // // // //         // // // // // imonth: date.getMonth() + 1,
-                // // // // // // // // // //         // // // // // iyear: date.getFullYear(),
-                // // // // // // // // // //         // // // // // iDateText: $("#iDocumentDateStart").val(),
-                // // // // // // // // // //         // // // // // idesc: txt_DocumentDescription,
-                // // // // // // // // // //         // // // // // timeframe: window.timeframe
-                // // // // // // // // // //     },
-                // // // // // // // // // //     success: function (data) {
-
-
-                // // // // // // // // // //         if (window.answercode == "yes") {
-
-                // // // // // // // // // //             var clmn_ActivityText = $("[data-clmactivity='clmactivity_" + window.inftknid + "']");
-
-                // // // // // // // // // //             clmn_ActivityText.html(
-                // // // // // // // // // //                 '<strong>' + window.systemtitle + '</strong>' +
-                // // // // // // // // // //                 window.systemdescription);
-
-                // // // // // // // // // //         }
-
-                // // // // // // // // // //         refresh_TabViewQueryDocumentList(true);
-
-
-
-                // // // // // // // // // //         for (var i = 0; i < inputs.length; i++) {
-
-
-                // // // // // // // // // //             $(inputs[i]).val('');
-
-                // // // // // // // // // //         }
-
-
-                // // // // // // // // // //         // // // // clmn_DocumentDate.css('color', 'black');
-
-
-                // // // // // // // // // //         // // // // if (txt_DocumentDescription == "0") {
-                // // // // // // // // // //         // // // //     clmn_DocumentDescription.css('color', 'red');
-                // // // // // // // // // //         // // // // }
-
-                // // // // // // // // // //         // // // // else {
-                // // // // // // // // // //         // // // //     clmn_DocumentDescription.css('color', 'black');
-                // // // // // // // // // //         // // // // }
-
-
-                // // // // // // // // // //         // // // // clmn_DocumentDate.html($("#iDocumentDateStart").val());
-                // // // // // // // // // //         // // // // clmn_DocumentDescription.html(visible_RiskControlMeasure);
-
-
-                // // // // // // // // // //         // // // // cancel_TabEditDocument();
-
-                // // // // // // // // // //     }
-                // // // // // // // // // // });
-
-
-
-            }
-
-            ///////////////////////////////////////////////////////////
-
-            // else {
-
-            //     alert('_urlLinkList ==== ""');
-
-            // }
-
-
-
-
-            // // // // // $('#tab_Edit').hide();
-            // // // // // $('#tab_Progress').hide();
-            // // // // // $('#div_CommandUpload').hide();
-            // // // // // $('#div_CommandEdit').hide();
-            // // // // // //////$('#div_CommandPreview').hide();
-
-            // // // // // // $('#myTab button[bs-target="#edit"]').tab('show'); // Select tab by name`
-
-            // // // // // //$("#btn_Preview").removeClass("active");
-            // // // // // $("#btn_View").removeClass("active");
-            // // // // // $("#btn_Edit").removeClass("active");
-            // // // // // $("#btn_Upload").removeClass("active");
-
-            // // // // // //$("#content_Preview").removeClass("active");
-            // // // // // $("#content_View").removeClass("active");
-            // // // // // $("#content_Edit").removeClass("active");
-            // // // // // $("#content_Upload").removeClass("active");
-
-            // // // // // $("#btn_Progress").addClass("active");
-            // // // // // $("#content_Progress").addClass("active");
-        }
-
-
-        catch (err) {
-            alert(err);
-            console.error(err);
-            return;
-        }
-
-    }
-
-
-    const isValidUrl = urlString => {
-        var urlPattern = new RegExp('^(https?:\\/\\/)?' + // validate protocol
-            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // validate domain name
-            '((\\d{1,3}\\.){3}\\d{1,3}))' + // validate OR ip (v4) address
-            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // validate port and path
-            '(\\?[;&a-z\\d%_.~+=-]*)?' + // validate query string
-            '(\\#[-a-z\\d_]*)?$', 'i'); // validate fragment locator
-        return !!urlPattern.test(urlString);
-    }
-
-
 
 </script>
 

@@ -64,7 +64,7 @@
                     <div class="card">
 
                         <span class="card-header fs-6" style="height:50px;background-color:#0a75bb;color:white;">
-                            <img src="~/img/img_meun_admin_white.png" style="width:20px;height:20px;margin-left:5px;margin-right:5px;" />Invite Users
+                            <img src="~/img/img_meun_admin_white.png" style="width:20px;height:20px;margin-left:5px;margin-right:5px;" />Alerts
                         </span>
                         <div class="card-body">
                             <h6 class="card-title">Special title treatment</h6>
@@ -190,6 +190,15 @@
     window.timeframe;
 
 
+    window.clmactivity;
+    window.clmlinklist;
+    window.answercode;
+    window.answertext;
+    window.systemtitle;
+    window.systemdescription;
+    window.userdescription;
+
+
 
 
     function BSRVideo() {
@@ -261,6 +270,33 @@
                     "block");
             }
 
+            else if (iPageCode == 'workpermit') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_WorkPermit';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "Permit to Work",
+                    "Procedure",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+            else if (iPageCode == 'workpermitform') {
+
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_WorkPermit';
+
+                load_PageContent_PagePathName(
+                    iPageCode,
+                    "Permit to Work",
+                    "Form",
+                    "#9999cc",
+                    "#0a75bb",
+                    "block");
+            }
+
+          
             else if (iPageCode == 'terms') {
 
                 _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_TermsPage';
@@ -817,8 +853,11 @@
                     $(".div_RenderBody").html(data);
 
                     if (iPageCode == 'building_resident') {
-                        load_FCKEditor();
+                        load_FCKEditor_Activity();
 
+                    } else {
+
+                        load_FCKEditor();
                     }
 
                 }
@@ -996,7 +1035,7 @@
 
             $("#div_BuildingName").html(iBuildingName);
 
-            $("#div_ViewBuilding").show(500);
+            // // // // // $("#div_ViewBuilding").show(500);
 
             $("#div_BuildingBlock").show(500);
 
@@ -1043,7 +1082,7 @@
 
             $("#div_BuildingName").html('');
 
-            $("#div_ViewBuilding").hide(500);
+            // // // // // $("#div_ViewBuilding").hide(500);
 
             $("#div_BuildingBlock").hide(500);
 
@@ -1081,7 +1120,11 @@
     let editorActivity;
 
 
-    function load_FCKEditor() {
+    let editor;
+
+
+
+    function load_FCKEditor_Activity() {
 
         try {
 
@@ -1094,6 +1137,32 @@
                 .catch(error => {
                     console.error(error);
                 });
+
+        }
+
+        catch (err) {
+            console.error(err);
+        }
+
+    }
+
+
+    function load_FCKEditor() {
+
+        try {
+
+            ClassicEditor
+                .create(document.querySelector('#txt_HTMLContent'))
+                .then(newEditor => {
+                    editor = newEditor;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+
+
+
+
 
         }
 

@@ -3330,6 +3330,193 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
 
 
+        public async Task<IActionResult> GoldenForm_Upload_FileLinks(
+            string iAppQueryTableTokenID,
+            string iAppQueryInformationTokenID,
+            string iQueryTableTokenID,
+            string iQueryInformationTokenID,
+            string iBuildingTokenID,
+            string iFileLinkList,
+            string iAnswerCode,
+            string iAnswerText)
+        {
+
+            /* , IFormFile filedata*/
+
+
+            try
+            {
+
+                //string phrase = "The quick brown fox jumps over the lazy dog.";
+                //string[ ] words = phrase.Split(' ');
+
+                //string phrase = "The quick brown fox jumps over the lazy dog.";
+                string[ ] words = iFileLinkList.Split(',');
+
+                List<string> uploadedFilesName = new List<string>();
+                //List<string> uploadedFilesTokenID = new List<string> ( );
+                //List<string> uploadedFileExtension = new List<string>();
+                //List<string> uploadedFileSize = new List<string>();
+                ArrayList _arrTokenList = new ArrayList();
+
+                _arrTokenList = AppUtility_ListTokenIDManager.ListTokenID_Generate_NewList(words.Length.ToString());
+
+
+
+                foreach (var word in words)
+                {
+
+                    uploadedFilesName.Add(word);
+                    //uploadedFilesTokenID.Add ( _xFileName );
+                    //uploadedFileExtension.Add(_iFileExtension);
+                    //uploadedFileSize.Add(_iFileSize);
+
+                    //System.Console.WriteLine($"<{word}>");
+                }
+
+                // Save-Database
+
+                try
+                {
+
+
+                    BsrvemcoUserBuildingQueryDocumentList iQueryDocumentModel;
+                    for (int i = 0; i < uploadedFilesName.Count; i++)
+                    {
+                        iQueryDocumentModel = new BsrvemcoUserBuildingQueryDocumentList()
+                        {
+
+                            RowViewTokenId = new Guid(),
+
+
+                            OwnerUserTokenId = Program.iOwnerModel.OwnerUserTokenID,
+                            CompanyTokenId = Program.iOwnerModel.CompanyTokenID,
+
+                            AppqueryTableTokenId = iAppQueryTableTokenID,
+                            QueryTableTokenId = iQueryTableTokenID,
+                            BuildingTokenId = iBuildingTokenID,
+                            AppqueryInformationTokenId = iAppQueryInformationTokenID,
+                            QueryInformationTokenId = iQueryInformationTokenID,
+                            DocumentTokenId = _arrTokenList[i].ToString(),
+                            DocumentWebUrl = uploadedFilesName[i].ToString(),
+
+                            //iDevelomentNew1ViewModel.BuildingDate.Day.ToString ( ) ,
+                            //DocumentTitle = uploadedFilesName[i].ToString(),// iDevelomentNew1ViewModel.BuildingDate.Month.ToString ( ) ,
+                            //DocumentExtension = uploadedFileExtension[i].ToString(),
+                            //DocumentCode = uploadedFileExtension[i].ToString(),
+                            //DocumentType = uploadedFileExtension[i].ToString(),
+                            //DocumentSize = uploadedFileSize[i].ToString(),//iDevelomentNew1ViewModel.BuildingDate.ToString ( ) ,
+
+
+
+                            TimeoutUserUploadStartDay =DateTime.Now.Day.ToString(),
+                            TimeoutUserUploadStartMonth =DateTime.Now.Month.ToString(),
+                            TimeoutUserUploadStartYear =DateTime.Now.Year.ToString(),
+                            TimeoutUserUploadStartText = "0",
+
+
+
+
+
+                            //TimeoutYearCount = iTimeFrame,
+                            UploadDateTimeMilliSec = AppUtility_TimeManager.Time_GetCurrentTimeInMilliSecond(),
+                            IsVisible = true,
+                            IsActive = true,
+
+                        };
+
+
+                        await _dbContext.BsrvemcoUserBuildingQueryDocumentLists.AddAsync(iQueryDocumentModel);
+
+                        await _dbContext.SaveChangesAsync();
+
+
+                    }
+
+
+
+                    // Update-Scores
+
+
+                    if (iAnswerCode== "yes")
+                    {
+
+                        await QueryForm_Answer_YES_NO(
+            iAppQueryTableTokenID,
+            iAppQueryInformationTokenID,
+            iQueryTableTokenID,
+           iQueryInformationTokenID,
+            iBuildingTokenID,
+            iAnswerCode,
+         iAnswerText);
+                    }
+
+                    //         string _iDocumentCount = _dbContext.BsrvemcoUserBuildingDocumentLists
+                    //.Where(
+                    //    c =>
+                    //    c.BuildingTokenId == iBuildingTokenID &&
+                    //    c.InformationTokenId == iInformationTokenID &&
+                    //    c.IsVisible == true)
+                    //.Count().ToString();
+
+
+                    //         var _iUserBuildignInfoModel = _dbContext.BsrvemcoUserBuildingInformationLists
+                    //                 .Where(u =>
+                    //                 u.BuildingTokenId == iBuildingTokenID &&
+                    //                 u.InformationTokenId == iInformationTokenID)
+                    //                 //.Select (u  )
+                    //                 .FirstOrDefault(); // This is what actually executes the request and return a response
+
+                    //         _iUserBuildignInfoModel.Score = "3";
+                    //         _iUserBuildignInfoModel.ScoreOriginal = "3";
+                    //         _iUserBuildignInfoModel.ScoreAdjusted = "3";
+                    //         _iUserBuildignInfoModel.ScoreManaged = "3";
+                    //         _iUserBuildignInfoModel.DocumentCount = _iDocumentCount;
+
+
+
+                    //         _iUserBuildignInfoModel.IsAnswered = true;
+                    //         _iUserBuildignInfoModel.AnswerCode="evidence_upload";
+                    //         _iUserBuildignInfoModel.AnswerText="Evidence has been uploaded and is awaiting verification";
+                    //         _iUserBuildignInfoModel.AnswerDescription="0";
+
+
+                    //         _dbContext.BsrvemcoUserBuildingInformationLists.Update(_iUserBuildignInfoModel);
+
+                    //         await _dbContext.SaveChangesAsync();
+
+
+
+                }
+                catch (Exception ex)
+                {
+                    AppUtility_DebugManager.Debug_Get_MessageText(ex.Message.ToString());
+
+                }
+
+
+
+
+
+                return Json(new { status = true, Message = "Files Uploaded Successfully!" });
+
+
+                //return View();
+
+
+
+            }
+            catch (Exception ex)
+            {
+                AppUtility_DebugManager.Debug_Get_MessageText(ex.Message.ToString());
+                return View();
+            }
+
+        }
+
+
+
+
 
 
         [HttpPost]
@@ -4937,6 +5124,8 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
                     iqueryinftknid = iqueryinftknid
                 });
 
+          
+            
             //return ViewComponent ( "DocumentList" ,
             //    new { showPrevious = showPrevious , showUpcoming = showUpcoming } );
 

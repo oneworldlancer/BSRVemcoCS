@@ -82,31 +82,111 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
         {
             /*string bldtknid, string iPageNumber, string blnIsPaging*/           /* bool showPrevious , bool showUpcoming */
 
+            //////////try
+            //////////{
+
+
+            //////////    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+            //////////    //MailMessage msg = new MailMessage(
+            //////////    //    "BSRHelpDesk@vemcoconsulting.com", "basil.jackson@vemcoconsulting.com",
+            //////////    //    "Test E-mail 1101", "Hi there ...");
+
+
+            //////////    MailMessage msg = new MailMessage(
+            //////////        "BSRHelpDesk@vemcoconsulting.com", "oneworldlancer@gmail.com",
+            //////////        "Test E-mail 2202", "Hi there ...");
+
+            //////////    ////  SmtpClient smtp = new SmtpClient("vemcoconsulting-com.mail.protection.outlook.com", 25);
+            //////////    //  SmtpClient smtp = new SmtpClient("vemcoconsulting-com.mail.protection.outlook.com", 25);
+            //////////    SmtpClient smtp = new SmtpClient("smtp.office365.com", 587);
+
+            //////////    smtp.UseDefaultCredentials = false;
+
+            //////////    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+            //////////    smtp.EnableSsl = true;
+
+            //////////    smtp.Credentials= new NetworkCredential(
+            //////////        "bsrhelpdesk@vemcoconsulting.com", "@goADMIN06021979", "vemcoconsulting.com");
+
+            //////////    smtp.TargetName = "STARTTLS/smtp.office365.com";
+
+
+            //////////    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            //////////    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            //////////    smtp.Send(msg);
+
+
+            //////////}
+            //////////catch (Exception ex)
+            //////////{
+            //////////    AppUtility_DebugManager.Debug_Get_MessageText(ex.Message.ToString());
+            //////////}
+
+            // Clean up.
+
+            //msg.Dispose();
+
+            return ViewComponent("BSRVemcoPage_ContactUs");
+
+
+            //return ViewComponent("BSRVemcoPage_ContactUs",
+            //    new
+            //    {
+            //        //////////bldtknid = bldtknid,
+            //        ////////////querytbltknid = querytbltknid,
+            //        //////////iPageNumber = iPageNumber,
+            //        //////////blnIsPaging = Boolean.Parse(blnIsPaging)
+            //    });
+
+            //return ViewComponent ( "DocumentList" ,
+            //    new { showPrevious = showPrevious , showUpcoming = showUpcoming } );
+
+
+        }
+
+
+
+
+        public IActionResult PageComponentView_Load_ContactUsPage_X1()
+        {
+            /*string bldtknid, string iPageNumber, string blnIsPaging*/           /* bool showPrevious , bool showUpcoming */
+
             try
             {
 
 
-                ////////System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-                ////////MailMessage msg = new MailMessage(
-                ////////    "BSRHelpDesk@vemcoconsulting.com", "oneworldlancer@gmail.com",
-                ////////    "Test E-mail 1101", "Hi there ...");
-
-                //////////  SmtpClient smtp = new SmtpClient("vemcoconsulting-com.mail.protection.outlook.com", 25);
-                //////////  SmtpClient smtp = new SmtpClient("vemcoconsulting-com.mail.protection.outlook.com", 25);
-                ////////SmtpClient smtp = new SmtpClient("smtp.office365.com", 25);
-
-                ////////smtp.UseDefaultCredentials = false;
-                ////////smtp.EnableSsl = true;
-                ////////smtp.Credentials= new NetworkCredential(
-                ////////    "bsrhelpdesk@vemcoconsulting.com", "@Laq43362", "vemcoconsulting.com");
-
-                ////////smtp.TargetName = "STARTTLS/smtp.office365.com";
+                //MailMessage msg = new MailMessage(
+                //    "BSRHelpDesk@vemcoconsulting.com", "basil.jackson@vemcoconsulting.com",
+                //    "Test E-mail 1101", "Hi there ...");
 
 
-                ////////smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                MailMessage msg = new MailMessage(
+                    "BSRHelpDesk@vemcoconsulting.com", "oneworldlancer@gmail.com",
+                    "Test E-mail 2202", "Hi there ...");
 
-                ////////smtp.Send(msg);
+                ////  SmtpClient smtp = new SmtpClient("vemcoconsulting-com.mail.protection.outlook.com", 25);
+                //  SmtpClient smtp = new SmtpClient("vemcoconsulting-com.mail.protection.outlook.com", 25);
+                SmtpClient smtp = new SmtpClient("smtp.office365.com", 587);
+
+                smtp.UseDefaultCredentials = false;
+
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                smtp.EnableSsl = true;
+
+                smtp.Credentials= new NetworkCredential(
+                    "bsrhelpdesk@vemcoconsulting.com", "@goADMIN06021979", "vemcoconsulting.com");
+
+                smtp.TargetName = "STARTTLS/smtp.office365.com";
+
+
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                smtp.Send(msg);
 
 
             }
@@ -172,6 +252,88 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
             AppCMSPageViewModel _iCMSPageViewModel = new AppCMSPageViewModel();
 
             _iCMSPageViewModel.PageCode = "terms";
+            _iCMSPageViewModel.PageHTMLContent = _iCMSPageModel.PageHtmlcontent;
+
+
+
+
+
+
+            //var model = socialIcons;
+            //  return await Task.FromResult ( ( IViewComponentResult ) View ( "Default" , model ) );
+            //return await Task.FromResult ( ( IViewComponentResult ) View ( "Default" , null));// await Task.FromResult ( ( IViewComponentResult ) View ( "Default" , model ) );
+
+            /////////////////return await Task.FromResult((IViewComponentResult)View("Default", _iCMSPageViewModel ) );
+
+
+            //      return new HtmlContentViewComponentResult (
+            //new HtmlString (    Task.FromResult ( ( IViewComponentResult ) View ( "Default" , _iCMSPageViewModel ) .ToString() )));
+
+
+            //            return new HtmlContentViewComponentResult (
+            //new HtmlString ( "<ul><li>My HTML code</li></ul>" ) );
+
+
+            return Content(_iCMSPageViewModel.PageHTMLContent);
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //  return ViewComponent("BSRVemcoPage_Terms" );
+
+            //return ViewComponent("CMS_PageViewHTMLContent",
+            //    new
+            //    {
+            //        iPageCode = "terms"
+            //    });
+
+
+            //return ViewComponent("BSRVemcoPage_",
+            //    new
+            //    {
+            //        //////////bldtknid = bldtknid,
+            //        ////////////querytbltknid = querytbltknid,
+            //        //////////iPageNumber = iPageNumber,
+            //        //////////blnIsPaging = Boolean.Parse(blnIsPaging)
+            //    });
+
+            //return ViewComponent ( "DocumentList" ,
+            //    new { showPrevious = showPrevious , showUpcoming = showUpcoming } );
+
+
+        }
+
+
+
+
+
+
+        public IActionResult PageComponentView_Load_WorkPermit()
+        {
+            /*string bldtknid, string iPageNumber, string blnIsPaging*/           /* bool showPrevious , bool showUpcoming */
+
+
+            var _iCMSPageModel = _dbContext.BsrvemcoAppCmsPageLists
+                    .Where(u =>
+                    u.PageCode == "workpermit")
+                    //.Select (u  )
+                    .FirstOrDefault();
+
+
+
+
+            AppCMSPageViewModel _iCMSPageViewModel = new AppCMSPageViewModel();
+
+            _iCMSPageViewModel.PageCode = "workpermit";
             _iCMSPageViewModel.PageHTMLContent = _iCMSPageModel.PageHtmlcontent;
 
 
@@ -724,6 +886,90 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
 
 
+
+
+        public IActionResult PageComponentView_POST_ContactUsPage(
+            string iFullName,
+            string iEmailAddress,
+            string iMobilenumber,
+            string iMessageText)
+        {                                    /* bool showPrevious , bool showUpcoming */
+
+            try
+            {
+
+
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                //MailMessage msg = new MailMessage(
+                //    "BSRHelpDesk@vemcoconsulting.com", "basil.jackson@vemcoconsulting.com",
+                //    "Test E-mail 1101", "Hi there ...");
+
+
+                MailMessage msg = new MailMessage(
+                    "BSRHelpDesk@vemcoconsulting.com",
+                    "shaymaa.hafez@yahoo.fr,oneworldlancer@gmail.com,hoby333@hotmail.com,oneworldlancer@oneworldlancer.onmicrosoft.com",
+                    "Test E-mail 8808", "Hi there 8808 ...");
+
+                //MailMessage msg = new MailMessage(
+                //        "BSRHelpDesk@vemcoconsulting.com",
+                //        "oneworldlancer@gmail.com,hoby333@yahoo.com,oneworldlancer@yahoo.com",
+                //        "Test E-mail 6606", "Hi there ...");
+
+                //msg.Bcc.Add("oneworldlancer@yahoo.com");
+                //msg.CC.Add("shaymaa.hafez@yahoo.fr");
+
+                //msg.To.Add("hoby333@yahoo.com,oneworldlancer@yahoo.com");
+
+                SmtpClient smtp = new SmtpClient("smtp.office365.com", 587);
+
+                smtp.UseDefaultCredentials = false;
+
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+                smtp.EnableSsl = true;
+
+                smtp.Credentials= new NetworkCredential(
+                    "bsrhelpdesk@vemcoconsulting.com", "@goADMIN06021979", "vemcoconsulting.com");
+
+                smtp.TargetName = "STARTTLS/smtp.office365.com";
+
+
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                smtp.Send(msg);
+
+                //Clean up.
+
+                msg.Dispose();
+
+
+            }
+            catch (Exception ex)
+            {
+                AppUtility_DebugManager.Debug_Get_MessageText(ex.Message.ToString());
+            }
+
+
+            return ViewComponent("BSRVemcoPage_ContactUs");
+
+
+
+
+            //return ViewComponent("QueryFormTableDocumentList",
+            //    new
+            //    {
+            //        bldtknid = bldtknid,
+            //        iqueryinftknid = iqueryinftknid
+            //    });
+
+
+
+            //return ViewComponent ( "DocumentList" ,
+            //    new { showPrevious = showPrevious , showUpcoming = showUpcoming } );
+
+
+        }
 
 
 

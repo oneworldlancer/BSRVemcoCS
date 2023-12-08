@@ -86,10 +86,6 @@
     @*<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>*@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.20.0/dist/jquery.validate.min.js"></script>
-
-
     @*    <script src="~/lib/jqueryui/jquery-ui.min.js"></script>*@
 
     @*<script src="https://cdn.tiny.cloud/1/ijhe5oqbrnz2y8emfxulfmdz478mpq5qfgwd038tw5ws5mw1/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
@@ -109,7 +105,7 @@
     <link href="~/css/bsr_input_CSS.css" rel="stylesheet" />
     <link href="~/css/bsr_scrollbar_CSS.css" rel="stylesheet" />
     <link href="~/css/bsr_link_CSS.css" rel="stylesheet" />
-    <link href="~/css/bsr_text_css.css" rel="stylesheet" />
+
 
 
 </head>
@@ -347,99 +343,10 @@
 
                     </div>
 
-
-                    <div class="mb-4" id="div_Building">
-
-                        @*      onclick="open_MenuHeaderItemList('collapseBuilding');" *@
-                        <div id="div_CollapseBuilding" data-bs-toggle="collapse" data-bs-target="#collapseBuilding" aria-expanded="false" aria-controls="collapseBuilding">
-
-                            <div id="div_Building_Collapse" style="cursor:pointer;">
-
-                                <table class="middleCenter" style="width:100%;padding:5px;">
-                                    <tr>
-                                        <td class="bottomCenter">
-
-                                            <img src="~/img/img_meun_building.png" style="width:30px;height:30px;" />
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-
-                                        <td class="topCenter">
-                                            <span style="color:white;">BUILDINGS</span>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-
-
-                        </div>
-
-                        <div class="collapse" id="collapseBuilding" data-mnuid="building">
-
-                            <div class="col-12" id="div_Building_MenuList">
-
-                                <div class="middleCenter mt-1" style="width:100%;">
-
-                                    @*      onclick="load_PageContent_Static_ByPageTokenID('building_new')" *@
-                                    <div id="div_building_new" class="mb-1 divHighlightMenu" style="cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px #00000000;">
-
-                                        <table style="padding:5px;">
-                                            <tr>
-                                                <td style="width:20px;padding-top:5px;">
-
-                                                    @* <img src="~/img/img_setting_white.png" style="width:20px;height:20px;" /> *@
-                                                    <i class="bi bi-circle-fill" style="color:white;font-size:xx-small;"></i>
-                                                </td>
-                                                <td style="padding-left:5px;padding-top:5px;">
-                                                    <span style="color:white;">Create new</span>
-                                                </td>
-                                            </tr>
-
-                                        </table>
-                                    </div>
-
-
-
-                                    <div id="div_building_list" class="mb-1 divHighlightMenu" style="cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px#00000000;"
-                                         onclick="load_PageContent_Static_ByPageTokenID('building_list')">
-
-                                        <table style="padding:5px;">
-                                            <tr>
-                                                <td style="width:20px;padding-top:5px;">
-
-                                                    @* <img src="~/img/img_setting_white.png" style="width:20px;height:20px;" /> *@
-                                                    <i class="bi bi-circle-fill" style="color:white;font-size:xx-small;"></i>
-                                                </td>
-                                                <td style="padding-left:5px;padding-top:5px;">
-                                                    <span style="color:white;">List</span>
-                                                </td>
-                                            </tr>
-
-                                        </table>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-
-
-                            @*   <div class="card card-body">
-                            Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-                            </div> *@
-                        </div>
-
-
-                    </div>
-
-
-                    @* style="display:none;" *@
-                    <div class="mb-4" id="div_ViewBuilding">
+                    <div class="mb-4" id="div_ViewBuilding" style="display:none;">
 
                         @*      onclick="open_MenuHeaderItemList('collapseViewBuilding');" *@
-                        <div id="div_CollapseViewBuilding" disabled data-bs-toggle="collapse" data-bs-target="#collapseViewBuilding" aria-expanded="false" aria-controls="collapseViewBuilding">
+                        <div id="div_CollapseViewBuilding" data-bs-toggle="collapse" data-bs-target="#collapseViewBuilding" aria-expanded="false" aria-controls="collapseViewBuilding">
 
                             <div id="div_ViewBuilding_Collapse" style="cursor:pointer;">
 
@@ -454,7 +361,7 @@
                                     <tr>
 
                                         <td class="topCenter">
-                                            <span style="color:silver;">VIEW BUILDING</span>
+                                            <span style="color:white;">VIEW BUILDING</span>
                                         </td>
                                     </tr>
                                 </table>
@@ -673,27 +580,25 @@
 
                     </div>
 
+                    <div class="mb-4" id="div_Building">
 
+                        @*      onclick="open_MenuHeaderItemList('collapseBuilding');" *@
+                        <div id="div_CollapseBuilding" data-bs-toggle="collapse" data-bs-target="#collapseBuilding" aria-expanded="false" aria-controls="collapseBuilding">
 
-                    <div class="mb-4" id="div_WorkPermit">
-
-                        @*      onclick="open_MenuHeaderItemList('collapseWorkPermit');" *@
-                        <div id="div_CollapseWorkPermit" data-bs-toggle="collapse" data-bs-target="#collapseWorkPermit" aria-expanded="false" aria-controls="collapseWorkPermit">
-
-                            <div id="div_WorkPermit_Collapse" style="cursor:pointer;">
+                            <div id="div_Building_Collapse" style="cursor:pointer;">
 
                                 <table class="middleCenter" style="width:100%;padding:5px;">
                                     <tr>
                                         <td class="bottomCenter">
 
-                                            <img src="~/img/img_menu_work_white.png" style="width:35px;height:35px;" />
+                                            <img src="~/img/img_meun_building.png" style="width:30px;height:30px;" />
                                         </td>
 
                                     </tr>
                                     <tr>
 
                                         <td class="topCenter">
-                                            <span style="color:white;">PERMIT TO WORK</span>
+                                            <span style="color:white;">BUILDINGS</span>
                                         </td>
                                     </tr>
                                 </table>
@@ -702,15 +607,14 @@
 
                         </div>
 
-                        <div class="collapse" id="collapseWorkPermit" data-mnuid="workpermit">
+                        <div class="collapse" id="collapseBuilding" data-mnuid="building">
 
-                            <div class="col-12" id="div_WorkPermit_MenuList">
+                            <div class="col-12" id="div_Building_MenuList">
 
                                 <div class="middleCenter mt-1" style="width:100%;">
 
-                                    @*      onclick="load_PageContent_Static_ByPageTokenID('WorkPermit_new')" *@
-                                    <div id="div_WorkPermit_new" class="mb-1 divHighlightMenu" style="cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px #00000000;"
-                                         onclick="load_PageContent_Static_ByPageTokenID('workpermit')">
+                                    @*      onclick="load_PageContent_Static_ByPageTokenID('building_new')" *@
+                                    <div id="div_building_new" class="mb-1 divHighlightMenu" style="cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px #00000000;">
 
                                         <table style="padding:5px;">
                                             <tr>
@@ -720,7 +624,7 @@
                                                     <i class="bi bi-circle-fill" style="color:white;font-size:xx-small;"></i>
                                                 </td>
                                                 <td style="padding-left:5px;padding-top:5px;">
-                                                    <span style="color:white;">Procedure</span>
+                                                    <span style="color:white;">Create new</span>
                                                 </td>
                                             </tr>
 
@@ -728,9 +632,9 @@
                                     </div>
 
 
-                                    @*    onclick="load_PageContent_Static_ByPageTokenID('WorkPermit_list')" *@
-                                    <div id="div_WorkPermit_list" class="mb-1 divHighlightMenu" style="cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px#00000000;"
-                                         onclick="load_PageContent_Static_ByPageTokenID('workpermitform')">
+
+                                    <div id="div_building_list" class="mb-1 divHighlightMenu" style="cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px#00000000;"
+                                         onclick="load_PageContent_Static_ByPageTokenID('building_list')">
 
                                         <table style="padding:5px;">
                                             <tr>
@@ -740,7 +644,7 @@
                                                     <i class="bi bi-circle-fill" style="color:white;font-size:xx-small;"></i>
                                                 </td>
                                                 <td style="padding-left:5px;padding-top:5px;">
-                                                    <span style="color:white;">Form</span>
+                                                    <span style="color:white;">List</span>
                                                 </td>
                                             </tr>
 
@@ -761,10 +665,6 @@
 
 
                     </div>
-
-
-
-
 
                     <div class="mb-4" id="div_Admin">
 
@@ -1047,8 +947,7 @@
 
             </div>
 
-            @* OLD-MENU *@
-            <div style="padding:20px;margin:0px;display:none;">
+            <div style="padding:20px;margin:0px;">
 
 
 
@@ -1797,11 +1696,6 @@ font-size:small;background-color:#152365;">
                     objMenuHeader = $('#div_ViewBuilding_Collapse');
                 }
 
-
-                else if (x == 'workpermit') {
-                    objMenuHeader = $('#div_WorkPermit_Collapse');
-                }
-
                 else if (x == 'admin') {
                     objMenuHeader = $('#div_Admin_Collapse');
                 }
@@ -1895,10 +1789,6 @@ font-size:small;background-color:#152365;">
 
                 else if (x == 'viewbuilding') {
                     objMenuHeader = $('#div_ViewBuilding_Collapse');
-                }
-
-                else if (x == 'workpermit') {
-                    objMenuHeader = $('#div_WorkPermit_Collapse');
                 }
 
 

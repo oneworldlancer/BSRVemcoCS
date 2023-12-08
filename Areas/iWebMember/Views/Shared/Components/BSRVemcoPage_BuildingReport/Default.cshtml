@@ -4,93 +4,93 @@
 <div id="div_PageHTMLContent" style="margin:0px;padding:0px;display:flex;flex-direction:column;">
 
 
-   @*  <div class="row"> *@
+    @*  <div class="row"> *@
 
-@*     m-3 *@
+    @*     m-3 *@
     <table class="table table-hover table-bordered" style="margin-top:3px;margin-left:3px;margin-right:3px;width:100%;padding:3px;table-layout:fixed;background-color:white;">
-            <thead>
-                <tr>
-                    <th>@Model.ColumnDescription</th>
-                    <th>@Model.ColumnCommentary</th>
-                    <th style="width:150px;">@Model.ColumnCriterion</th>
-                    <th class="fw-bold" style="width:50px;background-color:#dde9f5;">@Model.ColumnScore</th>
-                    <th>@Model.ColumnRiskControlMeasure</th>
-                    <th class="fw-bold" style="width:110px;background-color:#dde9f5;">@Model.ColumnScoreAdjused </th>
-                    @*<th class="fw-bold" style="width:50px;">Total</th>*@
+        <thead>
+            <tr>
+                <th>@Model.ColumnDescription</th>
+                <th>@Model.ColumnCommentary</th>
+                <th style="width:150px;">@Model.ColumnCriterion</th>
+                <th class="fw-bold" style="width:50px;background-color:#dde9f5;">@Model.ColumnScore</th>
+                <th>@Model.ColumnRiskControlMeasure</th>
+                <th class="fw-bold" style="width:110px;background-color:#dde9f5;">@Model.ColumnScoreAdjused </th>
+                @*<th class="fw-bold" style="width:50px;">Total</th>*@
 
-                </tr>
-            </thead>
-            <tbody id="div_ItemsList">
+            </tr>
+        </thead>
+        <tbody id="div_ItemsList">
 
-                @*    <div> *@
+            @*    <div> *@
 
-                @await Component.InvokeAsync("BuildingTable3List",
-                new {
-                bldtknid = Model.BuildingTokenID,
-                iPageNumber = "0",
-                blnIsPaging = true
-                })
+            @await Component.InvokeAsync("BuildingTable3List",
+            new {
+            bldtknid = Model.BuildingTokenID,
+            iPageNumber = "0",
+            blnIsPaging = true
+            })
 
-                @*  </div> *@
-
-
+            @*  </div> *@
 
 
-            </tbody>
-        </table>
 
 
-        <div class="mt-5" style="vertical-align:middle;display:flex;flex-direction:row;justify-content:space-between;">
+        </tbody>
+    </table>
 
-            <div class="float-start"></div>
-            <div>
-                <div id="div_Paging_0" style="display:block;margin:auto;vertical-align:middle;">
-                    <nav>
-                        <ul class="pagination">
 
-                            <li class="page-item">
-                                @* *@
+    <div class="mt-5" style="vertical-align:middle;display:flex;flex-direction:row;justify-content:space-between;">
 
-                                @*                                     onclick="load_TablePageNumberList('@Model.BuildingTokenID', '0', 'true','1', true)" *@
-                                <a href='#div_ItemsList' id="pager1_0" class="page-link active"
-                                   onclick="load_TablePageNumberList('@Model.BuildingTokenID', '0', 'true','1', true)">1</a>
-                            </li>
-                            <li class="page-item">
-                                <a href='#div_ItemsList' id="pager2_0" class="page-link"
-                                   onclick="load_TablePageNumberList('@Model.BuildingTokenID', '0', 'true','2', true)">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a href='#div_ItemsList' id="pager3_0" class="page-link"
-                                   onclick="load_TablePageNumberList('@Model.BuildingTokenID', '0', 'true','3', true)">3</a>
-                            </li>
+        <div class="float-start"></div>
+        <div>
+            <div id="div_Paging_0" style="display:block;margin:auto;vertical-align:middle;">
+                <nav>
+                    <ul class="pagination">
 
-                            <li class="page-item">
-                                <a href='#div_ItemsList' id="pager4_0" class="page-link"
-                                   onclick="load_TablePageNumberList('@Model.BuildingTokenID', '0', 'true','4', true)">4</a>
-                            </li>
+                        <li class="page-item">
+                            @* *@
 
-                            @*   <li class="page-item">
-                            <a href='#collapse444' id="pager3_444" class="page-link">4</a>
-                            </li>
+                            @*                                     onclick="load_TablePageNumberList('@Model.BuildingTokenID', '0', 'true','1', true)" *@
+                            <a href='#div_ItemsList' id="pager1_0" class="page-link active"
+                               onclick="load_TablePageNumberList('@Model.BuildingTokenID', '0', 'true','1', true)">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a href='#div_ItemsList' id="pager2_0" class="page-link"
+                               onclick="load_TablePageNumberList('@Model.BuildingTokenID', '0', 'true','2', true)">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a href='#div_ItemsList' id="pager3_0" class="page-link"
+                               onclick="load_TablePageNumberList('@Model.BuildingTokenID', '0', 'true','3', true)">3</a>
+                        </li>
 
-                            <li class="page-item">
-                            <a href='#collapse555' id="pager3_555" class="page-link">5</a>
-                            </li>
+                        <li class="page-item">
+                            <a href='#div_ItemsList' id="pager4_0" class="page-link"
+                               onclick="load_TablePageNumberList('@Model.BuildingTokenID', '0', 'true','4', true)">4</a>
+                        </li>
 
-                            <li class="page-item">
-                            <a href='#collapse666' id="pager3_666" class="page-link">6</a>
-                            </li> *@
+                        @*   <li class="page-item">
+                        <a href='#collapse444' id="pager3_444" class="page-link">4</a>
+                        </li>
 
-                        </ul>
-                    </nav>
-                </div>
+                        <li class="page-item">
+                        <a href='#collapse555' id="pager3_555" class="page-link">5</a>
+                        </li>
+
+                        <li class="page-item">
+                        <a href='#collapse666' id="pager3_666" class="page-link">6</a>
+                        </li> *@
+
+                    </ul>
+                </nav>
             </div>
-
-            <div class="float-end"></div>
         </div>
 
+        <div class="float-end"></div>
+    </div>
 
-   @*  </div> *@
+
+    @*  </div> *@
 
     @*     <input id="hdn_InformationTokenID" name="hdn_InformationTokenID" type="hidden" value="0" />
     <input id="iAppinformationTokenID" name="iAppinformationTokenID" type="hidden" value="0" />
@@ -146,11 +146,20 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    @*data-bs-dismiss="modal"*@   <button type="button" class="btn btn-primary"
-                                                          onclick="Popup_PostForm( );">
-                        Submit
-                    </button>
+
+                    <div style="width:100%;display:flex;flex-direction:row;justify-content:space-between;">
+                        <button type="button" class="btn btn-primary flex-start"
+                                onclick="Popup_PostForm( );">
+
+
+
+                            Submit
+                        </button>
+
+                        <button type="button" class="btn btn-secondary flex-end" data-bs-dismiss="modal">Close</button>
+
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -186,7 +195,7 @@
 </div>
 
 
-<script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
+@* <script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
 
 <script>
 
@@ -209,7 +218,7 @@
 
 </script>
 
-
+ *@
 
 
 
