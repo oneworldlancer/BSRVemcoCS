@@ -35,6 +35,10 @@ public partial class BsrvemcoUserBuildingList
 
     public string? ImageTokenId { get; set; }
 
+    public string? ImageServerUrl { get; set; }
+
+    public bool? IsNew { get; set; }
+
     public bool? IsVisible { get; set; }
 
     public string? ActiveStatus { get; set; }

@@ -1132,6 +1132,12 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.AppbuildingInformationId).HasColumnName("APPBuildingInformationID");
             entity.Property(e => e.AccountType).HasDefaultValueSql("(N'personal')");
             entity.Property(e => e.ActiveStatus).HasDefaultValueSql("(N'pending')");
+            entity.Property(e => e.AlertSystemNotification)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("smalldatetime");
+            entity.Property(e => e.AlertUserNotification)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("smalldatetime");
             entity.Property(e => e.AnswerCode).HasDefaultValueSql("((0))");
             entity.Property(e => e.AnswerDescription).HasDefaultValueSql("((0))");
             entity.Property(e => e.AnswerText).HasDefaultValueSql("((0))");
@@ -1159,6 +1165,7 @@ public partial class BSRDBModelContext : DbContext
                 .HasColumnName("APPTableTokenID");
             entity.Property(e => e.Commentary).HasDefaultValueSql("((0))");
             entity.Property(e => e.Criterion).HasDefaultValueSql("((0))");
+            entity.Property(e => e.InformationCode).HasDefaultValueSql("((0))");
             entity.Property(e => e.InformationDescription).HasDefaultValueSql("((0))");
             entity.Property(e => e.InformationDescriptionSystem).HasDefaultValueSql("((0))");
             entity.Property(e => e.InformationDescriptionUser).HasDefaultValueSql("((0))");
@@ -1169,10 +1176,15 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.InformationTitle).HasDefaultValueSql("((0))");
             entity.Property(e => e.InformationTitleSystem).HasDefaultValueSql("((0))");
             entity.Property(e => e.InformationTitleUser).HasDefaultValueSql("((0))");
+            entity.Property(e => e.InformationType).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsActive).HasDefaultValueSql("((1))");
             entity.Property(e => e.IsAnswered).HasDefaultValueSql("((0))");
+            entity.Property(e => e.IsCheckOneTime).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsPaging).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsVisible).HasDefaultValueSql("((1))");
+            entity.Property(e => e.IsWithSurvey).HasDefaultValueSql("((0))");
+            entity.Property(e => e.Neutral).HasDefaultValueSql("((0))");
+            entity.Property(e => e.NeutralText).HasDefaultValueSql("((0))");
             entity.Property(e => e.OwnerMobileNumberTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("OwnerMobileNumberTokenID");
@@ -1210,6 +1222,11 @@ public partial class BSRDBModelContext : DbContext
                 .HasMaxLength(50)
                 .HasDefaultValueSql("((0))");
             entity.Property(e => e.ScoreOriginal).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeAppNotification).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeMonthCount).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeSystemNotification).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeUserNotification).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeYearCount).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutAppNotification).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutSystemNotification).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutYearCount).HasDefaultValueSql("((0))");
@@ -1220,6 +1237,10 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.UploadDay).HasDefaultValueSql("(datepart(day,getdate()))");
             entity.Property(e => e.UploadMonth).HasDefaultValueSql("(datepart(month,getdate()))");
             entity.Property(e => e.UploadYear).HasDefaultValueSql("(datepart(year,getdate()))");
+            entity.Property(e => e.VeMinus).HasDefaultValueSql("((0))");
+            entity.Property(e => e.VeMinusTextText).HasDefaultValueSql("((0))");
+            entity.Property(e => e.VePlus).HasDefaultValueSql("((0))");
+            entity.Property(e => e.VePlusText).HasDefaultValueSql("((0))");
         });
 
         modelBuilder.Entity<BsrvemcoAppBuildingInformationQuestionList>(entity =>
@@ -2542,6 +2563,12 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.UbuildingDocumentHistoryId).HasColumnName("UBuildingDocumentHistoryID");
             entity.Property(e => e.AccountType).HasDefaultValueSql("(N'personal')");
             entity.Property(e => e.ActiveStatus).HasDefaultValueSql("(N'pending')");
+            entity.Property(e => e.AlertSystemNotification)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("smalldatetime");
+            entity.Property(e => e.AlertUserNotification)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("smalldatetime");
             entity.Property(e => e.AnswerCode).HasDefaultValueSql("((0))");
             entity.Property(e => e.AnswerDescription).HasDefaultValueSql("((0))");
             entity.Property(e => e.AnswerText).HasDefaultValueSql("((0))");
@@ -2582,10 +2609,12 @@ public partial class BSRDBModelContext : DbContext
                 .HasColumnName("InformationTokenID");
             entity.Property(e => e.IsActive).HasDefaultValueSql("((1))");
             entity.Property(e => e.IsAnswered).HasDefaultValueSql("((0))");
+            entity.Property(e => e.IsCheckOneTime).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsOpened).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsViewed).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsVisible).HasDefaultValueSql("((1))");
             entity.Property(e => e.IsVisited).HasDefaultValueSql("((0))");
+            entity.Property(e => e.IsWithSurvey).HasDefaultValueSql("((0))");
             entity.Property(e => e.OwnerMobileNumberTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("OwnerMobileNumberTokenID");
@@ -2608,6 +2637,11 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.ScoreMinValue)
                 .HasMaxLength(50)
                 .HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeAppNotification).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeMonthCount).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeSystemNotification).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeUserNotification).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeYearCount).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutAppNotification).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutSystemNotification).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutUserNotification).HasDefaultValueSql("((0))");
@@ -2645,6 +2679,12 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.UbuildingDocumentId).HasColumnName("UBuildingDocumentID");
             entity.Property(e => e.AccountType).HasDefaultValueSql("(N'personal')");
             entity.Property(e => e.ActiveStatus).HasDefaultValueSql("(N'pending')");
+            entity.Property(e => e.AlertSystemNotification)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("smalldatetime");
+            entity.Property(e => e.AlertUserNotification)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("smalldatetime");
             entity.Property(e => e.AnswerCode).HasDefaultValueSql("((0))");
             entity.Property(e => e.AnswerDescription).HasDefaultValueSql("((0))");
             entity.Property(e => e.AnswerText).HasDefaultValueSql("((0))");
@@ -2685,10 +2725,12 @@ public partial class BSRDBModelContext : DbContext
                 .HasColumnName("InformationTokenID");
             entity.Property(e => e.IsActive).HasDefaultValueSql("((1))");
             entity.Property(e => e.IsAnswered).HasDefaultValueSql("((0))");
+            entity.Property(e => e.IsCheckOneTime).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsOpened).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsViewed).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsVisible).HasDefaultValueSql("((1))");
             entity.Property(e => e.IsVisited).HasDefaultValueSql("((0))");
+            entity.Property(e => e.IsWithSurvey).HasDefaultValueSql("((0))");
             entity.Property(e => e.OwnerMobileNumberTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("OwnerMobileNumberTokenID");
@@ -2711,6 +2753,11 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.ScoreMinValue)
                 .HasMaxLength(50)
                 .HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeAppNotification).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeMonthCount).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeSystemNotification).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeUserNotification).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeYearCount).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutAppNotification).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutSystemNotification).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutUserNotification).HasDefaultValueSql("((0))");
@@ -2748,6 +2795,12 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.UbuildingInformationId).HasColumnName("UBuildingInformationID");
             entity.Property(e => e.AccountType).HasDefaultValueSql("(N'personal')");
             entity.Property(e => e.ActiveStatus).HasDefaultValueSql("(N'pending')");
+            entity.Property(e => e.AlertSystemNotification)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("smalldatetime");
+            entity.Property(e => e.AlertUserNotification)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("smalldatetime");
             entity.Property(e => e.AnswerCode).HasDefaultValueSql("((0))");
             entity.Property(e => e.AnswerDescription).HasDefaultValueSql("((0))");
             entity.Property(e => e.AnswerText).HasDefaultValueSql("((0))");
@@ -2785,6 +2838,11 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.ImageTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("ImageTokenID");
+            entity.Property(e => e.InformationButtonStyleCss)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("InformationButtonStyleCSS");
+            entity.Property(e => e.InformationButtonText).HasDefaultValueSql("((0))");
+            entity.Property(e => e.InformationCode).HasDefaultValueSql("((0))");
             entity.Property(e => e.InformationDescription).HasDefaultValueSql("((0))");
             entity.Property(e => e.InformationDescriptionSystem).HasDefaultValueSql("((0))");
             entity.Property(e => e.InformationDescriptionUser).HasDefaultValueSql("((0))");
@@ -2799,13 +2857,18 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.InformationTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("InformationTokenID");
+            entity.Property(e => e.InformationType).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsActive).HasDefaultValueSql("((1))");
             entity.Property(e => e.IsAnswered).HasDefaultValueSql("((0))");
+            entity.Property(e => e.IsCheckOneTime).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsOpened).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsPaging).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsViewed).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsVisible).HasDefaultValueSql("((1))");
             entity.Property(e => e.IsVisited).HasDefaultValueSql("((0))");
+            entity.Property(e => e.IsWithSurvey).HasDefaultValueSql("((0))");
+            entity.Property(e => e.Neutral).HasDefaultValueSql("((0))");
+            entity.Property(e => e.NeutralText).HasDefaultValueSql("((0))");
             entity.Property(e => e.OwnerMobileNumberTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("OwnerMobileNumberTokenID");
@@ -2864,6 +2927,10 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.UploadDay).HasDefaultValueSql("(datepart(day,getdate()))");
             entity.Property(e => e.UploadMonth).HasDefaultValueSql("(datepart(month,getdate()))");
             entity.Property(e => e.UploadYear).HasDefaultValueSql("(datepart(year,getdate()))");
+            entity.Property(e => e.VeMinus).HasDefaultValueSql("((0))");
+            entity.Property(e => e.VeMinusTextText).HasDefaultValueSql("((0))");
+            entity.Property(e => e.VePlus).HasDefaultValueSql("((0))");
+            entity.Property(e => e.VePlusText).HasDefaultValueSql("((0))");
         });
 
         modelBuilder.Entity<BsrvemcoUserBuildingList>(entity =>
@@ -2887,10 +2954,14 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.CompanyTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("CompanyTokenID");
+            entity.Property(e => e.ImageServerUrl)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("ImageServerURL");
             entity.Property(e => e.ImageTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("ImageTokenID");
             entity.Property(e => e.IsActive).HasDefaultValueSql("((1))");
+            entity.Property(e => e.IsNew).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsVisible).HasDefaultValueSql("((1))");
             entity.Property(e => e.OwnerMobileNumberTokenId)
                 .HasDefaultValueSql("((0))")
@@ -2922,6 +2993,12 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.UbuildingQueryDocumentId).HasColumnName("UBuildingQueryDocumentID");
             entity.Property(e => e.AccountType).HasDefaultValueSql("(N'personal')");
             entity.Property(e => e.ActiveStatus).HasDefaultValueSql("(N'pending')");
+            entity.Property(e => e.AlertSystemNotification)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("smalldatetime");
+            entity.Property(e => e.AlertUserNotification)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("smalldatetime");
             entity.Property(e => e.AnswerCode).HasDefaultValueSql("((0))");
             entity.Property(e => e.AnswerDescription).HasDefaultValueSql("((0))");
             entity.Property(e => e.AnswerText).HasDefaultValueSql("((0))");
@@ -2968,10 +3045,12 @@ public partial class BSRDBModelContext : DbContext
                 .HasColumnName("InformationTokenID");
             entity.Property(e => e.IsActive).HasDefaultValueSql("((1))");
             entity.Property(e => e.IsAnswered).HasDefaultValueSql("((0))");
+            entity.Property(e => e.IsCheckOneTime).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsOpened).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsViewed).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsVisible).HasDefaultValueSql("((1))");
             entity.Property(e => e.IsVisited).HasDefaultValueSql("((0))");
+            entity.Property(e => e.IsWithSurvey).HasDefaultValueSql("((0))");
             entity.Property(e => e.OwnerMobileNumberTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("OwnerMobileNumberTokenID");
@@ -3008,6 +3087,11 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.ScoreMinValue)
                 .HasMaxLength(50)
                 .HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeAppNotification).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeMonthCount).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeSystemNotification).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeUserNotification).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeYearCount).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutAppNotification).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutSystemNotification).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutUserNotification).HasDefaultValueSql("((0))");
@@ -3045,6 +3129,12 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.UbuildingQueryInformationId).HasColumnName("UBuildingQueryInformationID");
             entity.Property(e => e.AccountType).HasDefaultValueSql("(N'personal')");
             entity.Property(e => e.ActiveStatus).HasDefaultValueSql("(N'pending')");
+            entity.Property(e => e.AlertSystemNotification)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("smalldatetime");
+            entity.Property(e => e.AlertUserNotification)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("smalldatetime");
             entity.Property(e => e.AnswerCode).HasDefaultValueSql("((0))");
             entity.Property(e => e.AnswerDescription).HasDefaultValueSql("((0))");
             entity.Property(e => e.AnswerText).HasDefaultValueSql("((0))");
@@ -3107,11 +3197,13 @@ public partial class BSRDBModelContext : DbContext
                 .HasColumnName("InformationTokenID");
             entity.Property(e => e.IsActive).HasDefaultValueSql("((1))");
             entity.Property(e => e.IsAnswered).HasDefaultValueSql("((0))");
+            entity.Property(e => e.IsCheckOneTime).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsOpened).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsPaging).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsViewed).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsVisible).HasDefaultValueSql("((1))");
             entity.Property(e => e.IsVisited).HasDefaultValueSql("((0))");
+            entity.Property(e => e.IsWithSurvey).HasDefaultValueSql("((0))");
             entity.Property(e => e.OwnerMobileNumberTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("OwnerMobileNumberTokenID");
@@ -3178,6 +3270,12 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.UbuildingQueryInformationTableId).HasColumnName("UBuildingQueryInformationTableID");
             entity.Property(e => e.AccountType).HasDefaultValueSql("(N'personal')");
             entity.Property(e => e.ActiveStatus).HasDefaultValueSql("(N'pending')");
+            entity.Property(e => e.AlertSystemNotification)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("smalldatetime");
+            entity.Property(e => e.AlertUserNotification)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("smalldatetime");
             entity.Property(e => e.AnswerCode).HasDefaultValueSql("((0))");
             entity.Property(e => e.AnswerDescription).HasDefaultValueSql("((0))");
             entity.Property(e => e.AnswerText).HasDefaultValueSql("((0))");
@@ -3234,11 +3332,13 @@ public partial class BSRDBModelContext : DbContext
                 .HasColumnName("InformationTokenID");
             entity.Property(e => e.IsActive).HasDefaultValueSql("((1))");
             entity.Property(e => e.IsAnswered).HasDefaultValueSql("((0))");
+            entity.Property(e => e.IsCheckOneTime).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsOpened).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsPaging).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsViewed).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsVisible).HasDefaultValueSql("((1))");
             entity.Property(e => e.IsVisited).HasDefaultValueSql("((0))");
+            entity.Property(e => e.IsWithSurvey).HasDefaultValueSql("((0))");
             entity.Property(e => e.OwnerMobileNumberTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("OwnerMobileNumberTokenID");

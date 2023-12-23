@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.ViewComponents;
 using System.Net;
 using System.Net.Mail;
 using BSRVemcoCS.iAppUtility;
+using BSRVemcoCS.DBModels;
 
 namespace BSRVemcoCS.Areas.iWebMember.Controllers
 {
@@ -904,12 +905,19 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
                 //MailMessage msg = new MailMessage(
                 //    "BSRHelpDesk@vemcoconsulting.com", "basil.jackson@vemcoconsulting.com",
                 //    "Test E-mail 1101", "Hi there ...");
-
+//
+                string emailToList = "oneworldlancer@gmail.com,basil.jackson@vemcoconsulting.com" + "," + iEmailAddress;
 
                 MailMessage msg = new MailMessage(
                     "BSRHelpDesk@vemcoconsulting.com",
-                    "shaymaa.hafez@yahoo.fr,oneworldlancer@gmail.com,hoby333@hotmail.com,oneworldlancer@oneworldlancer.onmicrosoft.com",
-                    "Test E-mail 8808", "Hi there 8808 ...");
+                    emailToList,
+                    "Contact us - Ticket ID# " +   AppUtility_TimeManager.Time_GetCurrentTimeInMilliSecond().ToString(), iMessageText);
+
+
+                //MailMessage msg = new MailMessage(
+                //    "BSRHelpDesk@vemcoconsulting.com",
+                //    "shaymaa.hafez@yahoo.fr,oneworldlancer@gmail.com,hoby333@hotmail.com,oneworldlancer@oneworldlancer.onmicrosoft.com",
+                //    "Test E-mail 8808", "Hi there 8808 ...");
 
                 //MailMessage msg = new MailMessage(
                 //        "BSRHelpDesk@vemcoconsulting.com",
@@ -975,45 +983,130 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
 
 
-
-        //public IActionResult Index ( )
-        //{
-        //    return View ( );
-        //}
-
-        //public IActionResult About ( )
-        //{
-        //    return View ( );
-        //}
-
-        //public IActionResult Subscription ( )
-        //{
-        //    return View ( );
-        //}
-
-        //public IActionResult Terms ( )
-        //{
-        //    return View ( );
-        //}
-
-
-        //public IActionResult FAQ ( )
-        //{
-        //    return View ( );
-        //}
-
-
-        //public IActionResult ContactUs ( )
-        //{
-        //    return View ( );
-        //}
-
-        //public IActionResult SaltWater ( )
-        //{
-        //    return View ( );
-        //}
+ 
 
 
 
+        public async Task<IActionResult> PageComponentView_POST_BuildingNewPage(
+            string iBuildingName,
+            string iBuildingAddress,
+            string iBuildingDateYear,
+            string iImageServerURL)
+        {                                    /* bool showPrevious , bool showUpcoming */
+
+            try
+            {
+
+
+
+                BsrvemcoUserBuildingList iBuildingModel = new BsrvemcoUserBuildingList()
+                {
+
+                    RowViewTokenId = new Guid(),
+
+
+                    OwnerUserTokenId = Program.iOwnerModel.OwnerUserTokenID,
+                    CompanyTokenId = Program.iOwnerModel.CompanyTokenID,
+
+                    BuildingTokenId = AppUtility_TimeManager.Time_GetCurrentTimeInMilliSecond().ToString(),
+                    BuildingName = iBuildingName,
+                    BuildingAddress = iBuildingAddress,
+                    BuildingDay = "0",//iDevelomentNew1ViewModel.BuildingDate.Day.ToString ( ) ,
+                    BuildingMonth = "0",// iDevelomentNew1ViewModel.BuildingDate.Month.ToString ( ) ,
+                    BuildingYear = iBuildingDateYear.ToString(),
+                    BuildingDate = "0",//iDevelomentNew1ViewModel.BuildingDate.ToString ( ) ,
+                    //FileTokenId = _iImageTokenID ,
+                    //FileName = _iImageTokenID ,
+                    //FileExtension = _iImageTokenID ,
+                    ImageTokenId = "0",//_arrTokenList[1].ToString(),
+                    ImageServerUrl  = iImageServerURL.ToLower().ToString(),//_arrTokenList[1].ToString(),
+                    UploadDateTimeMilliSec = AppUtility_TimeManager.Time_GetCurrentTimeInMilliSecond(),
+                    IsNew = true,
+                    IsVisible = true,
+                    IsActive = true,
+
+                };
+
+
+                await _dbContext.BsrvemcoUserBuildingLists.AddAsync(iBuildingModel);
+
+
+                await _dbContext.SaveChangesAsync();
+
+
+                return ViewComponent("BSRVemcoPage_BuildingList");
+
+
+
+
+
+                //return ViewComponent("QueryFormTableDocumentList",
+                //    new
+                //    {
+                //        bldtknid = bldtknid,
+                //        iqueryinftknid = iqueryinftknid
+                //    });
+
+
+
+                //return ViewComponent ( "DocumentList" ,
+                //    new { showPrevious = showPrevious , showUpcoming = showUpcoming } );
+
+
+            }
+            catch (Exception ex)
+            {
+                AppUtility_DebugManager.Debug_Get_MessageText(ex.Message.ToString());
+            }
+
+
+            return ViewComponent("BSRVemcoPage_ContactUs");
+
+
+        }
+
+
+
+
+
+            //public IActionResult Index ( )
+            //{
+            //    return View ( );
+            //}
+
+            //public IActionResult About ( )
+            //{
+            //    return View ( );
+            //}
+
+            //public IActionResult Subscription ( )
+            //{
+            //    return View ( );
+            //}
+
+            //public IActionResult Terms ( )
+            //{
+            //    return View ( );
+            //}
+
+
+            //public IActionResult FAQ ( )
+            //{
+            //    return View ( );
+            //}
+
+
+            //public IActionResult ContactUs ( )
+            //{
+            //    return View ( );
+            //}
+
+            //public IActionResult SaltWater ( )
+            //{
+            //    return View ( );
+            //}
+
+
+
+        }
     }
-}

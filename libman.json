@@ -13,6 +13,22 @@
     {
       "library": "jqueryui@1.13.2",
       "destination": "wwwroot/lib/jqueryui/"
+    },
+    {
+      "library": "jquery-ajaxy@1.6.1",
+      "destination": "wwwroot/lib/jquery-ajaxy/"
+    },
+    {
+      "library": "jquery-ajax-unobtrusive@3.2.6",
+      "destination": "wwwroot/lib/jquery-ajax-unobtrusive/"
+    },
+    {
+      "library": "ajax-bootstrap-select@1.4.5",
+      "destination": "wwwroot/lib/ajax-bootstrap-select/"
+    },
+    {
+      "library": "jQuery-Validation-Engine@2.6.4",
+      "destination": "wwwroot/lib/jQuery-Validation-Engine/"
     }
   ]
 }

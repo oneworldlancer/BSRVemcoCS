@@ -127,6 +127,14 @@ public partial class BsrvemcoUserBuildingQueryInformationList
 
     public string? TimeoutSystemNotification { get; set; }
 
+    public DateTime? AlertUserNotification { get; set; }
+
+    public DateTime? AlertSystemNotification { get; set; }
+
+    public bool? IsWithSurvey { get; set; }
+
+    public bool? IsCheckOneTime { get; set; }
+
     public string? ImageTokenId { get; set; }
 
     public bool? IsPaging { get; set; }

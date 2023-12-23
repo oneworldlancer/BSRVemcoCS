@@ -7,16 +7,16 @@
     <div style="width:100%;padding:3px;table-layout:fixed;background-color:white;">
 
 
-        <div class="row">
+        <div class="row" style="background-color:white;">
             @* style="background-color:red;" *@
-            <div class="col m-3" >
+            <div class="col m-3">
 
 
                 <div class="mb-3">
                     <label for="formGroupExampleInput2" class="fw-bold">Building name:</label>
                     @* type="text" class="form-control" *@
-             @*        <label id="formGroupExampleInput2" placeholder=""
-                                                                  asp-for="BuildingName" /> *@
+                    @*        <label id="formGroupExampleInput2" placeholder=""
+                    asp-for="BuildingName" /> *@
                     <br />  <span class="fs-6">@Model.BuildingName</span>
                 </div>
 
@@ -25,8 +25,8 @@
                 <div class="mb-3">
                     <label for="formGroupExampleInput2" class="fw-bold">Building address:</label>
                     @* type="" class="form-control" *@
-                   @*  <label id="formGroupExampleInput2" placeholder=""
-                                                               asp-for="BuildingAddress" /> *@
+                    @*  <label id="formGroupExampleInput2" placeholder=""
+                    asp-for="BuildingAddress" /> *@
                     <br />   <span class="fs-6">@Model.BuildingAddress</span>
                 </div>
 
@@ -34,50 +34,91 @@
                 @*asp-format="{0:yyyy-MM-dd}*@
                 <div class="mb-3">
                     <label for="formGroupExampleInput2" class="fw-bold">Build date:</label>
-                    @* type="number" class="form-control" *@ 
-                   @*  <label id="formGroupExampleInput2" placeholder=""
-                                                                     asp-for="BuildingDateYear" /> *@
+                    @* type="number" class="form-control" *@
+                    @*  <label id="formGroupExampleInput2" placeholder=""
+                    asp-for="BuildingDateYear" /> *@
 
-                                                                     <span class="fs-6">@Model.BuildingDateYear</span>
+                    <span class="fs-6">@Model.BuildingDateYear</span>
                 </div>
 
 
             </div>
             @* style="background-color:yellow;" *@
-            <div class="col-5" >
+            <div class="col-6">
 
-                <div style="position:relative;width:400px;height:410px;">
+                <div style="position:relative;width:450px;height:410px;float:right;">
 
-                    <div id="div_BuildingDiagram" class="text-center"  style="position:absolute;top:0px;left:0px;">
-                     
-                        <iframe src="/iWebMember/Development/Diagram?bldtknid=@Context.Request.Query["bldtknid"].ToString()&px=@Model.iBuildingStatisticModel.ScoreRiskAverage&py=@Model.iBuildingStatisticModel.Table4ScoreAverage"
-                                style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;float:left;width:400px;height:380px;margin:0px;padding:0px;"></iframe>
-                        @*                         class="ms-3" style="position:absolute;bottom:80px;" *@
-                        <div>
-                            <div><span style="text-decoration:underline;">Total Quality Score: </span>
-                                <span style="background-color:#0000007F;border-radius:5px;padding:3px;color:white;text-decoration:none;margin-left:5px;">@Model.iBuildingStatisticModel.ScoreTotalQuality</span></div>
-
-                        </div>
+                    <div id="div_BuildingDiagram" class="text-center" style="position:absolute;top:0px;left:0px;display:none;">
                     </div>
 
-                    <div id="div_BuildingThumbnail" class="text-center" style="display:none;position:absolute;top:0px;left:0px;">
-                        <img src="~/_iUMedia/_iUBuilding/img_@{
-                                                                @Model.BuildingImageTokenID
-}.jpg" style="width:320px;height:auto;margin-top:20px;margin-left:50px;" />
+                    <div id="div_BuildingDiagram1" class="text-center" style="float:right;margin-top:30px;position:absolute;top:0px;left:0px;display:none;">
+                        @* div_BuildingDiagram1 *@
+                        @await Component.InvokeAsync("BSRVemcoPage_BuildingRiskSlideShow",
+                        new {
+                        iBuildingTokenID =  @Model.BuildingTokenID,
+                        iInformationCode = "fireperformance"
+                        })
                     </div>
-                    
+
+                    <div id="div_BuildingDiagram2" class="text-center" style="height:500px;overflow:hidden;overflow-y:auto;float:right;margin-top:30px;position:absolute;top:0px;left:0px;display:none;">
+                        @* div_BuildingDiagram2 *@
+                        @await Component.InvokeAsync("BSRVemcoPage_BuildingRiskSlideShow",
+                        new {
+                        iBuildingTokenID =  @Model.BuildingTokenID,
+                        iInformationCode = "configuration"
+                        })
+                    </div>
+
+                    <div id="div_BuildingDiagram3" class="text-center" style="float:right;margin-top:30px;position:absolute;top:0px;left:0px;display:none;">
+                        @* div_BuildingDiagram3 *@
+                        @await Component.InvokeAsync("BSRVemcoPage_BuildingRiskSlideShow",
+                        new {
+                        iBuildingTokenID =  @Model.BuildingTokenID,
+                        iInformationCode = "firestrategy"
+                        })
+                    </div>
+
+
+
+
+
+                    @*   src="~/_iUMedia/_iUBuilding/img_@{
+                    @Model.BuildingImageTokenID
+                    }.jpg" *@
+                    <div id="div_BuildingThumbnail" class="text-center" style="display:block;position:absolute;top:0px;left:0px;margin-left:auto;margin-right:auto;">
+                        <img src="@Model.BuildingImageURL" style="width:320px;height:auto;margin-top:30px;margin-left:auto;margin-right:auto;" />
+                    </div>
+
                     <div style="position:absolute;z-index:10;top:0px;left:0px;">
-                        <img id="img_BuildingDiagram" src="~/img/img_check_normal_black.png" style="width:20px;height:20px;"
-                             title="View diagram"
-                             onclick="Show_BuildingDiagram();" />
 
-                        <img id="img_BuildingThumbnail" src="~/img/img_check_normal.png" style="width:20px;height:20px;"
+                        <img id="img_BuildingThumbnail" src="~/img/img_check_normal_black.png" style="width:20px;height:20px;"
                              title="View image"
                              onclick="Show_BuildingThumbnail();" />
+
+
+                        <img id="img_BuildingDiagram1" src="~/img/img_check_normal.png" style="width:20px;height:20px;"
+                             title="Fire performance Descriptor"
+                             onclick="Show_BuildingDiagram1();" />
+
+
+                        <img id="img_BuildingDiagram2" src="~/img/img_check_normal.png" style="width:20px;height:20px;"
+                             title="Façade configuration Description"
+                             onclick="Show_BuildingDiagram2();" />
+
+
+                        <img id="img_BuildingDiagram3" src="~/img/img_check_normal.png" style="width:20px;height:20px;"
+                             title="Fire strategy Descriptor"
+                             onclick="Show_BuildingDiagram3();" />
+
+
+                        @* <img id="img_BuildingDiagram" src="~/img/img_check_normal.png" style="width:20px;height:20px;"
+                        title="View diagram"
+                        onclick="Show_BuildingDiagram();" /> *@
+
                     </div>
                 </div>
 
-           
+
 
             </div>
 
@@ -113,19 +154,95 @@
 
 
         $("#div_BuildingThumbnail").hide();
-      
-    
+
+
 
     }
 
+
+    function Show_BuildingDiagram1() {
+
+        $("#img_BuildingDiagram2").attr('src', 'img/img_check_normal.png');
+        $("#img_BuildingDiagram3").attr('src', 'img/img_check_normal.png');
+        $("#img_BuildingDiagram1").attr('src', 'img/img_check_normal_black.png');
+
+        $("#img_BuildingThumbnail").attr('src', 'img/img_check_normal.png');
+
+
+        $("#div_BuildingThumbnail").hide();
+
+
+        $("#div_BuildingDiagram2").hide();
+        $("#div_BuildingDiagram3").hide();
+        $("#div_BuildingDiagram1").show();
+
+
+
+    }
+
+
+    function Show_BuildingDiagram2() {
+
+        $("#img_BuildingDiagram1").attr('src', 'img/img_check_normal.png');
+        $("#img_BuildingDiagram3").attr('src', 'img/img_check_normal.png');
+        $("#img_BuildingDiagram2").attr('src', 'img/img_check_normal_black.png');
+
+        $("#img_BuildingThumbnail").attr('src', 'img/img_check_normal.png');
+
+
+
+        $("#div_BuildingThumbnail").hide();
+
+
+        $("#div_BuildingDiagram1").hide();
+        $("#div_BuildingDiagram3").hide();
+        $("#div_BuildingDiagram2").show();
+
+
+
+
+    }
+
+
+    function Show_BuildingDiagram3() {
+
+        $("#img_BuildingDiagram1").attr('src', 'img/img_check_normal.png');
+        $("#img_BuildingDiagram2").attr('src', 'img/img_check_normal.png');
+        $("#img_BuildingDiagram3").attr('src', 'img/img_check_normal_black.png');
+
+        $("#img_BuildingThumbnail").attr('src', 'img/img_check_normal.png');
+
+
+
+        $("#div_BuildingThumbnail").hide();
+
+
+        $("#div_BuildingDiagram1").hide();
+        $("#div_BuildingDiagram2").hide();
+        $("#div_BuildingDiagram3").show();
+
+
+
+
+    }
+
+
+
+
     function Show_BuildingThumbnail() {
 
+
+        $("#img_BuildingDiagram1").attr('src', 'img/img_check_normal.png');
+        $("#img_BuildingDiagram2").attr('src', 'img/img_check_normal.png');
+        $("#img_BuildingDiagram3").attr('src', 'img/img_check_normal.png');
+
+
         $("#img_BuildingThumbnail").attr('src', 'img/img_check_normal_black.png');
-        $("#img_BuildingDiagram").attr('src', 'img/img_check_normal.png');
+        // $("#img_BuildingDiagram").attr('src', 'img/img_check_normal.png');
 
-
-
-        $("#div_BuildingDiagram").hide();
+        $("#div_BuildingDiagram1").hide();
+        $("#div_BuildingDiagram2").hide();
+        $("#div_BuildingDiagram3").hide();
 
 
         $("#div_BuildingThumbnail").show();

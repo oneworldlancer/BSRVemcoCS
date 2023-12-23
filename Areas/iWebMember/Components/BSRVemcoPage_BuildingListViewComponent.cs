@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Query;
 
 using System.Collections;
+using System.Linq;
 
 namespace BSRVemcoCS.Areas.iWebMember.Components
 {
@@ -40,7 +41,7 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
         public async Task<IViewComponentResult> InvokeAsync()
         {
 
-//string bldtknid,  string querytbltknid, string iPageNumber, bool blnIsPaging
+            //string bldtknid,  string querytbltknid, string iPageNumber, bool blnIsPaging
 
             try
             {
@@ -48,12 +49,26 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
 
                 //List<AppUserBuildingModelManager> _arrBuildingList = new List<AppUserBuildingModelManager>();
 
+                //List<BsrvemcoUserBuildingList>? _arrDevelomentList = new List<BsrvemcoUserBuildingList>();
+
+                List<BsrvemcoUserBuildingList>? _arrDevelomentList_New = _dbContext.BsrvemcoUserBuildingLists
+          .Where(u =>
+          u.CompanyTokenId == Program.iOwnerModel.CompanyTokenID &&
+          u.IsNew ==true &&
+          u.IsVisible ==true)
+          .OrderBy(x => x.BuildingName)
+          //.Select (u  )
+          //.FirstOrDefault ( ); // This is what actually executes the request and return a response
+          .ToList(); // This is what actually executes the request and return a response
 
 
-                List<BsrvemcoUserBuildingList>? _arrDevelomentList = _dbContext.BsrvemcoUserBuildingLists
+
+                List<BsrvemcoUserBuildingList>? _arrDevelomentList_Old = _dbContext.BsrvemcoUserBuildingLists
                      .Where(u =>
                      u.CompanyTokenId == Program.iOwnerModel.CompanyTokenID &&
+                       u.IsNew ==false &&
                      u.IsVisible ==true)
+                     .OrderBy(x => x.BuildingName)
                      //.Select (u  )
                      //.FirstOrDefault ( ); // This is what actually executes the request and return a response
                      .ToList(); // This is what actually executes the request and return a response
@@ -63,24 +78,63 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
 
                 //  AppUserBuildingModelManager iDevelomentNew2ViewModel = new AppUserBuildingModelManager ( );
                 List<AppUserBuildingModelManager> _arrBuildingList = new List<AppUserBuildingModelManager>();
+                List<AppUserBuildingModelManager> _arrBuildingList_New = new List<AppUserBuildingModelManager>();
+                List<AppUserBuildingModelManager> _arrBuildingList_Old = new List<AppUserBuildingModelManager>();
 
 
                 AppUserBuildingModelManager _iUserBuildingModel;
-                for (int i = 0; i < _arrDevelomentList.Count; i++)
+                for (int i = 0; i < _arrDevelomentList_New.Count; i++)
                 {
                     _iUserBuildingModel = new AppUserBuildingModelManager()
                     {
-                        BuildingName = _arrDevelomentList[i].BuildingName.ToString()!,
-                        BuildingTokenID = _arrDevelomentList[i].BuildingTokenId.ToString()!,
+                        BuildingName = _arrDevelomentList_New[i].BuildingName.ToString()!,
+                        BuildingTokenID = _arrDevelomentList_New[i].BuildingTokenId.ToString()!,
+                        BuildingNameCSS ="bold"
                         //InformationText = _arrDevelomentInfomationList[ i ].InformationText.ToString ( ) ,
 
                     };
 
-                    _arrBuildingList.Add(_iUserBuildingModel);
+                    //if (_arrDevelomentList_New[i].IsNew == true)
+                    //{
+                    //    _iUserBuildingModel. BuildingNameCSS ="bold";
+                    //}
+                    //else
+                    //{
+                    //    _iUserBuildingModel. BuildingNameCSS ="normal";
+                    //}
+
+                    _arrBuildingList_New.Add(_iUserBuildingModel);
                 }
 
 
+                ////
 
+                for (int i = 0; i < _arrDevelomentList_Old.Count; i++)
+                {
+                    _iUserBuildingModel = new AppUserBuildingModelManager()
+                    {
+                        BuildingName = _arrDevelomentList_Old[i].BuildingName.ToString()!,
+                        BuildingTokenID = _arrDevelomentList_Old[i].BuildingTokenId.ToString()!,
+                        BuildingNameCSS ="normal"
+                        //InformationText = _arrDevelomentInfomationList[ i ].InformationText.ToString ( ) ,
+
+                    };
+
+                    //if (_arrDevelomentList_New[i].IsNew == true)
+                    //{
+                    //    _iUserBuildingModel. BuildingNameCSS ="bold";
+                    //}
+                    //else
+                    //{
+                    //    _iUserBuildingModel. BuildingNameCSS ="normal";
+                    //}
+
+                    _arrBuildingList_Old.Add(_iUserBuildingModel);
+                }
+
+
+                _arrBuildingList.AddRange(_arrBuildingList_New);
+                _arrBuildingList.AddRange(_arrBuildingList_Old);
 
 
                 return await Task.FromResult((IViewComponentResult)View("Default", _arrBuildingList));

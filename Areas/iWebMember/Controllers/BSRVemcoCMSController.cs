@@ -243,6 +243,72 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
 
 
+        
+        [HttpGet]
+        public IActionResult CMS_WorkPermit( )
+        {
+            try
+            {
+
+
+                var _iCMSPageModel = _dbContext.BsrvemcoAppCmsPageLists
+                                    .Where ( u =>
+                                    u.PageCode == "workpermit")
+                                    //.Select (u  )
+                                    .SingleOrDefault ( );
+
+
+                AppCMSPageViewModel _iCMSPageViewModel = new AppCMSPageViewModel ( );
+
+                _iCMSPageViewModel.PageCode = "workpermit";
+                _iCMSPageViewModel.PageHTMLContent = _iCMSPageModel.PageHtmlcontent;
+
+
+
+
+
+
+                return View ( _iCMSPageViewModel );
+            }
+            catch ( Exception ex )
+            {
+                AppUtility_DebugManager.Debug_Get_MessageText ( ex.Message.ToString ( ) );
+                return View ( );
+            }
+        }
+
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> CMS_WorkPermit( AppCMSPageViewModel iCMSPageModel )
+        {
+            try
+            {
+
+                var x = false;
+
+                x = await AppCMSPageManager.CMSPage_Update_HTMLContent_ByPageTokenID (
+                              _dbContext ,
+               iCMSPageModel.PageTokenID ,
+              iCMSPageModel.PageCode ,
+               iCMSPageModel.PageHTMLContent );
+
+
+
+
+
+                return View ( );
+            }
+            catch ( Exception ex )
+            {
+                AppUtility_DebugManager.Debug_Get_MessageText ( ex.Message.ToString ( ) );
+                return View ( );
+            }
+        }
+
+
+
 
 
 

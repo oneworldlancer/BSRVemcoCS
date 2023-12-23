@@ -13,16 +13,16 @@
     outline: none;
 }
 */
-input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, textarea {
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, textarea, textarea:focus {
     /*background-color: lightblue;*/
-    background-color: #ffffcc;
+    background-color: #ffffcc !important;
     border: 1px solid #0a75bb;
 }
 
-input[type=text], input[type=email], input[type=password], input[type=checkbox], textarea {
+input[type=text], input[type=email], input[type=password], textarea {
     /*background-color: lightblue;*/
     /*background: blue;*/
-    background-color: #ffffcc;
+    background-color: #ffffcc !important;
     /*   border:  1px solid lightblue ;*/
 }
 
@@ -42,13 +42,33 @@ textarea {
 
 input[type=text]:not(:placeholder-shown),
 input[type=email]:not(:placeholder-shown),
-input[type=password]:not(:placeholder-shown) {
+input[type=password]:not(:placeholder-shown),
+textarea {
     background-color: #ffffcc !important;
 }
 
 
 input:placeholder-shown,
 input[type=email]:not(:placeholder-shown),
-input[type=password]:not(:placeholder-shown) {
+input[type=password]:not(:placeholder-shown),
+textarea {
     background-color: #ffffff !important;
+}
+
+
+.textarea, .textarea:focus, .textarea:empty {
+    /*-fx-background-color: #ffffcc !important;*/
+}
+
+textarea, textarea:focus, textarea:empty {
+   /* -fx-background-color: #ffffcc !important;*/
+}
+
+input[type=checkbox] {
+       background-color: #ffffff !important; 
+     color: #0a65bb   !important;
+     width:18px;
+     height:18px;
+     margin:0px;
+     padding:0px;
 }

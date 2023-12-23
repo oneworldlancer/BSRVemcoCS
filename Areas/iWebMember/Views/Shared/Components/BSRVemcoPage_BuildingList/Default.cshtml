@@ -26,13 +26,17 @@
                     {
 
                         <tr data-clmdbldname="clmdbldname_@iRow.BuildingTokenID">
-                            <td style="width:100%;">
+                    <td style="width:100%;font-weight:@iRow.BuildingNameCSS !important;">
 
 
                                @*  <a asp-area="iWebMember" asp-controller="Development" asp-action="Summary" asp-route-bldtknid="@iRow.BuildingTokenID" asp-route-state="item" asp-route-mnu="view_building" asp-route-section="view_building" asp-route-page="dashboard"><img src="~/img/img_project_black.png" width="10" height="10" style="margin:5px;" />@iRow.BuildingName</a>
                              *@
-
-                        <a href="javascript:load_Building_ByBuildingTokenID('building_summary','@iRow.BuildingTokenID','@iRow.BuildingName');"><img src="~/img/img_project_black.png" width="10" height="10" style="margin:5px;" />@iRow.BuildingName</a>
+                        @* @{
+                            @iRow.BuildingNameCSS
+                        } *@
+                        <a href="javascript:load_Building_ByBuildingTokenID('building_summary','@iRow.BuildingTokenID','@iRow.BuildingName');">
+                            <img src="~/img/img_meun_building_black.png" width="10" height="10" style="margin:5px;" />@iRow.BuildingName
+                        </a>
                            
                             
                             </td>

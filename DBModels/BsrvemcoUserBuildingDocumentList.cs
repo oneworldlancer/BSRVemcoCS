@@ -67,6 +67,16 @@ public partial class BsrvemcoUserBuildingDocumentList
 
     public string? AnswerDescription { get; set; }
 
+    public string? TimeframeYearCount { get; set; }
+
+    public string? TimeframeMonthCount { get; set; }
+
+    public string? TimeframeAppNotification { get; set; }
+
+    public string? TimeframeSystemNotification { get; set; }
+
+    public string? TimeframeUserNotification { get; set; }
+
     public string? TimeoutYearCount { get; set; }
 
     public string? TimeoutAppNotification { get; set; }
@@ -96,6 +106,14 @@ public partial class BsrvemcoUserBuildingDocumentList
     public string? TimeoutUserNotification { get; set; }
 
     public string? TimeoutSystemNotification { get; set; }
+
+    public DateTime? AlertUserNotification { get; set; }
+
+    public DateTime? AlertSystemNotification { get; set; }
+
+    public bool? IsWithSurvey { get; set; }
+
+    public bool? IsCheckOneTime { get; set; }
 
     public string? ScoreMinValue { get; set; }
 

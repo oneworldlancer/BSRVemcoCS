@@ -163,6 +163,8 @@
 
 <script>
 
+    window.IsEnableGlobalDynamicMenu = false;
+
     window.bldtknid;
 
     window.apptbltknid;
@@ -296,7 +298,7 @@
                     "block");
             }
 
-          
+
             else if (iPageCode == 'terms') {
 
                 _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_TermsPage';
@@ -1026,6 +1028,9 @@
 
         try {
 
+            window.IsEnableGlobalDynamicMenu = true;
+
+
             window.bldtknid = iBuildingTokenID;
 
 
@@ -1037,9 +1042,17 @@
 
             // // // // // $("#div_ViewBuilding").show(500);
 
+            // $('#div_ViewBuilding_Collapse').data('bs-target', '#collapseViewBuilding');
+
+            $('#collapseViewBuilding').collapse('show');
+
+
+
+            $('#div_ViewBuilding_Collapse').css('opacity', '1.0');
+
+
+
             $("#div_BuildingBlock").show(500);
-
-
 
             load_PageContent_Dynamic_ByPageTokenID(iPageCode);
 
@@ -1076,6 +1089,9 @@
 
         try {
 
+
+            window.IsEnableGlobalDynamicMenu = false;
+
             $("#iBuildingTokenID").val('0');
 
             $("#iBuildingName").val('0');
@@ -1084,7 +1100,14 @@
 
             // // // // // $("#div_ViewBuilding").hide(500);
 
+            $('#collapseViewBuilding').collapse('hide');
+
+
+            $('#div_ViewBuilding_Collapse').css('opacity', '0.5');
+
             $("#div_BuildingBlock").hide(500);
+
+            // $('#div_ViewBuilding_Collapse').data('bs-target', '');
 
             //load_PageContent_Dynamic_ByPageTokenID(iPageCode);
 

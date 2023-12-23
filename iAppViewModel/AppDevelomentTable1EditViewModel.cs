@@ -26,6 +26,9 @@ namespace BSRVemcoCS.iAppViewModel
         public string? ColumnDescription { get; set; } = "0";
         public string? ColumnCommentary { get; set; } = "0";
         public string? ColumnCriterion { get; set; } = "0";
+        public string? ColumnVePlus { get; set; } = "0";
+        public string? ColumnVeMinus { get; set; } = "0";
+        public string? ColumnNeutral { get; set; } = "0";
         public string? ColumnScore { get; set; } = "0";
         public string? ColumnScoreOriginal { get; set; } = "0";
         public string? ColumnScoreManaged { get; set; } = "0";
@@ -35,7 +38,7 @@ namespace BSRVemcoCS.iAppViewModel
         public string? ColumnScoreAverage { get; set; } = "0";
         public string? ColumnScoreQualityTotal { get; set; } = "0";
         public string? ColumnScoreRiskTotal { get; set; } = "0";
-
+       
 
         public List<AppUserBuildingTableRowModelManager>? RowContentList { get; set; } = new List<AppUserBuildingTableRowModelManager> ( );
 

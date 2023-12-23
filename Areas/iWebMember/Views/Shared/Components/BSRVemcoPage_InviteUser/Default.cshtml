@@ -3,7 +3,7 @@
 <div id="div_PageHTMLContent" style="margin:0px;padding:0px;display:flex;flex-direction:column;">
 
     @*  <div class="text-center fs-5">Invite users</div>
-     <div class="text-center fs-5">Contacting us means a lot and we are eager to serve you at the highest level of vervice that you deserve</div>
+    <div class="text-center fs-5">Contacting us means a lot and we are eager to serve you at the highest level of vervice that you deserve</div>
     *@
     <div class="text-center fs-6">Invite new users and give them permission to add information to your building. Enter their details below:</div>
 
@@ -21,8 +21,8 @@
                 *@
 
                 @* class="me-3" *@
-                <div id="div_DocumentUploadxxcxc" 
-                    style="width:100%;display:flex;flex-direction:column;justify-content:space-between;">
+                <div id="div_DocumentUpload"
+                     style="width:100%;display:flex;flex-direction:column;justify-content:space-between;">
 
                     <div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
 
@@ -30,20 +30,21 @@
                             Email address
                         </div>
 
-                         <div class="col-4">
-                           Name (Optional)
+                        <div class="col-4">
+                            Name (Optional)
                         </div>
 
                         @* onclick="Building_Confirm_DELETE('@iRow.BuildingTokenID');" *@
                         <div class="col-1 text-center" style="width:50px;">
-                         @*    <img id="img_NewURL1" name="img_NewURL1" src="~/img/img_new.png" style="width:20px;height:20px;" alt="Delete" title="New" />
-                      *@   </div>
+                            @*    <img id="img_NewURL1" name="img_NewURL1" src="~/img/img_new.png" style="width:20px;height:20px;" alt="Delete" title="New" />
+                            *@
+                        </div>
 
 
 
                     </div>
 
-  
+
                     <div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
 
                         <div class="col-7">
@@ -51,67 +52,91 @@
                                    style="color:blue;" data-inputfor="fupload" required />
                         </div>
 
-                         <div class="col-4">
-                            <input type="text"  class="form-control" id="input_fileURL1" name="input_fileURL1" placeholder="Mr.John"
-                                  data-inputfor="fupload" required />
+                        <div class="col-4">
+                            <input type="text" class="form-control" id="input_Name1" name="input_Name1" placeholder="Mr.John"
+                                   data-inputfor="fname" required />
                         </div>
 
                         @* onclick="Building_Confirm_DELETE('@iRow.BuildingTokenID');" *@
                         <div class="col-1 text-center" style="width:50px;">
-                        @*     <img id="img_NewURL1" name="img_NewURL1" src="~/img/img_new.png" style="width:20px;height:20px;" alt="Delete" title="New" />
-                      *@   </div>
+                            @*     <img id="img_NewURL1" name="img_NewURL1" src="~/img/img_new.png" style="width:20px;height:20px;" alt="Delete" title="New" />
+                            *@
+                        </div>
 
 
 
                     </div>
 
-   
-  
+
+
                     <div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
 
                         <div class="col-7">
-                            <input type="url" pattern="https?://.+" class="form-control" id="input_fileURL1" name="input_fileURL1" placeholder="name@example.com"
+                            <input type="url" pattern="https?://.+" class="form-control" id="input_fileURL2" name="input_fileURL2" placeholder="name@example.com"
                                    style="color:blue;" data-inputfor="fupload" required />
                         </div>
 
-                         <div class="col-4">
-                            <input type="text"  class="form-control" id="input_fileURL1" name="input_fileURL1" placeholder="Mr.John"
-                                  data-inputfor="fupload" required />
+                        <div class="col-4">
+                            <input type="text" class="form-control" id="input_Name2" name="input_Name2" placeholder="Mr.John"
+                                   data-inputfor="fname" required />
                         </div>
 
                         @* onclick="Building_Confirm_DELETE('@iRow.BuildingTokenID');" *@
                         <div class="col-1 text-center" style="width:50px;">
-                        @*     <img id="img_NewURL1" name="img_NewURL1" src="~/img/img_new.png" style="width:20px;height:20px;" alt="Delete" title="New" />
-                      *@   </div>
+                            @*     <img id="img_NewURL1" name="img_NewURL1" src="~/img/img_new.png" style="width:20px;height:20px;" alt="Delete" title="New" />
+                            *@
+                        </div>
 
 
 
                     </div>
 
-   
-  
+
+
                     <div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
 
                         <div class="col-7">
-                            <input type="url" pattern="https?://.+" class="form-control" id="input_fileURL1" name="input_fileURL1" placeholder="name@example.com"
+                            <input type="url" pattern="https?://.+" class="form-control" id="input_fileURL3" name="input_fileURL3" placeholder="name@example.com"
                                    style="color:blue;" data-inputfor="fupload" required />
                         </div>
 
-                         <div class="col-4">
-                            <input type="text"  class="form-control" id="input_fileURL1" name="input_fileURL1" placeholder="Mr.John"
-                                  data-inputfor="fupload" required />
+                        <div class="col-4">
+                            <input type="text" class="form-control" id="input_Name3" name="input_Name3" placeholder="Mr.John"
+                                   data-inputfor="fname" required />
                         </div>
 
                         @* onclick="Building_Confirm_DELETE('@iRow.BuildingTokenID');" *@
                         <div class="col-1 text-center" style="width:50px;">
-                            <img id="img_NewURL1" name="img_NewURL1" src="~/img/img_new.png" style="width:20px;height:20px;" alt="Delete" title="New" />
+                            <img id="img_NewURL1" name="img_NewURL1" src="~/img/img_new.png" style="width:20px;height:20px;" alt="New" title="New" />
                         </div>
 
 
 
                     </div>
 
-   
+
+                    @*   <div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
+
+                    <div class="col-7">
+                    <input type="url" pattern="https?://.+" class="form-control" id="input_fileURL3" name="input_fileURL3" placeholder="name@example.com"
+                    style="color:blue;" data-inputfor="fupload" required />
+                    </div>
+
+                    <div class="col-4">
+                    <input type="text" class="form-control" id="input_Name3" name="input_Name3" placeholder="Mr.John"
+                    data-inputfor="fupload" required />
+                    </div>
+
+
+                    <div class="col-1 text-center" style="width:50px;">
+                    <img id="img_delURL2" name="img_delURL2" class="remove_input_button" src="https://bsr.vemcoconsulting.com/img/img_delete.png" style="width:20px;height:20px;" alt="Delete" title="Delete" />
+                    </div>
+
+
+
+                    </div> *@
+
+
                 </div>
 
 
@@ -124,20 +149,23 @@
                     </div>
 
                     <div class="col-4">
-                        <input class="btn btn-primary" type="submit" value="Submit" style="width:100%;height:auto;background-color:#19c571;height:auto;border-color:#19c571;color:white;">
+                        @* type="submit" *@
+                        <input class="btn btn-primary" value="Submit" style="width:100%;height:auto;background-color:#19c571;height:auto;border-color:#19c571;color:white;"
+                               onclick="upload_UserEmailLinkList()">
 
                     </div>
 
-                 
+
                     <div class="col-1 text-center" style="width:50px;">
-                    @*     <img id="img_NewURL1" name="img_NewURL1" src="~/img/img_new.png" style="width:20px;height:20px;" alt="Delete" title="New" />
-                  *@   </div>
+                        @*     <img id="img_NewURL1" name="img_NewURL1" src="~/img/img_new.png" style="width:20px;height:20px;" alt="Delete" title="New" />
+                        *@
+                    </div>
 
 
 
                 </div>
 
-            
+
 
             </div>
 
@@ -153,3 +181,220 @@
 
 
 </div>
+
+
+
+
+<script>
+
+
+
+
+    // $(document).ready(function () {
+
+    //     try {
+
+
+    var max_fields = 10;
+    var img_NewURL1 = $('#img_NewURL1');
+    var $add_input_button = $('#btn_NewFileHyperlink');
+    var $field_wrapper = $('#div_DocumentUpload');
+    // var new_field_html_X1 = '<div><input name="title[]" class="form-control form-item type="text" value="" data-label="title" /><a href="javascript:void(0);" class="remove_input_button" title="remove field">-</a></div>';
+    // var new_field_html = '<div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;"><div class="col-11" ><input type="text"  type="url" pattern="https?://.+" class="form-control" id="input_fileURL2" name="input_fileURL2" placeholder="Insert your hyperlink here ..." style="color:blue;"   data-inputfor="fupload"  required /></div><div class="col-1 text-center" style="width:50px;" ><img id="img_delURL2" name="img_delURL2" class="remove_input_button"  src="https://bsr.vemcoconsulting.com/img/img_delete.png" style="width:20px;height:20px;" alt="Delete" title="Delete" /></div></div>';
+
+
+    var new_field_html = '<div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;"><div class="col-7" ><input type="url" pattern = "https?://.+" class="form-control" id = "input_fileURL3" name="input_fileURL3" placeholder="name@example.com" style="color:blue;" data-inputfor="fupload" required /></div><div class="col-4" ><input type="text" class="form-control" id="input_Name3" name="input_Name3" placeholder="Mr.John"  data-inputfor="fname" required /></div><div class="col-1 text-center" style="width:50px;" ><img id="img_delURL2" name="img_delURL2" class="remove_input_button" src="https://bsr.vemcoconsulting.com/img/img_delete.png" style="width:20px;height:20px;" alt="Delete" title="Delete" /></div></div>';
+
+
+
+    var input_count = 3;
+
+    //add inputs
+    img_NewURL1.click(function () {
+        if (input_count < max_fields) {
+            input_count++;
+            $field_wrapper.append(new_field_html);
+        }
+    });
+
+
+    //add inputs
+    // $add_input_button.click(function () {
+    //     if (input_count < max_fields) {
+    //         input_count++;
+    //         $field_wrapper.append(new_field_html);
+    //     }
+    // });
+
+    //remove_input
+    $field_wrapper.on('click', '.remove_input_button', function (e) {
+        e.preventDefault();
+        $(this).parent('div').parent('div').remove();
+        input_count--;
+    });
+
+    //     }
+    //     catch (err) {
+    //         console.error(err);
+    //         return;
+    //     }
+
+    // });
+
+
+    ///////////////////////////////////////
+
+
+
+
+
+    function upload_UserEmailLinkList() {
+
+        try {
+
+
+            //alert('upload_DocumentLinkList');
+            var _urlLinkList = "";
+
+            var inputs = $('[data-inputfor="fupload"]');
+
+            // alert(inputs.length);
+
+
+            for (var i = 0; i < inputs.length; i++) {
+
+                // alert($(inputs[i]).val());
+                // alert(isValidUrl($(inputs[i]).val()));
+
+                if ($(inputs[i]).val().length != 0) {
+
+
+                    if (isValidUrl($(inputs[i]).val())) {
+
+                        if (_urlLinkList == "") {
+                            _urlLinkList = $(inputs[i]).val();
+                        }
+
+                        else {
+                            _urlLinkList += ',' + $(inputs[i]).val();
+                        }
+
+                    }
+                }
+
+                // else {
+                //     alert('empty');
+
+                // }
+
+
+            }
+
+            // alert('_urlLinkList == ' + _urlLinkList);
+
+            if (_urlLinkList != "") {
+
+                // alert('_urlLinkList != ""');
+
+
+                BSR_ShowToastMessage('process');
+
+                // open_TabViewProgressQuery();
+
+
+
+
+
+                $.ajax({
+
+                    url: '/iWebMember/Development/QueryForm_Upload_FileLinks',
+                    data: {
+                        // // // // // iAppQueryTableTokenID: $("#iAppQueryTableTokenID").val(),
+                        // // // // // iAppQueryInformationTokenID: $("#iAppQueryInformationTokenID").val(),
+                        // // // // // iQueryTableTokenID: $("#iQueryTableTokenID").val(),
+                        // // // // // iQueryInformationTokenID: $("#iQueryInformationTokenID").val(),
+                        // // // // // iBuildingTokenID: $("#iBuildingTokenID").val(),
+                        // // // // // iFileLinkList: _urlLinkList,
+                        // // // // // iAnswerCode: window.answercode,
+                        // // // // // iAnswerText: window.systemdescription
+
+
+                        // // // // // doctknid: window.doctknid,
+                        // // // // // iday: date.getDate(),
+                        // // // // // // idayname: $("#iBuildingTokenID").val(),
+                        // // // // // imonth: date.getMonth() + 1,
+                        // // // // // iyear: date.getFullYear(),
+                        // // // // // iDateText: $("#iDocumentDateStart").val(),
+                        // // // // // idesc: txt_DocumentDescription,
+                        // // // // // timeframe: window.timeframe
+                    },
+                    success: function (data) {
+
+
+                        // // // // // if (window.answercode == "yes") {
+
+                        // // // // //     var clmn_ActivityText = $("[data-clmactivity='clmactivity_" + window.inftknid + "']");
+
+                        // // // // //     clmn_ActivityText.html(
+                        // // // // //         '<strong>' + window.systemtitle + '</strong>' +
+                        // // // // //         window.systemdescription);
+
+                        // // // // // }
+
+                        // // // // // refresh_TabViewQueryDocumentList(true);
+
+
+
+                        for (var i = 0; i < inputs.length; i++) {
+
+
+                            $(inputs[i]).val('');
+
+                        }
+
+
+
+                    }
+                });
+
+
+
+            }
+
+            // else {
+
+            //     alert('_urlLinkList ==== ""');
+
+            // }
+
+
+
+        }
+
+
+        catch (err) {
+            // alert(err);
+            console.error(err);
+            return;
+        }
+
+    }
+
+
+
+
+    const isValidUrl = urlString => {
+        var urlPattern = new RegExp('^(https?:\\/\\/)?' + // validate protocol
+            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // validate domain name
+            '((\\d{1,3}\\.){3}\\d{1,3}))' + // validate OR ip (v4) address
+            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // validate port and path
+            '(\\?[;&a-z\\d%_.~+=-]*)?' + // validate query string
+            '(\\#[-a-z\\d_]*)?$', 'i'); // validate fragment locator
+        return !!urlPattern.test(urlString);
+    }
+
+
+
+</script>
+
+

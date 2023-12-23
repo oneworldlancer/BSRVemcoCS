@@ -69,7 +69,7 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
                 {
 
                     List<BsrvemcoAppBuildingInformationList>? _arrAppDevelomentInfomationList = _dbContext.BsrvemcoAppBuildingInformationLists
-                         //.Where ( u => u.BuildingTokenId == id )
+                        .Where ( u => u.IsVisible == true )
                          //.Select (u  )
                          //.FirstOrDefault ( ); // This is what actually executes the request and return a response
                          .ToList(); // This is what actually executes the request and return a response

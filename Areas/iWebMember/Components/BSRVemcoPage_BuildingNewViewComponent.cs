@@ -7,6 +7,7 @@ using BSRVemcoCS.iAppViewModel;
 using BSRVemcoCS.Models;
 
 using DocumentFormat.OpenXml.Office2010.Excel;
+using DocumentFormat.OpenXml.Wordprocessing;
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -45,11 +46,17 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
             try
             {
 
+                AppDevelomentNew1ViewModel iDevelomentNew1ViewModel = new AppDevelomentNew1ViewModel();
+                //BSRVemcoPage_ContactUsViewModel _iBSRVemcoPageViewModel = new BSRVemcoPage_ContactUsViewModel();
 
-                BSRVemcoPage_ContactUsViewModel _iBSRVemcoPageViewModel = new BSRVemcoPage_ContactUsViewModel();
+                iDevelomentNew1ViewModel.BuildingDateYear= DateTime.Now.Year.ToString(); 
 
 
-                return await Task.FromResult((IViewComponentResult)View("Default", _iBSRVemcoPageViewModel));
+                //  return await Task.FromResult((IViewComponentResult)View("Default", _iBSRVemcoPageViewModel));
+                return await Task.FromResult((IViewComponentResult)View("Default", iDevelomentNew1ViewModel));
+          
+            
+            
             }
             catch (Exception ex)
             {

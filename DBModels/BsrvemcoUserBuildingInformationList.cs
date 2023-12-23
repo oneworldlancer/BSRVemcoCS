@@ -49,6 +49,10 @@ public partial class BsrvemcoUserBuildingInformationList
 
     public string? QueryTableDescription { get; set; }
 
+    public string? InformationCode { get; set; }
+
+    public string? InformationType { get; set; }
+
     public string? InformationName { get; set; }
 
     public string? InformationTitle { get; set; }
@@ -69,9 +73,25 @@ public partial class BsrvemcoUserBuildingInformationList
 
     public string? InformationDescriptionUser { get; set; }
 
+    public string? InformationButtonText { get; set; }
+
+    public string? InformationButtonStyleCss { get; set; }
+
     public string? Commentary { get; set; }
 
     public string? Criterion { get; set; }
+
+    public string? VePlus { get; set; }
+
+    public string? VeMinus { get; set; }
+
+    public string? Neutral { get; set; }
+
+    public string? VePlusText { get; set; }
+
+    public string? VeMinusTextText { get; set; }
+
+    public string? NeutralText { get; set; }
 
     public string? Score { get; set; }
 
@@ -118,6 +138,14 @@ public partial class BsrvemcoUserBuildingInformationList
     public string? TimeoutUserNotification { get; set; }
 
     public string? TimeoutSystemNotification { get; set; }
+
+    public DateTime? AlertUserNotification { get; set; }
+
+    public DateTime? AlertSystemNotification { get; set; }
+
+    public bool? IsWithSurvey { get; set; }
+
+    public bool? IsCheckOneTime { get; set; }
 
     public string? ImageTokenId { get; set; }
 

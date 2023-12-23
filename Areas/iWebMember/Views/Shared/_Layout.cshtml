@@ -77,18 +77,39 @@
     ======================================================== -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    @* <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> *@
+  
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @* <script src="~/lib/jquery/dist/jquery.js"></script> *@
+
+  
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+   
     <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
+    <script src="~/lib/jqueryui/jquery-ui.js"></script>
+  
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-    <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
+  
+    @* <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css"> *@
 
     @*<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>*@
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+   @*  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js"></script>
+ *@
+   
 
+  <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+ 
+    @*   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.20.0/dist/jquery.validate.min.js"></script>
+ *@
+   
+ <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.20.0/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/additional-methods.min.js"></script>
 
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+  
 
     @*    <script src="~/lib/jqueryui/jquery-ui.min.js"></script>*@
 
@@ -305,6 +326,7 @@
 
         <div style="background-color:#0a65bb;display:flex;flex-direction:column;padding:0px;margin:0px;">
 
+            @* NEW-MENU *@
             <div class="topCenter" style="padding:0px;margin:0px;">
 
                 <div>
@@ -382,7 +404,8 @@
                                 <div class="middleCenter mt-1" style="width:100%;">
 
                                     @*      onclick="load_PageContent_Static_ByPageTokenID('building_new')" *@
-                                    <div id="div_building_new" class="mb-1 divHighlightMenu" style="cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px #00000000;">
+                                    <div id="div_building_new" class="mb-1 divHighlightMenu" style="cursor:pointer;width:100%;height:30px;padding-left:70px;background-color:#00000000;border:solid 1px #00000000;"
+                                         onclick="load_PageContent_Static_ByPageTokenID('building_new')">
 
                                         <table style="padding:5px;">
                                             <tr>
@@ -439,9 +462,11 @@
                     <div class="mb-4" id="div_ViewBuilding">
 
                         @*      onclick="open_MenuHeaderItemList('collapseViewBuilding');" *@
-                        <div id="div_CollapseViewBuilding" disabled data-bs-toggle="collapse" data-bs-target="#collapseViewBuilding" aria-expanded="false" aria-controls="collapseViewBuilding">
+                        @* data-bs-target="#collapseViewBuilding" *@
+                        @* data-bs-toggle="collapse" *@
+                        <div id="div_CollapseViewBuilding" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseViewBuilding">
 
-                            <div id="div_ViewBuilding_Collapse" style="cursor:pointer;">
+                            <div id="div_ViewBuilding_Collapse" data-bs-target="#collapseViewBuilding" style="cursor:pointer;opacity:.5;">
 
                                 <table class="middleCenter" style="width:100%;padding:5px;">
                                     <tr>
@@ -454,7 +479,7 @@
                                     <tr>
 
                                         <td class="topCenter">
-                                            <span style="color:silver;">VIEW BUILDING</span>
+                                            <span style="color:white;">VIEW BUILDING</span>
                                         </td>
                                     </tr>
                                 </table>
@@ -462,7 +487,7 @@
 
 
                         </div>
-
+                        @* *@
                         <div class="collapse" id="collapseViewBuilding" data-mnuid="viewbuilding">
 
                             <div class="col-12" id="div_ViewBuilding_MenuList">
@@ -1795,6 +1820,15 @@ font-size:small;background-color:#152365;">
 
                 else if (x == 'viewbuilding') {
                     objMenuHeader = $('#div_ViewBuilding_Collapse');
+
+                    // // // // // if (window.IsEnableGlobalDynamicMenu == true) {
+
+                    // // // // //     $('#div_ViewBuilding_Collapse').data('bs-target', '#collapseViewBuilding');
+                    // // // // // } else {
+                    // // // // //     $('#div_ViewBuilding_Collapse').data('bs-target', '');
+                    // // // // // }
+
+
                 }
 
 
@@ -1894,7 +1928,17 @@ font-size:small;background-color:#152365;">
                 }
 
                 else if (x == 'viewbuilding') {
+
                     objMenuHeader = $('#div_ViewBuilding_Collapse');
+
+                    // // // // // if (window.IsEnableGlobalDynamicMenu == true) {
+
+                    // // // // //     $('#div_ViewBuilding_Collapse').data('bs-target', '#collapseViewBuilding');
+                    // // // // // } else {
+                    // // // // //     $('#div_ViewBuilding_Collapse').data('bs-target', '');
+                    // // // // // }
+
+
                 }
 
                 else if (x == 'workpermit') {
@@ -1979,6 +2023,22 @@ font-size:small;background-color:#152365;">
                     $("#toast_Message").addClass('bg-success');
 
                     $("#toast_Message").html("Item added successfully.");
+
+                }
+
+
+           
+                else if (code == "email_sent") {
+
+
+                    $("#toast_Message").removeClass('bg-success');
+                    $("#toast_Message").removeClass('bg-warning');
+                    $("#toast_Message").removeClass('bg-danger');
+                    $("#toast_Message").removeClass('bg-info');
+
+                    $("#toast_Message").addClass('bg-success');
+
+                    $("#toast_Message").html("Sent successfully.");
 
                 }
 

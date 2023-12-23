@@ -25,6 +25,7 @@ namespace BSRVemcoCS.Models
         public string RoleCode { get; set; } = "0";
         public string RoleName { get; set; } = "0";
 
+        public string? BuildingNameCSS { get; set; } = "normal";
 
 
 

@@ -51,6 +51,7 @@ namespace BSRVemcoCS.iAppViewModel
 
 
         public string? BuildingImageTokenID { get; set; } = "0";
+        public string? BuildingImageURL { get; set; } = "https://bsr.vemcoconsulting.com/img/nopreview.png";
 
 
 

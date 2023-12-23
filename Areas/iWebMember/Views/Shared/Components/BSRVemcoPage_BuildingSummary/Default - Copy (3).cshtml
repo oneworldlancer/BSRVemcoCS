@@ -1,0 +1,138 @@
+﻿@model BSRVemcoCS.iAppViewModel.AppDevelomentSummaryViewModel
+
+@* class="accordion-body" *@
+<div id="div_PageHTMLContent" style="background-color:white;margin:0px;padding:0px;display:flex;flex-direction:column;">
+
+
+    <div style="width:100%;padding:3px;table-layout:fixed;background-color:white;">
+
+
+        <div class="row">
+            @* style="background-color:red;" *@
+            <div class="col m-3" >
+
+
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="fw-bold">Building name:</label>
+                    @* type="text" class="form-control" *@
+             @*        <label id="formGroupExampleInput2" placeholder=""
+                                                                  asp-for="BuildingName" /> *@
+                    <br />  <span class="fs-6">@Model.BuildingName</span>
+                </div>
+
+
+
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="fw-bold">Building address:</label>
+                    @* type="" class="form-control" *@
+                   @*  <label id="formGroupExampleInput2" placeholder=""
+                                                               asp-for="BuildingAddress" /> *@
+                    <br />   <span class="fs-6">@Model.BuildingAddress</span>
+                </div>
+
+
+                @*asp-format="{0:yyyy-MM-dd}*@
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="fw-bold">Build date:</label>
+                    @* type="number" class="form-control" *@ 
+                   @*  <label id="formGroupExampleInput2" placeholder=""
+                                                                     asp-for="BuildingDateYear" /> *@
+
+                                                                     <span class="fs-6">@Model.BuildingDateYear</span>
+                </div>
+
+
+            </div>
+            @* style="background-color:yellow;" *@
+            <div class="col-5" >
+
+                <div style="position:relative;width:400px;height:410px;">
+
+                    <div id="div_BuildingDiagram" class="text-center"  style="position:absolute;top:0px;left:0px;">
+                     
+                        <iframe src="/iWebMember/Development/Diagram?bldtknid=@Context.Request.Query["bldtknid"].ToString()&px=@Model.iBuildingStatisticModel.ScoreRiskAverage&py=@Model.iBuildingStatisticModel.Table4ScoreAverage"
+                                style="overflow:hidden;overflow-x:hidden;overflow-y:hidden;float:left;width:400px;height:380px;margin:0px;padding:0px;"></iframe>
+                        @*                         class="ms-3" style="position:absolute;bottom:80px;" *@
+                        <div>
+                            <div><span style="text-decoration:underline;">Total Quality Score: </span>
+                                <span style="background-color:#0000007F;border-radius:5px;padding:3px;color:white;text-decoration:none;margin-left:5px;">@Model.iBuildingStatisticModel.ScoreTotalQuality</span></div>
+
+                        </div>
+                    </div>
+                  @*   src="~/_iUMedia/_iUBuilding/img_@{
+                        @Model.BuildingImageTokenID
+                    }.jpg" *@
+                    <div id="div_BuildingThumbnail" class="text-center" style="display:none;position:absolute;top:0px;left:0px;">
+                        <img src="@Model.BuildingImageURL" style="width:320px;height:auto;margin-top:20px;margin-left:50px;" />
+                    </div>
+                    
+                    <div style="position:absolute;z-index:10;top:0px;left:0px;">
+                        <img id="img_BuildingDiagram" src="~/img/img_check_normal_black.png" style="width:20px;height:20px;"
+                             title="View diagram"
+                             onclick="Show_BuildingDiagram();" />
+
+                        <img id="img_BuildingThumbnail" src="~/img/img_check_normal.png" style="width:20px;height:20px;"
+                             title="View image"
+                             onclick="Show_BuildingThumbnail();" />
+                    </div>
+                </div>
+
+           
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+<script>
+
+    function Show_BuildingDiagram() {
+
+        $("#img_BuildingDiagram").attr('src', 'img/img_check_normal_black.png');
+        $("#img_BuildingThumbnail").attr('src', 'img/img_check_normal.png');
+
+
+        $("#div_BuildingDiagram").show();
+
+
+        $("#div_BuildingThumbnail").hide();
+      
+    
+
+    }
+
+    function Show_BuildingThumbnail() {
+
+        $("#img_BuildingThumbnail").attr('src', 'img/img_check_normal_black.png');
+        $("#img_BuildingDiagram").attr('src', 'img/img_check_normal.png');
+
+
+
+        $("#div_BuildingDiagram").hide();
+
+
+        $("#div_BuildingThumbnail").show();
+
+
+
+
+    }
+
+</script>

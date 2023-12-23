@@ -67,6 +67,7 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
                     BuildingAddress = _iUserBuildignModel.BuildingAddress,
                     BuildingDateYear = _iUserBuildignModel.BuildingYear,
                     BuildingImageTokenID = _iUserBuildignModel.ImageTokenId,
+                    BuildingImageURL = _iUserBuildignModel.ImageServerUrl,
                     iBuildingStatisticModel = _iBuildingStatisticModel
                 };
 
