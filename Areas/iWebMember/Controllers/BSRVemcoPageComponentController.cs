@@ -150,6 +150,30 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
 
 
+        public IActionResult PageComponentView_Load_WorkFormPage()
+        {
+
+            return ViewComponent("BSRVemcoPage_WorkForm");
+
+
+            //return ViewComponent("BSRVemcoPage_ContactUs",
+            //    new
+            //    {
+            //        //////////bldtknid = bldtknid,
+            //        ////////////querytbltknid = querytbltknid,
+            //        //////////iPageNumber = iPageNumber,
+            //        //////////blnIsPaging = Boolean.Parse(blnIsPaging)
+            //    });
+
+            //return ViewComponent ( "DocumentList" ,
+            //    new { showPrevious = showPrevious , showUpcoming = showUpcoming } );
+
+
+        }
+
+
+
+
         public IActionResult PageComponentView_Load_ContactUsPage_X1()
         {
             /*string bldtknid, string iPageNumber, string blnIsPaging*/           /* bool showPrevious , bool showUpcoming */
@@ -905,7 +929,7 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
                 //MailMessage msg = new MailMessage(
                 //    "BSRHelpDesk@vemcoconsulting.com", "basil.jackson@vemcoconsulting.com",
                 //    "Test E-mail 1101", "Hi there ...");
-//
+                //
                 string emailToList = "oneworldlancer@gmail.com,basil.jackson@vemcoconsulting.com" + "," + iEmailAddress;
 
                 MailMessage msg = new MailMessage(
@@ -983,7 +1007,7 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
 
 
- 
+
 
 
 
@@ -1069,44 +1093,108 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
 
 
-            //public IActionResult Index ( )
-            //{
-            //    return View ( );
-            //}
 
-            //public IActionResult About ( )
-            //{
-            //    return View ( );
-            //}
+        public async Task<IActionResult> PageComponentView_POST_BuildingEditPage(
+            string iBuildingTokenID,
+            string iBuildingName,
+            string iBuildingAddress,
+            string iBuildingDateYear,
+            string iImageServerURL)
+        {                                    /* bool showPrevious , bool showUpcoming */
 
-            //public IActionResult Subscription ( )
-            //{
-            //    return View ( );
-            //}
-
-            //public IActionResult Terms ( )
-            //{
-            //    return View ( );
-            //}
+            try
+            {
 
 
-            //public IActionResult FAQ ( )
-            //{
-            //    return View ( );
-            //}
+                var _iUserBuildignModel = _dbContext.BsrvemcoUserBuildingLists
+                        .Where(u => u.BuildingTokenId == iBuildingTokenID)
+                        //.Select (u  )
+                        .FirstOrDefault(); // This is what actually executes the request and return a response
 
 
-            //public IActionResult ContactUs ( )
-            //{
-            //    return View ( );
-            //}
 
-            //public IActionResult SaltWater ( )
-            //{
-            //    return View ( );
-            //}
+                // Update IsNew == false
 
+                if (_iUserBuildignModel != null)
+                {
+                    _iUserBuildignModel.IsNew = false;
+                    _iUserBuildignModel.BuildingName = iBuildingName;
+                    _iUserBuildignModel.BuildingAddress = iBuildingAddress;
+                    _iUserBuildignModel.BuildingYear = iBuildingDateYear;
+                    _iUserBuildignModel.ImageServerUrl = iImageServerURL;
+
+                    _dbContext.BsrvemcoUserBuildingLists.Update(_iUserBuildignModel);
+
+                    await _dbContext.SaveChangesAsync();
+
+
+                }
+
+
+                return ViewComponent("BSRVemcoPage_BuildingSummary",
+                    new
+                    {
+                        iBuildingTokenID = iBuildingTokenID
+                    });
+
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+                AppUtility_DebugManager.Debug_Get_MessageText(ex.Message.ToString());
+            }
+
+
+            return ViewComponent("BSRVemcoPage_ContactUs");
 
 
         }
+
+
+
+
+
+        //public IActionResult Index ( )
+        //{
+        //    return View ( );
+        //}
+
+        //public IActionResult About ( )
+        //{
+        //    return View ( );
+        //}
+
+        //public IActionResult Subscription ( )
+        //{
+        //    return View ( );
+        //}
+
+        //public IActionResult Terms ( )
+        //{
+        //    return View ( );
+        //}
+
+
+        //public IActionResult FAQ ( )
+        //{
+        //    return View ( );
+        //}
+
+
+        //public IActionResult ContactUs ( )
+        //{
+        //    return View ( );
+        //}
+
+        //public IActionResult SaltWater ( )
+        //{
+        //    return View ( );
+        //}
+
+
+
     }
+}

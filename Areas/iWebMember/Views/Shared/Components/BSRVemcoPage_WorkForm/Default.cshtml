@@ -1,0 +1,759 @@
+﻿@model BSRVemcoPage_ContactUsViewModel
+@* class="accordion-body" *@
+<div id="div_PageHTMLContent" style="margin:0px;padding:0px;display:flex;flex-direction:column;">
+
+    @* <div class="text-center fs-5">Contact Us</div> *@
+    <div class="text-center fs-6" style="margin-left:30px;">Contacting us means a lot and we are eager to help:</div>
+
+
+    <div class="row">
+        <div class="col">
+            @*   1 of 3 *@
+        </div>
+
+        <div class="col-9" style="margin-top:20px;padding:0px;display:flex;flex-direction:column;">
+            @*  <div class="col-3" style="padding:20px;">
+            <img src="~/img/img_contact_us.png" style="width:100px;height:auto;" />
+            </div> *@
+
+            <div class="col">
+                @* method="post" enctype="multipart/form-data" *@
+                <form id="addForm" class="row g-3 needs-validation" novalidate>
+
+
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+
+
+                    <div class="row">
+
+
+                        <div class="mb-3" style="display:flex;flex-direction:row;">
+                            @*                             class="form-control form-control-sm" *@
+                            <div style="width:100%;">
+                                @* class="shadow"style="border: 1px red solid;" *@   @* style="background-color: whitesmoke;border: 5px red solid;" *@
+
+                                <fieldset form="addForm" class="shadow mb-4 divHighlight">
+                                    <legend>0. TYPE OF WORK (tick all applicable)<span style="color:red;margin:3px;">*</span></legend>
+
+                                    <div class="row" style="display:flex;flex-direction:row;">
+                                        <div class="col ms-3 p-1">
+                                            <input type="checkbox" name="chk_1" value="true" id="chk_1">
+
+                                            <label for="chk_1">Cold Work</label>
+
+                                        </div>
+                                        <div style="width:10px;">
+                                        </div>
+
+                                        <div class="col ms-3 p-1">
+                                            <input type="checkbox" name="chk_2" value="true" id="chk_2">
+
+                                            <label for="chk_2">Confined Space</label>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="display:flex;flex-direction:row;">
+                                        <div class="col ms-3 p-1">
+                                            <input type="checkbox" name="chk_3" value="true" id="chk_3">
+
+                                            <label for="chk_3">Service Shaft</label>
+
+                                        </div>
+                                        <div style="width:10px;">
+                                        </div>
+
+                                        <div class="col ms-3 p-1">
+                                            <input type="checkbox" name="chk_4" value="true" id="chk_4">
+
+                                            <label for="chk_4">Working at height</label>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="display:flex;flex-direction:row;">
+                                        <div class="col ms-3 p-1">
+                                            <input type="checkbox" name="chk_5" value="true" id="chk_5">
+
+                                            <label for="chk_5">Other (please specify)</label>
+                                        </div>
+                                        <div style="width:10px;">
+                                        </div>
+
+                                        <div class="col ms-3 p-1">
+                                            @*  <input type="checkbox" name="chk_1" value="true" id="chk_4">
+
+                                            <label for="chk_4">Working at height</label> *@
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row" style="display:flex;flex-direction:row;">
+                                        <div class="col ms-3 p-1">
+                                            <input type="text" class="form-control form-control-sm" name="txt_Other" id="txt_Other">
+
+
+                                        </div>
+                                        <div style="width:10px;">
+                                        </div>
+
+                                        <div class="col ms-3 p-1">
+                                            @*  <input type="checkbox" name="chk_1" value="true" id="chk_4">
+
+                                            <label for="chk_4">Working at height</label> *@
+
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </fieldset>
+
+
+
+                                <fieldset form="addForm" class="shadow mb-4 divHighlight">
+                                    <legend>1. LOCALE<span style="color:red;margin:3px;">*</span></legend>
+
+                                    <div class="ms-2 me-1 mb-3" style="display:flex;flex-direction:column;">
+
+                                        <div class="form-group" style="width:100%;">
+                                            <label for="inputEmail4">1.(i) LOCATION</label>
+                                            <input type="text" class="form-control form-control-sm" id="inputEmail4" />
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="ms-2 me-1 mb-3" style="display:flex;flex-direction:column;">
+
+                                        <div class="form-group" style="width:100%;">
+                                            <label for="inputEmail4">1.(ii) PLANT/APPARATUS IDENTIFICATION</label>
+                                            <textarea class="textarea form-control form-control-sm topLeft" id="txt_MessageBox" name="txt_MessageBox" placeholder="Your message here (max 300 chrs)..."
+                                                      maxlength="300" required></textarea>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="ms-2 me-1 mb-3" style="display:flex;flex-direction:column;">
+
+                                        <div class="form-group" style="width:100%;">
+                                            <label for="inputEmail4">1.(iii) WORK TO BE DONE</label>
+                                            <textarea class="textarea form-control form-control-sm topLeft" id="txt_MessageBox" name="txt_MessageBox" placeholder="Your message here (max 300 chrs)..."
+                                                      maxlength="300" required></textarea>
+                                        </div>
+
+                                    </div>
+
+
+                                </fieldset>
+
+
+
+
+
+
+
+                                <fieldset form="addForm" class="shadow mb-4 divHighlight">
+                                    <legend>2. PRECAUTIONS TAKEN TO ACHIEVE SAFETY FROM THE SYSTEM<span style="color:red;margin:3px;">*</span></legend>
+
+                                    <div class="ms-2 me-1 mb-3" style="display:flex;flex-direction:column;">
+
+                                        <div class="form-group mb-3" style="width:100%;">
+                                            <label for="inputEmail4">2.(i) State points at which apparatus/equipment have been isolated and specify interaction with other systems.</label>
+                                            <textarea class="textarea form-control form-control-sm topLeft" id="txt_MessageBox" name="txt_MessageBox" placeholder="Your message here (max 300 chrs)..."
+                                                      maxlength="300" required></textarea>
+                                        </div>
+
+
+
+
+                                        <div class="form-group" style="width:100%;">
+                                            <label for="inputEmail4">State actions taken to avoid danger by (for example) draining, venting, containment of potential fire or other incident.  Please confirm that Caution Notices have been affixed at points of isolation.</label>
+                                            <textarea class="textarea form-control form-control-sm topLeft" id="txt_MessageBox" name="txt_MessageBox" placeholder="Your message here (max 300 chrs)..."
+                                                      maxlength="300" required></textarea>
+                                        </div>
+
+
+
+
+
+
+                                    </div>
+
+
+                                    <div class="ms-2 me-1 mb-3" style="display:flex;flex-direction:column;">
+
+                                        <div class="form-group" style="width:100%;">
+                                            <label for="inputEmail4">2.(ii) FURTHER PRECAUTIONS TO BE TAKEN DURING THE COURSE OF WORK TO AVOID STSEME DERIVED HAZARDS.</label>
+                                           @*  <textarea class="textarea form-control form-control-sm topLeft" id="txt_MessageBox" name="txt_MessageBox" placeholder="Your message here (max 300 chrs)..."
+                                                      maxlength="300" required></textarea> *@
+                                        </div>
+
+                                        <div class="col ms-3 p-1">
+                                            <input type="checkbox" name="chk_3" value="true" id="chk_3">
+
+                                            <label for="chk_3">I certify that the precautions in Section 2 (i) together with the precaustions in Section 2 (ii) are adequate to provide Safety from the System in respect of the work in Section 1</label>
+
+                                        </div>
+
+                                       
+                                       
+                                        <div class="form-group" style="width:100%;">
+                                            <label for="inputEmail4">This Permit for Work must only be transferred under the Personal Supervision of a Senior Authorised Person *</label>
+                                            <label>* N/A if not applicable</label>
+                                            @*  <textarea class="textarea form-control form-control-sm topLeft" id="txt_MessageBox" name="txt_MessageBox" placeholder="Your message here (max 300 chrs)..."
+                                            maxlength="300" required></textarea> *@
+                                        </div>
+
+                                    </div>
+
+@* 
+                                    <div class="ms-2 me-1 mb-3" style="display:flex;flex-direction:column;">
+
+                                        <div class="form-group" style="width:100%;">
+                                            <label for="inputEmail4">1.(iii) WORK TO BE DONE</label>
+                                            <textarea class="textarea form-control form-control-sm topLeft" id="txt_MessageBox" name="txt_MessageBox" placeholder="Your message here (max 300 chrs)..."
+                                                      maxlength="300" required></textarea>
+                                        </div>
+
+                                    </div>
+
+ *@
+
+
+                                </fieldset>
+
+
+
+
+
+                                <fieldset form="addForm" class="shadow mb-4 divHighlight">
+                                    <legend>3. ITEMS TO BE ISSUED WITH THIS SAFETY DOCUMENT<span style="color:red;margin:3px;">*</span></legend>
+                                   
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    @* class="row" *@
+                                    <div class="ms-3 mb-3" style="display:flex;flex-direction:row;">
+                                        @*                                         col-md-6 *@
+                                        @* class="form-group" *@
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail4">3.(i) *N/A if not applicable</label>
+                                            <input type="text" class="form-control form-control-sm" id="inputEmail4">
+                                        </div>
+
+
+
+
+                                    </div>
+
+
+                                      <div class="ms-3" style="display:flex;flex-direction:row;">
+                                        @*                                         col-md-6 *@
+                                        @* class="form-group" *@
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail4">3.(ii) ISSUE</label>
+                                            <label>Being the Senior Authorised Person responsible for the issue of this Document (signed by client representative)</label>
+                                        </div>
+
+
+
+
+                                    </div>
+
+
+
+
+                                </fieldset>
+
+
+
+
+                                <fieldset form="addForm" class="shadow mb-4 divHighlight">
+                                    <legend>4. RECEIPT<span style="color:red;margin:3px;">*</span></legend>
+
+                                   
+                                    
+                                    
+                                    <div class="row" style="display:flex;flex-direction:row;">
+                                        <div class="col ms-3 p-1">
+                                            <input type="checkbox" name="chk_1" value="true" id="chk_1xxx">
+
+                                            <label for="chk_1xxx">I understand and accept my responsibilities under this Safety Document and acknowledge receipt of the items in Section 3</label>
+
+                                        </div>
+
+                                    </div>
+
+
+                                </fieldset>
+
+
+
+
+
+
+
+
+
+
+
+
+                            </div>
+
+                            @* <span style="color:red;margin:3px;">*</span> *@
+                            @* <div class="text-danger invalid-feedback text-start">Please fill in this field</div> *@
+
+                        </div>
+
+
+                        <br />
+
+                        <br />
+
+                        <br />
+
+                        <br />
+
+
+                        @* xxx *@
+
+
+
+                        <div class="mb-3" style="display:flex;flex-direction:row;">
+                            @*                             class="form-control form-control-sm" *@
+                            <div style="width:100%;">
+
+                                <input type="text" class="form-control form-control-sm" id="txt_FullName" name="txt_FullName" placeholder="Full name"
+                                       required />
+                            </div>
+
+                            <span style="color:red;margin:3px;">*</span>
+                            @* <div class="text-danger invalid-feedback text-start">Please fill in this field</div> *@
+
+                        </div>
+
+
+                        <div class="mb-3" style="display:flex;flex-direction:row;">
+
+                            @*   asp-for="Email" *@
+
+                            <div style="width:100%;">
+
+
+                                <input type="email" class="form-control form-control-sm" id="txt_EmailAddress" name="txt_EmailAddress" placeholder="E-mail address"
+                                       required />
+                            </div>
+
+                            <span style="color:red;margin:3px;">*</span>
+
+                            @* <div class="invalid-feedback text-start" style="color:red;">Please fill in this field</div> *@
+
+                        </div>
+
+
+                        <div class="mb-3" style="display:flex;flex-direction:row;">
+
+                            @*   asp-for="Email" *@
+
+                            <div style="width:100%;">
+
+                                <input type="tel" class="form-control form-control-sm" id="txt_MobileNumber" name="txt_MobileNumber" placeholder="Mobile number"
+                                       required />
+                            </div>
+
+                            <span style="color:red;margin:3px;">*</span>
+
+                            @* <div class="danger invalid-feedback text-start">Please fill in this field</div> *@
+
+                        </div>
+
+
+
+                        <div class="mb-3" style="display:flex;flex-direction:row;">
+
+                            @*   asp-for="Email" *@
+                            <div style="width:100%;">
+                                @*style="height:150px;" Your message here (max 300 chrs)... *@
+                                <textarea class="textarea form-control form-control-sm topLeft" id="txt_MessageBox" name="txt_MessageBox" placeholder="Your message here (max 300 chrs)..."
+                                          maxlength="300" required style="-fx-background-color: #ffffcc !important;"></textarea>
+                                <div id="count">Characters left: 300</div>
+                            </div>
+
+                            <span style="color:red;margin:3px;">*</span>
+
+                        </div>
+
+
+
+
+                        @*style="background-color:red;"*@
+                        @* type="submit"       onclick="testMe()"*@
+
+                        <div class="mt-3">
+                            <input class="btn btn-primary" value="Submit" style="width:100%;height:auto;background-color:#19c571;height:auto;border-color:#19c571;color:white;"
+                                   id="btn_SubmitForm">
+                        </div>
+
+
+                    </div>
+
+                </form>
+
+
+            </div>
+
+
+
+
+        </div>
+
+        <div class="col">
+            @*  3 of 3 *@
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col">
+            @*   1 of 3 *@
+        </div>
+
+        <div class="col-8" style="margin-top:20px;padding:0px;display:flex;flex-direction:row;">
+            <div class="col-3" style="padding:20px;">
+                <img src="~/img/img_contact_us.png" style="width:100px;height:auto;" />
+            </div>
+
+            <div class="col-8">
+                @* method="post" enctype="multipart/form-data" *@
+                <form id="addForm" class="row g-3 needs-validation" novalidate>
+
+
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+
+
+                    <div class="row">
+
+
+                        <div class="mb-3" style="display:flex;flex-direction:row;">
+                            @*                             class="form-control form-control-sm" *@
+                            <div style="width:100%;">
+
+                                <input type="text" class="form-control form-control-sm" id="txt_FullName" name="txt_FullName" placeholder="Full name"
+                                       required />
+                            </div>
+
+                            <span style="color:red;margin:3px;">*</span>
+                            @* <div class="text-danger invalid-feedback text-start">Please fill in this field</div> *@
+
+                        </div>
+
+
+                        <div class="mb-3" style="display:flex;flex-direction:row;">
+
+                            @*   asp-for="Email" *@
+
+                            <div style="width:100%;">
+
+
+                                <input type="email" class="form-control form-control-sm" id="txt_EmailAddress" name="txt_EmailAddress" placeholder="E-mail address"
+                                       required />
+                            </div>
+
+                            <span style="color:red;margin:3px;">*</span>
+
+                            @* <div class="invalid-feedback text-start" style="color:red;">Please fill in this field</div> *@
+
+                        </div>
+
+
+                        <div class="mb-3" style="display:flex;flex-direction:row;">
+
+                            @*   asp-for="Email" *@
+
+                            <div style="width:100%;">
+
+                                <input type="tel" class="form-control form-control-sm" id="txt_MobileNumber" name="txt_MobileNumber" placeholder="Mobile number"
+                                       required />
+                            </div>
+
+                            <span style="color:red;margin:3px;">*</span>
+
+                            @* <div class="danger invalid-feedback text-start">Please fill in this field</div> *@
+
+                        </div>
+
+
+
+                        <div class="mb-3" style="display:flex;flex-direction:row;">
+
+                            @*   asp-for="Email" *@
+                            <div style="width:100%;">
+                                @*style="height:150px;" Your message here (max 300 chrs)... *@
+                                <textarea class="textarea form-control form-control-sm topLeft" id="txt_MessageBox" name="txt_MessageBox" placeholder="Your message here (max 300 chrs)..."
+                                          maxlength="300" required></textarea>
+                                <div id="count">Characters left: 300</div>
+                            </div>
+
+                            <span style="color:red;margin:3px;">*</span>
+
+                        </div>
+
+
+
+
+                        @*style="background-color:red;"*@
+                        @* type="submit"       onclick="testMe()"*@
+
+                        <div class="mt-3">
+                            <input class="btn btn-primary" value="Submit" style="width:100%;height:auto;background-color:#19c571;height:auto;border-color:#19c571;color:white;"
+                                   id="btn_SubmitForm">
+                        </div>
+
+
+                    </div>
+
+                </form>
+
+
+            </div>
+
+
+
+
+        </div>
+
+        <div class="col">
+            @*  3 of 3 *@
+        </div>
+    </div>
+
+
+
+</div>
+
+<script>
+
+
+    var max = 300;
+    $("#txt_MessageBox").keyup(function (e) {
+        $("#count").text("Characters left: " + (max - $(this).val().length));
+    });
+
+
+    // // // // // $("#addForm").validate({
+    // // // // //     rules: {
+    // // // // //         txt_FullName: {
+    // // // // //             required: true,
+    // // // // //             minlength: 3,
+    // // // // //             maxlength: 50,
+    // // // // //         },
+    // // // // //     },
+    // // // // //     // // // // // highlight: function (element) {
+    // // // // //     // // // // //     $(element).closest('.form-group').addClass('has-error');
+    // // // // //     // // // // // },
+    // // // // //     // // // // // messages: {
+    // // // // //     // // // // //     name: {
+    // // // // //     // // // // //         required: "This field is required",
+    // // // // //     // // // // //         minlength: "Name must be at least 2 characters",
+    // // // // //     // // // // //         maxlength: "Maximum number of characters - 10",
+    // // // // //     // // // // //     },
+    // // // // //     // // // // // },
+    // // // // //     submitHandler: function (form) {
+    // // // // //         alert('submitHandler XXX');
+    // // // // //         // // // // // $.ajax({
+    // // // // //         // // // // //     url: 'addEmpl.php',
+    // // // // //         // // // // //     type: 'GET',
+    // // // // //         // // // // //     dataType: 'html',
+    // // // // //         // // // // //     success: function (data) {
+    // // // // //         // // // // //         $("#block").html(data);
+    // // // // //         // // // // //     }
+    // // // // //         // // // // // });
+    // // // // //         return false; // required to block normal submit since you used ajax
+    // // // // //     }
+    // // // // // });
+
+
+
+
+    // // // // // // // $(document).ready(function () {
+
+
+
+    // // // // // // //     // // // // // $("#test").validate({  // initialize plugin on the form
+    // // // // // // //     // // // // //     rules: {
+    // // // // // // //     // // // // //         ...
+    // // // // // // //     // // // // //      }
+    // // // // // // //     // // // // //      ...
+    // // // // // // //     // // // // //      // etc.
+    // // // // // // //     // // // // // });
+
+
+    // // // // // // // });
+
+
+    $("#btn_SubmitForm").click(function () {
+
+
+
+        $("#addForm").validate({
+            // // // // // rules: {
+            // // // // //     txt_FullName: {
+            // // // // //         required: true,
+            // // // // //         minlength: 3,
+            // // // // //         maxlength: 50,
+            // // // // //     },
+            // // // // // },
+
+            submitHandler: function (form) {
+                // alert('submitHandler XXX');
+                // // // // // $.ajax({
+                // // // // //     url: 'addEmpl.php',
+                // // // // //     type: 'GET',
+                // // // // //     dataType: 'html',
+                // // // // //     success: function (data) {
+                // // // // //         $("#block").html(data);
+                // // // // //     }
+                // // // // // });
+                return false; // required to block normal submit since you used ajax
+            }
+        });
+
+
+
+
+
+        // $("#txt_MobileNumber").validate();
+
+        // alert('txt_MobileNumber IS ' + $("#txt_MobileNumber").valid());
+
+
+        //PageComponentView_POST_ContactUsPage
+        var _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_POST_ContactUsPage';
+
+
+
+
+        // capture the click
+        if ($("#addForm").valid()) {   // test for validity
+            // do stuff if form is valid
+
+
+            BSR_ShowToastMessage('process');
+
+
+
+
+            //alert('YES YES YES');
+
+            // alert($("#txt_FullName").val());
+            // alert($("#txt_EmailAddress").val());
+            // alert($("#txt_MobileNumber").val());
+            // alert($("#txt_MessageBox").val());
+
+            $.ajax({
+
+                url: _iURL,
+                data: {
+                    iFullName: $("#txt_FullName").val(),//,//document.getElementById("cbShowPrevious").checked,
+                    iEmailAddress: $("#txt_EmailAddress").val(),//,//document.getElementById("cbShowPrevious").checked,
+                    iMobilenumber: $("#txt_MobileNumber").val(),//,//document.getElementById("cbShowPrevious").checked,
+                    iMessageText: $("#txt_MessageBox").val()//,//document.getElementById("cbShowPrevious").checked,
+                    //querytbltknid: $("#iQueryTableTokenID").val(), //document.getElementById("cbShowUpcoming").checked
+                    //iPageNumber: iPageNumber, //document.getElementById("cbShowUpcoming").checked
+                    //blnIsPaging: blnIsPaging //document.getElementById("cbShowUpcoming").checked
+                },
+                success: function (data) {
+
+
+                    BSR_ShowToastMessage('email_sent');
+
+
+                    $(".div_RenderBody").html(data);
+
+
+                    // alert(iPageCode + " div_RenderBody ...  --- " + $(".div_RenderBody"));
+
+                    // alert(" EMAIL SENT loaded ...  --- ");
+
+
+                    // // // $(".div_RenderBody").html(data);
+
+                    // if (iPageCode == 'building_resident') {
+                    //     load_FCKEditor_Activity();
+
+                    // } else {
+
+                    //     load_FCKEditor();
+                    // }
+
+                }
+
+            });
+
+
+        }
+
+        else {
+            // do stuff if form is not valid
+            // alert('NO NO NO');
+        }
+    });
+
+
+
+                                                            // // // // // function testMe() {
+                                                            // // // // // alert('submitHandler XXX yyy');
+
+                                                            // // // // // $("#addForm").validate({
+                                                            // // // // //     rules: {
+                                                            // // // // //         txt_FullName: {
+                                                            // // // // //             required: true,
+                                                            // // // // //             minlength: 3,
+                                                            // // // // //             maxlength: 50,
+                                                            // // // // //         },
+                                                            // // // // //     },
+                                                            // // // // //     // // // // // highlight: function (element) {
+                                                            // // // // //     // // // // //     $(element).closest('.form-group').addClass('has-error');
+                                                            // // // // //     // // // // // },
+                                                            // // // // //     // // // // // messages: {
+                                                            // // // // //     // // // // //     name: {
+                                                            // // // // //     // // // // //         required: "This field is required",
+                                                            // // // // //     // // // // //         minlength: "Name must be at least 2 characters",
+                                                            // // // // //     // // // // //         maxlength: "Maximum number of characters - 10",
+                                                            // // // // //     // // // // //     },
+                                                            // // // // //     // // // // // },
+                                                            // // // // //     submitHandler: function (form) {
+                                                            // // // // //         alert('submitHandler XXX');
+                                                            // // // // //         // // // // // $.ajax({
+                                                            // // // // //         // // // // //     url: 'addEmpl.php',
+                                                            // // // // //         // // // // //     type: 'GET',
+                                                            // // // // //         // // // // //     dataType: 'html',
+                                                            // // // // //         // // // // //     success: function (data) {
+                                                            // // // // //         // // // // //         $("#block").html(data);
+                                                            // // // // //         // // // // //     }
+                                                            // // // // //         // // // // // });
+                                                            // // // // //         return false; // required to block normal submit since you used ajax
+                                                            // // // // //     }
+                                                            // // // // // });
+
+
+
+                                                        // // // // // }
+
+</script>

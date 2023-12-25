@@ -21,6 +21,12 @@ public partial class BsrvemcoUserList
 
     public string? MembershipType { get; set; }
 
+    public string? RegisterInvitationTokenId { get; set; }
+
+    public string? RegisterCompanyTokenId { get; set; }
+
+    public string? InvitationCompanyTokenId { get; set; }
+
     public string? OwnerUserTokenId { get; set; }
 
     public string? CompanyTokenId { get; set; }
@@ -76,6 +82,8 @@ public partial class BsrvemcoUserList
     public int? BirthDateMonth { get; set; }
 
     public int? BirthDateYear { get; set; }
+
+    public string? ProfileImageServerUrl { get; set; }
 
     public string? PhoneNumber { get; set; }
 

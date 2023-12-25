@@ -40,13 +40,13 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
         public async Task<IViewComponentResult> InvokeAsync(string iBuildingTokenID)
         {
 
-//string bldtknid,  string querytbltknid, string iPageNumber, bool blnIsPaging
+            //string bldtknid,  string querytbltknid, string iPageNumber, bool blnIsPaging
 
             try
             {
 
                 //   string id = HttpContext.Request.RouteValues[ "bldtknid" ].ToString ( );
-              //  string id = Request.Query["bldtknid"].ToString();
+                //  string id = Request.Query["bldtknid"].ToString();
                 // string state = "edit";
 
                 var _iUserBuildignModel = _dbContext.BsrvemcoUserBuildingLists
@@ -54,10 +54,29 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
                         //.Select (u  )
                         .FirstOrDefault(); // This is what actually executes the request and return a response
 
-                AppUserBuildingStatisticModelManager _iBuildingStatisticModel = new AppUserBuildingStatisticModelManager();
-                _iBuildingStatisticModel = await AppBuildingManager.Building_Get_BuildingStatisticModel_ByBuildingTokenID(
-                    _dbContext,
-                iBuildingTokenID);
+
+
+                // Update IsNew == false
+
+                if (_iUserBuildignModel.IsNew == true)
+                {
+                    _iUserBuildignModel.IsNew = false;
+
+                    _dbContext.BsrvemcoUserBuildingLists.Update(_iUserBuildignModel);
+
+                    await _dbContext.SaveChangesAsync();
+
+
+                }
+
+
+
+
+
+                //AppUserBuildingStatisticModelManager _iBuildingStatisticModel = new AppUserBuildingStatisticModelManager();
+                //_iBuildingStatisticModel = await AppBuildingManager.Building_Get_BuildingStatisticModel_ByBuildingTokenID(
+                //    _dbContext,
+                //iBuildingTokenID);
 
 
                 AppDevelomentSummaryViewModel _iDevelomentNew1ViewModel = new AppDevelomentSummaryViewModel()
@@ -68,7 +87,7 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
                     BuildingDateYear = _iUserBuildignModel.BuildingYear,
                     BuildingImageTokenID = _iUserBuildignModel.ImageTokenId,
                     BuildingImageURL = _iUserBuildignModel.ImageServerUrl,
-                    iBuildingStatisticModel = _iBuildingStatisticModel
+                    iBuildingStatisticModel = null
                 };
 
 

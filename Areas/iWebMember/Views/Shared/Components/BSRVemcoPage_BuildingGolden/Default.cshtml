@@ -131,255 +131,255 @@
     @*  </form> *@
 
 
-</div>
+    @*POPUP*@
+    <div class="modal fade" id="popupModalEditor">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:whitesmoke;">
+                    <h4 class="modal-title">Upload Hyperlinks</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
 
-@*POPUP*@
-<div class="modal" id="popupModalEditor">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header" style="background-color:whitesmoke;">
-                <h4 class="modal-title">Upload Hyperlinks</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
+                <div class="modal-body">
 
-            <div class="modal-body">
+                    @*  <button onclick="openEdit();" value="tab" />*@
 
-                @*  <button onclick="openEdit();" value="tab" />*@
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        @*   <li id='tab_Preview' class="nav-item" role="presentation">
+                        <button class="nav-link active" id="btn_Preview" data-bs-toggle="tab" data-bs-target="#content_Preview" type="button" role="tab" aria-controls="home" aria-selected="true" data-tabcontent="preview">Preview</button>
+                        </li> *@
+                        <li id='tab_View' class="nav-item" role="presentation">
+                            <button class="nav-link" id="btn_View" data-bs-toggle="tab" data-bs-target="#content_View" type="button" role="tab" aria-controls="profile" aria-selected="false" data-tabcontent="view">View Files</button>
+                        </li>
+                        <li id='tab_Upload' class="nav-item" role="presentation">
+                            <button class="nav-link" id="btn_Upload" data-bs-toggle="tab" data-bs-target="#content_Upload" type="button" role="tab" aria-controls="messages" aria-selected="false" data-tabcontent="upload">Upload Hyperlinks</button>
+                        </li>
+                        <li id='tab_Edit' class="nav-item" role="presentation">
+                            <button class="nav-link" id="btn_Edit" data-bs-toggle="tab" data-bs-target="#content_Edit" type="button" role="tab" aria-controls="settings" aria-selected="false" data-tabcontent="edit">Edit</button>
+                        </li>
+                        <li id='tab_Progress' class="nav-item" role="presentation">
+                            <button class="nav-link" id="btn_Progress" data-bs-toggle="tab" data-bs-target="#content_Progress" type="button" role="tab" aria-controls="settings" aria-selected="false" data-tabcontent="progress">Progress</button>
+                        </li>
+                    </ul>
 
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    @*   <li id='tab_Preview' class="nav-item" role="presentation">
-                    <button class="nav-link active" id="btn_Preview" data-bs-toggle="tab" data-bs-target="#content_Preview" type="button" role="tab" aria-controls="home" aria-selected="true" data-tabcontent="preview">Preview</button>
-                    </li> *@
-                    <li id='tab_View' class="nav-item" role="presentation">
-                        <button class="nav-link" id="btn_View" data-bs-toggle="tab" data-bs-target="#content_View" type="button" role="tab" aria-controls="profile" aria-selected="false" data-tabcontent="view">View Files</button>
-                    </li>
-                    <li id='tab_Upload' class="nav-item" role="presentation">
-                        <button class="nav-link" id="btn_Upload" data-bs-toggle="tab" data-bs-target="#content_Upload" type="button" role="tab" aria-controls="messages" aria-selected="false" data-tabcontent="upload">Upload Hyperlinks</button>
-                    </li>
-                    <li id='tab_Edit' class="nav-item" role="presentation">
-                        <button class="nav-link" id="btn_Edit" data-bs-toggle="tab" data-bs-target="#content_Edit" type="button" role="tab" aria-controls="settings" aria-selected="false" data-tabcontent="edit">Edit</button>
-                    </li>
-                    <li id='tab_Progress' class="nav-item" role="presentation">
-                        <button class="nav-link" id="btn_Progress" data-bs-toggle="tab" data-bs-target="#content_Progress" type="button" role="tab" aria-controls="settings" aria-selected="false" data-tabcontent="progress">Progress</button>
-                    </li>
-                </ul>
-
-                <div class="tab-content">
+                    <div class="tab-content">
 
 
-                    <div class="tab-pane" id="content_View" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane" id="content_View" role="tabpanel" aria-labelledby="profile-tab">
 
-                        <div id="div_DocumentList" class="row
+                            <div id="div_DocumentList" class="row
 mb-3"></div>
 
-                    </div>
+                        </div>
 
-                    <div class="tab-pane" id="content_Upload" role="tabpanel" aria-labelledby="messages-tab">
+                        <div class="tab-pane" id="content_Upload" role="tabpanel" aria-labelledby="messages-tab">
 
 
 
-                        <div id="div_DocumentUpload" class="mt-3 me-3" style="width:100%;display:flex;flex-direction:column;">
+                            <div id="div_DocumentUpload" class="mt-3 me-3" style="width:100%;display:flex;flex-direction:column;">
 
-                            <div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
+                                <div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
 
-                                <div class="col-11">
-                                    <input type="url" pattern="https?://.+" class="form-control" id="input_fileURL1" name="input_fileURL1" placeholder="Insert your hyperlink here ..."
-                                           style="color:blue;" data-inputfor="fupload" required />
+                                    <div class="col-11">
+                                        <input type="url" pattern="https?://.+" class="form-control" id="input_fileURL1" name="input_fileURL1" placeholder="Insert your hyperlink here ..."
+                                               style="color:blue;" data-inputfor="fupload" required />
+                                    </div>
+
+                                    @* onclick="Building_Confirm_DELETE('@iRow.BuildingTokenID');" *@
+                                    <div class="col-1 text-center" style="width:50px;">
+                                        <img id="img_NewURL1" name="img_NewURL1" src="~/img/img_new.png" style="width:20px;height:20px;" alt="Delete" title="New" />
+                                    </div>
+
+
+
                                 </div>
 
-                                @* onclick="Building_Confirm_DELETE('@iRow.BuildingTokenID');" *@
+
+                                @*File 2*@
+                                @*                                 <div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
+
+                                <div class="col-11" >
+                                <input type="text" class="form-control" id="input_fileURL2" name="input_fileURL2" placeholder="Insert your hyperlink here ..."
+                                required />
+                                </div>
+
                                 <div class="col-1 text-center" style="width:50px;">
-                                    <img id="img_NewURL1" name="img_NewURL1" src="~/img/img_new.png" style="width:20px;height:20px;" alt="Delete" title="New" />
+                                <img  id="img_delURL2"  name="img_delURL2"  src="~/img/img_delete.png" style="width:20px;height:20px;" alt="Delete" title="Delete" />
                                 </div>
+                                </div> *@
 
 
 
                             </div>
 
+                            <div class="mt-3" style="width:89%;display:flex;flex-direction:row;justify-content:space-between;">
+                                @*   <span class="text-muted">
+                                You may use Google drive or other similar platforms to produce a hyperlink to your document. Please provide the hyperlink to your file in the box above.
+                                </span> *@
 
-                            @*File 2*@
-                            @*                                 <div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
+                                <span class="text-muted flex-start" style="width:90%;font-size:small;padding:5px;">
+                                    (You may use Google drive or other similar platforms to produce a hyperlink to your document. Please provide the hyperlink to your file in the box above.)
+                                </span>
 
-                            <div class="col-11" >
-                            <input type="text" class="form-control" id="input_fileURL2" name="input_fileURL2" placeholder="Insert your hyperlink here ..."
-                            required />
+                                @* width:200px; *@
+                                <button id="btn_NewFileHyperlink" href="#" type="button" class="btn btn-outline-secondary btn-sm flex-end" style="font-size:small;float:right;width:150px;height:30px;">Add new hyperlink</button>
+
+
                             </div>
 
-                            <div class="col-1 text-center" style="width:50px;">
-                            <img  id="img_delURL2"  name="img_delURL2"  src="~/img/img_delete.png" style="width:20px;height:20px;" alt="Delete" title="Delete" />
-                            </div>
-                            </div> *@
+
 
 
 
                         </div>
 
-                        <div class="mt-3" style="width:89%;display:flex;flex-direction:row;justify-content:space-between;">
-                            @*   <span class="text-muted">
-                            You may use Google drive or other similar platforms to produce a hyperlink to your document. Please provide the hyperlink to your file in the box above.
-                            </span> *@
-
-                            <span class="text-muted flex-start" style="width:90%;font-size:small;padding:5px;">
-                                (You may use Google drive or other similar platforms to produce a hyperlink to your document. Please provide the hyperlink to your file in the box above.)
-                            </span>
-
-                            @* width:200px; *@
-                            <button id="btn_NewFileHyperlink" href="#" type="button" class="btn btn-outline-secondary btn-sm flex-end" style="font-size:small;float:right;width:150px;height:30px;">Add new hyperlink</button>
+                        <div class="tab-pane" id="content_Edit" role="tabpanel" aria-labelledby="messages-tab">
 
 
-                        </div>
+
+                            <div class="mt-3 mb-3" id="popup_FormContent">
+                                @* @await Component.InvokeAsync("Editor")*@
+
+                                @*class="ms-3 me-3 mb-3"*@
+
+                                <table class="ms-1">
 
 
 
 
+                                    <tr>
+                                        <td style="text-align:left;vertical-align:text-top;padding:0px;">
+                                            <img src="~/img/img_file_pdf.png" style="width:20px;height:20px;margin:0px;" />
+                                        </td>
 
-                    </div>
+                                        <td style="width:100%;text-align:left;vertical-align:text-top;padding:0px;">
 
-                    <div class="tab-pane" id="content_Edit" role="tabpanel" aria-labelledby="messages-tab">
+                                            <div class="p-1" style="display:flex;flex-direction:column;">
+                                                <a id="iDocumentName" name="iDocumentName" target="_blank" style="text-decoration:underline;">File_1101.pdf (151.2KB)</a>
 
+                                            </div>
+                                        </td>
 
+                                    </tr>
 
-                        <div class="mt-3 mb-3" id="popup_FormContent">
-                            @* @await Component.InvokeAsync("Editor")*@
-
-                            @*class="ms-3 me-3 mb-3"*@
-
-                            <table class="ms-1">
-
-
-
-
-                                <tr>
-                                    <td style="text-align:left;vertical-align:text-top;padding:0px;">
-                                        <img src="~/img/img_file_pdf.png" style="width:20px;height:20px;margin:0px;" />
-                                    </td>
-
-                                    <td style="width:100%;text-align:left;vertical-align:text-top;padding:0px;">
-
-                                        <div class="p-1" style="display:flex;flex-direction:column;">
-                                            <a id="iDocumentName" name="iDocumentName" target="_blank" style="text-decoration:underline;">File_1101.pdf (151.2KB)</a>
-
-                                        </div>
-                                    </td>
-
-                                </tr>
-
-                            </table>
+                                </table>
 
 
 
 
-                            @*                                placeholder="dd-mm-yyyy" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"*@
+                                @*                                placeholder="dd-mm-yyyy" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"*@
 
-                            <div class="mt-3">
-                                <label class="form-label">Document publication date:</label>
-                                <input class="form-control"
-                                       type="text" id="iDocumentDateStart" name="iDocumentDateStart"
-                                       style="text-transform:uppercase;" required>
-                                @*  <input class="form-control"
-                                type="date" id="iScoreAdjusted" name="iScoreAdjusted"
-                                format="dd-mm-yyyy" required>
-                                *@
-                            </div>
-                            @*                                    me-3 mb-3*@
-                            <div class="mt-3">
-                                <label class="form-label">Document description:</label>
-                                <textarea id="txt_HTMLContent" name="txt_HTMLContent" style="width:100%;height:auto;" rows="20" class="form-control">
+                                <div class="mt-3">
+                                    <label class="form-label">Document publication date:</label>
+                                    <input class="form-control"
+                                           type="text" id="iDocumentDateStart" name="iDocumentDateStart"
+                                           style="text-transform:uppercase;" required>
+                                    @*  <input class="form-control"
+                                    type="date" id="iScoreAdjusted" name="iScoreAdjusted"
+                                    format="dd-mm-yyyy" required>
+                                    *@
+                                </div>
+                                @*                                    me-3 mb-3*@
+                                <div class="mt-3">
+                                    <label class="form-label">Document description:</label>
+                                    <textarea id="txt_HTMLContent" name="txt_HTMLContent" style="width:100%;height:auto;" rows="20" class="form-control">
                                         default
                                     </textarea>
 
+                                </div>
+
                             </div>
 
+
                         </div>
 
 
-                    </div>
-
-
-                    <div class="tab-pane" id="content_Progress" role="tabpanel" aria-labelledby="settings-tab">
-                        <div class="text-center">
-                            <img src="~/img/loading.gif" width="auto" height="auto" style="margin:auto;" />
+                        <div class="tab-pane" id="content_Progress" role="tabpanel" aria-labelledby="settings-tab">
+                            <div class="text-center">
+                                <img src="~/img/loading.gif" width="auto" height="auto" style="margin:auto;" />
+                            </div>
                         </div>
+
                     </div>
+
+                    @* <script>
+                    var firstTabEl = document.querySelector('#myTab li:last-child a')
+                    var firstTab = new bootstrap.Tab(firstTabEl)
+
+                    firstTab.show()
+                    </script>*@
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 </div>
+                <div class="modal-footer">
+                    <div style="width:100%;display:flex;flex-direction:row;justify-content:space-between;">
 
-                @* <script>
-                var firstTabEl = document.querySelector('#myTab li:last-child a')
-                var firstTab = new bootstrap.Tab(firstTabEl)
+                        <div class="flex-start">
 
-                firstTab.show()
-                </script>*@
+                            <div id="div_CommandUpload" class="flex-start" style="display:none;">
+                                <button type="button" id="btnuploadX" class="btn btn-primary"
+                                        onclick="upload_DocumentLinkList();">
+                                    Upload
+                                </button>
+                                <span style="margin-left:10px;">Max files to upload (10s)</span>
+                            </div>
 
+                            <div id="div_CommandEdit" class="flex-start" style="display:none;">
+                                <button type="button" id="btnSubmitUpdate" onclick="submit_TabEditDocument();" class="btn btn-primary">Submit</button>
 
-
-
-
-
-
-
-
-
-
+                                <a class="btn btn-danger" onclick="cancel_TabEditDocument();">Cancel</a>
+                            </div>
 
 
 
-            </div>
-            <div class="modal-footer">
-                <div style="width:100%;display:flex;flex-direction:row;justify-content:space-between;">
-
-                    <div class="flex-start">
-
-                        <div id="div_CommandUpload" class="flex-start" style="display:none;">
-                            <button type="button" id="btnuploadX" class="btn btn-primary"
-                                    onclick="upload_DocumentLinkList();">
-                                Upload
-                            </button>
-                            <span style="margin-left:10px;">Max files to upload (10s)</span>
                         </div>
 
-                        <div id="div_CommandEdit" class="flex-start" style="display:none;">
-                            <button type="button" id="btnSubmitUpdate" onclick="submit_TabEditDocument();" class="btn btn-primary">Submit</button>
-
-                            <a class="btn btn-danger" onclick="cancel_TabEditDocument();">Cancel</a>
+                        <div class="flex-end">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
 
-                       
-
                     </div>
-
-                    <div class="flex-end">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="confirmPopup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmPopupLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content" style="height:auto;">
-            <div class="modal-header" style="background-color:whitesmoke;">
-                <h5 class="modal-title" id="confirmPopupLabel">Confirm</h5>
-                @* <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> *@
-            </div>
-            <div class="modal-body">
-                Are you sure want to DELTE! ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                @* <button type="button" class="btn btn-primary" onclick="Building_Set_DELETE()">Delete</button> *@
-                <button type="button" class="btn btn-danger" onclick="Document_Set_DELETE()">Delete</button>
+    <!-- Modal -->
+    <div class="modal fade" id="confirmPopup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="confirmPopupLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="height:auto;">
+                <div class="modal-header" style="background-color:whitesmoke;">
+                    <h5 class="modal-title" id="confirmPopupLabel">Confirm</h5>
+                    @* <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> *@
+                </div>
+                <div class="modal-body">
+                    Are you sure want to DELTE! ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    @* <button type="button" class="btn btn-primary" onclick="Building_Set_DELETE()">Delete</button> *@
+                    <button type="button" class="btn btn-danger" onclick="Document_Set_DELETE()">Delete</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
+
+</div>
 
 @* <link href="~/dropzone/dropzone.min.css" rel="stylesheet" />
 <script src="~/dropzone/dropzone.min.js"></script> *@
@@ -675,7 +675,7 @@ mb-3"></div>
             // // // // // $("#content_Upload").removeClass("active");
 
 
-////////////////////////////////
+            ////////////////////////////////
 
 
             $('#tab_Edit').hide();
@@ -697,12 +697,12 @@ mb-3"></div>
             $("#content_View").addClass("active");
 
 
-          
-            
+
+
             /////////////////////
-            
-            
-            
+
+
+
             $('#popupModalEditor').modal('show');
 
 
@@ -1642,109 +1642,6 @@ mb-3"></div>
 
 
 
-<script>
-
-
-    function myFileParam() {
-        //return "Files";
-        return "filedata";
-    }
-    var clearDropzone;
-
-    var dz = null;
-
-    Dropzone.autoDiscover = false;
-
-    $(function () {
-
-        $("#demo-upload").dropzone({
-            autoDiscover: false,
-            autoProcessQueue: false,
-            paramName: myFileParam,//"filedata",
-            parallelUploads: 1,
-            maxFilesize: 5, //mb
-            maxThumbnailFilesize: 5, //mb
-            maxFiles: 10,
-            acceptedFiles: ".jpeg,.png,.jpg,.pdf,.docx,.doc,.xls,.xlsx,.txt",
-            uploadMultiple: true,
-            addRemoveLinks: true,
-            //disablePreviews: true,
-
-            init: function () {
-                dz = this;
-                // // // // // $("#btnupload").click(function (e) {
-                // // // // //     e.preventDefault();
-                // // // // //     dz.processQueue();
-                // // // // //     // $(this).attr("disabled", "disabled");
-                // // // // //     //$(this).removeAttr('disabled'));
-                // // // // //     open_TabViewProgress();
-                // // // // // });
-
-                //clearDropzone = function () {
-                //    dz.removeAllFiles(true);
-                //};
-
-            },
-            success: function (file) {
-                //var preview = $(file.previewElement);
-                //preview.addClass("dz-success text-success");
-                setTimeout(function () {
-                    this.removeFile(file);
-
-                }, 2000);
-                //open_TabViewProgress();
-
-            },
-
-
-            processing: function () {
-
-                this.options.autoProcessQueue = true;
-            },
-
-            queuecomplete: function () {
-                //alert('Files Uploaded Successfully!');
-                this.options.autoProcessQueue = false;
-                this.removeAllFiles(true);
-
-                setTimeout(function () {
-
-                    open_TabViewDocuments(true);
-
-                }, 2000);
-
-
-                BSR_ShowToastMessage('upload');
-
-            },
-            dictDefaultMessage: "<div style='display:flex;flex-direction:column;'><div><b>Drag and drop your files here to upload.</b></div><div><img src='https://bsr.vemcoconsulting.com/img/img_upload.png' style='width:50px;height:50px;'/></div><div><span class='m-3' >- or -</span></div><div class='m-3'><span style='width:auto;height:40px;border:1px solid silver;border-radius:2px;padding:5px;color:black;background-color:white;'>Select from device</span></div></div>",
-            dictRemoveFile: "Remove"
-        });
-
-
-
-        // // // // CALLBACK ON COMPLETE UPLOADING EACH FILE
-        // // // dz.on("complete", function (file) {
-        // // //     // IF THERE ARE NO MORE FILES TO UPLOAD AND THE QUEUE IS EMPTY DO SOMETHING, ELSE GO ON WITH QUEUE PROCESS
-        // // //     if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
-        // // //         console.log("END ", this.getQueuedFiles().length);
-        // // //     }
-        // // //     else {
-        // // //         // START QUEUE PROCESSING AGAIN
-        // // //         Dropzone.forElement("#demo-upload").processQueue();
-        // // //     }
-        // // // });
-
-
-
-
-
-
-
-    });
-
-
-</script>
 
 
 

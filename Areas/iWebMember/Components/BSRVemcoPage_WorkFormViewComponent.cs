@@ -16,7 +16,7 @@ using System.Collections;
 
 namespace BSRVemcoCS.Areas.iWebMember.Components
 {
-    public class BSRVemcoPage_BuildingEditViewComponent : ViewComponent
+    public class BSRVemcoPage_WorkFormViewComponent : ViewComponent
     {
         private readonly BSRDBModelContext _dbContext;
 
@@ -26,7 +26,7 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
 
 
         //List<SocialIcon> socialIcons = new List<SocialIcon> ( );
-        public BSRVemcoPage_BuildingEditViewComponent(BSRDBModelContext dbContext,
+        public BSRVemcoPage_WorkFormViewComponent(BSRDBModelContext dbContext,
             UserManager<AppCore_IdentityUser> iUserManager,
                         SignInManager<AppCore_IdentityUser> iSignManager)
         {
@@ -37,7 +37,7 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
 
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(string iBuildingTokenID)
+        public async Task<IViewComponentResult> InvokeAsync()
         {
 
 //string bldtknid,  string querytbltknid, string iPageNumber, bool blnIsPaging
@@ -46,23 +46,10 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
             {
 
 
-                var _iUserBuildignModel = _dbContext.BsrvemcoUserBuildingLists
-                        .Where(u => u.BuildingTokenId == iBuildingTokenID)
-                        //.Select (u  )
-                        .FirstOrDefault(); // This is what actually executes the request and return a response
-
-                AppDevelomentEdit1ViewModel _iDevelomentNew1ViewModel = new AppDevelomentEdit1ViewModel()
-                {
-                    BuildingTokenID = iBuildingTokenID,
-                    BuildingName = _iUserBuildignModel.BuildingName,
-                    BuildingAddress = _iUserBuildignModel.BuildingAddress,
-                    BuildingDateYear = _iUserBuildignModel.BuildingYear,
-                    //BuildingImageTokenID = _iUserBuildignModel.ImageTokenId
-                    BuildingImageURL = _iUserBuildignModel.ImageServerUrl
-                };
+                BSRVemcoPage_ContactUsViewModel _iBSRVemcoPageViewModel = new BSRVemcoPage_ContactUsViewModel();
 
 
-                return await Task.FromResult((IViewComponentResult)View("Default", _iDevelomentNew1ViewModel));
+                return await Task.FromResult((IViewComponentResult)View("Default", _iBSRVemcoPageViewModel));
             }
             catch (Exception ex)
             {

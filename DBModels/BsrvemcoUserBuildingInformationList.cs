@@ -89,7 +89,7 @@ public partial class BsrvemcoUserBuildingInformationList
 
     public string? VePlusText { get; set; }
 
-    public string? VeMinusTextText { get; set; }
+    public string? VeMinusText { get; set; }
 
     public string? NeutralText { get; set; }
 

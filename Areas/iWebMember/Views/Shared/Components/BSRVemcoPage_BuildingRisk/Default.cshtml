@@ -4,11 +4,11 @@
 @* class="accordion-body" *@
 <div id="div_PageHTMLContent" style="margin:0px;padding:0px;display:flex;flex-direction:column;">
 
-    
+
     <div style="width:100%;margin-left:3px;margin-right:3px;margin-bottom:5px;">
         @* class="m-3" *@     @*fs-6*@
         <span>Risk-Based Quality Assessment based on PAS 9980 Guidance</span>
-      
+
     </div>
 
 
@@ -39,33 +39,33 @@
                 @foreach (var iRow in iRowMaster.RowContentList!)
                 {
 
-                    <tr class="divHighlight" data-bs-toggle="modal" onclick="Popup_LoadForm('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.InformationTokenID','clmscore_@iRow.InformationTokenID','clmrisk_@iRow.InformationTokenID');">
+                    <tr class="divHighlight" data-bs-toggle="modal" onclick="Popup_LoadForm('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.InformationTokenID','clmscore_@iRow.InformationTokenID','clmrisk_@iRow.InformationTokenID','minus','txt-minus');">
                         <td><strong>@Html.Raw(@iRow.ColumnDescription)</strong></td>
 
-                        <td class="fw-bold text-center" style="width:70px;background-color:whitesmoke;">
+                        <td class="text-center" style="width:70px;background-color:whitesmoke;" data-clmminus="clmminus_@iRow.InformationTokenID">
 
-                            @if (iRow.ColumnVeMinus != "0")
+                            @if (iRow.ColumnVeMinusText != "0")
                             {
-                                @iRow.ColumnVeMinus
+                                @Html.Raw(@iRow.ColumnVeMinusText)
                             }
                         </td>
 
-                        <td class="fw-bold text-center" style="width:80px;background-color:whitesmoke">
-                            @if (iRow.ColumnNeutral != "0")
+                        <td class="text-center" style="width:80px;background-color:whitesmoke" data-clmneutral="clmneutral_@iRow.InformationTokenID">
+                            @if (iRow.ColumnNeutralText != "0")
                             {
-                                @iRow.ColumnNeutral
+                                @Html.Raw(@iRow.ColumnNeutralText)
                             }
                         </td>
 
-                        <td class="fw-bold text-center" style="width:70px;background-color:whitesmoke">
-                            @if (iRow.ColumnVePlus != "0")
+                        <td class="text-center" style="width:70px;background-color:whitesmoke" data-clmplus="clmplus_@iRow.InformationTokenID">
+                            @if (iRow.ColumnVePlusText != "0")
                             {
-                                @iRow.ColumnVePlus
+                                @Html.Raw(@iRow.ColumnVePlusText)
                             }
                         </td>
 
 
-                        <td class="fw-bold text-center" style="width:50px;background-color:#dde9f5;">@iRow.ColumnScoreOriginal</td>
+                        <td class="fw-bold text-center" style="width:50px;background-color:#dde9f5;" data-clmoriginal="clmoriginal_@iRow.InformationTokenID">@iRow.ColumnScoreOriginal</td>
 
                         @*class="d-inline-block text-truncate" style="max-width: 150px;"*@
 
@@ -95,147 +95,98 @@
 
     }
 
-    @*POPUP*@
-    <div class="modal" id="popupModalEditor">
-        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header" style="background-color:whitesmoke;">
-                    <h4 class="modal-title">Risk Assesment</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-
-                <div class="modal-body">
-
-
-
-                    <div id="popup_FormContent">
-                        @* @await Component.InvokeAsync("Editor")*@
-
-                        <div class="ms-3 me-3 mb-3">
-                            <label class="form-label">Risk:</label>
-                           
-                            <div class="col-12" style="display:flex;flex-direction:row;justify-content:space-between;">
-
-@*                               *@
-                                <select id="iSelectScoreList" name="iSelectScoreList" class="form-select form-select-sm me-3"
-                                        style="width:180px;" >
-                                    <option tabindex="-1" selected>-- Select one --</option>
-                                    <option tabindex="0" value="5">-ve (5)</option>
-                                    <option tabindex="1" value="3">Neutral (3)</option>
-                                    <option tabindex="2" value="1">+ve (1)</option>
-                                </select>
-
-                                <input class="form-control"
-                                       type="text" id="iSelectScoreText" name="iSelectScoreText">
-
-                            </div>
-
-                        </div>
-
-
-
-                        <div class="ms-3 me-3 mb-3">
-                            <label class="form-label">Adjusted Score:</label>
-                            <input class="form-control"
-                                   type="number" id="iScoreAdjusted" name="iScoreAdjusted" min="1" max="5">
-
-                        </div>
-
-                        <div class="ms-3 me-3 mb-3">
-                            <label class="form-label">Risk Control Measure:</label>
-                            <textarea id="txt_HTMLContent" name="txt_HTMLContent" style="width:100%;height:auto;" rows="20" class="form-control">
-                                        default
-                                    </textarea>
-
-                        </div>
-
-                        @*@Model.PageHTMLContent*@
-
-
-
-                        @* <div id="txt_HTMLContent" style="height:200px;"></div>*@
-
-
-                    </div>
-
-
-
-                </div>
-                <div class="modal-footer">
-                    <div style="width:100%;display:flex;flex-direction:row;justify-content:space-between;">
-                        <button type="button" class="btn btn-primary flex-start"
-                                onclick="Popup_PostForm( );">
-
-
-
-                            Submit
-                        </button>
-
-                        <button type="button" class="btn btn-secondary flex-end" data-bs-dismiss="modal">Close</button>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
 
 </div>
 
 
+@*POPUP*@
+<div class="modal fade" id="popupModalEditor">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:whitesmoke;">
+                <h4 class="modal-title">Risk Assesment</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+
+
+
+                <div id="popup_FormContent">
+                    @* @await Component.InvokeAsync("Editor")*@
+
+                    <div class="ms-3 me-3 mb-3">
+                        <label class="form-label">Risk:</label>
+
+                        <div class="col-12" style="display:flex;flex-direction:row;justify-content:space-between;">
+
+                            @*                               *@
+                            <select id="iSelectScoreList" name="iSelectScoreList" class="form-select form-select-sm me-3"
+                                    style="width:200px;" required>
+                                <option tabindex="-1" value="" selected data-default default disabled hidden>-- Select one --</option>
+                                <option tabindex="0" value="minus">-ve (5)</option>
+                                <option tabindex="1" value="neutral">Neutral (3)</option>
+                                <option tabindex="2" value="plus">+ve (1)</option>
+                            </select>
+
+                            <input class="form-control form-control-sm"
+                                   type="text" id="iSelectScoreText" name="iSelectScoreText" required>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="ms-3 me-3 mb-3">
+                        <label class="form-label">Adjusted Score:</label>
+                        <input class="form-control form-control-sm"
+                               type="number" id="iScoreAdjusted" name="iScoreAdjusted" min="1" max="5">
+
+                    </div>
+
+                    <div class="ms-3 me-3 mb-3">
+                        <label class="form-label">Risk Control Measure:</label>
+                        <textarea id="txt_HTMLContent" name="txt_HTMLContent" style="width:100%;height:auto;" rows="20" class="form-control">
+                                        default
+                                    </textarea>
+
+                    </div>
+
+                    @*@Model.PageHTMLContent*@
+
+
+
+                    @* <div id="txt_HTMLContent" style="height:200px;"></div>*@
+
+
+                </div>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <div style="width:100%;display:flex;flex-direction:row;justify-content:space-between;">
+                    <button type="button" class="btn btn-primary flex-start"
+                            onclick="Popup_PostForm( );">
+
+
+
+                        Submit
+                    </button>
+
+                    <button type="button" class="btn btn-secondary flex-end" data-bs-dismiss="modal">Close</button>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <script>
-
-    function clickRow(obj) {
-
-        try {
-
-            //alert(' am clicked == ' + $('#popupModalEditor'));
-
-            //jQuery.noConflict();
-            $('#popupModalEditor').modal('show');
-
-        }
-
-        catch (ex) {
-            alert(ex);
-
-        }
-    }
-
-
-
-    function readValue(obj) {
-
-        try {
-
-            // var divTestMe = document.getElementById('divTestMe');
-            // var divTestMe = document.getElementById('txt_HTMLContent');
-            // var divTestMe = document.getElementById('iScoreAdjusted');
-
-            //   alert(divTestMe.innerHTML);
-            //alert(divTestMe.textContent);
-            //   alert(divTestMe.innerHTML);
-
-            //   alert($("#txt_HTMLContent").val());
-
-            //  alert( ClassicEditor.instances[ 'txt_HTMLContent' ].getData());
-
-            alert(editor.getData());
-
-            //jQuery.noConflict();
-            //$('#popupModalEditor').modal('show');
-
-        }
-
-        catch (ex) {
-            alert(ex);
-
-        }
-    }
-
 
 
 
@@ -250,7 +201,31 @@
 
         try {
 
+            //iSelectScoreText
+            // $("#iSelectScoreList").val("minus");
+
+
+            var selectVal = $("#iSelectScoreList option:selected").val();
+
+            if (selectVal != "") {
+                window.clmriskoption = selectVal;
+                // alert('Popup_PostForm == ' + $("#iSelectScoreList option:selected").val());
+            } else {
+                // alert('Popup_PostForm == EMPTY');
+                window.clmriskoption = "0";
+                selectVal = "0";
+            }
+
+            // selectEl.value = 'sugar';
             //alert('inftknid == ' + window.inftknid);
+
+
+            var clmn_Original = $("[data-clmoriginal='clmoriginal_" + inftknid + "']");
+            var clmn_Minus = $("[data-clmminus='clmminus_" + inftknid + "']");
+            var clmn_Neutral = $("[data-clmneutral='clmneutral_" + inftknid + "']");
+            var clmn_Plus = $("[data-clmplus='clmplus_" + inftknid + "']");
+
+
 
             var clmn_Score = $("[data-clmscore='clmscore_" + inftknid + "']");
             var clmn_RiskMeasure = $("[data-clmrisk='clmrisk_" + inftknid + "']");
@@ -271,19 +246,34 @@
 
             var iScoreAdjusted = document.getElementById('iScoreAdjusted');
 
+            var iSelectScoreText = document.getElementById('iSelectScoreText');
 
+            var strScoreRiskText = "0";
+            var txtScoreRiskText = "0";
+
+            if (iSelectScoreText.value != "") {
+                strScoreRiskText = iSelectScoreText.value;
+                txtScoreRiskText = iSelectScoreText.value;
+                window.clmrisktxt = iSelectScoreText.value;
+            }
+            else {
+                strScoreRiskText = "0";
+                txtScoreRiskText = "";
+                window.clmrisktxt = "0";
+            }
 
             $.ajax({
                 type: "POST",
 
-                //url: @Url.Action("Update_Score_ByInformationTokenID","Development",new { Area = "iWebMember" }),
-                url: '/iWebMember/Development/Update_Score_ByInformationTokenID',
+                url: '/iWebMember/Development/Update_Score_Risk_ByInformationTokenID',
 
                 data: {
                     iAppTableTokenID: apptbltknid,
                     iTableTokenID: tbltknid,
                     iBuildingTokenID: bldtknid,
                     iInformationTokenID: inftknid,
+                    iScoreRiskValue: selectVal,
+                    iScoreRiskText: strScoreRiskText,
                     iScoreAdjusted: iScoreAdjusted.value,
                     iRiskControlMeasure: txt_RiskControlMeasure
                 },
@@ -293,6 +283,32 @@
                     clmn_Score.html(iScoreAdjusted.value);
                     clmn_RiskMeasure.html(visible_RiskControlMeasure);
                     clmn_Total.html(result.total);
+
+                    if (selectVal == "minus") {
+
+                        clmn_Original.html = "5";
+                        clmn_Minus = txtScoreRiskText;
+                        clmn_Neutral = "";
+                        clmn_Plus = "";
+                    }
+
+                    else if (selectVal == "neutral") {
+
+                        clmn_Original.html = "3";
+                        clmn_Minus = "";
+                        clmn_Neutral = txtScoreRiskText;
+                        clmn_Plus = "";
+
+                    }
+
+                    else if (selectVal == "plus") {
+
+                        clmn_Original.html = "1";
+                        clmn_Minus = "";
+                        clmn_Neutral = "";
+                        clmn_Plus = txtScoreRiskText;
+
+                    }
 
 
                     BSR_ShowToastMessage('update');
@@ -353,7 +369,7 @@
 
 
 
-    function Popup_LoadForm(apptbltknid, tbltknid, bldtknid, inftknid, clmscore, clmrisk) {
+    function Popup_LoadForm(apptbltknid, tbltknid, bldtknid, inftknid, clmscore, clmrisk, clmriskoption, clmrisktxt) {
 
         try {
 
@@ -368,6 +384,12 @@
             window.clmscore = clmscore;
             window.clmrisk = clmrisk;
 
+            // var clmn_Original = $("[data-clmoriginal='clmoriginal_" + inftknid + "']");
+            // var clmn_Minus = $("[data-clmminus='clmminus_" + inftknid + "']");
+            // var clmn_Neutral = $("[data-clmneutral='clmneutral_" + inftknid + "']");
+            // var clmn_Plus = $("[data-clmplus='clmplus_" + inftknid + "']");
+
+
             var clmn_Score = $("[data-clmscore='clmscore_" + inftknid + "']");
             var clmn_RiskMeasure = $("[data-clmrisk='clmrisk_" + inftknid + "']");
 
@@ -378,7 +400,19 @@
             }
             else {
                 txt_RiskControlMeasure = editor.getData();
+            }
 
+
+            if (clmriskoption == "minus") {
+                $("#iSelectScoreList").val("minus");
+            }
+            else if (clmriskoption == "neutral") {
+                $("#iSelectScoreList").val("neutral");
+            }
+            else if (clmriskoption == "plus") {
+                $("#iSelectScoreList").val("plus");
+            } else {
+                $("#iSelectScoreList").val("");
             }
 
 
@@ -426,131 +460,7 @@
 
             $('#popupModalEditor').modal('show');
 
-
-            //clmn_Score.html('112');
-            //clmn_RiskMeasure.html('<p> Some text 123 hello world </p>');
-
-            // var txt_HTMLContent = document.getElementById('txt_HTMLContent');
-            //  txt_HTMLContent.innerHTML = 'txt_HTMLContent 333';
-
-
-            //  $('#txt_HTMLContent').val('some_value');
-            //   $("#main").val(text);
-
-            // alert(divTestMe.textContent);
-
-
-
-
-
-
-
-            //////$.ajax({
-            //////    type: "POST",
-
-            //////    //url: @Url.Action("Update_Score_ByInformationTokenID","Development",new { Area = "iWebMember" }),
-            //////    url: '/iWebMember/Development/Update_Score_ByInformationTokenID',
-
-            //////    data: {
-            //////        iBuildingTokenID: bldtknid,
-            //////        iInformationTokenID: bldtknid,
-            //////        iScoreAdjusted: bldtknid,
-            //////        iRiskControlMeasure: inftknid
-            //////    },
-            //////    success: function (result) {
-            //////        //alert('Successfully received Data ');
-            //////        //console.log(result);
-            //////        document.getElementById("popup_FormContent").innerHTML = result;
-            //////        $('#popupModalEditor').modal('show');
-            //////    },
-            //////    error: function () {
-            //////        alert('Failed to receive the Data');
-            //////        console.log('Failed ');
-            //////    }
-            //////});
-
-
-
-
-
-
-            //////$.ajax({
-            //////    type: "GET",
-
-            //////    //url: @Url.Action("Popup_GetEditor","BSRVemcoPopup",new { Area = "iWebMember" }),
-            //////    url: '/iWebMember/BSRVemcoPopup/Popup_GetEditor',
-
-            //////    data: {
-            //////        bldtknid: bldtknid,
-            //////        inftknid: inftknid
-            //////    },
-            //////    success: function (result) {
-            //////        //alert('Successfully received Data ');
-            //////        //console.log(result);
-            //////        document.getElementById("popup_FormContent").innerHTML = result;
-            //////        $('#popupModalEditor').modal('show');
-            //////    },
-            //////    error: function () {
-            //////        alert('Failed to receive the Data');
-            //////        console.log('Failed ');
-            //////    }
-            //////});
-
-
-
-
-
-
-            //    $.ajax({
-
-            //        type: 'get',
-
-            //        url: @Url.Action("Popup_GetEditor","BSRVemcoPopup",new { Area = "iWebMember" }),//'/Controller/Method',
-            //        data: {
-            //             bldtknid: bldtknid,
-            //            inftknid: inftknid
-            //        },
-            //        success: function (result) {
-
-            //            alert("result == " + result);
-
-            //            //  document.getElementById("popup_FormContent").innerHTML= result;
-
-
-            //        }
-
-            //    });
-            //});
-
-            // $('#popupModalEditor').modal('show');
-
-
-
-            //////    //////$.ajax({
-            //////    //////    type: 'GET',
-            //////    //////    url: '/Controller/Method',
-            //////    //////    data: { ParamName: document.getElementById("DivId").innerHTML },
-            //////    //////    success: function (result) {
-
-            //////    //////    }
-            //////    //////});
-            //////});
-
-
-
-
-
-
-
-
-            //////   // var divTestMe = document.getElementById('divTestMe');
-            //////var divTestMe = document.getElementById('txt_HTMLContent');
-
-            ////// //   alert(divTestMe.innerHTML);
-            //////    alert(divTestMe.textContent);
-
-            //////    //jQuery.noConflict();
-            //////    //$('#popupModalEditor').modal('show');
+ 
 
         }
 

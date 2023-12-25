@@ -173,6 +173,11 @@
     window.clmscore;
     window.clmrisk;
 
+    window.clmriskval;
+    window.clmriskoption;
+    window.clmrisktxt;
+ 
+
     window.doccount;
     window.clminfotxt;
     window.clmdoccount;
@@ -287,7 +292,7 @@
 
             else if (iPageCode == 'workpermitform') {
 
-                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_WorkPermit';
+                _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_Load_WorkFormPage';
 
                 load_PageContent_PagePathName(
                     iPageCode,
@@ -857,6 +862,12 @@
                     if (iPageCode == 'building_resident') {
                         load_FCKEditor_Activity();
 
+                    }
+
+                    else if (iPageCode == 'building_golden') {
+                        load_FCKEditor();
+                        // load_Calendar();
+
                     } else {
 
                         load_FCKEditor();
@@ -1083,6 +1094,77 @@
 
     }
 
+
+
+
+    function edit_Building_ByBuildingTokenID(
+        iPageCode,
+        iBuildingTokenID,
+        iBuildingName) {
+
+
+        try {
+
+            window.IsEnableGlobalDynamicMenu = true;
+
+
+            window.bldtknid = iBuildingTokenID;
+
+
+            $("#iBuildingTokenID").val(iBuildingTokenID);
+
+            $("#iBuildingName").val(iBuildingName);
+
+            $("#div_BuildingName").html(iBuildingName);
+
+            // // // // // $("#div_ViewBuilding").show(500);
+
+            // $('#div_ViewBuilding_Collapse').data('bs-target', '#collapseViewBuilding');
+
+            $('#collapseViewBuilding').collapse('show');
+
+
+
+            $('#div_ViewBuilding_Collapse').css('opacity', '1.0');
+
+
+
+            $("#div_BuildingBlock").show(500);
+
+            load_PageContent_Dynamic_ByPageTokenID(iPageCode);
+
+            //return false;
+
+            // alert(iPageCode + " div_RenderBody ...  --- " + $(".div_RenderBody"));
+
+            // alert(iPageCode + " loaded ...");
+
+            // alert('load_TabViewQueryList XXX');
+
+
+            // // BSR_ShowToastMessage('load');
+
+            // window.bldtknid = iBuildingTokenID;
+            // window.querytbltknid = iQueryTableTokenID;
+
+
+            // $("#iQueryTableTokenID").val(iQueryTableTokenID);
+            // $("#iBuildingTokenID").val(iBuildingTokenID);
+
+        } catch (err) {
+
+            console.error(err);
+            return;
+
+        }
+
+    }
+
+
+
+
+
+
     function reset_Building_ByBuildingTokenID(
         iPageCode) {
 
@@ -1182,6 +1264,53 @@
                 .catch(error => {
                     console.error(error);
                 });
+
+
+
+
+
+        }
+
+        catch (err) {
+            console.error(err);
+        }
+
+    }
+
+    function load_Calendar() {
+
+        try {
+
+            if ($("#iDocumentDateStart")) {
+
+
+                $("#iDocumentDateStart")
+                    .datepicker({
+                        //dateFormat: 'dd-mm-yy, DD',
+                        dateFormat: 'dM, yy',
+                        //defaultDate: "24-09-2019"
+
+                        orientation: "bottom",
+                        // add this for placemenet
+                    });
+                // .click(function (e) {
+                //         $('.ui-datepicker').css('bottom left', e.pageY);
+                //     });
+
+                //$datepicker.datepicker('setDate', new Date());
+                $("#iDocumentDateStart").datepicker("setDate", new Date());
+
+
+            }
+
+            // ClassicEditor
+            //     .create(document.querySelector('#txt_HTMLContent'))
+            //     .then(newEditor => {
+            //         editor = newEditor;
+            //     })
+            //     .catch(error => {
+            //         console.error(error);
+            //     });
 
 
 

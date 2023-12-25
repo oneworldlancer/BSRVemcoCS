@@ -1,56 +1,58 @@
 ﻿@model BSRVemcoCS.iAppViewModel.AppDevelomentNew1ViewModel
 
 @* class="accordion-body" *@
-<div id="div_PageHTMLContent" style="margin:0px;padding:0px;display:flex;flex-direction:column;">
+<div id="div_PageHTMLContent"  style="margin:0px;padding:0px;display:flex;flex-direction:column;">
 
     @* <div class="text-center fs-5">Contact Us</div>    *@
-    @*   <div class="text-center fs-6" style="margin-left:30px;">Fill in data to add new building:</div>
-    *@
+    <div class="text-center fs-6" style="margin-left:30px;">Fill in data to add new building:</div>
+ 
 
     <div class="row">
-
+         
 
         <div class="col" style="margin-top:20px;padding:0px;display:flex;flex-direction:row;">
-            @* g-3  *@
+         @* g-3  *@
             <form id="addForm" class="row g-3 needs-validation" novalidate>
                 @* style="background-color:yellow;" *@
+            <div class="col-7 me-3" >
 
-                <div class="col me-3">
-
-                    @* method="post" enctype="multipart/form-data" *@
-
+                @* method="post" enctype="multipart/form-data" *@
+              
 
                     @* <div asp-validation-summary="All" class="text-danger"></div> *@
 
                     <div class="row">
 
-
-
+ 
+            
                         <div class="mt-0 ms-3 me-3">
-                            @*  <label for="formGroupExampleInput2" class="form-label">Building image:</label> *@
-                            @* asp-for="BuildingName" *@
-
+                           @*  <label for="formGroupExampleInput2" class="form-label">Building image:</label> *@
+                            @* asp-for="BuildingName" *@ 
+                            
                             <input id="txt_BuildingImageURL" type="url" class="form-control" placeholder="Image URL"
-                                   style="color:blue;" required
-                                   onblur="showImageURLPreview()" />
+                                   
+                               style="color:blue;"    required
+                            onblur="showImageURLPreview()"   />
                         </div>
 
 
                         <div class="mt-3 ms-3 me-3">
-                            @*   <label for="formGroupExampleInput2" class="form-label">Development name:</label> *@
-                            @* asp-for="BuildingName" *@
-
+                          @*   <label for="formGroupExampleInput2" class="form-label">Development name:</label> *@
+                            @* asp-for="BuildingName" *@ 
+                            
                             <input id="txt_BuildingName" type="text" class="form-control" placeholder="Building name"
+                                   
                                    required />
                         </div>
 
 
 
                         <div class="mt-3 ms-3 me-3">
-                            @*  <label for="formGroupExampleInput2" class="form-label">Development address:</label> *@
-                            @* asp-for="BuildingAddress" *@
+                           @*  <label for="formGroupExampleInput2" class="form-label">Development address:</label> *@
+                          @* asp-for="BuildingAddress" *@
 
                             <input id="txt_BuildingAddress" type="text" class="form-control" placeholder="Building address"
+                                   
                                    required />
                         </div>
 
@@ -69,50 +71,58 @@
                         </div>
                         <span class="text-mute ms-3" style="font-size:small;">(approximate if unknown)</span>
 
-                        @*  <div class="m-3 float-end">
-                        <input class="btn btn-primary " value="Submit" style="float:right;width:100%;height:auto;background-color:#19c571;height:auto;border-color:#19c571;color:white;"
-                        id="btn_SubmitForm">
+                       @*  <div class="m-3 float-end">
+                            <input class="btn btn-primary " value="Submit" style="float:right;width:100%;height:auto;background-color:#19c571;height:auto;border-color:#19c571;color:white;"
+                                   id="btn_SubmitForm">
                         </div> *@
                         @*style="background-color:red;"*@
-                        @*  <div class="mt-5">
-                        <input class="btn btn-primary float-end" type="submit" value="Next" style="width:100px;height:auto;">
+                       @*  <div class="mt-5">
+                            <input class="btn btn-primary float-end" type="submit" value="Next" style="width:100px;height:auto;">
                         </div> *@
 
 
                     </div>
-
-
-
-                </div>
+                    
+            
+        
+        </div>
 
 
                 @*style="padding:5px;" background-color:red; *@
-                <div id="div_SlideShow" class="col-4 ms-3 me-3 float-end card shadow border border-info rounded-3" style="height:calc(100vh - 230px);width:350px;padding-top:10px;float:right;">
-                    @* class="" *@
-                    <div class="h-100" style="display:flex;flex-direction:column;justify-content:space-between;">
+            <div class="col-4" style="display:flex;flex-direction:column;justify-content:space-between;" >
+             @*        class="row" *@   @* <img src="~/img/img_contact_us.png" style="width:100px;height:auto;" /> *@
+              
+             <div style="width:100%;">
 
+                        @*  <div class="col-6 mt-3 ms-3 me-3">
+                            <label for="formFile" class="form-label">Image:</label>
+                    
+                      <input id="uploadFile" name="uploadFile" class="form-control"
+                               accept="image/*" onchange="PreviewImage()" type="file" required />
 
+                        </div>*@
 
-                        <div class="text-center middleCenter">
-                            @* class="float-end" *@ 
-                            <img id="img_Preview" name="img_Preview"
-                                                          src="~/img/nopreview.png" style="width:320px;height:auto;margin:auto;" />
-                        </div>
-
-
-                        <div class="mt-3 mb-3 align-text-bottom" style="margin-top:auto;">
-                            <input class="btn btn-primary" value="Submit" style="width:100%;height:auto;background-color:#19c571;height:auto;border-color:#19c571;color:white;"
-                                   id="btn_SubmitForm">
-                        </div>
+                    @*           offset-2   card   img-fluid   mt-3 ms-3 me-3 style="background-color:red;"*@
+                    <div>
+                        <img id="img_Preview" name="img_Preview" class="img-fluid float-end"
+                             src="~/img/nopreview.png" style="width:100%;height:auto;" />
                     </div>
 
                 </div>
+               @* <br/> *@
+
+                <div class="mt-3">
+                    <input class="btn btn-primary" value="Submit" style="width:100%;height:auto;background-color:#19c571;height:auto;border-color:#19c571;color:white;"
+                           id="btn_SubmitForm">
+                </div>
+            </div>
+
 
             </form>
 
         </div>
-
-
+      
+        
     </div>
 
 
@@ -182,13 +192,13 @@
 <script>
 
 
-    function showImageURLPreview() {
-
-
-        try {
-
+    function showImageURLPreview() { 
+    
+    
+        try { 
+        
             // alert('showImageURLPreview');
-
+        
         }
 
 
@@ -196,7 +206,7 @@
 
 
         }
-
+    
     }
 
     // // // // // var max = 300;
@@ -362,6 +372,6 @@
         }
     });
 
-
+     
 
 </script>

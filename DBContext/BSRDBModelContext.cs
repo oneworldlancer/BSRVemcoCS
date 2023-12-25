@@ -74,6 +74,8 @@ public partial class BSRDBModelContext : DbContext
 
     public virtual DbSet<BsrvemcoAppRoleList> BsrvemcoAppRoleLists { get; set; }
 
+    public virtual DbSet<BsrvemcoApplicationRegisterInvitationList> BsrvemcoApplicationRegisterInvitationLists { get; set; }
+
     public virtual DbSet<BsrvemcoDeviceList> BsrvemcoDeviceLists { get; set; }
 
     public virtual DbSet<BsrvemcoDeviceLocation> BsrvemcoDeviceLocations { get; set; }
@@ -1238,7 +1240,7 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.UploadMonth).HasDefaultValueSql("(datepart(month,getdate()))");
             entity.Property(e => e.UploadYear).HasDefaultValueSql("(datepart(year,getdate()))");
             entity.Property(e => e.VeMinus).HasDefaultValueSql("((0))");
-            entity.Property(e => e.VeMinusTextText).HasDefaultValueSql("((0))");
+            entity.Property(e => e.VeMinusText).HasDefaultValueSql("((0))");
             entity.Property(e => e.VePlus).HasDefaultValueSql("((0))");
             entity.Property(e => e.VePlusText).HasDefaultValueSql("((0))");
         });
@@ -1890,6 +1892,93 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.UploadMonth).HasDefaultValueSql("(datepart(month,getdate()))");
             entity.Property(e => e.UploadYear).HasDefaultValueSql("(datepart(year,getdate()))");
             entity.Property(e => e.UserRole).HasDefaultValueSql("((0))");
+        });
+
+        modelBuilder.Entity<BsrvemcoApplicationRegisterInvitationList>(entity =>
+        {
+            entity.HasKey(e => e.UregisterInviteId).HasName("PK_BSRVEMCO_APPLICATION_INVITATION_REGISTER_STAFF_LIST");
+
+            entity.ToTable("BSRVEMCO_APPLICATION_REGISTER_INVITATION_LIST");
+
+            entity.Property(e => e.UregisterInviteId).HasColumnName("URegisterInviteID");
+            entity.Property(e => e.AccountType).HasDefaultValueSql("(N'tracking')");
+            entity.Property(e => e.ActiveStatus).HasDefaultValueSql("(N'pending')");
+            entity.Property(e => e.AddressLine).HasDefaultValueSql("((0))");
+            entity.Property(e => e.ApplicationRoleCode).HasDefaultValueSql("((0))");
+            entity.Property(e => e.ApplicationRoleTokenId)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("ApplicationRoleTokenID");
+            entity.Property(e => e.CityName).HasDefaultValueSql("((0))");
+            entity.Property(e => e.CompanyName).HasDefaultValueSql("((0))");
+            entity.Property(e => e.CompanyTokenId)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("CompanyTokenID");
+            entity.Property(e => e.CountryCode).HasDefaultValueSql("((0))");
+            entity.Property(e => e.CountryName).HasDefaultValueSql("((0))");
+            entity.Property(e => e.DatabaseServerTokenId)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("DatabaseServerTokenID");
+            entity.Property(e => e.DeviceGlobalId)
+                .HasDefaultValueSql("(N'0')")
+                .HasColumnName("DeviceGlobalID");
+            entity.Property(e => e.EmailAddress).HasDefaultValueSql("((0))");
+            entity.Property(e => e.EmployerCompany).HasDefaultValueSql("((0))");
+            entity.Property(e => e.GmapLat)
+                .HasDefaultValueSql("(N'0')")
+                .HasColumnName("GMapLat");
+            entity.Property(e => e.GmapLng)
+                .HasDefaultValueSql("(N'0')")
+                .HasColumnName("GMapLng");
+            entity.Property(e => e.InvitationCompanyTokenId)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("InvitationCompanyTokenID");
+            entity.Property(e => e.IsActive).HasDefaultValueSql("((1))");
+            entity.Property(e => e.IsRegister).HasDefaultValueSql("((0))");
+            entity.Property(e => e.IsRegisterUserCompany).HasDefaultValueSql("((0))");
+            entity.Property(e => e.IsVisible).HasDefaultValueSql("((1))");
+            entity.Property(e => e.MobileNumberE164).HasDefaultValueSql("((0))");
+            entity.Property(e => e.OwnerMobileNumberTokenId)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("OwnerMobileNumberTokenID");
+            entity.Property(e => e.OwnerUserTokenId)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("OwnerUserTokenID");
+            entity.Property(e => e.PostCode).HasDefaultValueSql("((0))");
+            entity.Property(e => e.PostCodeText).HasDefaultValueSql("((0))");
+            entity.Property(e => e.PostCodeValue).HasDefaultValueSql("((0))");
+            entity.Property(e => e.RegisterCompanyTokenId)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("RegisterCompanyTokenID");
+            entity.Property(e => e.RegisterInvitationTokenId)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("RegisterInvitationTokenID");
+            entity.Property(e => e.ReportCompany).HasDefaultValueSql("((0))");
+            entity.Property(e => e.RowDataTokenId)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("RowDataTokenID");
+            entity.Property(e => e.RowViewTokenId)
+                .HasDefaultValueSql("(newid())")
+                .HasColumnName("RowViewTokenID");
+            entity.Property(e => e.StreetLine).HasDefaultValueSql("((0))");
+            entity.Property(e => e.StreetLine1).HasDefaultValueSql("((0))");
+            entity.Property(e => e.StreetLine2).HasDefaultValueSql("((0))");
+            entity.Property(e => e.StreetLine3).HasDefaultValueSql("((0))");
+            entity.Property(e => e.SupplierCompanyTokenId)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("SupplierCompanyTokenID");
+            entity.Property(e => e.UploadDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("smalldatetime");
+            entity.Property(e => e.UploadDateTimeMilliSec).HasDefaultValueSql("(N'0')");
+            entity.Property(e => e.UploadDay).HasDefaultValueSql("(datepart(day,getdate()))");
+            entity.Property(e => e.UploadMonth).HasDefaultValueSql("(datepart(month,getdate()))");
+            entity.Property(e => e.UploadYear).HasDefaultValueSql("(datepart(year,getdate()))");
+            entity.Property(e => e.WebmasterOwnerMobileNumberTokenId)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("WebmasterOwnerMobileNumberTokenID");
+            entity.Property(e => e.WebmasterOwnerUserTokenId)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("WebmasterOwnerUserTokenID");
         });
 
         modelBuilder.Entity<BsrvemcoDeviceList>(entity =>
@@ -2928,7 +3017,7 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.UploadMonth).HasDefaultValueSql("(datepart(month,getdate()))");
             entity.Property(e => e.UploadYear).HasDefaultValueSql("(datepart(year,getdate()))");
             entity.Property(e => e.VeMinus).HasDefaultValueSql("((0))");
-            entity.Property(e => e.VeMinusTextText).HasDefaultValueSql("((0))");
+            entity.Property(e => e.VeMinusText).HasDefaultValueSql("((0))");
             entity.Property(e => e.VePlus).HasDefaultValueSql("((0))");
             entity.Property(e => e.VePlusText).HasDefaultValueSql("((0))");
         });
@@ -4333,6 +4422,9 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.Guid)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("GUID");
+            entity.Property(e => e.InvitationCompanyTokenId)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("InvitationCompanyTokenID");
             entity.Property(e => e.IsActive).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsAutoLogin).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsDating).HasDefaultValueSql("((0))");
@@ -4355,6 +4447,15 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.OwnerUserTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("OwnerUserTokenID");
+            entity.Property(e => e.ProfileImageServerUrl)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("ProfileImageServerURL");
+            entity.Property(e => e.RegisterCompanyTokenId)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("RegisterCompanyTokenID");
+            entity.Property(e => e.RegisterInvitationTokenId)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("RegisterInvitationTokenID");
             entity.Property(e => e.RoleCode).HasDefaultValueSql("((0))");
             entity.Property(e => e.RoleName).HasDefaultValueSql("((0))");
             entity.Property(e => e.RoleTokenId)
@@ -4593,6 +4694,9 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.OwnerMobileNumberTokenId).HasColumnName("OwnerMobileNumberTokenID");
             entity.Property(e => e.OwnerUserTokenId).HasColumnName("OwnerUserTokenID");
             entity.Property(e => e.PersonalAvatarColorCode).HasDefaultValueSql("(N'#c0c0c0')");
+            entity.Property(e => e.ProfileImageServerUrl)
+                .HasDefaultValueSql("((0))")
+                .HasColumnName("ProfileImageServerURL");
             entity.Property(e => e.RowDataTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("RowDataTokenID");

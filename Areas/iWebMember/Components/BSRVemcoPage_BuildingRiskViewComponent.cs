@@ -85,12 +85,8 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
                       BuildingTokenID = iBuildingTokenID,
 
                       ColumnDescription = _arrUserBuildingInfomationList_1[i].InformationText, //"Fire Strategy" ,
-                      ColumnCommentary = _arrUserBuildingInfomationList_1[i].Commentary,
-                      ColumnCriterion = "0",
-
-
-
-
+                      //////////ColumnCommentary = _arrUserBuildingInfomationList_1[i].Commentary,
+                      //////////ColumnCriterion = "0",
 
 
 
@@ -115,6 +111,18 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
                       ColumnScoreAdjused = _arrUserBuildingInfomationList_1[i].ScoreAdjusted,
                       ColumnRiskControlMeasure = _arrUserBuildingInfomationList_1[i].RiskControlMeasure,
                       ColumnTotal = "0",
+
+
+                      ColumnVePlus= _arrUserBuildingInfomationList_1[i].VePlus,
+                      ColumnNeutral  = _arrUserBuildingInfomationList_1[i].Neutral,
+                      ColumnVeMinus  = _arrUserBuildingInfomationList_1[i].VeMinus,
+
+
+                      
+                      ColumnVePlusText= _arrUserBuildingInfomationList_1[i].VePlusText,
+                      ColumnNeutralText  = _arrUserBuildingInfomationList_1[i].NeutralText,
+                      ColumnVeMinusText   = _arrUserBuildingInfomationList_1[i].VeMinusText,
+
 
 
                       //ColumnScore = "5" ,
@@ -170,8 +178,8 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
                       BuildingTokenID = iBuildingTokenID,
 
                       ColumnDescription = _arrUserBuildingInfomationList_2[i].InformationText, //"Fire Strategy" ,
-                      ColumnCommentary = _arrUserBuildingInfomationList_2[i].Commentary,
-                      ColumnCriterion = "0",
+                      //////////ColumnCommentary = _arrUserBuildingInfomationList_2[i].Commentary,
+                      //////////ColumnCriterion = "0",
 
 
 
@@ -200,6 +208,19 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
                       ColumnScoreAdjused = _arrUserBuildingInfomationList_2[i].ScoreAdjusted,
                       ColumnRiskControlMeasure = _arrUserBuildingInfomationList_2[i].RiskControlMeasure,
                       ColumnTotal = "0",
+
+
+                      ColumnVePlus= _arrUserBuildingInfomationList_2[i].VePlus,
+                      ColumnNeutral  = _arrUserBuildingInfomationList_2[i].Neutral,
+                      ColumnVeMinus  = _arrUserBuildingInfomationList_2[i].VeMinus,
+
+
+
+                      ColumnVePlusText= _arrUserBuildingInfomationList_2[i].VePlusText,
+                      ColumnNeutralText  = _arrUserBuildingInfomationList_2[i].NeutralText,
+                      ColumnVeMinusText   = _arrUserBuildingInfomationList_2[i].VeMinusText,
+
+
 
 
                       //ColumnScore = "5" ,
@@ -259,8 +280,8 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
                       BuildingTokenID = iBuildingTokenID,
 
                       ColumnDescription = _arrUserBuildingInfomationList_3[i].InformationText, //"Fire Strategy" ,
-                      ColumnCommentary = _arrUserBuildingInfomationList_3[i].Commentary,
-                      ColumnCriterion = "0",
+                      //////////ColumnCommentary = _arrUserBuildingInfomationList_3[i].Commentary,
+                      //////////ColumnCriterion = "0",
 
 
 
@@ -289,6 +310,21 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
                       ColumnScoreAdjused = _arrUserBuildingInfomationList_3[i].ScoreAdjusted,
                       ColumnRiskControlMeasure = _arrUserBuildingInfomationList_3[i].RiskControlMeasure,
                       ColumnTotal = "0",
+
+
+
+
+                      ColumnVePlus= _arrUserBuildingInfomationList_3[i].VePlus,
+                      ColumnNeutral  = _arrUserBuildingInfomationList_3[i].Neutral,
+                      ColumnVeMinus  = _arrUserBuildingInfomationList_3[i].VeMinus,
+
+
+
+                      ColumnVePlusText= _arrUserBuildingInfomationList_3[i].VePlusText,
+                      ColumnNeutralText  = _arrUserBuildingInfomationList_3[i].NeutralText,
+                      ColumnVeMinusText   = _arrUserBuildingInfomationList_3[i].VeMinusText,
+
+
 
 
                       //ColumnScore = "5" ,

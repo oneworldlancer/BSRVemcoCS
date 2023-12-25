@@ -25,7 +25,7 @@
                    @foreach (var iRow in (List<AppUserBuildingModelManager>)Model!)
                     {
 
-                        <tr data-clmdbldname="clmdbldname_@iRow.BuildingTokenID">
+                <tr class="divHighlight" data-clmdbldname="clmdbldname_@iRow.BuildingTokenID">
                     <td style="width:100%;font-weight:@iRow.BuildingNameCSS !important;">
 
 
@@ -35,7 +35,7 @@
                             @iRow.BuildingNameCSS
                         } *@
                         <a href="javascript:load_Building_ByBuildingTokenID('building_summary','@iRow.BuildingTokenID','@iRow.BuildingName');">
-                            <img src="~/img/img_meun_building_black.png" width="10" height="10" style="margin:5px;" />@iRow.BuildingName
+                            <img src="~/img/img_meun_building_black.png" width="15" height="15" style="margin:5px;" />@iRow.BuildingName
                         </a>
                            
                             
@@ -43,8 +43,9 @@
 
                             <td class="m-3" style="min-width:100px;text-align:center;vertical-align:text-top;">
                                 <div style="display:flex;flex-direction:row;">
-
-                                    <div class="text-center" style="width:50px;" onclick="Building_Set_EDIT('@iRow.BuildingTokenID');">
+@* onclick="Building_Set_EDIT('@iRow.BuildingTokenID');" *@
+                                    <div class="text-center" style="width:50px;" 
+                                    onclick="edit_Building_ByBuildingTokenID('building_edit','@iRow.BuildingTokenID','@iRow.BuildingName');">
                                         <img src="~/img/img_edit.png" style="width:20px;height:20px;" alt="Edit" title="Edit" />
                                     </div>
                                     <span>|</span>

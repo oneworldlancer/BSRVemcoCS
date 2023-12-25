@@ -1,0 +1,23 @@
+select option[data-default] {
+    color: #888;
+}
+
+
+/*
+We have this so that when the select is greyed, its options aren't
+*/
+select {
+    color: green;
+}
+
+
+    select option[value] {
+        color: black;
+    }
+
+    /*
+Grey-out an element with the class, and option elements with blank values
+*/
+    select option[value=""] {
+        color: #888;
+    }

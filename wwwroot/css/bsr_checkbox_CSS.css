@@ -1,0 +1,10 @@
+
+
+input[type=checkbox] {
+       background-color: #ffffff !important; 
+     color: #0a65bb   !important;
+     width:18px;
+     height:18px;
+     margin:0px;
+     padding:0px;
+}

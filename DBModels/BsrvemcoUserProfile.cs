@@ -25,6 +25,8 @@ public partial class BsrvemcoUserProfile
 
     public int? BirthDateYear { get; set; }
 
+    public string? ProfileImageServerUrl { get; set; }
+
     public string? PersonalAvatarColorCode { get; set; }
 
     public string? DatingAvatarColorCode { get; set; }

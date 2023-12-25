@@ -64,6 +64,8 @@ textarea, textarea:focus, textarea:empty {
    /* -fx-background-color: #ffffcc !important;*/
 }
 
+
+/*
 input[type=checkbox] {
        background-color: #ffffff !important; 
      color: #0a65bb   !important;
@@ -72,3 +74,4 @@ input[type=checkbox] {
      margin:0px;
      padding:0px;
 }
+*/

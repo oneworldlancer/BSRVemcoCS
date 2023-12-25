@@ -100,9 +100,10 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
                       CompanyTokenID = Program.iOwnerModel.CompanyTokenID,
                       BuildingTokenID = iBuildingTokenID,
 
-                      ColumnDescription = _arrUserBuildingInfomationList_1[i].InformationText, //"Fire Strategy" ,
-                      ColumnCommentary = _arrUserBuildingInfomationList_1[i].Commentary,
-                      ColumnCriterion = "0",
+                      //ColumnDescription = _arrUserBuildingInfomationList_1[i].InformationText, //"Fire Strategy" ,
+                      ColumnDescription = _arrUserBuildingInfomationList_1[i].InformationTitle, //"Fire Strategy" ,
+                      //ColumnCommentary = _arrUserBuildingInfomationList_1[i].Commentary,
+                      //ColumnCriterion = "0",
 
 
 
@@ -125,12 +126,15 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
                       //ColumnCommentary = _arrBuildingInfomationList[ i ].Commentary ,
                       //ColumnCriterion = "0" ,
 
-                      ColumnScore = _arrUserBuildingInfomationList_1[i].Score,
-                      ColumnScoreOriginal = _arrUserBuildingInfomationList_1[i].ScoreOriginal,
-                      ColumnScoreManaged = _arrUserBuildingInfomationList_1[i].ScoreManaged,
-                      ColumnScoreAdjused = _arrUserBuildingInfomationList_1[i].ScoreAdjusted,
-                      ColumnRiskControlMeasure = _arrUserBuildingInfomationList_1[i].RiskControlMeasure,
-                      ColumnTotal = "0",
+                      //ColumnScore = _arrUserBuildingInfomationList_1[i].Score,
+                      //ColumnScoreOriginal = _arrUserBuildingInfomationList_1[i].ScoreOriginal,
+                      //ColumnScoreManaged = _arrUserBuildingInfomationList_1[i].ScoreManaged,
+                      //ColumnScoreAdjused = _arrUserBuildingInfomationList_1[i].ScoreAdjusted,
+                      //ColumnRiskControlMeasure = _arrUserBuildingInfomationList_1[i].RiskControlMeasure,
+                      //ColumnTotal = "0",
+
+                      InformationButtonText =  _arrUserBuildingInfomationList_1[i].InformationButtonText,
+                      InformationButtonStyleCSS= _arrUserBuildingInfomationList_1[i].InformationButtonStyleCss,
 
 
                       //ColumnScore = "5" ,
@@ -165,24 +169,24 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
                 AppDevelomentTable1EditViewModel _iDevelomentTable1EditModel_1 = new AppDevelomentTable1EditViewModel()
                 {
                     TableTitle = str_TableTitle,
-                    TableDescription = "TableDescription",
+                    ////////////////////TableDescription = "TableDescription",
 
-                    ColumnDescription = "Descriptor",
+                    ////////////////////ColumnDescription = "Descriptor",
 
-                    ColumnVePlus = "+ve (1)",
-                    ColumnVeMinus = "-ve (5)",
-                    ColumnNeutral = "Neutral (3)",
+                    ////////////////////ColumnVePlus = "+ve (1)",
+                    ////////////////////ColumnVeMinus = "-ve (5)",
+                    ////////////////////ColumnNeutral = "Neutral (3)",
 
-                    ColumnCommentary = "Commentary",
-                    ColumnCriterion = "Criterion",
-                    ColumnScore = "Score",
-                    ColumnScoreOriginal = "ScoreOriginal",
-                    ColumnScoreManaged = "Score",
-                    ColumnScoreAdjused = "Adjusted Score",
-                    //ColumnRiskControlMeasure = "Risk Control Measure Risk Control Measure" ,
-                    ColumnRiskControlMeasure = "Risk Control Measure",
-                    //ColumnScoreAverage = "2.5" ,
-                    ColumnScoreTotal = "0",
+                    ////////////////////ColumnCommentary = "Commentary",
+                    ////////////////////ColumnCriterion = "Criterion",
+                    ////////////////////ColumnScore = "Score",
+                    ////////////////////ColumnScoreOriginal = "ScoreOriginal",
+                    ////////////////////ColumnScoreManaged = "Score",
+                    ////////////////////ColumnScoreAdjused = "Adjusted Score",
+                    //////////////////////ColumnRiskControlMeasure = "Risk Control Measure Risk Control Measure" ,
+                    ////////////////////ColumnRiskControlMeasure = "Risk Control Measure",
+                    //////////////////////ColumnScoreAverage = "2.5" ,
+                    ////////////////////ColumnScoreTotal = "0",
 
 
 
