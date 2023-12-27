@@ -12,6 +12,8 @@ using System.Net.Mail;
 using BSRVemcoCS.iAppUtility;
 using BSRVemcoCS.DBModels;
 
+using System.Collections;
+
 namespace BSRVemcoCS.Areas.iWebMember.Controllers
 {
 
@@ -1022,6 +1024,7 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
             {
 
 
+                string iBuildingTokenID = AppUtility_TimeManager.Time_GetCurrentTimeInMilliSecond().ToString();
 
                 BsrvemcoUserBuildingList iBuildingModel = new BsrvemcoUserBuildingList()
                 {
@@ -1032,7 +1035,8 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
                     OwnerUserTokenId = Program.iOwnerModel.OwnerUserTokenID,
                     CompanyTokenId = Program.iOwnerModel.CompanyTokenID,
 
-                    BuildingTokenId = AppUtility_TimeManager.Time_GetCurrentTimeInMilliSecond().ToString(),
+                    BuildingTokenId =iBuildingTokenID,
+
                     BuildingName = iBuildingName,
                     BuildingAddress = iBuildingAddress,
                     BuildingDay = "0",//iDevelomentNew1ViewModel.BuildingDate.Day.ToString ( ) ,
@@ -1045,6 +1049,7 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
                     ImageTokenId = "0",//_arrTokenList[1].ToString(),
                     ImageServerUrl  = iImageServerURL.ToLower().ToString(),//_arrTokenList[1].ToString(),
                     UploadDateTimeMilliSec = AppUtility_TimeManager.Time_GetCurrentTimeInMilliSecond(),
+
                     IsNew = true,
                     IsVisible = true,
                     IsActive = true,
@@ -1056,6 +1061,129 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
 
                 await _dbContext.SaveChangesAsync();
+
+                ///////////////////////
+
+                // Populate Info-List
+                List<BsrvemcoUserBuildingInformationList>? _arrCheckCountUserBuildingInfomationList = _dbContext.BsrvemcoUserBuildingInformationLists
+                .Where(u =>
+                u.BuildingTokenId == iBuildingTokenID &&
+                u.ApptableTokenId == "1689022008239" &&
+                u.IsVisible == true)
+                 //.Select (u  )
+                 //.FirstOrDefault ( ); // This is what actually executes the request and return a response
+                 .ToList(); // This is what actually executes the request and return a response
+
+
+                // Fill Database- InfoList
+                if (_arrCheckCountUserBuildingInfomationList.Count == 0)
+                {
+
+                    List<BsrvemcoAppBuildingInformationList>? _arrAppDevelomentInfomationList = _dbContext.BsrvemcoAppBuildingInformationLists
+                        .Where(u => u.IsVisible == true)
+                         //.Select (u  )
+                         //.FirstOrDefault ( ); // This is what actually executes the request and return a response
+                         .ToList(); // This is what actually executes the request and return a response
+
+
+                    ArrayList _arrTokenList = new ArrayList();
+                    _arrTokenList = AppUtility_ListTokenIDManager.ListTokenID_Generate_NewList(_arrAppDevelomentInfomationList.Count.ToString());
+
+
+
+                    ////////////////////////////////////////
+
+                    BsrvemcoUserBuildingInformationList iBuildingInformationModel;
+
+                    for (int i = 0; i < _arrAppDevelomentInfomationList.Count; i++)
+                    {
+
+
+                        iBuildingInformationModel = new BsrvemcoUserBuildingInformationList()
+                        {
+
+                            RowViewTokenId = new Guid(),
+
+
+
+                            OwnerUserTokenId = Program.iOwnerModel.OwnerUserTokenID,
+                            CompanyTokenId = Program.iOwnerModel.CompanyTokenID,
+                            BuildingTokenId = iBuildingTokenID,
+
+                            ApptableTokenId = _arrAppDevelomentInfomationList[i].ApptableTokenId.ToString(),
+                            AppinformationTokenId = _arrAppDevelomentInfomationList[i].AppinformationTokenId.ToString(),
+                            InformationTokenId = _arrTokenList[i].ToString(),
+
+                            InformationCode= _arrAppDevelomentInfomationList[i].InformationCode.ToString(),
+                            InformationType= _arrAppDevelomentInfomationList[i].InformationType.ToString(),
+
+                            InformationName= _arrAppDevelomentInfomationList[i].InformationName.ToString(),
+                            InformationText = _arrAppDevelomentInfomationList[i].InformationText.ToString(),
+                            InformationTitle = _arrAppDevelomentInfomationList[i].InformationTitle.ToString(),
+                            InformationDescription = _arrAppDevelomentInfomationList[i].InformationDescription.ToString(),
+
+                            AppqueryTableTokenId= _arrAppDevelomentInfomationList[i].AppqueryTableTokenId.ToString(),
+                            AppqueryInformationTokenId= _arrAppDevelomentInfomationList[i].AppqueryInformationTokenId.ToString(),
+                            QueryInformationTokenId = _arrTokenList[i].ToString(),
+
+                            //InformationTextSystem = _arrAppDevelomentInfomationList[i].InformationText.ToString(),
+                            //InformationTitleSystem = _arrAppDevelomentInfomationList[i].InformationTitle.ToString(),
+                            //InformationDescriptionSystem = _arrAppDevelomentInfomationList[i].InformationDescription.ToString(),
+
+
+
+                            //InformationTextUser = _arrAppDevelomentInfomationList[i].InformationTextUser.ToString(),
+                            //InformationTitleUser = _arrAppDevelomentInfomationList[i].InformationTitle.ToString(),
+                            //InformationDescriptionUser = _arrAppDevelomentInfomationList[i].InformationDescriptionUser.ToString(),
+
+
+
+                            Commentary = _arrAppDevelomentInfomationList[i].Commentary.ToString(),
+
+
+                            TimeframeYearCount=  _arrAppDevelomentInfomationList[i].TimeframeYearCount.ToString(),
+                            TimeframeMonthCount=  _arrAppDevelomentInfomationList[i].TimeframeMonthCount.ToString(),
+
+                            IsWithSurvey=  _arrAppDevelomentInfomationList[i].IsWithSurvey,
+                            IsCheckOneTime=  _arrAppDevelomentInfomationList[i].IsCheckOneTime,
+
+                            InformationButtonText="Negative",
+                            InformationButtonStyleCss="red",
+
+                            InformationScore = "5",
+                            Score = "5",
+                            ScoreManaged = "5",
+                            ScoreAdjusted = "5",
+                            ScoreOriginal = "5",
+
+
+                            IsAnswered = false,
+                            AnswerCode="evidence_default",
+                            AnswerText="Awaiting Evidence",
+                            AnswerDescription="You will NOT able to generate a \"Gap Analysis Report\" untill you have responded.",
+
+                            UploadDateTimeMilliSec = AppUtility_TimeManager.Time_GetCurrentTimeInMilliSecond(),
+                            IsVisible = true,
+                            IsActive = true,
+
+                        };
+
+
+                        await _dbContext.BsrvemcoUserBuildingInformationLists.AddAsync(iBuildingInformationModel);
+
+
+                        await _dbContext.SaveChangesAsync();
+
+
+                    }
+
+
+                }
+
+
+
+                //////////////////////////////////////////
+
 
 
                 return ViewComponent("BSRVemcoPage_BuildingList");

@@ -247,6 +247,129 @@ namespace BSRVemcoCS.iAppManager
 
 
 
+        public static async Task<bool> Building_Update_Risk_BuildingInformationScore_ByInformationTokenID (
+            BSRDBModelContext _dbContext ,
+            string iBuildingTokenID ,
+            string iInformationTokenID,
+            string iScoreRiskOption = "0",
+            string iScoreRiskText = "0",
+            string iScoreAdjusted = "0",
+            string iRiskControlMeasure = "0")
+        {
+
+
+            try
+            {
+
+  var _iBuildingInfomationModel = _dbContext.BsrvemcoUserBuildingInformationLists
+                      .Where ( u =>
+                      u.BuildingTokenId == iBuildingTokenID &&
+                      u.InformationTokenId == iInformationTokenID )
+                      //.Select (u  )
+                      .FirstOrDefault ( ); // This is what actually executes the request and return a response
+                                           // .ToList ( ); // This is what actually executes the request and return a response
+
+
+                string str_ScoreOriginal="5",
+                    str_RiskMinus_Text = "0",
+                    str_RiskNeutral_Text = "0",
+                    str_RiskPlus_Text = "0",
+
+                    str_RiskButtonText = "0",
+                    str_RiskButtonStyleCSS = "0";
+
+             
+                if (iScoreRiskOption == "minus")
+                {
+                    str_RiskMinus_Text = iScoreRiskText;
+                    str_RiskNeutral_Text = "0";
+                    str_RiskPlus_Text = "0";
+
+                    str_RiskButtonText = "Negative";
+                    str_RiskButtonStyleCSS = "red";
+                
+                    str_ScoreOriginal= "5";
+              
+                }
+                else    if (iScoreRiskOption == "neutral")
+                {
+                    str_RiskMinus_Text = "0" ;
+                    str_RiskNeutral_Text =iScoreRiskText;
+                    str_RiskPlus_Text = "0";
+
+                    str_RiskButtonText = "Neutral";
+                    str_RiskButtonStyleCSS = "orange";
+               
+                    str_ScoreOriginal= "3";
+              
+                 }
+
+                    else    if (iScoreRiskOption == "plus")
+                {
+                    str_RiskMinus_Text = "0" ;
+                    str_RiskNeutral_Text = "0";
+                    str_RiskPlus_Text =iScoreRiskText;
+
+                    str_RiskButtonText = "Positive";
+                    str_RiskButtonStyleCSS = "green";
+              
+                    str_ScoreOriginal= "1";
+
+                }
+                else
+                {
+                    str_RiskMinus_Text = "0";
+                    str_RiskNeutral_Text = "0";
+                    str_RiskPlus_Text = "0";
+
+                    str_RiskButtonText = "Negative";
+                    str_RiskButtonStyleCSS = "red";
+
+                    str_ScoreOriginal= "5";
+                }
+
+
+                if ( _iBuildingInfomationModel != null )
+                {
+                    _iBuildingInfomationModel.ScoreAdjusted = iScoreAdjusted;
+                    _iBuildingInfomationModel.RiskControlMeasure = iRiskControlMeasure;
+                  
+                    
+                    _iBuildingInfomationModel.Score= str_ScoreOriginal;
+                    _iBuildingInfomationModel.ScoreOriginal = str_ScoreOriginal;
+                 
+                    _iBuildingInfomationModel.RiskCode =iScoreRiskOption;
+                   _iBuildingInfomationModel.RiskOption =iScoreRiskOption;
+                     _iBuildingInfomationModel.RiskText =iScoreRiskText ;
+                    _iBuildingInfomationModel.RiskDescription = iScoreRiskText;
+                    _iBuildingInfomationModel.InformationButtonText = str_RiskButtonText;
+                    _iBuildingInfomationModel.InformationButtonStyleCss = str_RiskButtonStyleCSS;
+
+
+
+
+
+                    _dbContext.Update ( _iBuildingInfomationModel );
+                    await _dbContext.SaveChangesAsync ( );
+                }
+
+                return await Task.FromResult ( true );
+            }
+            catch ( Exception ex)
+            {
+                iAppUtility.AppUtility_DebugManager.Debug_Get_MessageText ( ex.Message);
+                   return await Task.FromResult ( false ); 
+                // return new AppUserBuildingStatisticModelManager ( ); ;
+               // throw;
+            }
+
+
+        }
+
+
+
+
+
 
 
 

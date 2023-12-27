@@ -14,50 +14,150 @@
 
         <div class="col-10">
 
+            <form id="addForm" class="row g-3 needs-validation" novalidate>
 
-            <div style="margin-top:20px;padding:0px;">
-                @*  <div class="col-3" style="padding:20px;">
-                <img src="~/img/img_contact_us.png" style="width:100px;height:auto;" /></div>
-                *@
 
-                @* class="me-3" *@
-                <div id="div_DocumentUpload"
-                     style="width:100%;display:flex;flex-direction:column;justify-content:space-between;">
+                <div style="margin-top:20px;padding:0px;">
+                    @*  <div class="col-3" style="padding:20px;">
+                    <img src="~/img/img_contact_us.png" style="width:100px;height:auto;" /></div>
+                    *@
 
-                    <div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
+                    @* class="me-3" *@
+                    <div id="div_DocumentUpload"
+                         style="width:100%;display:flex;flex-direction:column;justify-content:space-between;">
+
+                        <div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
+
+                            <div class="col-7">
+                                Email address
+                            </div>
+
+                            <div class="col-4">
+                                Name (Optional)
+                            </div>
+
+                            @* onclick="Building_Confirm_DELETE('@iRow.BuildingTokenID');" *@
+                            <div class="col-1 text-center" style="width:50px;">
+                                @*    <img id="img_NewURL1" name="img_NewURL1" src="~/img/img_new.png" style="width:20px;height:20px;" alt="Delete" title="New" />
+                                *@
+                            </div>
+
+
+
+                        </div>
+
+
+                        <div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
+
+                            <div class="col-7">
+                                <input type="url" pattern="https?://.+" class="form-control" id="input_fileURL1" name="input_fileURL1" placeholder="name@example.com"
+                                       style="color:blue;" data-inputfor="fupload" required />
+                            </div>
+
+                            <div class="col-4">
+                                <input type="text" class="form-control" id="input_Name1" name="input_Name1" placeholder="Mr.John"
+                                       data-inputfor="fname" required />
+                            </div>
+
+                            @* onclick="Building_Confirm_DELETE('@iRow.BuildingTokenID');" *@
+                            <div class="col-1 text-center" style="width:50px;">
+                                @*     <img id="img_NewURL1" name="img_NewURL1" src="~/img/img_new.png" style="width:20px;height:20px;" alt="Delete" title="New" />
+                                *@
+                            </div>
+
+
+
+                        </div>
+
+
+
+                        <div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
+
+                            <div class="col-7">
+                                <input type="url" pattern="https?://.+" class="form-control" id="input_fileURL2" name="input_fileURL2" placeholder="name@example.com"
+                                       style="color:blue;" data-inputfor="fupload" required />
+                            </div>
+
+                            <div class="col-4">
+                                <input type="text" class="form-control" id="input_Name2" name="input_Name2" placeholder="Mr.John"
+                                       data-inputfor="fname" required />
+                            </div>
+
+                            @* onclick="Building_Confirm_DELETE('@iRow.BuildingTokenID');" *@
+                            <div class="col-1 text-center" style="width:50px;">
+                                @*     <img id="img_NewURL1" name="img_NewURL1" src="~/img/img_new.png" style="width:20px;height:20px;" alt="Delete" title="New" />
+                                *@
+                            </div>
+
+
+
+                        </div>
+
+
+
+                        <div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
+
+                            <div class="col-7">
+                                <input type="url" pattern="https?://.+" class="form-control" id="input_fileURL3" name="input_fileURL3" placeholder="name@example.com"
+                                       style="color:blue;" data-inputfor="fupload" required />
+                            </div>
+
+                            <div class="col-4">
+                                <input type="text" class="form-control" id="input_Name3" name="input_Name3" placeholder="Mr.John"
+                                       data-inputfor="fname" required />
+                            </div>
+
+                            @* onclick="Building_Confirm_DELETE('@iRow.BuildingTokenID');" *@
+                            <div class="col-1 text-center" style="width:50px;">
+                                <img id="img_NewURL1" name="img_NewURL1" src="~/img/img_new.png" style="width:20px;height:20px;" alt="New" title="New" />
+                            </div>
+
+
+
+                        </div>
+
+
+                        @*   <div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
 
                         <div class="col-7">
-                            Email address
+                        <input type="url" pattern="https?://.+" class="form-control" id="input_fileURL3" name="input_fileURL3" placeholder="name@example.com"
+                        style="color:blue;" data-inputfor="fupload" required />
                         </div>
 
                         <div class="col-4">
-                            Name (Optional)
+                        <input type="text" class="form-control" id="input_Name3" name="input_Name3" placeholder="Mr.John"
+                        data-inputfor="fupload" required />
                         </div>
 
-                        @* onclick="Building_Confirm_DELETE('@iRow.BuildingTokenID');" *@
+
                         <div class="col-1 text-center" style="width:50px;">
-                            @*    <img id="img_NewURL1" name="img_NewURL1" src="~/img/img_new.png" style="width:20px;height:20px;" alt="Delete" title="New" />
-                            *@
+                        <img id="img_delURL2" name="img_delURL2" class="remove_input_button" src="https://bsr.vemcoconsulting.com/img/img_delete.png" style="width:20px;height:20px;" alt="Delete" title="Delete" />
                         </div>
 
+
+
+                        </div> *@
 
 
                     </div>
 
 
-                    <div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
+                    <div class="row mt-0" style="width:100%;display:flex;flex-direction:row;margin-bottom:0px;">
 
                         <div class="col-7">
-                            <input type="url" pattern="https?://.+" class="form-control" id="input_fileURL1" name="input_fileURL1" placeholder="name@example.com"
-                                   style="color:blue;" data-inputfor="fupload" required />
+                            <span class="text-muted flex-start" style="width:90%;font-size:small;padding:5px;">
+                                (You may invite users max of (10)
+                            </span>
                         </div>
 
                         <div class="col-4">
-                            <input type="text" class="form-control" id="input_Name1" name="input_Name1" placeholder="Mr.John"
-                                   data-inputfor="fname" required />
+                            @* type="submit" *@
+                            <input class="btn btn-primary" value="Submit" style="width:100%;height:auto;background-color:#19c571;height:auto;border-color:#19c571;color:white;"
+                                   onclick="upload_UserEmailLinkList()">
+
                         </div>
 
-                        @* onclick="Building_Confirm_DELETE('@iRow.BuildingTokenID');" *@
+
                         <div class="col-1 text-center" style="width:50px;">
                             @*     <img id="img_NewURL1" name="img_NewURL1" src="~/img/img_new.png" style="width:20px;height:20px;" alt="Delete" title="New" />
                             *@
@@ -69,106 +169,9 @@
 
 
 
-                    <div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
-
-                        <div class="col-7">
-                            <input type="url" pattern="https?://.+" class="form-control" id="input_fileURL2" name="input_fileURL2" placeholder="name@example.com"
-                                   style="color:blue;" data-inputfor="fupload" required />
-                        </div>
-
-                        <div class="col-4">
-                            <input type="text" class="form-control" id="input_Name2" name="input_Name2" placeholder="Mr.John"
-                                   data-inputfor="fname" required />
-                        </div>
-
-                        @* onclick="Building_Confirm_DELETE('@iRow.BuildingTokenID');" *@
-                        <div class="col-1 text-center" style="width:50px;">
-                            @*     <img id="img_NewURL1" name="img_NewURL1" src="~/img/img_new.png" style="width:20px;height:20px;" alt="Delete" title="New" />
-                            *@
-                        </div>
-
-
-
-                    </div>
-
-
-
-                    <div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
-
-                        <div class="col-7">
-                            <input type="url" pattern="https?://.+" class="form-control" id="input_fileURL3" name="input_fileURL3" placeholder="name@example.com"
-                                   style="color:blue;" data-inputfor="fupload" required />
-                        </div>
-
-                        <div class="col-4">
-                            <input type="text" class="form-control" id="input_Name3" name="input_Name3" placeholder="Mr.John"
-                                   data-inputfor="fname" required />
-                        </div>
-
-                        @* onclick="Building_Confirm_DELETE('@iRow.BuildingTokenID');" *@
-                        <div class="col-1 text-center" style="width:50px;">
-                            <img id="img_NewURL1" name="img_NewURL1" src="~/img/img_new.png" style="width:20px;height:20px;" alt="New" title="New" />
-                        </div>
-
-
-
-                    </div>
-
-
-                    @*   <div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;">
-
-                    <div class="col-7">
-                    <input type="url" pattern="https?://.+" class="form-control" id="input_fileURL3" name="input_fileURL3" placeholder="name@example.com"
-                    style="color:blue;" data-inputfor="fupload" required />
-                    </div>
-
-                    <div class="col-4">
-                    <input type="text" class="form-control" id="input_Name3" name="input_Name3" placeholder="Mr.John"
-                    data-inputfor="fupload" required />
-                    </div>
-
-
-                    <div class="col-1 text-center" style="width:50px;">
-                    <img id="img_delURL2" name="img_delURL2" class="remove_input_button" src="https://bsr.vemcoconsulting.com/img/img_delete.png" style="width:20px;height:20px;" alt="Delete" title="Delete" />
-                    </div>
-
-
-
-                    </div> *@
-
-
                 </div>
 
-
-                <div class="row mt-0" style="width:100%;display:flex;flex-direction:row;margin-bottom:0px;">
-
-                    <div class="col-7">
-                        <span class="text-muted flex-start" style="width:90%;font-size:small;padding:5px;">
-                            (You may invite users max of (10)
-                        </span>
-                    </div>
-
-                    <div class="col-4">
-                        @* type="submit" *@
-                        <input class="btn btn-primary" value="Submit" style="width:100%;height:auto;background-color:#19c571;height:auto;border-color:#19c571;color:white;"
-                               onclick="upload_UserEmailLinkList()">
-
-                    </div>
-
-
-                    <div class="col-1 text-center" style="width:50px;">
-                        @*     <img id="img_NewURL1" name="img_NewURL1" src="~/img/img_new.png" style="width:20px;height:20px;" alt="Delete" title="New" />
-                        *@
-                    </div>
-
-
-
-                </div>
-
-
-
-            </div>
-
+            </form>
 
         </div>
 
@@ -392,6 +395,99 @@
             '(\\#[-a-z\\d_]*)?$', 'i'); // validate fragment locator
         return !!urlPattern.test(urlString);
     }
+
+
+
+    $("#btn_SubmitForm").click(function () {
+
+
+
+        $("#addForm").validate({
+            // // // // // rules: {
+            // // // // //     txt_FullName: {
+            // // // // //         required: true,
+            // // // // //         minlength: 3,
+            // // // // //         maxlength: 50,
+            // // // // //     },
+            // // // // // },
+
+            submitHandler: function (form) {
+                // alert('submitHandler XXX');
+                // // // // // $.ajax({
+                // // // // //     url: 'addEmpl.php',
+                // // // // //     type: 'GET',
+                // // // // //     dataType: 'html',
+                // // // // //     success: function (data) {
+                // // // // //         $("#block").html(data);
+                // // // // //     }
+                // // // // // });
+                return false; // required to block normal submit since you used ajax
+            }
+        });
+
+
+
+
+
+        // $("#txt_MobileNumber").validate();
+
+        // alert('txt_MobileNumber IS ' + $("#txt_MobileNumber").valid());
+
+
+        //PageComponentView_POST_ContactUsPage
+        var _iURL = '/iWebMember/BSRVemcoPageComponent/PageComponentView_POST_ContactUsPage';
+
+
+
+
+        // capture the click
+        if ($("#addForm").valid()) {   // test for validity
+            // do stuff if form is valid
+
+
+            BSR_ShowToastMessage('process');
+
+
+
+
+            //alert('YES YES YES');
+
+            // alert($("#txt_FullName").val());
+            // alert($("#txt_EmailAddress").val());
+            // alert($("#txt_MobileNumber").val());
+            // alert($("#txt_MessageBox").val());
+
+            $.ajax({
+
+                url: _iURL,
+                data: {
+                    // // // // // iFullName: $("#txt_FullName").val(),//,//document.getElementById("cbShowPrevious").checked,
+                    // // // // // iEmailAddress: $("#txt_EmailAddress").val(),//,//document.getElementById("cbShowPrevious").checked,
+                    // // // // // iMobilenumber: $("#txt_MobileNumber").val(),//,//document.getElementById("cbShowPrevious").checked,
+                    // // // // // iMessageText: $("#txt_MessageBox").val()//,//document.getElementById("cbShowPrevious").checked,
+
+                },
+                success: function (data) {
+
+
+                    BSR_ShowToastMessage('update');
+
+
+                    // // // // //$(".div_RenderBody").html(data);
+
+
+                }
+
+            });
+
+
+        }
+
+        else {
+            // do stuff if form is not valid
+            // alert('NO NO NO');
+        }
+    });
 
 
 

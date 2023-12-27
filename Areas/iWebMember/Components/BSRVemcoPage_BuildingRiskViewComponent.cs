@@ -113,15 +113,16 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
                       ColumnTotal = "0",
 
 
-                      ColumnVePlus= _arrUserBuildingInfomationList_1[i].VePlus,
-                      ColumnNeutral  = _arrUserBuildingInfomationList_1[i].Neutral,
-                      ColumnVeMinus  = _arrUserBuildingInfomationList_1[i].VeMinus,
+                      ColumnRiskCode= _arrUserBuildingInfomationList_1[i].RiskCode,
+                      ColumnRiskOption= _arrUserBuildingInfomationList_1[i].RiskOption,
+                      ColumnRiskText  = _arrUserBuildingInfomationList_1[i].RiskText,
+                      ColumnRiskDescription  = _arrUserBuildingInfomationList_1[i].RiskDescription,
 
 
                       
-                      ColumnVePlusText= _arrUserBuildingInfomationList_1[i].VePlusText,
-                      ColumnNeutralText  = _arrUserBuildingInfomationList_1[i].NeutralText,
-                      ColumnVeMinusText   = _arrUserBuildingInfomationList_1[i].VeMinusText,
+                      //ColumnVePlusText= _arrUserBuildingInfomationList_1[i].VePlusText,
+                      //ColumnNeutralText  = _arrUserBuildingInfomationList_1[i].NeutralText,
+                      //ColumnVeMinusText   = _arrUserBuildingInfomationList_1[i].VeMinusText,
 
 
 
@@ -210,15 +211,21 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
                       ColumnTotal = "0",
 
 
-                      ColumnVePlus= _arrUserBuildingInfomationList_2[i].VePlus,
-                      ColumnNeutral  = _arrUserBuildingInfomationList_2[i].Neutral,
-                      ColumnVeMinus  = _arrUserBuildingInfomationList_2[i].VeMinus,
+
+
+                      ColumnRiskCode= _arrUserBuildingInfomationList_2[i].RiskCode,
+                      ColumnRiskOption= _arrUserBuildingInfomationList_2[i].RiskOption,
+                      ColumnRiskText  = _arrUserBuildingInfomationList_2[i].RiskText,
+                      ColumnRiskDescription  = _arrUserBuildingInfomationList_2[i].RiskDescription,
 
 
 
-                      ColumnVePlusText= _arrUserBuildingInfomationList_2[i].VePlusText,
-                      ColumnNeutralText  = _arrUserBuildingInfomationList_2[i].NeutralText,
-                      ColumnVeMinusText   = _arrUserBuildingInfomationList_2[i].VeMinusText,
+                      //ColumnVePlusText= _arrUserBuildingInfomationList_1[i].VePlusText,
+                      //ColumnNeutralText  = _arrUserBuildingInfomationList_1[i].NeutralText,
+                      //ColumnVeMinusText   = _arrUserBuildingInfomationList_1[i].VeMinusText,
+
+
+
 
 
 
@@ -314,15 +321,20 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
 
 
 
-                      ColumnVePlus= _arrUserBuildingInfomationList_3[i].VePlus,
-                      ColumnNeutral  = _arrUserBuildingInfomationList_3[i].Neutral,
-                      ColumnVeMinus  = _arrUserBuildingInfomationList_3[i].VeMinus,
+
+                      ColumnRiskCode= _arrUserBuildingInfomationList_3[i].RiskCode,
+                      ColumnRiskOption= _arrUserBuildingInfomationList_3[i].RiskOption,
+                      ColumnRiskText  = _arrUserBuildingInfomationList_3[i].RiskText,
+                      ColumnRiskDescription  = _arrUserBuildingInfomationList_3[i].RiskDescription,
 
 
 
-                      ColumnVePlusText= _arrUserBuildingInfomationList_3[i].VePlusText,
-                      ColumnNeutralText  = _arrUserBuildingInfomationList_3[i].NeutralText,
-                      ColumnVeMinusText   = _arrUserBuildingInfomationList_3[i].VeMinusText,
+                      //ColumnVePlusText= _arrUserBuildingInfomationList_1[i].VePlusText,
+                      //ColumnNeutralText  = _arrUserBuildingInfomationList_1[i].NeutralText,
+                      //ColumnVeMinusText   = _arrUserBuildingInfomationList_1[i].VeMinusText,
+
+
+
 
 
 

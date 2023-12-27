@@ -76,7 +76,7 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
                         TimeoutUserUploadStartMonth = _arrInfomationDocumentList[i].TimeoutUserUploadStartMonth,
                         TimeoutUserUploadStartYear = _arrInfomationDocumentList[i].TimeoutUserUploadStartYear,
                         TimeoutUserUploadStartText = _arrInfomationDocumentList[i].TimeoutUserUploadStartText,
-                        TimeoutYearCount = _arrInfomationDocumentList[i].TimeoutYearCount,
+                        TimeframeYear = _arrInfomationDocumentList[i].TimeframeYearCount,
                         TimeoutUserUploadStart = (DateTime)_arrInfomationDocumentList[i].TimeoutUserUploadStart,
                     };
                     _arrBuildingInformationDocumentList.Add(_iDocumentViewModel);

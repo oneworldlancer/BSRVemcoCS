@@ -102,6 +102,11 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
                             ApptableTokenId = _arrAppDevelomentInfomationList[i].ApptableTokenId.ToString(),
                             AppinformationTokenId = _arrAppDevelomentInfomationList[i].AppinformationTokenId.ToString(),
                             InformationTokenId = _arrTokenList[i].ToString(),
+                            
+                            InformationCode= _arrAppDevelomentInfomationList[i].InformationCode.ToString(),
+                            InformationType= _arrAppDevelomentInfomationList[i].InformationType.ToString(),
+                          
+                            InformationName= _arrAppDevelomentInfomationList[i].InformationName.ToString(),
                             InformationText = _arrAppDevelomentInfomationList[i].InformationText.ToString(),
                             InformationTitle = _arrAppDevelomentInfomationList[i].InformationTitle.ToString(),
                             InformationDescription = _arrAppDevelomentInfomationList[i].InformationDescription.ToString(),
@@ -125,7 +130,14 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
                             Commentary = _arrAppDevelomentInfomationList[i].Commentary.ToString(),
 
 
-                            TimeoutYearCount=  _arrAppDevelomentInfomationList[i].TimeoutYearCount.ToString(),
+                            TimeframeYearCount=  _arrAppDevelomentInfomationList[i].TimeframeYearCount.ToString(),
+                            TimeframeMonthCount=  _arrAppDevelomentInfomationList[i].TimeframeMonthCount.ToString(),
+                         
+                            IsWithSurvey=  _arrAppDevelomentInfomationList[i].IsWithSurvey,
+                            IsCheckOneTime=  _arrAppDevelomentInfomationList[i].IsCheckOneTime,
+
+                            InformationButtonText="Negative",
+                            InformationButtonStyleCss="red",
 
                             InformationScore = "5",
                             Score = "5",

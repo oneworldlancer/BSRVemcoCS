@@ -22,9 +22,9 @@
             <thead>
                 <tr>
                     <th>@iRowMaster.ColumnDescription</th>
-                    <th class="fw-bold text-center" style="width:70px;background-color:whitesmoke;">@iRowMaster.ColumnVeMinus</th>
-                    <th class="fw-bold text-center" style="width:80px;background-color:whitesmoke;">@iRowMaster.ColumnNeutral</th>
-                    <th class="fw-bold text-center" style="width:70px;background-color:whitesmoke;">@iRowMaster.ColumnVePlus</th>
+                    <th class="fw-bold text-center" style="width:100px;background-color:whitesmoke;">@iRowMaster.ColumnVeMinus</th>
+                    <th class="fw-bold text-center" style="width:100px;background-color:whitesmoke;">@iRowMaster.ColumnNeutral</th>
+                    <th class="fw-bold text-center" style="width:100px;background-color:whitesmoke;">@iRowMaster.ColumnVePlus</th>
                     @* <th style="width:150px;">@iRowMaster.ColumnCriterion</th> *@
                     <th class="fw-bold text-center" style="width:50px;background-color:#dde9f5;">@iRowMaster.ColumnScore</th>
                     <th>@iRowMaster.ColumnRiskControlMeasure</th>
@@ -39,28 +39,28 @@
                 @foreach (var iRow in iRowMaster.RowContentList!)
                 {
 
-                    <tr class="divHighlight" data-bs-toggle="modal" onclick="Popup_LoadForm('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.InformationTokenID','clmscore_@iRow.InformationTokenID','clmrisk_@iRow.InformationTokenID','minus','txt-minus');">
+                    <tr class="divHighlight" data-bs-toggle="modal" onclick="Popup_LoadForm('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.InformationTokenID','clmscore_@iRow.InformationTokenID','clmrisk_@iRow.InformationTokenID','@iRow.ColumnRiskOption','@iRow.ColumnRiskText');">
                         <td><strong>@Html.Raw(@iRow.ColumnDescription)</strong></td>
 
-                        <td class="text-center" style="width:70px;background-color:whitesmoke;" data-clmminus="clmminus_@iRow.InformationTokenID">
+                        <td class="text-center" style="width:100px;background-color:whitesmoke;" data-clmminus="clmminus_@iRow.InformationTokenID">
 
-                            @if (iRow.ColumnVeMinusText != "0")
+                            @if (iRow.ColumnRiskOption == "minus")
                             {
-                                @Html.Raw(@iRow.ColumnVeMinusText)
+                                @Html.Raw(@iRow.ColumnRiskText)
                             }
                         </td>
 
-                        <td class="text-center" style="width:80px;background-color:whitesmoke" data-clmneutral="clmneutral_@iRow.InformationTokenID">
-                            @if (iRow.ColumnNeutralText != "0")
+                        <td class="text-center" style="width:100px;background-color:whitesmoke" data-clmneutral="clmneutral_@iRow.InformationTokenID">
+                            @if (iRow.ColumnRiskOption == "neutral")
                             {
-                                @Html.Raw(@iRow.ColumnNeutralText)
+                                @Html.Raw(@iRow.ColumnRiskText)
                             }
                         </td>
 
-                        <td class="text-center" style="width:70px;background-color:whitesmoke" data-clmplus="clmplus_@iRow.InformationTokenID">
-                            @if (iRow.ColumnVePlusText != "0")
+                        <td class="text-center" style="width:100px;background-color:whitesmoke" data-clmplus="clmplus_@iRow.InformationTokenID">
+                            @if (iRow.ColumnRiskOption == "plus")
                             {
-                                @Html.Raw(@iRow.ColumnVePlusText)
+                                @Html.Raw(@iRow.ColumnRiskText)
                             }
                         </td>
 
@@ -219,6 +219,7 @@
             // selectEl.value = 'sugar';
             //alert('inftknid == ' + window.inftknid);
 
+            var inftknid = window.inftknid;
 
             var clmn_Original = $("[data-clmoriginal='clmoriginal_" + inftknid + "']");
             var clmn_Minus = $("[data-clmminus='clmminus_" + inftknid + "']");
@@ -272,41 +273,44 @@
                     iTableTokenID: tbltknid,
                     iBuildingTokenID: bldtknid,
                     iInformationTokenID: inftknid,
-                    iScoreRiskValue: selectVal,
+                    iScoreRiskOption: selectVal,
                     iScoreRiskText: strScoreRiskText,
                     iScoreAdjusted: iScoreAdjusted.value,
                     iRiskControlMeasure: txt_RiskControlMeasure
                 },
                 success: function (result) {
 
-
                     clmn_Score.html(iScoreAdjusted.value);
                     clmn_RiskMeasure.html(visible_RiskControlMeasure);
                     clmn_Total.html(result.total);
 
+                    //alert("selectVal == " + selectVal);
+
+                    // alert();
+
                     if (selectVal == "minus") {
 
-                        clmn_Original.html = "5";
-                        clmn_Minus = txtScoreRiskText;
-                        clmn_Neutral = "";
-                        clmn_Plus = "";
+                        clmn_Original.html("5");
+                        clmn_Minus.html(txtScoreRiskText);
+                        clmn_Neutral.html("");
+                        clmn_Plus.html("");
                     }
 
                     else if (selectVal == "neutral") {
 
-                        clmn_Original.html = "3";
-                        clmn_Minus = "";
-                        clmn_Neutral = txtScoreRiskText;
-                        clmn_Plus = "";
+                        clmn_Original.html("3");
+                        clmn_Minus.html("");
+                        clmn_Neutral.html(txtScoreRiskText);
+                        clmn_Plus.html("");
 
                     }
 
                     else if (selectVal == "plus") {
 
-                        clmn_Original.html = "1";
-                        clmn_Minus = "";
-                        clmn_Neutral = "";
-                        clmn_Plus = txtScoreRiskText;
+                        clmn_Original.html("1");
+                        clmn_Minus.html("");
+                        clmn_Neutral.html("");
+                        clmn_Plus.html(txtScoreRiskText);
 
                     }
 
@@ -317,7 +321,7 @@
 
                 },
                 error: function () {
-                    alert('Failed to receive the Data');
+                    // alert('Failed to receive the Data');
                     console.log('Failed ');
                 }
             });
@@ -362,7 +366,7 @@
         }
 
         catch (ex) {
-            alert(ex);
+            // alert(ex);
 
         }
     }
@@ -384,6 +388,9 @@
             window.clmscore = clmscore;
             window.clmrisk = clmrisk;
 
+            window.clmriskoption = clmriskoption;
+            window.clmrisktxt = clmrisktxt;
+
             // var clmn_Original = $("[data-clmoriginal='clmoriginal_" + inftknid + "']");
             // var clmn_Minus = $("[data-clmminus='clmminus_" + inftknid + "']");
             // var clmn_Neutral = $("[data-clmneutral='clmneutral_" + inftknid + "']");
@@ -394,6 +401,7 @@
             var clmn_RiskMeasure = $("[data-clmrisk='clmrisk_" + inftknid + "']");
 
             var txt_RiskControlMeasure = '0';
+
 
             if (editor.getData() == '') {
                 txt_RiskControlMeasure = "0";
@@ -414,6 +422,15 @@
             } else {
                 $("#iSelectScoreList").val("");
             }
+
+            //var iSelectScoreText = document.getElementById('iSelectScoreText');
+
+            if (clmrisktxt != "0") {
+                $("#iSelectScoreText").val(clmrisktxt);
+            } else {
+                $("#iSelectScoreText").val("");
+            }
+
 
 
             //////if (editor.getData() == '') {
@@ -460,7 +477,7 @@
 
             $('#popupModalEditor').modal('show');
 
- 
+
 
         }
 

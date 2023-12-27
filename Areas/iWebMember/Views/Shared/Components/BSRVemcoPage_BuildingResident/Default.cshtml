@@ -104,7 +104,7 @@
                     </h2>
 
                     <div id='collapse@{
-                                                                                                                                                                                                                                                                                                                                                                                                                            @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                                                                    @iRow.QueryTableTokenID.ToString()
 }'
                          class="accordion-collapse collapse" aria-labelledby="heading1"
                          data-bs-parent="#accordionExample">
@@ -112,36 +112,36 @@
 
                         @* class="accordion-body" *@
                         <div id='div_@{
-                                                                                                                                                                                                                                                                                                                                                                                                                                @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                                                                        @iRow.QueryTableTokenID.ToString()
 }'></div>
 
                         <div class="text-center" id="div_Paging_@{
-                                                                                                                                                                                                                                                                                                                                                                                                                                    @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                                                                            @iRow.QueryTableTokenID.ToString()
 }" style="display:none;margin:10px;text-align:center;vertical-align:middle;">
                             <nav>
                                 <ul class="pagination">
 
                                     <li class="page-item">
                                         <a href='#collapse@{
-                                                                                                                                                                                                                                                                                                                                                                                                                                @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                                                                        @iRow.QueryTableTokenID.ToString()
 }' id="pager1_@{
-                                                                                                                                                                                                                                                                                                                                                                                                                                            @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    @iRow.QueryTableTokenID.ToString()
 }" class="page-link active"
                                            onclick="load_TabViewQueryList('@iRow.BuildingTokenID', '@iRow.QueryTableTokenID', 'true','1', true)">1</a>
                                     </li>
                                     <li class="page-item">
                                         <a href='#collapse@{
-                                                                                                                                                                                                                                                                                                                                                                                                                                    @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                                                                            @iRow.QueryTableTokenID.ToString()
 }' id="pager2_@{
-                                                                                                                                                                                                                                                                                                                                                                                                                                                @iRow.QueryTableTokenID.ToString()
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        @iRow.QueryTableTokenID.ToString()
 }" class="page-link"
                                            onclick="load_TabViewQueryList('@iRow.BuildingTokenID', '@iRow.QueryTableTokenID', 'true','2', true)">2</a>
                                     </li>
                                     <li class="page-item">
                                         <a href='#collapse@{
-                                                                                                                                                                                                                                                                                                                                                                                                                                        @iRow.QueryTableTokenID.ToString()
-}' id="pager3_@{
                                                                                                                                                                                                                                                                                                                                                                                                                                                 @iRow.QueryTableTokenID.ToString()
+}' id="pager3_@{
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        @iRow.QueryTableTokenID.ToString()
 }" class="page-link"
                                            onclick="load_TabViewQueryList('@iRow.BuildingTokenID', '@iRow.QueryTableTokenID', 'true','3', true)">3</a>
                                     </li>
@@ -169,14 +169,13 @@
         *@
     </div>
 
-    @*  </div>*@
 
 
 </div>
 
 
 @*POPUP-popupModalEditor*@
-<div class="modal" id="popupModalEditor">
+<div class="modal fade" id="popupModalEditor">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header" style="background-color:whitesmoke;">
@@ -457,46 +456,7 @@ mb-3"></div>
 
 @* <script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script> *@
 
-<script>
 
-    // let editorActivity;
-
-    // ClassicEditor
-    //     .create(document.querySelector('#txt_HTMLContent_Activity'))
-    //     .then(newEditor => {
-    //         editorActivity = newEditor;
-    //     })
-    //     .catch(error => {
-    //         console.error(error);
-    //     });
-
-
-    // window.load_FCKEditor = function () {
-
-    //     try {
-
-
-    //         ClassicEditor
-    //             .create(document.querySelector('#txt_HTMLContent_Activity'))
-    //             .then(newEditor => {
-    //                 editorActivity = newEditor;
-    //             })
-    //             .catch(error => {
-    //                 console.error(error);
-    //             });
-
-    //     }
-
-    //     catch (err) {
-    //         console.error(err);
-    //     }
-
-    // }
-
-
-
-
-</script>
 
 
 
@@ -1811,6 +1771,173 @@ mb-3"></div>
 <script>
 
 
+    $(".nav-tabs li button").click(function () {
+        $(this).tab('show');
+    });
+
+    //////////////
+
+    $('.nav-tabs li button').on('shown.bs.tab', function (event) {
+        //var x = $(event.target).text();         // active tab
+        var x = $(event.target).data('tabcontent');         // active tab
+        //var y = $(event.relatedTarget).text();  // previous tab
+        //////$(".act span").text(x);
+        //////$(".prev span").text(y);
+
+        // alert('CLICKED TAB == ' + x);
+
+        if (x === 'upload') {
+            $('#div_CommandEdit').hide();
+            $('#div_CommandActivity').hide();
+            //////$('#div_CommandPreview').hide();
+            $('#div_CommandUpload').show();
+        }
+        else if (x === 'edit') {
+            $('#div_CommandEdit').show();
+            //////$('#div_CommandPreview').hide();
+            $('#div_CommandUpload').hide();
+            $('#div_CommandActivity').hide();
+        }
+        else if (x === 'preview') {
+
+
+            $('#div_CommandEdit').hide();
+            $('#div_CommandUpload').hide();
+            $('#div_CommandActivity').show();
+            //////$('#div_CommandPreview').hide();
+
+        }
+
+        else if (x === 'view') {
+
+            // alert($("#div_DocumentList").is(':empty'));
+            // alert($("#div_DocumentList").length);
+
+            //alert($.trim($("#div_DocumentList").html()).length);
+
+            //if ($.trim($("#div_DocumentList").html()).length === 0) {
+            //    //alert('load_TabViewQueryDocumentList');
+            //    load_TabViewQueryDocumentList();
+            //}
+
+            $('#div_CommandEdit').hide();
+            //////$('#div_CommandPreview').hide();
+            $('#div_CommandUpload').hide();
+            $('#div_CommandActivity').hide();
+
+        }
+        // // // // // else {
+        // // // // //     $('#div_CommandEdit').hide();
+        // // // // //     $('#div_CommandUpload').hide();
+
+        // // // // // }
+
+
+        //  $('#div_CommandUpload').show();
+
+    });
+
+
+    $('.accordion-item').on('shown.bs.collapse', function (event) {
+
+        // do expand
+
+        //  alert('shown.bs.collapse');
+
+
+        // pane-1689793058866-1695879102829
+        var x = $(this).data('paneid');
+
+        // alert('shown.bs.collapse == ' + x);
+
+
+        // let text = "How are you doing today?";
+        // const myArray = text.split(" ");
+
+        //let text = "How are you doing today?";
+        const myArray = x.split("-");
+
+        // alert(myArray[1] + " , " + myArray[2]);
+
+        //alert('EMPTY');
+
+        if (myArray[1] !== '0') {
+
+            if ($.trim($("#div_" + myArray[2]).html()).length === 0) {
+
+                // alert('EMPTY-id == ' + "#div_" + myArray[2]);
+                load_TabViewQueryList(myArray[1], myArray[2], myArray[3], 0, true);
+                //load_TabViewQueryDocumentList();
+            } else {
+                // alert('FULL');
+            }
+
+        }
+
+
+        // alert('Opened == ' + x);
+        // console.log("Opened")
+    });
+
+
+    $('.accordion-item').on('hidden.bs.collapse', function (event) {
+
+        //do collapse
+        var x = $(this).data('paneid');
+
+        //alert('Closed == ' + x);
+        // console.log("Closed")
+    });
+
+
+    $("#iDocumentDateStart")
+        .datepicker({
+            //dateFormat: 'dd-mm-yy, DD',
+            dateFormat: 'dM, yy',
+            //defaultDate: "24-09-2019"
+
+            orientation: "bottom",
+            // add this for placemenet
+        });
+
+
+    //$datepicker.datepicker('setDate', new Date());
+    $("#iDocumentDateStart").datepicker("setDate", new Date());
+
+
+
+    var max_fields = 10;
+    var img_NewURL1 = $('#img_NewURL1');
+    var $add_input_button = $('#btn_NewFileHyperlink');
+    var $field_wrapper = $('#div_DocumentUpload');
+    var new_field_html_X1 = '<div><input name="title[]" class="form-control form-item type="text" value="" data-label="title" /><a href="javascript:void(0);" class="remove_input_button" title="remove field">-</a></div>';
+    var new_field_html = '<div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;"><div class="col-11" ><input type="text"  type="url" pattern="https?://.+" class="form-control" id="input_fileURL2" name="input_fileURL2" placeholder="Insert your hyperlink here ..." style="color:blue;"   data-inputfor="fupload"  required /></div><div class="col-1 text-center" style="width:50px;" ><img id="img_delURL2" name="img_delURL2" class="remove_input_button"  src="https://bsr.vemcoconsulting.com/img/img_delete.png" style="width:20px;height:20px;" alt="Delete" title="Delete" /></div></div>';
+    var input_count = 1;
+
+    //add inputs
+    img_NewURL1.click(function () {
+        if (input_count < max_fields) {
+            input_count++;
+            $field_wrapper.append(new_field_html);
+        }
+    });
+
+
+    //add inputs
+    $add_input_button.click(function () {
+        if (input_count < max_fields) {
+            input_count++;
+            $field_wrapper.append(new_field_html);
+        }
+    });
+
+    //remove_input
+    $field_wrapper.on('click', '.remove_input_button', function (e) {
+        e.preventDefault();
+        $(this).parent('div').parent('div').remove();
+        input_count--;
+    });
+
 
 
     $(document).ready(function () {
@@ -1818,236 +1945,6 @@ mb-3"></div>
         try {
 
 
-            //  // // // // XXX  $("#btnupload").click(function (e) {
-            // // // // //     e.preventDefault();
-            // // // // //     dz.processQueue();
-            // // // // //     // $(this).attr("disabled", "disabled");
-            // // // // //     //$(this).removeAttr('disabled'));
-            // // // // //     open_TabViewProgress();
-            // // // // // });
-
-            // // // // // $('#btnupload').on('click', function (e) {
-
-            // // // // //     try {
-
-
-            // // // // //         ////////////////////////////////////////////////////////////////
-
-            // // // // //         e.preventDefault();
-            // // // // //         dz.options.autoProcessQueue = true;
-            // // // // //         dz.processQueue();
-
-            // // // // //         open_TabViewProgress();
-
-            // // // // //     }
-
-            // // // // //     catch (err) {
-            // // // // //         alert(err);
-            // // // // //     }
-
-
-            // // // // // });
-
-            ///////////////////////////////////////////////
-
-
-
-
-
-
-
-            $(".nav-tabs li button").click(function () {
-                $(this).tab('show');
-            });
-
-            //////////////
-
-            $('.nav-tabs li button').on('shown.bs.tab', function (event) {
-                //var x = $(event.target).text();         // active tab
-                var x = $(event.target).data('tabcontent');         // active tab
-                //var y = $(event.relatedTarget).text();  // previous tab
-                //////$(".act span").text(x);
-                //////$(".prev span").text(y);
-
-                // alert('CLICKED TAB == ' + x);
-
-                if (x === 'upload') {
-                    $('#div_CommandEdit').hide();
-                    $('#div_CommandActivity').hide();
-                    //////$('#div_CommandPreview').hide();
-                    $('#div_CommandUpload').show();
-                }
-                else if (x === 'edit') {
-                    $('#div_CommandEdit').show();
-                    //////$('#div_CommandPreview').hide();
-                    $('#div_CommandUpload').hide();
-                    $('#div_CommandActivity').hide();
-                }
-                else if (x === 'preview') {
-
-
-                    $('#div_CommandEdit').hide();
-                    $('#div_CommandUpload').hide();
-                    $('#div_CommandActivity').show();
-                    //////$('#div_CommandPreview').hide();
-
-                }
-
-                else if (x === 'view') {
-
-                    // alert($("#div_DocumentList").is(':empty'));
-                    // alert($("#div_DocumentList").length);
-
-                    //alert($.trim($("#div_DocumentList").html()).length);
-
-                    //if ($.trim($("#div_DocumentList").html()).length === 0) {
-                    //    //alert('load_TabViewQueryDocumentList');
-                    //    load_TabViewQueryDocumentList();
-                    //}
-
-                    $('#div_CommandEdit').hide();
-                    //////$('#div_CommandPreview').hide();
-                    $('#div_CommandUpload').hide();
-                    $('#div_CommandActivity').hide();
-
-                }
-                // // // // // else {
-                // // // // //     $('#div_CommandEdit').hide();
-                // // // // //     $('#div_CommandUpload').hide();
-
-                // // // // // }
-
-
-                //  $('#div_CommandUpload').show();
-
-            });
-
-
-            $('.accordion-item').on('shown.bs.collapse', function (event) {
-
-                // do expand
-
-                //  alert('shown.bs.collapse');
-
-
-                // pane-1689793058866-1695879102829
-                var x = $(this).data('paneid');
-
-                // alert('shown.bs.collapse == ' + x);
-
-
-                // let text = "How are you doing today?";
-                // const myArray = text.split(" ");
-
-                //let text = "How are you doing today?";
-                const myArray = x.split("-");
-
-                // alert(myArray[1] + " , " + myArray[2]);
-
-                //alert('EMPTY');
-
-                if (myArray[1] !== '0') {
-
-                    if ($.trim($("#div_" + myArray[2]).html()).length === 0) {
-
-                        // alert('EMPTY-id == ' + "#div_" + myArray[2]);
-                        load_TabViewQueryList(myArray[1], myArray[2], myArray[3], 0, true);
-                        //load_TabViewQueryDocumentList();
-                    } else {
-                        // alert('FULL');
-                    }
-
-                }
-
-
-                // alert('Opened == ' + x);
-                // console.log("Opened")
-            });
-
-
-            $('.accordion-item').on('hidden.bs.collapse', function (event) {
-
-                //do collapse
-                var x = $(this).data('paneid');
-
-                //alert('Closed == ' + x);
-                // console.log("Closed")
-            });
-
-
-
-            //   $('#collapseDiv').on('shown.bs.collapse', function () {
-            //     console.log("Opened")
-            // });
-
-            // $('#collapseDiv').on('hidden.bs.collapse', function () {
-            //     console.log("Closed")
-            // });
-
-
-
-
-
-            $("#iDocumentDateStart")
-                .datepicker({
-                    //dateFormat: 'dd-mm-yy, DD',
-                    dateFormat: 'dM, yy',
-                    //defaultDate: "24-09-2019"
-
-                    orientation: "bottom",
-                    // add this for placemenet
-                });
-            // .click(function (e) {
-            //         $('.ui-datepicker').css('bottom left', e.pageY);
-            //     });
-
-            //$datepicker.datepicker('setDate', new Date());
-            $("#iDocumentDateStart").datepicker("setDate", new Date());
-            //iDocumentDateStart
-
-            ////////////$("#datepicker").datepicker({ dateFormat: "DD, d MM, yy" });
-            ////////////$("#datepicker").datepicker("setDate", $.datepicker.parseDate("yy-mm-dd", "2017-11-16"));
-
-
-            //$("#datepicker").datepicker();
-            //$("#datepicker").datepicker("setDate", "06/01/21");
-
-            // https://stackoverflow.com/questions/35013820/how-to-pass-date-value-created-by-datepicker-to-a-mvc-5-controller-with-ajax
-
-            ///////////////////////////////////////
-
-
-            var max_fields = 10;
-            var img_NewURL1 = $('#img_NewURL1');
-            var $add_input_button = $('#btn_NewFileHyperlink');
-            var $field_wrapper = $('#div_DocumentUpload');
-            var new_field_html_X1 = '<div><input name="title[]" class="form-control form-item type="text" value="" data-label="title" /><a href="javascript:void(0);" class="remove_input_button" title="remove field">-</a></div>';
-            var new_field_html = '<div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;"><div class="col-11" ><input type="text"  type="url" pattern="https?://.+" class="form-control" id="input_fileURL2" name="input_fileURL2" placeholder="Insert your hyperlink here ..." style="color:blue;"   data-inputfor="fupload"  required /></div><div class="col-1 text-center" style="width:50px;" ><img id="img_delURL2" name="img_delURL2" class="remove_input_button"  src="https://bsr.vemcoconsulting.com/img/img_delete.png" style="width:20px;height:20px;" alt="Delete" title="Delete" /></div></div>';
-            var input_count = 1;
-
-            //add inputs
-            img_NewURL1.click(function () {
-                if (input_count < max_fields) {
-                    input_count++;
-                    $field_wrapper.append(new_field_html);
-                }
-            });
-
-
-            //add inputs
-            $add_input_button.click(function () {
-                if (input_count < max_fields) {
-                    input_count++;
-                    $field_wrapper.append(new_field_html);
-                }
-            });
-
-            //remove_input
-            $field_wrapper.on('click', '.remove_input_button', function (e) {
-                e.preventDefault();
-                $(this).parent('div').parent('div').remove();
-                input_count--;
-            });
 
         }
         catch (err) {

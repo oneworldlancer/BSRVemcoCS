@@ -84,7 +84,9 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
                         InformationScore = _arrUserBuildingInfomationList[i].Score,
                         InformationScoreAdjusted = _arrUserBuildingInfomationList[i].ScoreAdjusted,
                         DocumentCount = _arrUserBuildingInfomationList[i].DocumentCount,
-                        TimeFrame = _arrUserBuildingInfomationList[i].TimeoutYearCount
+                        TimeFrameYear = _arrUserBuildingInfomationList[i].TimeframeYearCount,
+                        TimeFrameMonth = _arrUserBuildingInfomationList[i].TimeframeMonthCount,
+                        //TimeFrameYear = _arrUserBuildingInfomationList[i].Ti
                     };
 
 
@@ -137,7 +139,9 @@ namespace BSRVemcoCS.Areas.iWebMember.Components
                         InformationScore = _arrUserBuildingTable2_InfomationList[i].Score,
                         InformationScoreAdjusted = _arrUserBuildingTable2_InfomationList[i].ScoreAdjusted,
                         DocumentCount = _arrUserBuildingTable2_InfomationList[i].DocumentCount,
-                        TimeFrame = _arrUserBuildingTable2_InfomationList[i].TimeoutYearCount
+                        TimeFrameYear = _arrUserBuildingTable2_InfomationList[i].TimeframeYearCount,
+                        TimeFrameMonth = _arrUserBuildingTable2_InfomationList[i].TimeframeMonthCount,
+
                     };
 
 

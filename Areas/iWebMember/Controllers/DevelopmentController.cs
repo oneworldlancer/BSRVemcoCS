@@ -2989,6 +2989,127 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
 
 
+        [HttpPost]
+        public async Task<JsonResult> Update_Score_Risk_ByInformationTokenID(
+            string iAppTableTokenID,
+            string iTableTokenID,
+             string iBuildingTokenID,
+            string iInformationTokenID,
+            string iScoreRiskOption = "0",
+            string iScoreRiskText = "0",
+            string iScoreAdjusted = "0",
+            string iRiskControlMeasure = "0")
+        {
+
+            string _strResult = "0";
+
+            _ = await AppBuildingManager.Building_Update_Risk_BuildingInformationScore_ByInformationTokenID(
+                           _dbContext,
+                             iBuildingTokenID,
+                  iInformationTokenID,
+             iScoreRiskOption,
+             iScoreRiskText,
+        iScoreAdjusted,
+             iRiskControlMeasure);
+
+
+            //Table1ScoreTotal
+            if (iAppTableTokenID == "1689022008239")
+            {
+
+                var Table1ScoreTotal = _dbContext.BsrvemcoUserBuildingInformationLists
+                              .Where(
+                                  c =>
+                                  c.ApptableTokenId == "1689022008239" &&
+                                  c.BuildingTokenId == iBuildingTokenID)
+                              .Sum(clmn => Convert.ToDecimal(clmn.ScoreAdjusted!)).ToString("0.0");//"60"; //3 * 20 ;
+
+                _strResult = Table1ScoreTotal;
+
+            }
+
+            //Table2ScoreTotal
+            else if (iAppTableTokenID == "1689162197100")
+            {
+
+                var Table2ScoreTotal = _dbContext.BsrvemcoUserBuildingInformationLists
+                          .Where(
+                              c =>
+                              c.ApptableTokenId == "1689162197100" &&
+                              c.BuildingTokenId == iBuildingTokenID)
+                          .Sum(clmn => Convert.ToDecimal(clmn.ScoreAdjusted!)).ToString("0.0");//"27"; // 3 * 9 ;
+
+
+                _strResult = Table2ScoreTotal;
+
+
+
+            }
+
+            //Table3ScoreTotal
+            else if (iAppTableTokenID == "1689162201957")
+            {
+
+                var Table3ScoreTotal = _dbContext.BsrvemcoUserBuildingInformationLists
+                               .Where(
+                                   c =>
+                                   c.ApptableTokenId == "1689162201957" &&
+                                   c.BuildingTokenId == iBuildingTokenID)
+                               .Sum(clmn => Convert.ToDecimal(clmn.ScoreAdjusted!)).ToString("0.0");// "12"; //  4 * 3 ;
+
+
+                _strResult = Table3ScoreTotal;
+
+
+            }
+
+            //Table4ScoreAverage
+            else if (iAppTableTokenID == "1689162207917")
+            {
+
+
+                var Table4ScoreAverage = _dbContext.BsrvemcoUserBuildingInformationLists
+                        .Where(
+                            c =>
+                            c.ApptableTokenId == "1689162207917" &&
+                            c.BuildingTokenId == iBuildingTokenID)
+                        .Average(clmn => Convert.ToDouble(clmn.ScoreAdjusted!)).ToString("0.0");// "3.5"; // (3 * 11) / 11  iBuildingTokenID;
+
+
+                _strResult = Table4ScoreAverage;
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //  return Json ( new { result = true }, JsonRequestBehavior.AllowGet );
+            // return Json ( new { total = _strResult } , new Newtonsoft.Json.JsonSerializerSettings ( ) );
+            return Json(new { total = _strResult });
+        }
+
+
+
+
         #endregion
 
 
@@ -3331,19 +3452,22 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
 
         public async Task<IActionResult> GoldenForm_Upload_FileLinks(
-            string iAppQueryTableTokenID,
-            string iAppQueryInformationTokenID,
-            string iQueryTableTokenID,
-            string iQueryInformationTokenID,
+            string iAppTableTokenID,
+            string iAppInformationTokenID,
+            //string iTableTokenID,
+            string iInformationTokenID,
             string iBuildingTokenID,
             string iFileLinkList,
-            string iAnswerCode,
-            string iAnswerText)
+            string iTimeframeYear,
+            string iTimeframeMonth)
         {
 
             /* , IFormFile filedata*/
 
-
+            //,
+            //            string iTimeframeDocumentDay,
+            //            string iTimeframeDocumentMonth,
+            //            string iTimeframeDocumentYear
             try
             {
 
@@ -3379,12 +3503,28 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
                 try
                 {
 
+                    DateTime _iTimeNow_Start = DateTime.Now;
 
-                    BsrvemcoUserBuildingQueryDocumentList iQueryDocumentModel;
+                    //////////DateTime _iTimeNow_End = _iTimeNow_Start;
+
+                    //////////if (iTimeframeYear!= "0")
+                    //////////{
+                    //////////    _iTimeNow_End.AddYears(Int32.Parse(iTimeframeYear));
+                    //////////}
+                    //////////else if (iTimeframeMonth!= "0")
+                    //////////{
+                    //////////    _iTimeNow_End.AddMonths(Int32.Parse(iTimeframeMonth));
+                    //////////}
+
+
+
+                    BsrvemcoUserBuildingDocumentList iQueryDocumentModel;
                     for (int i = 0; i < uploadedFilesName.Count; i++)
                     {
-                        iQueryDocumentModel = new BsrvemcoUserBuildingQueryDocumentList()
+                        iQueryDocumentModel = new BsrvemcoUserBuildingDocumentList()
                         {
+
+
 
                             RowViewTokenId = new Guid(),
 
@@ -3392,41 +3532,65 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
                             OwnerUserTokenId = Program.iOwnerModel.OwnerUserTokenID,
                             CompanyTokenId = Program.iOwnerModel.CompanyTokenID,
 
-                            AppqueryTableTokenId = iAppQueryTableTokenID,
-                            QueryTableTokenId = iQueryTableTokenID,
+                            ApptableTokenId = iAppTableTokenID,
                             BuildingTokenId = iBuildingTokenID,
-                            AppqueryInformationTokenId = iAppQueryInformationTokenID,
-                            QueryInformationTokenId = iQueryInformationTokenID,
+                            AppinformationTokenId = iAppInformationTokenID,
+                            InformationTokenId = iInformationTokenID,
                             DocumentTokenId = _arrTokenList[i].ToString(),
-                            DocumentWebUrl = uploadedFilesName[i].ToString(),
-
-                            //iDevelomentNew1ViewModel.BuildingDate.Day.ToString ( ) ,
-                            //DocumentTitle = uploadedFilesName[i].ToString(),// iDevelomentNew1ViewModel.BuildingDate.Month.ToString ( ) ,
-                            //DocumentExtension = uploadedFileExtension[i].ToString(),
-                            //DocumentCode = uploadedFileExtension[i].ToString(),
-                            //DocumentType = uploadedFileExtension[i].ToString(),
-                            //DocumentSize = uploadedFileSize[i].ToString(),//iDevelomentNew1ViewModel.BuildingDate.ToString ( ) ,
-
-
-
-                            TimeoutUserUploadStartDay =DateTime.Now.Day.ToString(),
-                            TimeoutUserUploadStartMonth =DateTime.Now.Month.ToString(),
-                            TimeoutUserUploadStartYear =DateTime.Now.Year.ToString(),
-                            TimeoutUserUploadStartText = "0",
+                            DocumentName = uploadedFilesName[i].ToString(),//iDevelomentNew1ViewModel.BuildingDate.Day.ToString ( ) ,
+                            DocumentTitle = uploadedFilesName[i].ToString(),// iDevelomentNew1ViewModel.BuildingDate.Month.ToString ( ) ,
+                            DocumentWebUrl= uploadedFilesName[i].ToString(),// iDevelomentNew1ViewModel.BuildingDate.Month.ToString ( ) ,
+                            //DocumentExtension = "0",
+                            //DocumentCode = "",
+                            //DocumentType = "0",
+                            //DocumentSize = "0",//iDevelomentNew1ViewModel.BuildingDate.ToString ( ) ,
 
 
 
 
 
-                            //TimeoutYearCount = iTimeFrame,
+                            TimeoutUserUploadStart=_iTimeNow_Start,
+                            TimeoutUserUploadStartDay =_iTimeNow_Start.Day.ToString(),
+                            TimeoutUserUploadStartMonth =_iTimeNow_Start.Month.ToString(),
+                            TimeoutUserUploadStartYear =_iTimeNow_Start.Year.ToString(),
+                            TimeoutUserUploadStartText = AppUtility_TimeManager.Time_Get_DateTime_String_ByDateTime(_iTimeNow_Start),
+
+
+
+
+                            //////////TimeoutUserUploadEnd=_iTimeNow_End,
+                            //////////TimeoutUserUploadEndDay =_iTimeNow_End.Day.ToString(),
+                            //////////TimeoutUserUploadEndMonth =_iTimeNow_End.Month.ToString(),
+                            //////////TimeoutUserUploadEndYear =_iTimeNow_End.Year.ToString(),
+                            //////////TimeoutUserUploadEndText =  AppUtility_TimeManager.Time_Get_DateTime_String_ByDateTime(_iTimeNow_End),
+
+
+                            //////////AlertUserNotification=_iTimeNow_End,
+                            //////////AlertSystemNotification=_iTimeNow_End,
+
+
+
+                            TimeframeYearCount= iTimeframeYear,
+                            TimeframeMonthCount = iTimeframeMonth,
+
                             UploadDateTimeMilliSec = AppUtility_TimeManager.Time_GetCurrentTimeInMilliSecond(),
                             IsVisible = true,
                             IsActive = true,
 
+
+
+
+
+
+
+
+
+
+
                         };
 
 
-                        await _dbContext.BsrvemcoUserBuildingQueryDocumentLists.AddAsync(iQueryDocumentModel);
+                        await _dbContext.BsrvemcoUserBuildingDocumentLists.AddAsync(iQueryDocumentModel);
 
                         await _dbContext.SaveChangesAsync();
 
@@ -3437,53 +3601,41 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
 
                     // Update-Scores
 
-
-                    if (iAnswerCode== "yes")
-                    {
-
-                        await QueryForm_Answer_YES_NO(
-            iAppQueryTableTokenID,
-            iAppQueryInformationTokenID,
-            iQueryTableTokenID,
-           iQueryInformationTokenID,
-            iBuildingTokenID,
-            iAnswerCode,
-         iAnswerText);
-                    }
-
-                    //         string _iDocumentCount = _dbContext.BsrvemcoUserBuildingDocumentLists
-                    //.Where(
-                    //    c =>
-                    //    c.BuildingTokenId == iBuildingTokenID &&
-                    //    c.InformationTokenId == iInformationTokenID &&
-                    //    c.IsVisible == true)
-                    //.Count().ToString();
+                    string _iDocumentCount = _dbContext.BsrvemcoUserBuildingDocumentLists
+           .Where(
+               c =>
+               c.BuildingTokenId == iBuildingTokenID &&
+               c.InformationTokenId == iInformationTokenID &&
+               c.IsVisible == true)
+           .Count().ToString();
 
 
-                    //         var _iUserBuildignInfoModel = _dbContext.BsrvemcoUserBuildingInformationLists
-                    //                 .Where(u =>
-                    //                 u.BuildingTokenId == iBuildingTokenID &&
-                    //                 u.InformationTokenId == iInformationTokenID)
-                    //                 //.Select (u  )
-                    //                 .FirstOrDefault(); // This is what actually executes the request and return a response
+                    var _iUserBuildignInfoModel = _dbContext.BsrvemcoUserBuildingInformationLists
+                            .Where(u =>
+                            u.BuildingTokenId == iBuildingTokenID &&
+                            u.InformationTokenId == iInformationTokenID)
+                            //.Select (u  )
+                            .FirstOrDefault(); // This is what actually executes the request and return a response
 
-                    //         _iUserBuildignInfoModel.Score = "3";
-                    //         _iUserBuildignInfoModel.ScoreOriginal = "3";
-                    //         _iUserBuildignInfoModel.ScoreAdjusted = "3";
-                    //         _iUserBuildignInfoModel.ScoreManaged = "3";
-                    //         _iUserBuildignInfoModel.DocumentCount = _iDocumentCount;
+                    _iUserBuildignInfoModel.Score = "3";
+                    _iUserBuildignInfoModel.ScoreOriginal = "3";
+                    _iUserBuildignInfoModel.ScoreAdjusted = "3";
+                    _iUserBuildignInfoModel.ScoreManaged = "3";
+                    _iUserBuildignInfoModel.DocumentCount = _iDocumentCount;
 
 
 
-                    //         _iUserBuildignInfoModel.IsAnswered = true;
-                    //         _iUserBuildignInfoModel.AnswerCode="evidence_upload";
-                    //         _iUserBuildignInfoModel.AnswerText="Evidence has been uploaded and is awaiting verification";
-                    //         _iUserBuildignInfoModel.AnswerDescription="0";
+                    _iUserBuildignInfoModel.IsAnswered = true;
+                    _iUserBuildignInfoModel.AnswerCode="evidence_upload";
+                    _iUserBuildignInfoModel.AnswerText="Evidence has been uploaded and is awaiting verification";
+                    _iUserBuildignInfoModel.AnswerDescription="0";
 
 
-                    //         _dbContext.BsrvemcoUserBuildingInformationLists.Update(_iUserBuildignInfoModel);
+                    _dbContext.BsrvemcoUserBuildingInformationLists.Update(_iUserBuildignInfoModel);
 
-                    //         await _dbContext.SaveChangesAsync();
+                    await _dbContext.SaveChangesAsync();
+
+
 
 
 
@@ -5124,8 +5276,8 @@ namespace BSRVemcoCS.Areas.iWebMember.Controllers
                     iqueryinftknid = iqueryinftknid
                 });
 
-          
-            
+
+
             //return ViewComponent ( "DocumentList" ,
             //    new { showPrevious = showPrevious , showUpcoming = showUpcoming } );
 

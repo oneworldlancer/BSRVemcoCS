@@ -81,17 +81,13 @@ public partial class BsrvemcoUserBuildingInformationList
 
     public string? Criterion { get; set; }
 
-    public string? VePlus { get; set; }
+    public string? RiskCode { get; set; }
 
-    public string? VeMinus { get; set; }
+    public string? RiskOption { get; set; }
 
-    public string? Neutral { get; set; }
+    public string? RiskText { get; set; }
 
-    public string? VePlusText { get; set; }
-
-    public string? VeMinusText { get; set; }
-
-    public string? NeutralText { get; set; }
+    public string? RiskDescription { get; set; }
 
     public string? Score { get; set; }
 
@@ -124,6 +120,16 @@ public partial class BsrvemcoUserBuildingInformationList
     public string? AnswerText { get; set; }
 
     public string? AnswerDescription { get; set; }
+
+    public string? TimeframeYearCount { get; set; }
+
+    public string? TimeframeMonthCount { get; set; }
+
+    public string? TimeframeAppNotification { get; set; }
+
+    public string? TimeframeSystemNotification { get; set; }
+
+    public string? TimeframeUserNotification { get; set; }
 
     public string? TimeoutYearCount { get; set; }
 

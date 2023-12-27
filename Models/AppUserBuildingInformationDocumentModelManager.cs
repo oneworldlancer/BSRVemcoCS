@@ -21,6 +21,7 @@ namespace BSRVemcoCS.Models
         public string InformationText { get; set; } = "0";
       
         public string DocumentTokenID { get; set; } = "0";
+        public string DocumentWebURL { get; set; } = "0";
         public string DocumentCode { get; set; } = "pdf";
         public string DocumentType { get; set; } = "pdf";
         public string DocumentExtension { get; set; } = "pdf";
@@ -28,7 +29,9 @@ namespace BSRVemcoCS.Models
         public string DocumentDescription { get; set; } = "0";
         public string DocumentSize { get; set; } = "0";
 
-        public string TimeoutYearCount { get; set; } = "0";
+        //public string TimeoutYearCount { get; set; } = "0";
+        public string TimeframeYear { get; set; } = "0";
+        public string TimeframeMonth { get; set; } = "0";
 
         public string TimeoutUserUploadStartDay { get; set; } = "0";
         public string TimeoutUserUploadStartMonth { get; set; } = "0";

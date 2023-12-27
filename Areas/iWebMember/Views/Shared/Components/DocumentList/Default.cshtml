@@ -18,10 +18,10 @@
                         <td style="width:100%;text-align:left;vertical-align:text-top;padding:0px;">
 
                             <div class="p-1" style="display:flex;flex-direction:column;">
+                                @* href='/_iUMedia/_iUDocument/doc_@iRow.DocumentTokenID.@iRow.DocumentCode' *@
+                                <a href='@iRow.DocumentWebURL' target="_blank" style="text-decoration:underline;" data-clmdocname="clmdocname_@iRow.DocumentTokenID">@iRow.DocumentWebURL</a>
 
-                                <a href='/_iUMedia/_iUDocument/doc_@iRow.DocumentTokenID.@iRow.DocumentCode' target="_blank" style="text-decoration:underline;" data-clmdocname="clmdocname_@iRow.DocumentTokenID">@iRow.DocumentName (@iRow.DocumentSize)</a>
-
-                                <div class="mt-1" style="display:flex;flex-direction:row;" onclick="open_TabEditDocument('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.APPInformationTokenID','@iRow.InformationTokenID','@iRow.DocumentTokenID','@iRow.DocumentType','@iRow.DocumentName','@iRow.DocumentSize','@iRow.DocumentDescription','@iRow.TimeoutUserUploadStartDay','@iRow.TimeoutUserUploadStartMonth','@iRow.TimeoutUserUploadStartYear','@iRow.TimeoutUserUploadStartText','@iRow.TimeoutYearCount','clmdocname_@iRow.DocumentTokenID','clmdocdate_@iRow.DocumentTokenID','clmdocdesc_@iRow.DocumentTokenID');">
+                                <div class="mt-1" style="display:flex;flex-direction:row;" onclick="open_TabEditDocument('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.APPInformationTokenID','@iRow.InformationTokenID','@iRow.DocumentTokenID','@iRow.DocumentType','@iRow.DocumentWebURL','@iRow.DocumentSize','@iRow.DocumentDescription','@iRow.TimeoutUserUploadStartDay','@iRow.TimeoutUserUploadStartMonth','@iRow.TimeoutUserUploadStartYear','@iRow.TimeoutUserUploadStartText','@iRow.TimeframeYear','@iRow.TimeframeMonth','clmdocname_@iRow.DocumentTokenID','clmdocdate_@iRow.DocumentTokenID','clmdocdesc_@iRow.DocumentTokenID');">
                                     <strong>Document publication date:</strong>
                                     @*6 February, 2022*@
 
@@ -63,7 +63,7 @@
                                 @if (iRow.DocumentDescription != "0")
                                 {
 
-                                    <span style="padding-bottom:5px;" data-clmdocdesc="clmdocdesc_@iRow.DocumentTokenID" onclick="open_TabEditDocument('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.APPInformationTokenID','@iRow.InformationTokenID','@iRow.DocumentTokenID','@iRow.DocumentType','@iRow.DocumentName','@iRow.DocumentSize','@iRow.DocumentDescription','@iRow.TimeoutUserUploadStartDay','@iRow.TimeoutUserUploadStartMonth','@iRow.TimeoutUserUploadStartYear','@iRow.TimeoutUserUploadStartText','@iRow.TimeoutYearCount','clmdocname_@iRow.DocumentTokenID','clmdocdate_@iRow.DocumentTokenID','clmdocdesc_@iRow.DocumentTokenID');">
+                                    <span style="padding-bottom:5px;" data-clmdocdesc="clmdocdesc_@iRow.DocumentTokenID" onclick="open_TabEditDocument('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.APPInformationTokenID','@iRow.InformationTokenID','@iRow.DocumentTokenID','@iRow.DocumentType','@iRow.DocumentWebURL','@iRow.DocumentSize','@iRow.DocumentDescription','@iRow.TimeoutUserUploadStartDay','@iRow.TimeoutUserUploadStartMonth','@iRow.TimeoutUserUploadStartYear','@iRow.TimeoutUserUploadStartText','@iRow.TimeframeYear','@iRow.TimeframeMonth','clmdocname_@iRow.DocumentTokenID','clmdocdate_@iRow.DocumentTokenID','clmdocdesc_@iRow.DocumentTokenID');">
 
 
                                         @Html.Raw(   @iRow.DocumentDescription.ToString())
@@ -74,7 +74,7 @@
                                 else
                                 {
 
-                                    <span style="padding-bottom:5px;color:red;" data-clmdocdesc="clmdocdesc_@iRow.DocumentTokenID" onclick="open_TabEditDocument('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.APPInformationTokenID','@iRow.InformationTokenID','@iRow.DocumentTokenID','@iRow.DocumentType','@iRow.DocumentName','@iRow.DocumentSize','@iRow.DocumentDescription','@iRow.TimeoutUserUploadStartDay','@iRow.TimeoutUserUploadStartMonth','@iRow.TimeoutUserUploadStartYear','@iRow.TimeoutUserUploadStartText','@iRow.TimeoutYearCount','clmdocname_@iRow.DocumentTokenID','clmdocdate_@iRow.DocumentTokenID','clmdocdesc_@iRow.DocumentTokenID');">
+                                    <span style="padding-bottom:5px;color:red;" data-clmdocdesc="clmdocdesc_@iRow.DocumentTokenID" onclick="open_TabEditDocument('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.APPInformationTokenID','@iRow.InformationTokenID','@iRow.DocumentTokenID','@iRow.DocumentType','@iRow.DocumentWebURL','@iRow.DocumentSize','@iRow.DocumentDescription','@iRow.TimeoutUserUploadStartDay','@iRow.TimeoutUserUploadStartMonth','@iRow.TimeoutUserUploadStartYear','@iRow.TimeoutUserUploadStartText','@iRow.TimeframeYear','@iRow.TimeframeMonth','clmdocname_@iRow.DocumentTokenID','clmdocdate_@iRow.DocumentTokenID','clmdocdesc_@iRow.DocumentTokenID');">
 
 
                                         FILL IN DESCRIPTION
@@ -101,19 +101,20 @@
 
 
                         @*     <td class="m-3" style="text-align:left;vertical-align:text-top;"><img src="~/img/img_download.png" style="width:20px;height:20px;" alt="Download" title="Download" /></td>
-                    <td class="m-3" style="text-align:left;vertical-align:text-top;" onclick="open_TabEditDocument('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.APPInformationTokenID','@iRow.InformationTokenID','@iRow.DocumentTokenID','@iRow.DocumentType','@iRow.DocumentName','@iRow.DocumentSize','@iRow.DocumentDescription','@iRow.TimeoutUserUploadStartDay','@iRow.TimeoutUserUploadStartMonth','@iRow.TimeoutUserUploadStartYear','@iRow.TimeoutUserUploadStartText','@iRow.TimeoutYearCount','clmdocname_@iRow.DocumentTokenID','clmdocdate_@iRow.DocumentTokenID','clmdocdesc_@iRow.DocumentTokenID');"><img src="~/img/img_edit.png" style="width:20px;height:20px;" alt="Edit" title="Edit" /></td>
+                    <td class="m-3" style="text-align:left;vertical-align:text-top;" onclick="open_TabEditDocument('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.APPInformationTokenID','@iRow.InformationTokenID','@iRow.DocumentTokenID','@iRow.DocumentType','@iRow.DocumentWebURL','@iRow.DocumentSize','@iRow.DocumentDescription','@iRow.TimeoutUserUploadStartDay','@iRow.TimeoutUserUploadStartMonth','@iRow.TimeoutUserUploadStartYear','@iRow.TimeoutUserUploadStartText','@iRow.TimeoutYearCount','clmdocname_@iRow.DocumentTokenID','clmdocdate_@iRow.DocumentTokenID','clmdocdesc_@iRow.DocumentTokenID');"><img src="~/img/img_edit.png" style="width:20px;height:20px;" alt="Edit" title="Edit" /></td>
                     <td class="m-3" style="text-align:left;vertical-align:text-top;"><img src="~/img/img_delete.png" style="width:20px;height:20px;" alt="Delete" title="Delete" /></td>
                     *@
                         <td class="m-3" style="text-align:center;vertical-align:text-top;">
                             <div style="width:150px;display:flex;flex-direction:row;">
-
-                                <a href='/_iUMedia/_iUDocument/doc_@iRow.DocumentTokenID.@iRow.DocumentCode' download="@iRow.DocumentName">
+                                @* download="doc@iRow.DocumentWebURL" *@
+                                <a href='@iRow.DocumentWebURL' >
                                     <div class="text-center" style="width:50px;">
                                         <img src="~/img/img_download.png" style="width:20px;height:20px;" alt="Download" title="Download" />
                                     </div>
                                 </a>
                                 <span>|</span>
-                                <div class="text-center" style="width:50px;" onclick="open_TabEditDocument('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.APPInformationTokenID','@iRow.InformationTokenID','@iRow.DocumentTokenID','@iRow.DocumentType','@iRow.DocumentName','@iRow.DocumentSize','@iRow.DocumentDescription','@iRow.TimeoutUserUploadStartDay','@iRow.TimeoutUserUploadStartMonth','@iRow.TimeoutUserUploadStartYear','@iRow.TimeoutUserUploadStartText','@iRow.TimeoutYearCount','clmdocname_@iRow.DocumentTokenID','clmdocdate_@iRow.DocumentTokenID','clmdocdesc_@iRow.DocumentTokenID');">
+                                <div class="text-center" style="width:50px;" 
+                                onclick="open_TabEditDocument('@iRow.AppTableTokenID','@iRow.TableTokenID','@iRow.BuildingTokenID','@iRow.APPInformationTokenID','@iRow.InformationTokenID','@iRow.DocumentTokenID','@iRow.DocumentType','@iRow.DocumentWebURL','@iRow.DocumentSize','@iRow.DocumentDescription','@iRow.TimeoutUserUploadStartDay','@iRow.TimeoutUserUploadStartMonth','@iRow.TimeoutUserUploadStartYear','@iRow.TimeoutUserUploadStartText','@iRow.TimeframeYear','@iRow.TimeframeMonth','clmdocname_@iRow.DocumentTokenID','clmdocdate_@iRow.DocumentTokenID','clmdocdesc_@iRow.DocumentTokenID');">
                                     <img src="~/img/img_edit.png" style="width:20px;height:20px;" alt="Edit" title="Edit" />
                                 </div>
                                 <span>|</span>

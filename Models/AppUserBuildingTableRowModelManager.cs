@@ -24,20 +24,21 @@ namespace BSRVemcoCS.Models
         public string? ColumnDescription { get; set; } = "0";
         public string? ColumnCommentary { get; set; } = "0";
         public string? ColumnCriterion { get; set; } = "0";
-      
-        public string? ColumnVePlus { get; set; } = "0";
-        public string? ColumnVeMinus { get; set; } = "0";
-        public string? ColumnNeutral { get; set; } = "0";
-      
-      
-       
-        public string? ColumnVePlusText { get; set; } = "0";
-        public string? ColumnVeMinusText { get; set; } = "0";
-        public string? ColumnNeutralText{ get; set; } = "0";
-      
-      
-        
-        
+
+        public string? ColumnRiskCode { get; set; } = "0";
+        public string? ColumnRiskOption { get; set; } = "0";
+        public string? ColumnRiskText { get; set; } = "0";
+        public string? ColumnRiskDescription { get; set; } = "0";
+
+
+
+        //public string? ColumnVePlusText { get; set; } = "0";
+        //public string? ColumnVeMinusText { get; set; } = "0";
+        //public string? ColumnNeutralText{ get; set; } = "0";
+
+
+
+
         public string? ColumnScore { get; set; } = "0";
         public string? ColumnScoreOriginal { get; set; } = "0";
         public string? ColumnScoreManaged { get; set; } = "0";

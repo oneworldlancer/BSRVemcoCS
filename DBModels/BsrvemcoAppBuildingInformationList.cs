@@ -77,17 +77,13 @@ public partial class BsrvemcoAppBuildingInformationList
 
     public string? Criterion { get; set; }
 
-    public string? VePlus { get; set; }
+    public string? RiskCode { get; set; }
 
-    public string? VeMinus { get; set; }
+    public string? RiskOption { get; set; }
 
-    public string? Neutral { get; set; }
+    public string? RiskText { get; set; }
 
-    public string? VePlusText { get; set; }
-
-    public string? VeMinusText { get; set; }
-
-    public string? NeutralText { get; set; }
+    public string? RiskDescription { get; set; }
 
     public string? Score { get; set; }
 
@@ -160,4 +156,10 @@ public partial class BsrvemcoAppBuildingInformationList
     public int? UploadYear { get; set; }
 
     public DateTime? UploadDate { get; set; }
+
+    public string? RiskOptiona { get; set; }
+
+    public string? RoskTexta { get; set; }
+
+    public string? RiskDescriptiona { get; set; }
 }

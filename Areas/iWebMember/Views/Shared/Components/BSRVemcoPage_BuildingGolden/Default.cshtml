@@ -154,10 +154,10 @@
                         <li id='tab_Upload' class="nav-item" role="presentation">
                             <button class="nav-link" id="btn_Upload" data-bs-toggle="tab" data-bs-target="#content_Upload" type="button" role="tab" aria-controls="messages" aria-selected="false" data-tabcontent="upload">Upload Hyperlinks</button>
                         </li>
-                        <li id='tab_Edit' class="nav-item" role="presentation">
+                        <li id='tab_Edit' class="nav-item" role="presentation" style="display:none;">
                             <button class="nav-link" id="btn_Edit" data-bs-toggle="tab" data-bs-target="#content_Edit" type="button" role="tab" aria-controls="settings" aria-selected="false" data-tabcontent="edit">Edit</button>
                         </li>
-                        <li id='tab_Progress' class="nav-item" role="presentation">
+                        <li id='tab_Progress' class="nav-item" role="presentation" style="display:none;">
                             <button class="nav-link" id="btn_Progress" data-bs-toggle="tab" data-bs-target="#content_Progress" type="button" role="tab" aria-controls="settings" aria-selected="false" data-tabcontent="progress">Progress</button>
                         </li>
                     </ul>
@@ -596,7 +596,7 @@ mb-3"></div>
 
 
 
-    function Popup_LoadForm(apptbltknid, tbltknid, bldtknid, appinftknid, inftknid, doccount, timeframe, clminfotxt, clmdoccount) {
+    function Popup_LoadForm(apptbltknid, tbltknid, bldtknid, appinftknid, inftknid, doccount, timeframeyear, timeframemonth, clminfotxt, clmdoccount) {
 
         try {
 
@@ -609,7 +609,9 @@ mb-3"></div>
             window.doccount = doccount;
             window.clminfotxt = clminfotxt;
             window.clmdoccount = clmdoccount;
-            window.timeframe = timeframe;
+            window.timeframe = '0';
+            window.timeframeyear = timeframeyear;
+            window.timeframemonth = timeframemonth;
 
             // alert('popup form here' + bldtknid + " , " + inftknid + " , " + clminfotxt + " , " + clmdoc);
 
@@ -650,7 +652,8 @@ mb-3"></div>
             $("#iAppinformationTokenID").val(appinftknid);
             $("#iInformationTokenID").val(inftknid);
             $("#iBuildingTokenID").val(bldtknid);
-            $("#iTimeFrame").val(timeframe);
+            $("#iTimeFrameYear").val(timeframeyear);
+            $("#iTimeFrameMonth").val(timeframemonth);
 
 
 
@@ -678,23 +681,23 @@ mb-3"></div>
             ////////////////////////////////
 
 
-            $('#tab_Edit').hide();
-            $('#tab_Progress').hide();
-            $('#div_CommandUpload').hide();
-            $('#div_CommandEdit').hide();
+            // // // // // $('#tab_Edit').hide();
+            // // // // // $('#tab_Progress').hide();
+            // // // // // $('#div_CommandUpload').hide();
+            // // // // // $('#div_CommandEdit').hide();
 
 
-            $("#btn_Progress").removeClass("active");
-            $("#btn_Edit").removeClass("active");
-            $("#btn_Upload").removeClass("active");
+            // // // // // $("#btn_Progress").removeClass("active");
+            // // // // // $("#btn_Edit").removeClass("active");
+            // // // // // $("#btn_Upload").removeClass("active");
 
-            //$("#content_Preview").removeClass("active");
-            $("#content_Progress").removeClass("active");
-            $("#content_Edit").removeClass("active");
-            $("#content_Upload").removeClass("active");
+            // // // // // //$("#content_Preview").removeClass("active");
+            // // // // // $("#content_Progress").removeClass("active");
+            // // // // // $("#content_Edit").removeClass("active");
+            // // // // // $("#content_Upload").removeClass("active");
 
-            $("#btn_View").addClass("active");
-            $("#content_View").addClass("active");
+            // // // // // $("#btn_View").addClass("active");
+            // // // // // $("#content_View").addClass("active");
 
 
 
@@ -719,13 +722,16 @@ mb-3"></div>
 
 
 
-    function open_TabEditDocument(apptbltknid, tbltknid, bldtknid, appinftknid, inftknid, doctknid,
-        doctyp, docname, docsize, docdesc,
-        datday, datmonth, datyear, dattxt, yearcnt,
+    function open_TabEditDocument(
+        apptbltknid, tbltknid, bldtknid, appinftknid, inftknid,
+        doctknid, doctyp, docname, docsize, docdesc,
+        datday, datmonth, datyear, dattxt,
+        yearcnt, monthcnt,
         clmdocname, clmdocdate, clmdocdesc) {
 
         try {
 
+            // alert('docname == ' + docname);
             // alert('open_TabEditDocument == ' + datday + " , " + datmonth + " , " + datyear);
 
             // doctknid, doctcod, docname, docsize, docdesc
@@ -741,26 +747,21 @@ mb-3"></div>
             window.datmonth = datmonth;
             window.datyear = datyear;
             window.dattxt = dattxt;
-            window.timeframe = yearcnt;
+
+            window.timeframeyeardoc = yearcnt;
+            window.timeframemonthdoc = monthcnt;
 
 
 
             var iDocumentName = document.getElementById('iDocumentName');
             var iDocumentDateStart = document.getElementById('iDocumentDateStart');
 
-            iDocumentName.innerHTML = docname + " (" + docsize + ")";
+            //iDocumentName.innerHTML = docname + " (" + docsize + ")";
+            iDocumentName.innerHTML = docname;
             // iDocumentName.href = '/_iUMedia/_iUDocument/doc_' + doctknid + '.' + doctyp;
-            $("#iDocumentName").attr("href", '/_iUMedia/_iUDocument/doc_' + doctknid + '.' + doctyp);
-            //  var iDocumentCount = document.getElementById('iDocumentCount');
 
-            //  iInformationText.value = '3';
-
-            //   iInformationText.innerHTML = clmn_InfoText.html();
-            //   iDocumentCount.innerHTML = clmn_DocumentCount.html();
-
-
-            //  var clmn_Score = $("[data-clmscore='clmscore_" + inftknid + "']");
-            //  var clmn_RiskMeasure = $("[data-clmrisk='clmrisk_" + inftknid + "']");
+            // $("#iDocumentName").attr("href", '/_iUMedia/_iUDocument/doc_' + doctknid + '.' + doctyp);
+            $("#iDocumentName").attr("href", docname);
 
 
             ////////////////////////////////
@@ -777,33 +778,47 @@ mb-3"></div>
 
             //$("#iDocumentDateStart").datepicker("setDate", new Date());
 
+            // alert('strDate');
+
+            // alert('iDocumentDateStart== '+ $("#iDocumentDateStart"));
+
             var strDate;
             //&& datmonth == "0" && datyear == "0"
 
-            if (datday == "0") {
+            try {
 
-                $("#iDocumentDateStart").datepicker(
-                    "setDate", $.datepicker.parseDate("dd-mm-yy", new Date()));
 
-                // $("#iDocumentDateStart").datepicker("setDate", new Date());
-                //alert("strDate = 0");
+                if (datday == "0") {
+
+                    $("#iDocumentDateStart").datepicker(
+                        "setDate", $.datepicker.parseDate("dd-mm-yy", new Date()));
+
+                    // $("#iDocumentDateStart").datepicker("setDate", new Date());
+                    // alert("datday456 = " + datday);
+                    // alert("strDatexxx = 0");
+                }
+                else {
+
+                    strDate = datday + '-' + datmonth + '-' + datyear;
+
+                    // alert("strDate123 = " + strDate);
+
+                    // $("#iDocumentDateStart").datepicker(
+                    //     "setDate", $.datepicker.parseDate("dM, yy", strDate));
+
+
+                    $("#iDocumentDateStart").datepicker(
+                        "setDate", $.datepicker.parseDate("dd-mm-yy", strDate));
+
+
+                }
             }
-            else {
 
-                strDate = datday + '-' + datmonth + '-' + datyear;
-                // alert("strDate = " + strDate);
-
-                // alert(strDate);
-
-                // $("#iDocumentDateStart").datepicker(
-                //     "setDate", $.datepicker.parseDate("dM, yy", strDate));
-
-
-                $("#iDocumentDateStart").datepicker(
-                    "setDate", $.datepicker.parseDate("dd-mm-yy", strDate));
-
-
+            catch (exx) {
+                alert(exx);
             }
+
+
 
             if (docdesc !== '0') {
 
@@ -812,7 +827,7 @@ mb-3"></div>
                 editor.setData('');
             }
 
-
+            // alert('docdesc');
 
 
             $('#tab_Edit').hide();
@@ -922,25 +937,6 @@ mb-3"></div>
 
 
 
-
-
-
-
-    function clearFiles() {
-        try {
-
-            ////$("#hdn_InformationTokenID").val("comment");
-
-            ////alert($("#hdn_InformationTokenID").val());
-
-            //dz.removeAllFiles(true);
-        }
-        catch (err) {
-
-            alert(err);
-        }
-
-    }
 
 
 
@@ -1379,7 +1375,7 @@ mb-3"></div>
 
         }
         catch (err) {
-            alert(err);
+            // alert(err);
         }
     }
 
@@ -1651,6 +1647,135 @@ mb-3"></div>
 
 
 
+
+
+    $(".nav-tabs li button").click(function () {
+        $(this).tab('show');
+    });
+
+    $('.nav-tabs li button').on('shown.bs.tab', function (event) {
+        //var x = $(event.target).text();         // active tab
+        var x = $(event.target).data('tabcontent');         // active tab
+        //var y = $(event.relatedTarget).text();  // previous tab
+        //////$(".act span").text(x);
+        //////$(".prev span").text(y);
+
+        // alert('CLICKED TAB == ' + x);
+
+        if (x === 'upload') {
+            $('#div_CommandEdit').hide();
+            //$('#div_CommandPreview').hide();
+            $('#div_CommandUpload').show();
+        }
+        else if (x === 'edit') {
+            $('#div_CommandEdit').show();
+            //$('#div_CommandPreview').show();
+            $('#div_CommandUpload').hide();
+        }
+        else if (x === 'preview') {
+
+
+            $('#div_CommandEdit').hide();
+            $('#div_CommandUpload').hide();
+            //$('#div_CommandPreview').show();
+
+        }
+
+        else if (x === 'view') {
+
+            // alert($("#div_DocumentList").is(':empty'));
+            // alert($("#div_DocumentList").length);
+
+            //alert($.trim($("#div_DocumentList").html()).length);
+
+            //if ($.trim($("#div_DocumentList").html()).length === 0) {
+            //    //alert('load_TabViewDocumentList');
+            //    load_TabViewDocumentList();
+            //}
+
+            $('#div_CommandEdit').hide();
+            //$('#div_CommandPreview').hide();
+            $('#div_CommandUpload').hide();
+
+        }
+        else {
+            $('#div_CommandEdit').hide();
+            $('#div_CommandUpload').hide();
+            //$('#div_CommandPreview').hide();
+        }
+
+
+        //  $('#div_CommandUpload').show();
+
+    });
+
+    $("#iDocumentDateStart")
+        .datepicker({
+            //dateFormat: 'dd-mm-yy, DD',
+            dateFormat: 'dM, yy',
+            //defaultDate: "24-09-2019"
+
+            orientation: "bottom",
+            // add this for placemenet
+        });
+    // .click(function (e) {
+    //         $('.ui-datepicker').css('bottom left', e.pageY);
+    //     });
+
+    //$datepicker.datepicker('setDate', new Date());
+    $("#iDocumentDateStart").datepicker("setDate", new Date());
+    //iDocumentDateStart
+
+    ////////////$("#datepicker").datepicker({ dateFormat: "DD, d MM, yy" });
+    ////////////$("#datepicker").datepicker("setDate", $.datepicker.parseDate("yy-mm-dd", "2017-11-16"));
+
+
+    //$("#datepicker").datepicker();
+    //$("#datepicker").datepicker("setDate", "06/01/21");
+
+    // https://stackoverflow.com/questions/35013820/how-to-pass-date-value-created-by-datepicker-to-a-mvc-5-controller-with-ajax
+
+
+
+
+    ///////////////////////////////////////
+
+
+    var max_fields = 10;
+    var img_NewURL1 = $('#img_NewURL1');
+    var $add_input_button = $('#btn_NewFileHyperlink');
+    var $field_wrapper = $('#div_DocumentUpload');
+    var new_field_html_X1 = '<div><input name="title[]" class="form-control form-item type="text" value="" data-label="title" /><a href="javascript:void(0);" class="remove_input_button" title="remove field">-</a></div>';
+    var new_field_html = '<div class="row" style="width:100%;display:flex;flex-direction:row;margin-bottom:10px;"><div class="col-11" ><input type="text"  type="url" pattern="https?://.+" class="form-control" id="input_fileURL2" name="input_fileURL2" placeholder="Insert your hyperlink here ..." style="color:blue;"   data-inputfor="fupload"  required /></div><div class="col-1 text-center" style="width:50px;" ><img id="img_delURL2" name="img_delURL2" class="remove_input_button"  src="https://bsr.vemcoconsulting.com/img/img_delete.png" style="width:20px;height:20px;" alt="Delete" title="Delete" /></div></div>';
+    var input_count = 1;
+
+    //add inputs
+    img_NewURL1.click(function () {
+        if (input_count < max_fields) {
+            input_count++;
+            $field_wrapper.append(new_field_html);
+        }
+    });
+
+
+    //add inputs
+    $add_input_button.click(function () {
+        if (input_count < max_fields) {
+            input_count++;
+            $field_wrapper.append(new_field_html);
+        }
+    });
+
+    //remove_input
+    $field_wrapper.on('click', '.remove_input_button', function (e) {
+        e.preventDefault();
+        $(this).parent('div').parent('div').remove();
+        input_count--;
+    });
+
+
+
+
     $(document).ready(function () {
 
         try {
@@ -1905,74 +2030,50 @@ mb-3"></div>
 
 
 
-                // // // // // // // // // // $.ajax({
+                $.ajax({
 
-                // // // // // // // // // //     url: '/iWebMember/Development/GoldenForm_Upload_FileLinks',
-                // // // // // // // // // //     data: {
-                // // // // // // // // // //         iAppQueryTableTokenID: $("#iAppQueryTableTokenID").val(),
-                // // // // // // // // // //         iAppQueryInformationTokenID: $("#iAppQueryInformationTokenID").val(),
-                // // // // // // // // // //         iQueryTableTokenID: $("#iQueryTableTokenID").val(),
-                // // // // // // // // // //         iQueryInformationTokenID: $("#iQueryInformationTokenID").val(),
-                // // // // // // // // // //         iBuildingTokenID: $("#iBuildingTokenID").val(),
-                // // // // // // // // // //         iFileLinkList: _urlLinkList,
-                // // // // // // // // // //         iAnswerCode: window.answercode,
-                // // // // // // // // // //         iAnswerText: window.systemdescription
-
-
-                // // // // // // // // // //         // // // // // doctknid: window.doctknid,
-                // // // // // // // // // //         // // // // // iday: date.getDate(),
-                // // // // // // // // // //         // // // // // // idayname: $("#iBuildingTokenID").val(),
-                // // // // // // // // // //         // // // // // imonth: date.getMonth() + 1,
-                // // // // // // // // // //         // // // // // iyear: date.getFullYear(),
-                // // // // // // // // // //         // // // // // iDateText: $("#iDocumentDateStart").val(),
-                // // // // // // // // // //         // // // // // idesc: txt_DocumentDescription,
-                // // // // // // // // // //         // // // // // timeframe: window.timeframe
-                // // // // // // // // // //     },
-                // // // // // // // // // //     success: function (data) {
+                    url: '/iWebMember/Development/GoldenForm_Upload_FileLinks',
+                    data: {
+                        iAppTableTokenID: window.apptbltknid,
+                        iAppInformationTokenID: window.appinftknid,
+                        // iTableTokenID: window.tbltknid,
+                        iInformationTokenID: window.inftknid,
+                        iBuildingTokenID: $("#iBuildingTokenID").val(),
+                        iFileLinkList: _urlLinkList,
+                        iTimeframeYear: $("#iTimeFrameYear").val(),
+                        iTimeframeMonth: $("#iTimeFrameMonth").val()
+                        // // // // // iAnswerCode: window.answercode,
+                        // // // // // iAnswerText: window.systemdescription,
 
 
-                // // // // // // // // // //         if (window.answercode == "yes") {
-
-                // // // // // // // // // //             var clmn_ActivityText = $("[data-clmactivity='clmactivity_" + window.inftknid + "']");
-
-                // // // // // // // // // //             clmn_ActivityText.html(
-                // // // // // // // // // //                 '<strong>' + window.systemtitle + '</strong>' +
-                // // // // // // // // // //                 window.systemdescription);
-
-                // // // // // // // // // //         }
-
-                // // // // // // // // // //         refresh_TabViewQueryDocumentList(true);
+                        // // // // // doctknid: window.doctknid,
+                        // // // // // iday: date.getDate(),
+                        // // // // // // idayname: $("#iBuildingTokenID").val(),
+                        // // // // // imonth: date.getMonth() + 1,
+                        // // // // // iyear: date.getFullYear(),
+                        // // // // // iDateText: $("#iDocumentDateStart").val(),
+                        // // // // // idesc: txt_DocumentDescription,
+                        // // // // // timeframe: window.timeframe
+                    },
+                    success: function (data) {
 
 
 
-                // // // // // // // // // //         for (var i = 0; i < inputs.length; i++) {
+                        load_TabViewDocumentList(true);
 
 
-                // // // // // // // // // //             $(inputs[i]).val('');
 
-                // // // // // // // // // //         }
-
-
-                // // // // // // // // // //         // // // // clmn_DocumentDate.css('color', 'black');
+                        for (var i = 0; i < inputs.length; i++) {
 
 
-                // // // // // // // // // //         // // // // if (txt_DocumentDescription == "0") {
-                // // // // // // // // // //         // // // //     clmn_DocumentDescription.css('color', 'red');
-                // // // // // // // // // //         // // // // }
+                            $(inputs[i]).val('');
 
-                // // // // // // // // // //         // // // // else {
-                // // // // // // // // // //         // // // //     clmn_DocumentDescription.css('color', 'black');
-                // // // // // // // // // //         // // // // }
+                        }
 
 
-                // // // // // // // // // //         // // // // clmn_DocumentDate.html($("#iDocumentDateStart").val());
-                // // // // // // // // // //         // // // // clmn_DocumentDescription.html(visible_RiskControlMeasure);
 
-
-                // // // // // // // // // //         // // // // cancel_TabEditDocument();
-
-                // // // // // // // // // //     }
-                // // // // // // // // // // });
+                    }
+                });
 
 
 

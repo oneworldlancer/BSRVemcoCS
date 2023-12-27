@@ -1185,8 +1185,6 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.IsPaging).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsVisible).HasDefaultValueSql("((1))");
             entity.Property(e => e.IsWithSurvey).HasDefaultValueSql("((0))");
-            entity.Property(e => e.Neutral).HasDefaultValueSql("((0))");
-            entity.Property(e => e.NeutralText).HasDefaultValueSql("((0))");
             entity.Property(e => e.OwnerMobileNumberTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("OwnerMobileNumberTokenID");
@@ -1207,7 +1205,12 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.QuestionDescription).HasDefaultValueSql("((0))");
             entity.Property(e => e.QuestionText).HasDefaultValueSql("((0))");
             entity.Property(e => e.QuestionType).HasDefaultValueSql("((0))");
+            entity.Property(e => e.RiskCode).HasDefaultValueSql("((0))");
             entity.Property(e => e.RiskControlMeasure).HasDefaultValueSql("((0))");
+            entity.Property(e => e.RiskDescription).HasDefaultValueSql("((0))");
+            entity.Property(e => e.RiskOption).HasDefaultValueSql("((0))");
+            entity.Property(e => e.RiskOptiona).HasMaxLength(50);
+            entity.Property(e => e.RiskText).HasDefaultValueSql("((0))");
             entity.Property(e => e.RowDataTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("RowDataTokenID");
@@ -1239,10 +1242,6 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.UploadDay).HasDefaultValueSql("(datepart(day,getdate()))");
             entity.Property(e => e.UploadMonth).HasDefaultValueSql("(datepart(month,getdate()))");
             entity.Property(e => e.UploadYear).HasDefaultValueSql("(datepart(year,getdate()))");
-            entity.Property(e => e.VeMinus).HasDefaultValueSql("((0))");
-            entity.Property(e => e.VeMinusText).HasDefaultValueSql("((0))");
-            entity.Property(e => e.VePlus).HasDefaultValueSql("((0))");
-            entity.Property(e => e.VePlusText).HasDefaultValueSql("((0))");
         });
 
         modelBuilder.Entity<BsrvemcoAppBuildingInformationQuestionList>(entity =>
@@ -2956,8 +2955,6 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.IsVisible).HasDefaultValueSql("((1))");
             entity.Property(e => e.IsVisited).HasDefaultValueSql("((0))");
             entity.Property(e => e.IsWithSurvey).HasDefaultValueSql("((0))");
-            entity.Property(e => e.Neutral).HasDefaultValueSql("((0))");
-            entity.Property(e => e.NeutralText).HasDefaultValueSql("((0))");
             entity.Property(e => e.OwnerMobileNumberTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("OwnerMobileNumberTokenID");
@@ -2981,7 +2978,11 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.QuestionDescription).HasDefaultValueSql("((0))");
             entity.Property(e => e.QuestionText).HasDefaultValueSql("((0))");
             entity.Property(e => e.QuestionType).HasDefaultValueSql("((0))");
+            entity.Property(e => e.RiskCode).HasDefaultValueSql("((0))");
             entity.Property(e => e.RiskControlMeasure).HasDefaultValueSql("((0))");
+            entity.Property(e => e.RiskDescription).HasDefaultValueSql("((0))");
+            entity.Property(e => e.RiskOption).HasDefaultValueSql("((0))");
+            entity.Property(e => e.RiskText).HasDefaultValueSql("((0))");
             entity.Property(e => e.RowDataTokenId)
                 .HasDefaultValueSql("((0))")
                 .HasColumnName("RowDataTokenID");
@@ -2998,6 +2999,11 @@ public partial class BSRDBModelContext : DbContext
                 .HasMaxLength(50)
                 .HasDefaultValueSql("((0))");
             entity.Property(e => e.ScoreOriginal).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeAppNotification).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeMonthCount).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeSystemNotification).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeUserNotification).HasDefaultValueSql("((0))");
+            entity.Property(e => e.TimeframeYearCount).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutAppNotification).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutSystemNotification).HasDefaultValueSql("((0))");
             entity.Property(e => e.TimeoutUserNotification).HasDefaultValueSql("((0))");
@@ -3016,10 +3022,6 @@ public partial class BSRDBModelContext : DbContext
             entity.Property(e => e.UploadDay).HasDefaultValueSql("(datepart(day,getdate()))");
             entity.Property(e => e.UploadMonth).HasDefaultValueSql("(datepart(month,getdate()))");
             entity.Property(e => e.UploadYear).HasDefaultValueSql("(datepart(year,getdate()))");
-            entity.Property(e => e.VeMinus).HasDefaultValueSql("((0))");
-            entity.Property(e => e.VeMinusText).HasDefaultValueSql("((0))");
-            entity.Property(e => e.VePlus).HasDefaultValueSql("((0))");
-            entity.Property(e => e.VePlusText).HasDefaultValueSql("((0))");
         });
 
         modelBuilder.Entity<BsrvemcoUserBuildingList>(entity =>

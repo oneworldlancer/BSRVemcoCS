@@ -15,8 +15,7 @@ namespace BSRVemcoCS.Models
         public string InformationTokenID { get; set; } = "0";
         public string InformationText { get; set; } = "0";
         public string DocumentCount { get; set; } = "0";
-        public string TimeFrame { get; set; } = "0";
-        public string InformationScore { get; set; } = "5";
+       public string InformationScore { get; set; } = "5";
         public string InformationScoreAdjusted { get; set; } = "5";
         public string InformationRiskControlMeasure { get; set; } = "0";
     
@@ -37,7 +36,10 @@ namespace BSRVemcoCS.Models
         public string AnswerText { get; set; } = "0";
         public string AnswerDescription { get; set; } = "0";
 
-
+   public string TimeFrame { get; set; } = "0";
+   public string TimeFrameMonth { get; set; } = "0";
+   public string TimeFrameYear { get; set; } = "0";
+      
         public string TitleColor { get; set; } = "Black";
         public string TextColor { get; set; } = "Black";
         public string TextDescriptionColor { get; set; } = "Black";
